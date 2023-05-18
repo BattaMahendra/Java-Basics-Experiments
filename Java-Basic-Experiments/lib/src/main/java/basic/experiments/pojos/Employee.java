@@ -1,4 +1,4 @@
-package pojos;
+package basic.experiments.pojos;
 
 import java.util.ArrayList;
 import java.util.List;

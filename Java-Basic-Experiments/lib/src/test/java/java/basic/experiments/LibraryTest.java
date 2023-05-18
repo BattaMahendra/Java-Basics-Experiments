@@ -4,6 +4,9 @@
 package java.basic.experiments;
 
 import org.junit.jupiter.api.Test;
+
+import basic.experiments.Library;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {

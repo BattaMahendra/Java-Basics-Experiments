@@ -1,4 +1,4 @@
-package Miscellaneous;
+package basic.experiments.miscellaneous;
 
 import java.util.stream.IntStream;
 
