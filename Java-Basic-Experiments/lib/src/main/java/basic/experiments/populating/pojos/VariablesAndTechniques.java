@@ -22,7 +22,7 @@ public class VariablesAndTechniques {
 													.collect(Collectors.joining())
 													.split(",");
 													
-	public static String[] roles ={"developer","tester","support engineer","manager","director","supervisor","programmer specialist","team lead","project amnager"," operations manager","networking engineer","supporting staff","security personel","junior developer","fresher engineer","maintanace staff","plumber"};											
+	public static String[] roles ={"developer","tester","support engineer","manager","director","supervisor","programmer specialist","team lead","project amnager"," operations manager","networking engineer","supporting staff","security personel","junior developer","fresher engineer","maintanace staff","plumber","Solutions Architect"};											
 	public static String[] companies ={"Mphasis","Capgemini"};	
 	public static Random random=new Random();
 	
