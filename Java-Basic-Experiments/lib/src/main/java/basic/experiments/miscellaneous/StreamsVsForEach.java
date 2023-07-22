@@ -31,8 +31,6 @@ public class StreamsVsForEach {
 		empListNew.forEach(System.out::println);
 		
 		System.out.println("\n with for each");
-		
-		
 	}
 
 }
