@@ -47,12 +47,40 @@ public class VariablesAndTechniques {
 		
 		
 	}
+	
+	public static List<Employee> populateLargeEmployee(){
+		List<Employee>	listOfEmp=new ArrayList<>();
+		IntStream.range(0, 10000000)
+				  .forEach(num-> {
+					  listOfEmp.add(
+					  Employee.builder()
+					  			.id(num)
+					  			.f_name("Employee : "+alphabets[random.nextInt(51)])
+					  			.l_name(mixAlphas[random.nextInt(mixAlphas.length-1)])
+					  			.role(roles[random.nextInt(roles.length)])
+					  			.company(companies[random.nextInt(companies.length)])
+					  			.build() );
+					  			
+					  
+				  });
+						  
+				return   listOfEmp;
+		
+		
+		
+	}
+	
 			
 	public static void main(String[] args) {
 		
 		populateEmployee();
 		    
-			for(Employee s:populateEmployee()) {
+//			for(Employee s:populateEmployee()) {
+//				System.out.println(s.toString());
+//			}
+			
+			populateLargeEmployee();
+			for(Employee s:populateLargeEmployee()) {
 				System.out.println(s.toString());
 			}
 			
