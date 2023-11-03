@@ -34,7 +34,7 @@ public class SportsBike extends SmartBike {
 		System.out.println(s.wheels);
 		System.out.println(s.sA);
 		s.testInheritance();
-//		s.testInheritanceStatic();
+		s.testInheritanceStatic();
 		
 		System.out.println("===========================");
 		SmartBike sm = new SmartBike();
