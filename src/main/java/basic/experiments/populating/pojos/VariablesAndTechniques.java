@@ -26,6 +26,7 @@ public class VariablesAndTechniques {
 	public static String[] companies ={"Mphasis","Capgemini"};	
 	public static Random random=new Random();
 	
+	
 	public static List<Employee> populateEmployee(){
 		List<Employee>	listOfEmp=new ArrayList<>();
 		IntStream.range(0, 52)
