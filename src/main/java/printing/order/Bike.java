@@ -42,20 +42,20 @@ public class Bike {
 	}
 	
 
-//	public static  void main(String[] hems) {
-//		
-//		System.out.println("Main method started at "+ LocalDateTime.now());
-////		new Bike();
-////		new Bike();
-//		Bike blackBike = new Bike("BLACK");
-////		System.out.println("this is a "+blackBike.color+ " Bike with "+blackBike.wheels+" wheels");
-//		System.out.println("Main method ended at " + LocalDateTime.now());
-//
-//	}
-	
-	static void main(String[] args, String msg) {
-		System.out.println("hello");
+	public static  void main(String[] hems) {
+		
+		System.out.println("Main method started at "+ LocalDateTime.now());
+//		new Bike();
+//		new Bike();
+		Bike blackBike = new Bike("BLACK");
+//		System.out.println("this is a "+blackBike.color+ " Bike with "+blackBike.wheels+" wheels");
+		System.out.println("Main method ended at " + LocalDateTime.now());
+
 	}
+	
+//	static void main(String[] args, String msg) {
+//		System.out.println("hello");
+//	}
 	
 	static {
 		System.out.println("this is static block 2");

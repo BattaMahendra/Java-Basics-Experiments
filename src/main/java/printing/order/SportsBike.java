@@ -1,5 +1,6 @@
 package printing.order;
 
+
 public class SportsBike extends SmartBike {
 
 	public SportsBike() {
@@ -43,5 +44,8 @@ public class SportsBike extends SmartBike {
 		System.out.println("===========================");
 		RaceBike r = new RaceBike();
 		r.testInheritance();
+		
+		//Welcome.welcomemsg("Hema");
+		
 	}
 }

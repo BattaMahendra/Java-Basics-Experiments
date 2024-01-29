@@ -15,6 +15,7 @@ public class StringSorting {
 		String temp1=s.replaceAll("[0-9]", "");
 		String temp2=s.replaceAll("[^0-9]", "");
 		
+		
 		return temp2+temp1;
 	}
 	

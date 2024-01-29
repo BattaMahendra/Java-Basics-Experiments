@@ -7,7 +7,7 @@ package basic.experiments.basic.concepts;
  * Enum may implement many interfaces but cannot extend any class because it internally extends Enum class
  *
  */
-public enum Family {
+public enum FamilyEnum {
 	/**
 	 * the constants of enum are by default static and final
 	 * we can add values to this constants by having a constructor
@@ -28,11 +28,11 @@ public enum Family {
 
 	static {
 		//printing specific constant
-		Family father = Family.FATHER;
+		FamilyEnum father = FamilyEnum.FATHER;
 		System.out.println(father);
 		
 		// looping through enum values
-		for(Family f : Family.values()) {
+		for(FamilyEnum f : FamilyEnum.values()) {
 			System.out.println(f);
 		}
 	}
@@ -46,7 +46,7 @@ public enum Family {
 	 * instance block executes every time constructor is clled
 	 * 
 	 */
-	private Family() {
+	private FamilyEnum() {
 		System.out.println("hey , I am inside NO ARGS CONSTRUCTOR and constant invoked is "+this.name());
 		
 	}
@@ -54,7 +54,7 @@ public enum Family {
 	 * 
 	 *up on running the app this constructor will be called for constant utilizing this constructor
 	 */
-	private Family(String role) {
+	private FamilyEnum(String role) {
 		System.out.println("hey , I am inside ROLE ARGS CONSTRUCTOR and constant invoked is "+ this.name());
 		this.role=role;
 	}
