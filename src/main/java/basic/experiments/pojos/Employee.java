@@ -16,13 +16,14 @@ public class Employee {
 		super();
 	}
 	
-	public Employee(int id, String f_name, String l_name, String company, String role) {
+	public Employee(int id, String f_name, String l_name, String company, String role, int age) {
 		super();
 		this.id = id;
 		this.f_name = f_name;
 		this.l_name = l_name;
 		this.company = company;
 		this.role = role;
+		this.age = age;
 	}
 	
 	int id;
@@ -30,6 +31,7 @@ public class Employee {
 	String l_name;
 	String company;
 	String role;
+	int age;
 	
 	
 	public int getId() {

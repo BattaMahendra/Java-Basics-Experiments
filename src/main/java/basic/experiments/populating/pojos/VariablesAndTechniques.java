@@ -23,7 +23,7 @@ public class VariablesAndTechniques {
 													.split(",");
 													
 	public static String[] roles ={"developer","tester","support engineer","manager","director","supervisor","programmer specialist","team lead","project amnager"," operations manager","networking engineer","supporting staff","security personel","junior developer","fresher engineer","maintanace staff","plumber","Solutions Architect"};											
-	public static String[] companies ={"Mphasis","Capgemini"};	
+	public static String[] companies ={"Mphasis","Capgemini","Cognizant","Accenture","SAP LABS", "LTI-Mindtree","TCS"};	
 	public static Random random=new Random();
 	
 	
@@ -33,11 +33,12 @@ public class VariablesAndTechniques {
 				  .forEach(num-> {
 					  listOfEmp.add(
 					  Employee.builder()
-					  			.id(num)
+					  			.id(random.nextInt(999))
 					  			.f_name("Employee : "+alphabets[num])
 					  			.l_name(mixAlphas[num])
 					  			.role(roles[random.nextInt(roles.length)])
 					  			.company(companies[random.nextInt(companies.length)])
+					  			.age(random.nextInt(65))
 					  			.build() );
 					  			
 					  
@@ -60,6 +61,7 @@ public class VariablesAndTechniques {
 					  			.l_name(mixAlphas[random.nextInt(mixAlphas.length-1)])
 					  			.role(roles[random.nextInt(roles.length)])
 					  			.company(companies[random.nextInt(companies.length)])
+					  			.age(random.nextInt(65))
 					  			.build() );
 					  			
 					  
@@ -76,14 +78,14 @@ public class VariablesAndTechniques {
 		
 		populateEmployee();
 		    
-//			for(Employee s:populateEmployee()) {
-//				System.out.println(s.toString());
-//			}
-			
-			populateLargeEmployee();
-			for(Employee s:populateLargeEmployee()) {
+			for(Employee s:populateEmployee()) {
 				System.out.println(s.toString());
 			}
+			
+//			populateLargeEmployee();
+//			for(Employee s:populateLargeEmployee()) {
+//				System.out.println(s.toString());
+//			}
 			
 		}									  
 

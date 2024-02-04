@@ -26,4 +26,8 @@ public class SmartBike extends Bike {
 		System.out.println("SmartBike Static");
 	}
 
+	public static void main(String[] args) {
+		System.out.println("main method start");
+		new SmartBike();
+	}
 }

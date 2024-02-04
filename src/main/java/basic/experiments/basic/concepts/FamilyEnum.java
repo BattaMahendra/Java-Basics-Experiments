@@ -8,7 +8,7 @@ package basic.experiments.basic.concepts;
  *
  */
 public enum FamilyEnum {
-	/**
+	/** 
 	 * the constants of enum are by default static and final
 	 * we can add values to this constants by having a constructor
 	 */

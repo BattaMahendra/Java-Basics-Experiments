@@ -30,20 +30,20 @@ public class SportsBike extends SmartBike {
 
 
 	public static void main(String[] args) {
-		System.out.println("SportsBike : Main method");
-		Bike s =new SportsBike();
-		System.out.println(s.wheels);
-		System.out.println(s.sA);
-		s.testInheritance();
+//		System.out.println("SportsBike : Main method");
+//		Bike s =new SportsBike();
+//		System.out.println(s.wheels);
+//		System.out.println(s.sA);
+//		s.testInheritance();
 //		s.testInheritanceStatic();
 		
 		System.out.println("===========================");
 		SmartBike sm = new SmartBike();
 		sm.testInheritance();
 		sm.testInheritanceStatic();
-		System.out.println("===========================");
-		RaceBike r = new RaceBike();
-		r.testInheritance();
+//		System.out.println("===========================");
+//		RaceBike r = new RaceBike();
+//		r.testInheritance();
 		
 		//Welcome.welcomemsg("Hema");
 		
