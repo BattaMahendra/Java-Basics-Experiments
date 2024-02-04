@@ -13,6 +13,9 @@ public class MethodOverloading {
 	public static void print(Integer... a) {
 		System.out.println("var args");
 	}
+	public static void print(Short a) {
+		System.out.println("Short");
+	}
 	
 	/*
 	 * we can observe that 
