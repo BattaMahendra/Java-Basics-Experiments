@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,11 +44,23 @@ public class Experiment {
 //		
 //		DateTimeFormatter formatter2 =  DateTimeFormatter.ofPattern("dd-MMM-yy").withLocale(Locale.getDefault());
 //		System.out.println(date.format(formatter2).toUpperCase());
-		System.out.println("hello");
-		List<String> names = new ArrayList<>();
-		names.forEach(s -> {
-			System.out.println(s);
-		});
+//		System.out.println("hello");
+//		List<String> names = new ArrayList<>();
+//		names.forEach(s -> {
+//			System.out.println(s);
+//		});
+		
+//		LocalDateTime t = convertStringToDate("2024-01-02T17:28:03.000Z");
+//		Instant i =Instant.now();
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z");
+//	//	ZonedDateTime zonedDateTime = ZonedDateTime.of(i, ZoneId.systemDefault());
+//		ZonedDateTime zonedDateTime =i.atZone(ZoneId.systemDefault());
+//				//.withZone(ZoneId.systemDefault());
+//		System.out.println(zonedDateTime.format(formatter));
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z").withZone(ZoneId.systemDefault());
+		Instant instant = Instant.parse(Instant.now().toString());
+		System.out.println(formatter.format( instant));
 	}
 
 }

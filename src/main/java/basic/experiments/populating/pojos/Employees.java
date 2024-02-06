@@ -17,16 +17,21 @@ public class Employees {
 	
 	public static List<Emp> employeeList;
 	
+	List<Emp> populateEmployees() throws JsonParseException, JsonMappingException, IOException{
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+	    File file = new File(this.getClass().getClassLoader().getResource("employees.json").getFile());
+	
+		employeeList = objectMapper.readValue(file, new TypeReference<List<Emp>>() {
+		});
+		employeeList.forEach( System.out::println);
+		return employeeList;
+	}
 	
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
 		
-		ObjectMapper objectMapper = new ObjectMapper();
-		
-			
-		
-			employeeList = objectMapper.readValue(new File("C:\\Users\\batta.chowdary\\git\\Java-Basics-Experiments\\Java-Basic-Experiments\\lib\\src\\main\\java\\basic\\experiments\\populating\\pojos\\Employees.txt"), new TypeReference<List<Emp>>() {
-			});
-			employeeList.forEach( System.out::println);
+		Employees employees = new Employees();
+		employees.populateEmployees();
 		
 	}
 	

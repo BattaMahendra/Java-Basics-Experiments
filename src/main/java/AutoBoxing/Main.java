@@ -18,6 +18,7 @@ public class Main{
         Integer f = new Integer(500);
         Integer a1 = new Integer(50);
         Integer a2 = new Integer(50);
+        
         System.out.println("a = "+a+" -->"+Integer.toHexString(System.identityHashCode(a)));
         System.out.println("b = "+b+" -->"+Integer.toHexString(System.identityHashCode(b)));
         System.out.println("c = "+c+" -->"+Integer.toHexString(System.identityHashCode(c)));
@@ -26,9 +27,12 @@ public class Main{
         System.out.println("f = "+f+" -->"+Integer.toHexString(System.identityHashCode(f)));
         System.out.println("a1 = "+a1+" -->"+Integer.toHexString(System.identityHashCode(a1)));
         System.out.println("a2 = "+a2+" -->"+Integer.toHexString(System.identityHashCode(a2)));
-        System.out.println("c==d :"+ (c==d));
-        System.out.println("a==b :"+ (a==b));
-        System.out.println("e==f :"+ (e==f));
-        System.out.println("a1==a2 :"+ (a1==a2));
+//        
+        System.out.println("==================================================");
+        
+        System.out.println("c==d :"+ (c==d)); 
+        System.out.println("a==b :"+ (a==b)); 
+        System.out.println("e==f :"+ (e==f)); 
+        System.out.println("a1==a2 :"+ (a1==a2)); 
     }
 }
