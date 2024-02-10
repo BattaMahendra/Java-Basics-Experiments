@@ -27,8 +27,8 @@ public class FlatMap {
 	
 	public static void main(String[] args) {
 		
-		//usingAFlatMap();
-		castingObjectsInStream();
+		usingAFlatMap();
+		//castingObjectsInStream();
 		
 	}
 

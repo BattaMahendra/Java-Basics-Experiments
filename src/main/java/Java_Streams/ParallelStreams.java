@@ -1,9 +1,11 @@
 package Java_Streams;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import com.google.common.base.Stopwatch;
 
+import basic.experiments.pojos.Employee;
 import basic.experiments.populating.pojos.VariablesAndTechniques;
 
 public class ParallelStreams {
@@ -17,10 +19,11 @@ public class ParallelStreams {
 	}
 
 	private static void usingStream() {
+		List<Employee> empList = VariablesAndTechniques.populateLargeEmployee();
 		long start, end;
 		start = System.currentTimeMillis();
 		
-		VariablesAndTechniques.populateLargeEmployee().stream()
+												empList.stream()
 //														.map(emp -> emp.getF_name()+"add on")
 														.map(emp -> {
 															NewEmployee n = new NewEmployee();
@@ -38,9 +41,11 @@ public class ParallelStreams {
 	}
 	
 	private static void usingParallelStream() {
+		List<Employee> empList = VariablesAndTechniques.populateLargeEmployee();
 		long start, end;
 		start = System.currentTimeMillis();
-		VariablesAndTechniques.populateLargeEmployee().parallelStream()
+		
+												empList.parallelStream()
 														.map(emp -> {
 															NewEmployee n = new NewEmployee();
 															n.id=emp.getId();

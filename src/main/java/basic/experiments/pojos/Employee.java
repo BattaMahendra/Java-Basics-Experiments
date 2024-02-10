@@ -16,7 +16,7 @@ public class Employee {
 		super();
 	}
 	
-	public Employee(int id, String f_name, String l_name, String company, String role, int age , Address a) {
+	public Employee(int id,String empId, String f_name, String l_name, String company, String role, int age ,double salary, Address a) {
 		super();
 		this.id = id;
 		this.f_name = f_name;
@@ -24,15 +24,19 @@ public class Employee {
 		this.company = company;
 		this.role = role;
 		this.age = age;
+		this.salary=salary;
 		this.address = a;
+		this.empId=empId;
 	}
 	
 	int id;
+	String empId;
 	String f_name;
 	String l_name;
 	String company;
 	String role;
 	int age;
+	double salary;
 	Address address;
 	
 	

@@ -25,8 +25,8 @@ public class Experiment {
 	
 	public static void main(String[] args) {
 		
-		convertStringToDate("2024-01-02T17:28:03.000Z");
-		LocalDate date = convertStringToDate("2024-01-02T17:28:03.123Z").toLocalDate();
+//		convertStringToDate("2024-01-02T17:28:03.000Z");
+//		LocalDate date = convertStringToDate("2024-01-02T17:28:03.123Z").toLocalDate();
 //		System.out.println(date.toString());
 //		DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 //		System.out.println(Instant.now().toString());
@@ -58,9 +58,11 @@ public class Experiment {
 //				//.withZone(ZoneId.systemDefault());
 //		System.out.println(zonedDateTime.format(formatter));
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z").withZone(ZoneId.systemDefault());
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").withZone(ZoneId.systemDefault());
+				//.withZone(ZoneId.of());
 		Instant instant = Instant.parse(Instant.now().toString());
 		System.out.println(formatter.format( instant));
+		System.out.println(LocalDate.now().getYear());
 	}
 
 }

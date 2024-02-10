@@ -30,8 +30,8 @@ public class Main{
 //        
         System.out.println("==================================================");
         
-        System.out.println("c==d :"+ (c==d)); 
-        System.out.println("a==b :"+ (a==b)); 
+        System.out.println("c==d :"+ (c==d)); //true
+        System.out.println("a==b :"+ (a==b)); //true
         System.out.println("e==f :"+ (e==f)); 
         System.out.println("a1==a2 :"+ (a1==a2)); 
     }

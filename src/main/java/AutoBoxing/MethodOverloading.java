@@ -28,9 +28,9 @@ public class MethodOverloading {
 		short d =8;
 		byte e =9;
 		long f= 10;
-		print(a); 
-		print(b); 
-		print(c); 
+		print(a); //p
+		print(b); //
+		print(c); //
 		print(d); 
 		print(e); 
 		//print(f);
