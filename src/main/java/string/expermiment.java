@@ -1,6 +1,15 @@
 package string;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class expermiment {
+	
+	public List<Character> convertStringToCharList(String s) {
+		
+		List<Character> charList =s.chars().mapToObj(c -> (char)c).collect(Collectors.toList());
+		return charList;
+	}
 	
 	public static void main(String[] args) {
 		String s = "Mahendra";
