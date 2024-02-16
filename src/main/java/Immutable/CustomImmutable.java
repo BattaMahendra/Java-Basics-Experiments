@@ -8,24 +8,24 @@ import lombok.ToString;
 
 @ToString
 public class CustomImmutable {
-	
+
 	private  final int variable;
-	
+
 	private  final Integer variable2;
-	
+
 	private final Map<Integer , String> map ;
-	
+
 	public CustomImmutable(int a , Integer b , Map<Integer , String> map) {
-		
+
 		this.variable =a;
 		this.variable2=b;
-		
+
 		Map<Integer , String> tempMap = new HashMap<>();
 		for(Map.Entry<Integer, String> entry: map.entrySet()) {
 			tempMap.put(entry.getKey(), entry.getValue());
 		}
 		this.map =tempMap;
-		
+
 	}
 
 	public int getVariable() {
@@ -40,7 +40,16 @@ public class CustomImmutable {
 		return map;
 	}
 
-	
-	
+	public static void main(String[] args) {
+
+		Map<Integer , String> map =new HashMap<Integer , String>();
+		map.put(1, "HEms");
+		Map<Integer , String> map2 =new HashMap<Integer , String>();
+		CustomImmutable c = new CustomImmutable(0, 5,map);
+		System.out.println(c);
+		System.out.println(c);
+
+	}
+
 
 }

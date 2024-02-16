@@ -16,6 +16,7 @@ public class expermiment {
 		String v = "Mahendra";
 		String t = new String("Mahendra");
 		String u = new String("Mahendra");
+		
 		System.out.println("============================================="+"\n"
 		+"Objects hash codes"+ "\n"
 				);
@@ -27,6 +28,7 @@ public class expermiment {
 		+"\n"+System.identityHashCode(t
 				)+"\n"+System.identityHashCode(u
 						));
+		
 		System.out.println("============================================="+"\n");
 		System.out.println(s==v); 
 		System.out.println(s==t); 
