@@ -28,6 +28,7 @@ public enum FamilyEnum {
 
 	static {
 		//printing specific constant
+		System.out.println("Inside static block");
 		FamilyEnum father = FamilyEnum.FATHER;
 		System.out.println(father);
 		
@@ -35,6 +36,8 @@ public enum FamilyEnum {
 		for(FamilyEnum f : FamilyEnum.values()) {
 			System.out.println(f);
 		}
+		
+		System.out.println("end of static block");
 	}
 	
 	{

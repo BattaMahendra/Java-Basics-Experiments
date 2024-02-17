@@ -8,6 +8,9 @@ public class Bike {
 	int wheels =2;
 	String sA="hello Bike";
 	
+	//static variables are loaded first , you can uncomment below line and check
+	// static  Bike b = new Bike("Black");
+	
 	public void testInheritance(){
 		System.out.println("Bike  and wheels "+ this.wheels);
 	}
