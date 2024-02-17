@@ -12,8 +12,15 @@ public enum FamilyEnum {
 	 * the constants of enum are by default static and final
 	 * we can add values to this constants by having a constructor
 	 */
+	
+	/**
+	 * the below code is compiled as 
+	 * public static final FamilyEnum FATHER = new FamilyEnum();
+	 * this is the reason instance blocks and constructors are called even before the static blocks
+	 * as static variables are loaded first
+	 */
 
-	FATHER,
+	FATHER,   
 	MOTHER,
 	CHILDREN,
 	//using different constructor to have values to this constant
