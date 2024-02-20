@@ -7,7 +7,11 @@ import lombok.Data;
 import lombok.ToString;
 
 @ToString
-public class CustomImmutable {
+/*
+ * we need to make class final so that it 
+ * can't be extended
+ */
+public final class CustomImmutable {
 
 	private  final int variable;
 
@@ -37,7 +41,7 @@ public class CustomImmutable {
 	}
 
 	public Map<Integer, String> getMap() {
-		return map;
+		return (HashMap<Integer , String>) map;
 	}
 
 	public static void main(String[] args) {
