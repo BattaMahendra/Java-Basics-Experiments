@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -221,6 +222,10 @@ public class VariablesAndTechniques {
 
 		//System.out.println(e);
 
+		List<String> names = new ArrayList<>(getNames());
+		System.out.println(names);
+		Predicate<String> checkCountryCd = c -> names.stream().anyMatch(name -> name.equals(c));
+		System.out.println(checkCountryCd.test("Aarava"));
 	}		
 
 
