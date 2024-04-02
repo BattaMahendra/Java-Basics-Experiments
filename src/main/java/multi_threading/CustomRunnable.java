@@ -4,6 +4,10 @@ import static java.lang.Thread.sleep;
 
 public class CustomRunnable  implements  Runnable{
 
+    /*
+    Using the Thread class we create the threads
+    * This is the place where we assign the work to thread
+    In the run method we assign the work for thread*/
     @Override
     public void run() {
         for (int i = 0; i < 3; i++) {
