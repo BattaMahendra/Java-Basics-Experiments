@@ -5,23 +5,57 @@ import java.util.concurrent.CountDownLatch;
 public class TestMultiThreading {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-       // testThreadPriority();
+        testThreadPriority();
+        Thread.sleep(5000);
+        testThreadPriorityWithConcurrentThreads();
+
+
+    }
+
+    /*
+    * We used this method to run all the threads at the exact time
+    * so that we can differentiate the thread priorities
+    * If suppose all the threads are running at the same time then
+    * the threads with higher priority runs first
+    * If two or more threads having same priority are run at once then JVM follows
+    * first come first serve method
+    *
+    *  */
+    private static void testThreadPriorityWithConcurrentThreads()  {
+
+        System.out.println("==================================================");
+        System.out.println("Testing thread priority using concurrent threads");
+        System.out.println("==================================================");
         CountDownLatch latch = new CountDownLatch(1);
         ConcurrentThreads c1 = new ConcurrentThreads("c1",latch);
         ConcurrentThreads c2 = new ConcurrentThreads("c2",latch);
         ConcurrentThreads c3 = new ConcurrentThreads("c3",latch);
-        c1.setPriority(9);
-        c2.setPriority(6);
-        c3.setPriority(10);
+        ConcurrentThreads c4 = new ConcurrentThreads("c4",latch);
+        ConcurrentThreads c5 = new ConcurrentThreads("c5",latch);
+
+
+
+        /*
+        setting priorities to threads
+        * 10 is highest and 1 is lowest and 5 is normal
+        *If we don't assign any priorities manually then JVM usually assigns
+        * 5 as the priority */
+        c1.setPriority(8);
+        c2.setPriority(1);
+        c3.setPriority(1);
+        c4.setPriority(10);
+        c5.setPriority(10);
+
         startGivenThread(c1);
         startGivenThread(c2);
         startGivenThread(c3);
+        startGivenThread(c4);
+        startGivenThread(c5);
+        //latch starts counting down from 1 to 0
         latch.countDown();
-
-
-
+        System.out.println("=====NOW RELEASE LATCH======");
     }
 
     private static void testThreadPriority() {

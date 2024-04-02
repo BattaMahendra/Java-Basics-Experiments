@@ -15,8 +15,8 @@ public class ConcurrentThreads extends  Thread{
 
 
         try {
-            System.out.printf("[ %s ] created, blocked by the latch...\n", getName());
-            Thread.sleep(500);
+            System.out.printf(" %s  created, blocked by the latch...\n", getName());
+            Thread.sleep(50);
             latch.await();
             System.out.println("Current thread is "
                     + Thread.currentThread().getName()+
