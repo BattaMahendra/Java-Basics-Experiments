@@ -9,7 +9,7 @@ public class CustomRunnable  implements  Runnable{
         for (int i = 0; i < 3; i++) {
 
             try {
-                sleep(500);
+                sleep(1500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
