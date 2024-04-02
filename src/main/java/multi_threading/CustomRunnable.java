@@ -18,5 +18,7 @@ public class CustomRunnable  implements  Runnable{
                     " at exact time "+ System.currentTimeMillis()
                     +" with loop value "+i);
         }
+        System.out.println("Finished working with the thread : "+Thread.currentThread().getName()+
+                " at exact time "+ System.currentTimeMillis());
     }
 }

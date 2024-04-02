@@ -1,6 +1,8 @@
 package multi_threading;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class TestMultiThreading {
 
@@ -10,8 +12,25 @@ public class TestMultiThreading {
         testThreadPriority();
         Thread.sleep(5000);
         testThreadPriorityWithConcurrentThreads();
+        testExecutorServices();
 
 
+    }
+
+    private static void testExecutorServices() throws InterruptedException {
+        Thread.sleep(5000);
+        System.out.println("\n\n==================================================");
+        System.out.println("Testing threads using Executor Service");
+        System.out.println("==================================================");
+        ExecutorService myThreadPool =  Executors.newFixedThreadPool(2);
+        Thread t1 = new Thread(new CustomRunnable(), "T1");
+        Thread t2 = new Thread(new CustomRunnable(), "T2");
+        Thread t3 = new Thread(new CustomRunnable(), "T3");
+        Thread t4 = new Thread(new CustomRunnable(), "T4");
+        myThreadPool.execute(t1);
+        myThreadPool.execute(t2);
+        myThreadPool.execute(t3);
+        myThreadPool.execute(t4);
     }
 
     /*
@@ -25,7 +44,7 @@ public class TestMultiThreading {
     *  */
     private static void testThreadPriorityWithConcurrentThreads()  {
 
-        System.out.println("==================================================");
+        System.out.println("\n\n==================================================");
         System.out.println("Testing thread priority using concurrent threads");
         System.out.println("==================================================");
         CountDownLatch latch = new CountDownLatch(1);
@@ -41,7 +60,9 @@ public class TestMultiThreading {
         setting priorities to threads
         * 10 is highest and 1 is lowest and 5 is normal
         *If we don't assign any priorities manually then JVM usually assigns
-        * 5 as the priority */
+        * 5 as the priority
+         Learn more here: https://www.javatpoint.com/thread-scheduler-in-java
+         */
         c1.setPriority(8);
         c2.setPriority(1);
         c3.setPriority(1);
