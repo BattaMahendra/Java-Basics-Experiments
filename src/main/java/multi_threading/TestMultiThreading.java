@@ -22,7 +22,8 @@ public class TestMultiThreading {
         System.out.println("\n\n==================================================");
         System.out.println("Testing threads using Executor Service");
         System.out.println("==================================================");
-        ExecutorService myThreadPool =  Executors.newFixedThreadPool(2);
+        //ExecutorService myThreadPool =  Executors.newFixedThreadPool(2);
+        ExecutorService myThreadPool =  Executors.newCachedThreadPool();
         Thread t1 = new Thread(new CustomRunnable(), "T1");
         Thread t2 = new Thread(new CustomRunnable(), "T2");
         Thread t3 = new Thread(new CustomRunnable(), "T3");

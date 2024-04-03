@@ -14,6 +14,9 @@ However, we use multithreading than multiprocessing because threads use a shared
 *
 * A thread is a lightweight subprocess, the smallest unit of processing.
 * It is a separate path of execution.
+* Threads are group of subprocesses which work for a bigger process
+* that is why they share the same address space
+* and that is why it is easy to communicate between threads
 
 Threads are independent.
 * If there occurs exception in one thread, it doesn't affect other threads.

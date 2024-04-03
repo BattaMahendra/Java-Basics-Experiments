@@ -8,7 +8,7 @@ public class MainThread {
     * All the threads we create manually are spawned from the main thread
     * When all the user threads are completed then JVM terminates the program
     * */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("Current thread :"+Thread.currentThread().getName()
                 +"\n and its state is "+ Thread.currentThread().getState()
                 +" and its priority is "+Thread.currentThread().getPriority());
@@ -21,6 +21,11 @@ public class MainThread {
         System.out.println("===================");
         System.out.println("===================");
         System.out.printf(" %s got ended ",Thread.currentThread().getName());
+
+        /*Achieving deadlock situation with main thread
+        * Here the main thread is waiting for itself to terminate which
+        * makes program to run forever and the deadlock is created*/
+        //Thread.currentThread().join();
     }
 
     private static  Thread customThreadCreation() {
@@ -30,7 +35,7 @@ public class MainThread {
                 try {
                     System.out.printf("\n %s got created ",Thread.currentThread().getName());
                     Thread.sleep(2000);
-                    Thread.interrupted();
+                   // Thread.interrupted();
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
