@@ -19,7 +19,8 @@ public class ConcurrentThreads extends  Thread{
             Thread.sleep(50);
             latch.await();
             System.out.println("Current thread is "
-                    + Thread.currentThread().getName()+
+                    + Thread.currentThread().getName()+" with thread priority "+
+                    Thread.currentThread().getPriority()+
                     " at exact time "+ System.currentTimeMillis());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

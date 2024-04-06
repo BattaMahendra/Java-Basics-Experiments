@@ -2,6 +2,14 @@ package multi_threading;
 
 import static java.lang.Thread.sleep;
 
+
+/*
+* Please learn Thread vs Runnable
+* why do we need Runnable when we have thread ?
+* How thread uses runnable internally ?
+* What are Advantages of Runnable implementation over Thread extension ?
+* When & where to use runnable and Thread appropriately ?
+* */
 public class CustomRunnable  implements  Runnable{
 
     /*

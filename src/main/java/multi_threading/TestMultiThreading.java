@@ -4,16 +4,16 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class TestMultiThreading {
+public class TestMultiThreading  {
 
 
     public static void main(String[] args) throws InterruptedException {
 
         testThreadPriority();
-        Thread.sleep(5000);
-        testThreadPriorityWithConcurrentThreads();
+       // Thread.sleep(5000);
+       // testThreadPriorityWithConcurrentThreads();
         testExecutorServices();
-
+        System.out.println("last statement of main method with "+ Thread.currentThread().getName());
 
     }
 
@@ -101,13 +101,13 @@ public class TestMultiThreading {
 
     }
 
-    private static void startGivenThread(Thread t) {
+    public static void startGivenThread(Thread t) {
         System.out.println("Starting the " + t.getName());
         t.start();
     }
 
 
-    private static void joinGivenThread(Thread t) {
+    public static void joinGivenThread(Thread t) {
         System.out.println("Joining the " + t.getName());
         try {
             t.join(1500);
