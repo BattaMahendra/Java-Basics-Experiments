@@ -14,11 +14,28 @@ public class TestSynchronisation extends TestMultiThreading {
         }
     }
 
+    public  void printNames2(){
+        synchronized (this) {
+            for (int i = 0; i <= 10; i++) {
+                System.out.println("This thread is " + Thread.currentThread().getName() + " wtih value " + i);
+
+            }
+        }
+    }
+
     public synchronized void printNames(){
         for(int i=0; i<=10; i++){
             System.out.println("This thread is "+Thread.currentThread().getName()+" wtih value "+i);
 
         }
+    }
+
+    public static synchronized  void print(){
+        for(int i=0; i<=10; i++){
+            System.out.println("This thread is "+Thread.currentThread().getName()+" wtih value "+i);
+
+        }
+
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -28,7 +45,10 @@ public class TestSynchronisation extends TestMultiThreading {
 //        startGivenThread(t1);
 //        startGivenThread(t2);
 
+        //testing instance synchronisation with same and different objects
         testSync();
+
+
 
 
     }
@@ -43,6 +63,10 @@ public class TestSynchronisation extends TestMultiThreading {
     *
     * in the thread run methods use same object to invoke the printNames() method
     * then you can see synchronisation works well
+    *
+    * We also performed this instance synchronisation using synchronised block
+    * we used printNames2() method which uses synchronised(this)  block
+    * the results are similar to above experiment only
     * */
     private static void testSync() {
         TestSynchronisation obj1= new TestSynchronisation();
@@ -55,14 +79,22 @@ public class TestSynchronisation extends TestMultiThreading {
                     throw new RuntimeException(e);
                 }
                 System.out.println("======================================");
-                obj1.printNames();
+              //  obj1.printNames();
+                obj1.printNames2();
             }
         };
 
         Thread t4 = new Thread(){
             public void run(){
                 System.out.println("======================================");
-                obj2.printNames();
+                /*
+                * comment and uncomment one of the below methods based on what you want to test
+                * printNames() is a synchronised method
+                * printNames2() is also a instance method with synchronised() block
+                * */
+
+               // obj2.printNames();
+                obj2.printNames2();
             }
         };
 
