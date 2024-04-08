@@ -8,11 +8,21 @@ import multi_threading.ThreadOperations;
 
 import java.util.concurrent.CountDownLatch;
 
+/*
+* Static synchronisation takes class name as lock for the threads.
+* in order to achieve static synchronisation in blocks
+* you can give like this synchronised(MyClass.class){} --> it is equivalent of
+* static synchronised method.
+*
+* When thread enters into synchronized instance method or block,
+* it acquires Object level lock and when it enters into synchronized static method or block it acquires class level lock.
+* */
+
 public class StaticSynchronisation extends TestMultiThreading {
 
     /*
-    * Try removing synchronised keyword and see the difference
-    * */
+     * Try removing synchronised keyword and see the difference
+     * */
     public static synchronized void printLoop() {
 
         for (int i = 0; i <= 10; i++) {
@@ -24,17 +34,17 @@ public class StaticSynchronisation extends TestMultiThreading {
         testThreadPriorityWithConcurrentThreads();
     }
 
-    private static void testThreadPriorityWithConcurrentThreads()  {
+    private static void testThreadPriorityWithConcurrentThreads() {
 
         System.out.println("\n\n==================================================");
         System.out.println("Testing thread priority using concurrent threads");
         System.out.println("==================================================");
         CountDownLatch latch = new CountDownLatch(1);
-        ConcurrentThread c1 = new ConcurrentThread("c1",latch);
-        ConcurrentThread c2 = new ConcurrentThread("c2",latch);
-        ConcurrentThread c3 = new ConcurrentThread("c3",latch);
-        ConcurrentThread c4 = new ConcurrentThread("c4",latch);
-        ConcurrentThread c5 = new ConcurrentThread("c5",latch);
+        ConcurrentThread c1 = new ConcurrentThread("c1", latch);
+        ConcurrentThread c2 = new ConcurrentThread("c2", latch);
+        ConcurrentThread c3 = new ConcurrentThread("c3", latch);
+        ConcurrentThread c4 = new ConcurrentThread("c4", latch);
+        ConcurrentThread c5 = new ConcurrentThread("c5", latch);
 
 
 
