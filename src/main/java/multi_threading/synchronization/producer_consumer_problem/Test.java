@@ -3,7 +3,7 @@ package multi_threading.synchronization.producer_consumer_problem;
 public class Test {
 
     public static void main(String[] args) {
-        BlockingQueue queue = new BlockingQueue(5);
+        BlockingQueue queue = new BlockingQueue(1);
 
         Producer p1 = new Producer("P1","Hello",queue);
         Producer p2 = new Producer("P2","world",queue);

@@ -26,4 +26,18 @@ public interface ThreadOperations {
         }
     }
 
+    public  default void  waitGivenThread(Thread t) {
+        System.out.println( t.getName() +" entered into waiting state");
+        try {
+            t.wait();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public  default void  notifyGivenThread(Thread t) {
+        System.out.println( t.getName() +" is notifying other threads");
+        t.notifyAll();
+    }
+
 }
