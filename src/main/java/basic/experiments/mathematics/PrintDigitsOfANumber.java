@@ -25,7 +25,30 @@ public class PrintDigitsOfANumber {
 
         isPrime(n);
 
+         checkGCD(s);
 
+
+    }
+
+    // check this video https://www.youtube.com/watch?v=1xNbjMdbjug
+    // you can find equilateral algorithm to find GCD/HCF of given numbers
+    // that is much faster and more efficient
+    private static int checkGCD(Scanner s) {
+        System.out.println("GCD operation");
+        System.out.println(" please give first number");
+        Integer first = s.nextInt();
+        System.out.println(" please give second number");
+        Integer second = s.nextInt();
+
+        for(int i=Math.min(first , second); i>=1; i--){
+
+            if(first % i == 0 && second % i ==0){
+                System.out.println("GCD of "+first + " and "+ second+" is "+i);
+                return i;
+            }
+
+        }
+        return 0;
     }
 
     private static void isPrime(Integer n) {
