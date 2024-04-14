@@ -1,5 +1,7 @@
 package basic.experiments.mathematics;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PrintDigitsOfANumber {
@@ -17,6 +19,38 @@ public class PrintDigitsOfANumber {
         checkPalindrome(n);
 
         chekIfArmStrongNumber(n);
+
+
+        allFactorsOfGivenNumber(n);
+
+        isPrime(n);
+
+
+    }
+
+    private static void isPrime(Integer n) {
+        int factorsSize = allFactorsOfGivenNumber(n).size();
+        if(n ==1) System.out.println("1 is a prime number");
+        else if(factorsSize == 2) System.out.println(n + " is a prime number");
+        else System.out.println(n+" is not a prime number");
+    }
+
+    private static List<Integer> allFactorsOfGivenNumber(Integer n) {
+        int squareRoot = (int) Math.sqrt(n);
+        List<Integer> factorsList = new ArrayList<>();
+        //iterating only upto square root of given number to reduce time complexity
+        for(int i=1; i<=squareRoot; i++){
+            if(n %i == 0){
+                factorsList.add(i);
+                //If a number is a perfect square root then making sure that
+                // same factor is not being added into list again as it is already added in above line
+                if(n /i != i){
+                    factorsList.add(n /i);
+                }
+            }
+        }
+        System.out.println(factorsList);
+        return factorsList;
     }
 
     private static void chekIfArmStrongNumber(Integer n) {
