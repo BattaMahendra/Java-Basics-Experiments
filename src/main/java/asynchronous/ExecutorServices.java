@@ -34,6 +34,8 @@ public class ExecutorServices {
 		Future<String> future8=executors.submit(()->returnAStringWithDelay(7));
 		Future<String> future9=executors.submit(()->returnAStringWithDelay(8));
 		Future<String> future10=executors.submit(()->returnAStringWithDelay(4));
+
+
 		
 		/*
 		 * the above code ensures that all the 10 futures are executed simultaneously and 
