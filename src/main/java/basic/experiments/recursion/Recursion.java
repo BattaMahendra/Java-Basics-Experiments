@@ -1,6 +1,7 @@
 package basic.experiments.recursion;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Recursion {
 
@@ -26,6 +27,45 @@ public class Recursion {
         reverseArrayUsingRecursion(array, 0);
         System.out.println(Arrays.toString(array));
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the input string");
+        String input = scanner.nextLine();
+
+        String reversedString ="";
+        int length = input.length()-1;
+       // reversedString = checkForPalindrome(length, reversedString, input);
+        reversedString=checkForPalindromeUsingRecursion( length, reversedString, input);
+        System.out.println(checkPalindromeRecursion2(0,"peep"));
+
+
+
+
+        System.out.println(reversedString.equals(input) ? input+" is palindrome":input+" is not palindrome");
+
+    }
+
+    public static boolean checkPalindromeRecursion2(int i, String input){
+        if(i > input.length()/2) return true;
+
+        if(input.charAt(i) != input.charAt(input.length()-1-i)) return false;
+
+        return checkPalindromeRecursion2(i+1, input);
+    }
+
+    public static String checkForPalindromeUsingRecursion(int length, String reversedString, String input){
+        if(length == -1) return reversedString;
+        reversedString = reversedString + input.substring(length, length +1);
+        return checkForPalindromeUsingRecursion(length-1,reversedString,input);
+      //  return reversedString;
+    }
+
+
+    private static String checkForPalindrome(int length, String reversedString, String input) {
+        while(length > -1){
+            reversedString = reversedString + input.substring(length, length +1);
+            length--;
+        }
+        return reversedString;
     }
 
     public static int[] reverseArrayUsingRecursion(int[] givenArray , int n){
