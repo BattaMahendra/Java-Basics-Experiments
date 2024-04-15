@@ -27,6 +27,8 @@ public class Recursion {
         reverseArrayUsingRecursion(array, 0);
         System.out.println(Arrays.toString(array));
 
+        fibonacciNumbers(100);
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the input string");
         String input = scanner.nextLine();
@@ -42,6 +44,18 @@ public class Recursion {
 
         System.out.println(reversedString.equals(input) ? input+" is palindrome":input+" is not palindrome");
 
+    }
+
+    private static void fibonacciNumbers(int printUpTO) {
+        int temporary =1;
+        int temp2 =0;
+        while (temp2< printUpTO){
+            System.out.print(temp2+" ");
+            temp2 =temporary + temp2;
+            temporary = temp2 - temporary;
+
+        }
+        System.out.println("\n");
     }
 
     public static boolean checkPalindromeRecursion2(int i, String input){
