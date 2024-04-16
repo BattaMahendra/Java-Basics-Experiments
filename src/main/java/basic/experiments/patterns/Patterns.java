@@ -3,7 +3,7 @@ package basic.experiments.patterns;
 public class Patterns {
 
     public static void main(String[] args) {
-        int inputSize=3;
+        int inputSize=5;
         squarePattern(inputSize);
 
         simpleRightAngledTriangle(inputSize);
@@ -29,6 +29,78 @@ public class Patterns {
 
         reverseArrowHeadPattern(5);
 
+        oneAndZeroRightAngledTriangle(inputSize);
+
+        leftAndRightRightAngledTriableCombo(inputSize);
+
+        NumberedRightTriangle(inputSize);
+
+        alphabetRightAngledTriangle(inputSize);
+
+    }
+
+    private static void alphabetRightAngledTriangle(int inputSize) {
+        System.out.println("\nRight angled triange with alphabets");
+
+        for(int i = 1; i<= inputSize; i ++){
+            System.out.println();
+            for(char j='A'; j <= 'A'+i; j++){
+                System.out.print( j);
+            }
+        }
+        for(int i = inputSize; i>=1; i --){
+            System.out.println();
+            for(char j='A'; j <= 'A'+i; j++){
+                System.out.print( j);
+            }
+        }
+        System.out.println();
+
+        for(int i = 'A'; i< 'A'+inputSize-1; i ++){
+            System.out.println();
+            for(char j='A'; j <= i; j++){
+                System.out.print( (char)i);
+            }
+        }
+
+
+    }
+
+    private static void NumberedRightTriangle(int inputSize) {
+        System.out.println("\nRight angled triange with numbers");
+        int counter=0;
+        for(int i = 1; i<= inputSize; i ++){
+            System.out.println();
+            for(int j=1; j <= i; j++){
+                System.out.print(++counter +" ");
+            }
+        }
+    }
+
+    private static void leftAndRightRightAngledTriableCombo(int inputSize) {
+        System.out.println("\n Downward empty equilateral triangle with numbers");
+        for(int i = 1; i<= inputSize; i ++){
+            System.out.println();
+            for(int j = 1; j<= inputSize; j++){
+               if(j<=i) System.out.print(j);
+               else System.out.print(" ");
+            }
+            for(int j = inputSize; j>=1; j--){
+                if(j<=i) System.out.print(j);
+                else System.out.print(" ");
+            }
+        }
+    }
+
+    private static void oneAndZeroRightAngledTriangle(int inputSize) {
+        System.out.println("\n\n"+ "One and zero right angled triangle Pattern");
+        for(int i = 1; i<= inputSize; i++){
+            System.out.println();
+            for(int j = 1; j<= i; j++){
+                if((i+j)%2==0) System.out.print("1");
+                else System.out.print("0");
+            }
+        }
     }
 
     private static void reverseArrowHeadPattern(int inputSize) {
