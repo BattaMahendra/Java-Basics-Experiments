@@ -25,7 +25,50 @@ public class Patterns {
 
         rhombus(inputSize);
 
+        arrowHeadPattern(5);
 
+        reverseArrowHeadPattern(5);
+
+    }
+
+    private static void reverseArrowHeadPattern(int inputSize) {
+        System.out.println("\n\n Reverse Arrow head pattern");
+        for(int i = inputSize-1; i >=0; i--){
+            System.out.println();
+            for(int j = 0; j<i; j++){
+                System.out.print("n");
+            }
+            for(int j=i; j < inputSize; j++){
+                System.out.print("*");
+            }
+        }
+        for(int i = inputSize -1; i >= 0; i--){
+            System.out.println();
+
+            for(int j = inputSize-1; j >i; j--){
+                System.out.print("n");
+            }
+
+            for(int j=i; j>=0; j--){
+                System.out.print("*");
+            }
+        }
+    }
+
+    private static void arrowHeadPattern(int inputSize) {
+        System.out.println("\n\nArrow head pattern");
+        for(int i = 0; i< inputSize; i++){
+            System.out.println();
+            for(int j=0; j<=i; j++){
+                System.out.print("*");
+            }
+        }
+        for(int i = inputSize -1; i >= 0; i--){
+            System.out.println();
+            for(int j=i-1; j>=0; j--){
+                System.out.print("*");
+            }
+        }
     }
 
     private static void rhombus(int inputSize) {
