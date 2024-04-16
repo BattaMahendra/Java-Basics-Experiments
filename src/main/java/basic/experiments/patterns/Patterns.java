@@ -19,6 +19,63 @@ public class Patterns {
 
         equilateralTriangle(height, width);
 
+        equilateralTriangle(inputSize);
+
+        downWardEquilateralTriangle(inputSize);
+
+        rhombus(inputSize);
+
+
+    }
+
+    private static void rhombus(int inputSize) {
+        System.out.println("\n\n"+ " Rhombus Pattern");
+        equilateralTriangle(inputSize);
+        downWardEquilateralTriangle(inputSize);
+    }
+
+    private static void downWardEquilateralTriangle(int inputSize) {
+
+        for(int i = inputSize-1; i>=0; i--){
+            System.out.println();
+            /*print spaces before star*/
+            for(int j = 0; j<= inputSize -i-1; j++){
+                System.out.print(" ");
+            }
+
+            /*for printing stars after spaces*/
+            for(int j=0; j< 2*i+1; j++){
+                System.out.print("*");
+            }
+
+            /*for printing spaces again after stars*/
+
+//            for(int j = 0; j<= inputSize -i-1; j++){
+//                System.out.print(" ");
+//            }
+        }
+    }
+
+    private static void equilateralTriangle(int inputSize) {
+        System.out.println("\n\n"+ "Equilateral triangle Pattern");
+        for(int i = 0; i< inputSize; i++){
+            System.out.println();
+            /*print spaces before star*/
+            for(int j = 0; j<= inputSize -i-1; j++){
+                System.out.print(" ");
+            }
+
+            /*for printing stars after spaces*/
+            for(int j=0; j< 2*i+1; j++){
+                System.out.print("*");
+            }
+
+            /*for printing spaces again after stars*/
+
+            for(int j = 0; j<= inputSize -i-1; j++){
+                System.out.print(" ");
+            }
+        }
     }
 
     private static void equilateralTriangle(int height, int width) {
