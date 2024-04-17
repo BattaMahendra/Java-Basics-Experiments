@@ -37,6 +37,34 @@ public class Patterns {
 
         alphabetRightAngledTriangle(inputSize);
 
+        equilateralTriangleWithAlphabets(7);
+
+    }
+
+    private static void equilateralTriangleWithAlphabets(int inputSize) {
+        System.out.println("\n\n");
+        for(int i = 0; i< inputSize; i++){
+            System.out.println();
+            //printing spaces at starting
+            for (int j = 0; j< inputSize -i-1; j++ ){
+                System.out.print("*");
+            }
+
+            //printing alphabets upto half
+            char j;
+            for ( j ='A'; j<= 'A'+i; j++){
+                System.out.print((char)j);
+            }
+
+            //printing reverse alphabets upto remaining half
+            for(char k = (char) (j-2); k>='A'; k-- ){
+                System.out.print((char)k);
+            }
+            // for printing the spaces again.
+            for(int l=0;l<inputSize-i-1;l++){
+                System.out.print("*");
+            }
+        }
     }
 
     private static void alphabetRightAngledTriangle(int inputSize) {
