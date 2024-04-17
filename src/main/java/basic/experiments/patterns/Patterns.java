@@ -39,6 +39,103 @@ public class Patterns {
 
         equilateralTriangleWithAlphabets(7);
 
+        rightDecrementAlphabetTriangle(inputSize);
+
+        wholeRectangleWithRhombusInsideIt(inputSize);
+
+        hollowSquare(7);
+        numberPattern(7);
+
+    }
+
+    private static void numberPattern(int inputSize) {
+        System.out.println("\n\n");
+        int want = inputSize;
+        for(int i = 1; i < 2* inputSize; i++){
+            System.out.println();
+
+
+            for(int j = inputSize; j>0; j--){
+                System.out.print(Math.max(j,want)+" ");
+            }
+            for(int j = 2; j<= inputSize; j++){
+                System.out.print(Math.max(j,want)+" ");
+            }
+            if(i< inputSize) want--;
+            else want++;
+
+        }
+    }
+
+    private static void hollowSquare(int inputSize) {
+        System.out.println("\n\n");
+        for(int i = 0; i< inputSize; i++){
+            System.out.println();
+            for (int j = 0; j< inputSize; j++){
+                if(i ==0 || i == inputSize -1) System.out.print("*");
+                else if (j ==0 || j == inputSize -1) System.out.print("*");
+                else System.out.print(" ");
+            }
+        }
+    }
+
+    private static void wholeRectangleWithRhombusInsideIt(int inputSize) {
+        System.out.println("\n\n");
+        //First half of Rectangle
+        for (int i =5; i >0; i--){
+            System.out.println();
+            //print first inverted right angled triangle
+                int j ;
+                for ( j =0; j < i; j++){
+                    System.out.print("* ");
+                }
+
+                for (int k = j; k < inputSize; k++){
+                    System.out.print("  ");
+                }
+            //print second inverted right angled triangle
+
+                for (int k = j; k < inputSize; k++){
+                    System.out.print("  ");
+                }
+                for(int l =0; l<i; l++ ){
+                    System.out.print("* ");
+                }
+        }
+        // Second half of rectangle
+        for (int i =0; i <inputSize; i++){
+            System.out.println();
+            //print first  right angled triangle
+
+            for (int j =0; j <= i; j++){
+                System.out.print("* ");
+            }
+
+            for (int k = i+1; k < inputSize; k++){
+                System.out.print("  ");
+            }
+            //print second inverted right angled triangle
+
+            for (int k = i+1; k < inputSize; k++){
+                System.out.print("  ");
+            }
+            for(int l =0; l<=i; l++ ){
+                System.out.print("* ");
+            }
+        }
+    }
+
+    private static void rightDecrementAlphabetTriangle(int inputSize) {
+
+        System.out.println("\n\n");
+        for(int i = 0; i < inputSize; i++){
+            System.out.println();
+            char k = (char)('A'+ inputSize-1-i);
+
+            for (int j =0; j<=i; j++){
+                System.out.print(k++);
+            }
+        }
     }
 
     private static void equilateralTriangleWithAlphabets(int inputSize) {
