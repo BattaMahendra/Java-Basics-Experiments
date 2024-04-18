@@ -2,6 +2,7 @@ package collections.maps.hashing;
 
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /*Refer article : https://takeuforward.org/hashing/hashing-maps-time-complexity-collisions-division-rule-of-hashing-strivers-a2z-dsa-course/*/
 public class BasicHashing {
@@ -41,6 +42,17 @@ public class BasicHashing {
         /*Now using above hash arry we can easily find the frequency of given number in the given array
         * its just hash[ query_value] gives out the frequency*/
 
+        /*We may encounter a problem where the maximum array element may be very large like 109.
+        In that case, theoretically, we should declare an array of size 109+1. But we cannot do so.
+         The maximum size of an array can be the following:
+        please refer article mentioned at the class declaration
+         */
+
+
+        //Character Hashing
+        //try giving below string
+        //ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=-1234567890123456789[]{}\|:;"'<,>.?/
+        characterHashing();
     }
 
     /*
@@ -57,6 +69,25 @@ public class BasicHashing {
         }
         return counter;
     }
+
+    /*
+    * Character hashing
+    * We will declare an array of 256 size which accomodates both capital and small characters
+    * 'a' = 97 and goes on incremental for 'b' and so on. For 'A' = 65*/
+
+    public static void characterHashing(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please provide string");
+        String givenString = scanner.nextLine();
+        //in the above string we will find out frequency of chars
+        int[] charHash = new int[256];
+        for (char c: givenString.toCharArray()) {
+            charHash[c]++;
+        }
+        System.out.println(Arrays.toString(charHash));
+
+    }
+
 
 
 }
