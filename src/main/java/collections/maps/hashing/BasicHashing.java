@@ -2,6 +2,8 @@ package collections.maps.hashing;
 
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /*Refer article : https://takeuforward.org/hashing/hashing-maps-time-complexity-collisions-division-rule-of-hashing-strivers-a2z-dsa-course/*/
@@ -49,10 +51,41 @@ public class BasicHashing {
          */
 
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please provide string");
+        String givenString = scanner.nextLine();
+
         //Character Hashing
         //try giving below string
         //ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=-1234567890123456789[]{}\|:;"'<,>.?/
-        characterHashing();
+        characterHashing(givenString);
+        findFreqUsingHashMap(givenString);
+
+        findHighestAndLowestFreq(findFreqUsingHashMap(givenString));
+
+
+    }
+
+    public static void findHighestAndLowestFreq(Map<Character,Integer> map){
+        int max =0;
+        int min =5; //give the size of array
+        char mostRepeatedChar = 0;
+        char leastRepeatedChar=0;
+
+
+        for (Map.Entry<Character, Integer> entry: map.entrySet()) {
+                if(max < entry.getValue()){
+                    max = entry.getValue();
+                    mostRepeatedChar = entry.getKey();
+                }
+                if(min > entry.getValue()){
+                    min = entry.getValue();
+                    leastRepeatedChar= entry.getKey();
+                }
+        }
+
+        System.out.println("Most repeated char is "+mostRepeatedChar + " for "+max);
+        System.out.println("Least repeated char is "+leastRepeatedChar + " for "+min);
     }
 
     /*
@@ -75,10 +108,8 @@ public class BasicHashing {
     * We will declare an array of 256 size which accomodates both capital and small characters
     * 'a' = 97 and goes on incremental for 'b' and so on. For 'A' = 65*/
 
-    public static void characterHashing(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please provide string");
-        String givenString = scanner.nextLine();
+    public static void characterHashing( String givenString){
+
         //in the above string we will find out frequency of chars
         int[] charHash = new int[256];
         for (char c: givenString.toCharArray()) {
@@ -86,6 +117,22 @@ public class BasicHashing {
         }
         System.out.println(Arrays.toString(charHash));
 
+    }
+
+    /*Frequency of elements in array using hashmap
+    * */
+
+    public static Map findFreqUsingHashMap(String input){
+
+        HashMap<Character,Integer> charMap = new HashMap<>();
+        for (char c: input.toCharArray()) {
+            int freq=0;
+            if(charMap.containsKey(c)) freq = charMap.get(c);
+            charMap.put(c , ++freq);
+        }
+
+        System.out.println(charMap);
+        return charMap;
     }
 
 
