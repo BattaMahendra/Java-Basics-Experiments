@@ -11,13 +11,37 @@ public class BasicSorting {
         int[] arr = {6,5,3,6,3,4,2,1};
         sortArray(arr);
 
+
+
         findMinMaxInArray(arr);
 
         bubble_sort(arr);
 
+        insertion_sort(arr);
+
         selectionSort(arr);
 
 
+
+    }
+
+    private static void insertion_sort(int[] arr) {
+        count =0;
+        System.out.println("\nBefore insertion sort :"+ Arrays.toString(arr));
+        for(int i = 0; i < arr.length; i++){
+
+//            for(int j =i; j>0 && arr[j-1] > arr[j]; j--){
+//                swap(arr,j-1,j);
+//                count++;
+//            }
+            /*We can write above code using while loop also*/
+            int j = i;
+            while(j>0 &&  arr[j-1] > arr[j]){
+                swap(arr,j-1,j);
+                count++;
+            }
+        }
+        System.out.println("After insertion sort :"+ Arrays.toString(arr)+" with count :"+ count);
     }
 
     private static void bubble_sort(int[] arr) {
