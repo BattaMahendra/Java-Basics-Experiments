@@ -3,6 +3,9 @@ package basic.experiments.sorting;
 import java.util.Arrays;
 
 public class BasicSorting {
+    /*
+    * Created to count loop value in each sorting algorithm*/
+    static int count=0;
 
     public static void main(String[] args) {
         int[] arr = {6,5,3,6,3,4,2,1};
@@ -10,11 +13,27 @@ public class BasicSorting {
 
         findMinMaxInArray(arr);
 
+        bubble_sort(arr);
+
         selectionSort(arr);
+
+
+    }
+
+    private static void bubble_sort(int[] arr) {
+        count =0;
+        System.out.println("\nBefore bubble sort :"+ Arrays.toString(arr));
+        for (int i = arr.length-1; i>=0; i--){
+            for(int j =0; j <= i-1; j++){
+                if(arr[j] > arr[j+1]) swap(arr, j, j+1);
+                count++;
+            }
+        }
+        System.out.println("After bubble sort :"+ Arrays.toString(arr)+" with count :"+ count);
     }
 
     private static void selectionSort(int[] arr) {
-
+        count = 0;
         System.out.println("\nBefore selection sort :"+ Arrays.toString(arr));
 
         for(int i = 0; i< arr.length; i++){
@@ -25,6 +44,7 @@ public class BasicSorting {
             int min =i;
             for(int j = i; j< arr.length; j++){
                 if(arr[j] < arr[i] ) min = j;
+                count++;
             }
             /*
             * After finding minimum number index , swapping it with index i */
@@ -33,13 +53,13 @@ public class BasicSorting {
             arr[min] = temp;
         }
 
-        System.out.println("After selection sort :"+ Arrays.toString(arr));
+        System.out.println("After selection sort :"+ Arrays.toString(arr)+" with count :"+ count);
     }
 
-    private static void swap(int i , int j){
-        i = i + j;
-        j = i - j;
-        i = i - j;
+    private static void swap(int[] arr, int i , int j){
+        arr[i] = arr[i] + arr[j];
+        arr[j] = arr[i] - arr[j];
+        arr[i] = arr[i] - arr[j];
     }
 
     private static void findMinMaxInArray(int[] arr) {
@@ -55,6 +75,7 @@ public class BasicSorting {
     }
 
     private static void sortArray(int[] arr) {
+        count =0;
         int counter =0;
 
         for(int i = 0; i< arr.length; i++){
@@ -65,10 +86,11 @@ public class BasicSorting {
                     arr[i] =temp;
 
                 }
+                count++;
                 counter++;
             }
         }
         System.out.println(counter);
-        System.out.println("\n\n\n"+Arrays.toString(arr));
+        System.out.println("\n\n\n"+Arrays.toString(arr)+" with count :"+ count);
     }
 }
