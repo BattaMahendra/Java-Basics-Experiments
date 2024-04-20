@@ -49,7 +49,7 @@ public class BasicSorting {
         System.out.println("\nBefore bubble sort :"+ Arrays.toString(arr));
         for (int i = arr.length-1; i>=0; i--){
              boolean check = false;
-            //compare each element from 0 to i-1 and push the highest element to i-1;
+            //compare each element from 0 to i-1 and push the highest element to i-1 i.e last;
             for(int j =0; j <= i-1; j++){
                 if(arr[j] > arr[j+1]) {
                     swap(arr, j, j+1);
