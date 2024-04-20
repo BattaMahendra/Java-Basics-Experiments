@@ -1,6 +1,8 @@
 package basic.experiments.sorting;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class BasicSorting {
     /*
@@ -22,6 +24,60 @@ public class BasicSorting {
         selectionSort(arr);
 
 
+        System.out.println("\nBefore merge sort :"+ Arrays.toString(arr));
+        merge_sort(arr, 0, arr.length-1);
+        System.out.println("After merge sort :"+ Arrays.toString(arr));
+
+
+
+    }
+
+    /*
+    * Please refer to article : https://takeuforward.org/data-structure/merge-sort-algorithm/*/
+    public static void merge_sort(int[] arr, int low , int high){
+        if(low >= high) return;
+        int mid = (low + high)/2;
+        merge_sort(arr, low, mid);
+        merge_sort(arr, mid+1, high);
+        merge(arr, low, mid, high);
+
+    }
+/*
+* The following merge method merges the give two hypothetical arrays
+*/
+    public static void merge(int[] arr , int low , int mid , int high){
+
+        int left = low;
+        int right = mid+1;
+        List<Integer> temporary = new ArrayList<>();
+
+        while(left <= mid && right <= high){
+            if(arr[left] <= arr[right]){
+                temporary.add( arr[left] );
+                left++;
+            }else {
+                temporary.add(arr[right]);
+                right++;
+            }
+        }
+        //if the items are still left in left side
+        while(left <= mid){
+            temporary.add(arr[left] );
+            left++;
+        }
+
+        //items on the right side are still left
+
+        while(right <= high){
+            temporary.add(arr[right]);
+            right++;
+        }
+
+        //getting the sorted and merged values into original array from temporary list
+        for (int i = low; i <= high; i++) {
+            arr[i] = temporary.get(i-low);
+        }
+
 
     }
 
@@ -36,6 +92,7 @@ public class BasicSorting {
 //            }
             /*We can write above code using while loop also*/
             int j = i;
+            //compare each element from j = 0 to j =i and push the max element to right
             while(j>0 &&  arr[j-1] > arr[j]){
                 swap(arr,j-1,j);
                 count++;
