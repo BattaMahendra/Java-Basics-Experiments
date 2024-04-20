@@ -24,10 +24,18 @@ public class BasicSorting {
         count =0;
         System.out.println("\nBefore bubble sort :"+ Arrays.toString(arr));
         for (int i = arr.length-1; i>=0; i--){
+             boolean check = false;
+            //compare each element from 0 to i-1 and push the highest element to i-1;
             for(int j =0; j <= i-1; j++){
-                if(arr[j] > arr[j+1]) swap(arr, j, j+1);
+                if(arr[j] > arr[j+1]) {
+                    swap(arr, j, j+1);
+                    check = true;
+                }
+
                 count++;
             }
+            //if the array is in ascending order already , cancel the next loops
+            if(check == false) break;
         }
         System.out.println("After bubble sort :"+ Arrays.toString(arr)+" with count :"+ count);
     }
@@ -80,7 +88,7 @@ public class BasicSorting {
 
         for(int i = 0; i< arr.length; i++){
             for (int j = 0; j< arr.length; j++){
-                if(arr[i] > arr[j]){
+                if(arr[i] < arr[j]){
                     int temp = arr[j];
                     arr[j] = arr[i];
                     arr[i] =temp;
