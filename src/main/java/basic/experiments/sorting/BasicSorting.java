@@ -13,6 +13,12 @@ public class BasicSorting {
         int[] arr = {6,5,3,6,3,4,2,1};
         sortArray(arr);
 
+        System.out.println("\nBefore recursive insertion sort :"+ Arrays.toString(arr));
+        recursive_insertion_sort(arr, 0);
+        System.out.println("After recursive insertion sort :"+ Arrays.toString(arr));
+
+        insertion_sort(arr);
+
         System.out.println("\nBefore recursive bubble sort :"+ Arrays.toString(arr));
         recursive_bubble_sort(arr, arr.length);
         System.out.println("After recursive bubble sort :"+ Arrays.toString(arr));
@@ -26,7 +32,7 @@ public class BasicSorting {
 
         bubble_sort(arr);
 
-        insertion_sort(arr);
+
 
         selectionSort(arr);
 
@@ -36,6 +42,7 @@ public class BasicSorting {
 
 
     }
+
 
     public static void recursive_bubble_sort(int[] arr, int n){
         if( n==1 ) return;
@@ -109,13 +116,25 @@ public class BasicSorting {
 //            }
             /*We can write above code using while loop also*/
             int j = i;
-            //compare each element from j = 0 to j =i and push the max element to right
+            //compare each element from j = i to j =0 and push the max element to right
             while(j>0 &&  arr[j-1] > arr[j]){
                 swap(arr,j-1,j);
+                j--;
                 count++;
             }
         }
         System.out.println("After insertion sort :"+ Arrays.toString(arr)+" with count :"+ count);
+    }
+
+    public static void recursive_insertion_sort(int[] arr , int intialValue){
+        if(intialValue == arr.length) return;
+
+        int j = intialValue;
+        while(j>0 &&  arr[j-1] > arr[j]){
+            swap(arr,j-1,j);
+            j--;
+        }
+        recursive_insertion_sort(arr, intialValue+1);
     }
 
     private static void bubble_sort(int[] arr) {
@@ -192,9 +211,11 @@ public class BasicSorting {
                     arr[i] =temp;
 
                 }
+                System.out.println(Arrays.toString(arr));
                 count++;
                 counter++;
             }
+            System.out.println("\n");
         }
         System.out.println(counter);
         System.out.println("\n\n\n"+Arrays.toString(arr)+" with count :"+ count);
