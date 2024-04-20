@@ -13,6 +13,13 @@ public class BasicSorting {
         int[] arr = {6,5,3,6,3,4,2,1};
         sortArray(arr);
 
+        System.out.println("\nBefore recursive bubble sort :"+ Arrays.toString(arr));
+        recursive_bubble_sort(arr, arr.length);
+        System.out.println("After recursive bubble sort :"+ Arrays.toString(arr));
+
+        System.out.println("\nBefore merge sort :"+ Arrays.toString(arr));
+        merge_sort(arr, 0, arr.length-1);
+        System.out.println("After merge sort :"+ Arrays.toString(arr));
 
 
         findMinMaxInArray(arr);
@@ -24,13 +31,23 @@ public class BasicSorting {
         selectionSort(arr);
 
 
-        System.out.println("\nBefore merge sort :"+ Arrays.toString(arr));
-        merge_sort(arr, 0, arr.length-1);
-        System.out.println("After merge sort :"+ Arrays.toString(arr));
+
 
 
 
     }
+
+    public static void recursive_bubble_sort(int[] arr, int n){
+        if( n==1 ) return;
+
+        for(int j =0; j <= n-2; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr, j, j + 1);
+            }
+        }
+        recursive_bubble_sort(arr, n-1);
+
+        }
 
     /*
     * Please refer to article : https://takeuforward.org/data-structure/merge-sort-algorithm/*/
@@ -169,7 +186,7 @@ public class BasicSorting {
 
         for(int i = 0; i< arr.length; i++){
             for (int j = 0; j< arr.length; j++){
-                if(arr[i] < arr[j]){
+                if(arr[i] > arr[j]){
                     int temp = arr[j];
                     arr[j] = arr[i];
                     arr[i] =temp;
