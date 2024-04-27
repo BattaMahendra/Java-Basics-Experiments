@@ -7,7 +7,7 @@ import java.util.Map;
 public class LongestSubArraySum {
     public static void main(String[] args) {
 
-       int[] arr = {2,0,0,0,0,3};
+       int[] arr = {2,-1,0,0,1,1};
 
        int k = 3;
 
