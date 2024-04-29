@@ -25,6 +25,10 @@ public class MapBased {
 		
 		//get employee list 
 		List<Employee> employeeList = VariablesAndTechniques.getLargeEmployeeList();
+		System.out.println("========================================================================");
+		List<Employee> employeeListWithSortedSalaries = employeeList.stream().limit(50).sorted(Comparator.comparing(Employee::getSalary).reversed()).collect(Collectors.toList());
+		System.out.println(employeeListWithSortedSalaries);
+
 		
 		/*
 		 *grouping employees based on their company 
