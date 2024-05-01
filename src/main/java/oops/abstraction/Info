@@ -1,0 +1,6 @@
+
+
+Read about Object in this link: https://stackoverflow.com/questions/18219339/trouble-understanding-object-state-behavior-and-identity
+
+Difference between Interface(after java 8) and abstract class
+https://www.baeldung.com/java-interface-default-method-vs-abstract-class#:~:text=The%20abstract%20class%20can%20have,t%20access%20the%20implementation's%20state.
