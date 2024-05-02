@@ -22,6 +22,7 @@ public class ClassLoader {
 
     }
 
+    /*ClassDef*/
     private static void generateNoClassDefFoundError() {
         ClassWithInitErrors test;
         try {

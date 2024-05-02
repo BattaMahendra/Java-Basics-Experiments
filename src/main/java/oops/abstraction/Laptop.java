@@ -27,9 +27,9 @@ public class Laptop extends  Computer{
 
 
     //@Override
-    public void details(){
-        System.out.println("this is "+this.getClass());
-    }
+//    public void details(){
+//        System.out.println("this is "+this.getClass());
+//    }
 
 
 

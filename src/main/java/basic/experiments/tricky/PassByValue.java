@@ -17,7 +17,7 @@ class PassByValue {
     }
 
     private static void addNames(List<String> list){
-       // list = new ArrayList<>();
+        list = new ArrayList<>();
         list.add("modified");
     }
     public static void main(String[] args)
@@ -35,7 +35,6 @@ class PassByValue {
         System.out.println(names);
 
         //Experimenting with ojects
-
         Student s = new Student();
         s.setId(1);
         s.setName("Viswa");
@@ -49,7 +48,7 @@ class PassByValue {
     }
 
     private static void updateStudent(Student s) {
-       // s.setName("Viswa Modified");
+        s.setName("Viswa Modified");
         System.out.println("In the update method and hashcode is :"+ s.hashCode());
         s = new Student();
         s.setName("Mahi");
