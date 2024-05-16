@@ -63,8 +63,16 @@ public class Basics {
 		//employees.sort((e1,e2)->e1.getRole().compareTo(e2.getRole()));
 		System.out.println("\nid of employees before sorting");
 		employees.forEach(emp -> System.out.println(emp.getId()+" "));
-		//employees.forEach(emp -> 
+		//employees.forEach(emp ->
+
+		sortedInStreams();
 		
+	}
+
+	public static void sortedInStreams(){
+		System.out.println("\n=========================================================\n");
+		System.out.println("Employees before sorting");
+		employees.stream().forEach(System.out::println);
 	}
 }
 

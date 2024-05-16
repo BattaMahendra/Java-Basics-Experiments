@@ -17,14 +17,14 @@ public class Employees {
 	
 	public static List<Emp> employeeList;
 	
-	List<Emp> populateEmployees() throws JsonParseException, JsonMappingException, IOException{
+	public List<Emp> populateEmployees() throws JsonParseException, JsonMappingException, IOException{
 		ObjectMapper objectMapper = new ObjectMapper();
 		
 	    File file = new File(this.getClass().getClassLoader().getResource("employees.json").getFile());
 	
 		employeeList = objectMapper.readValue(file, new TypeReference<List<Emp>>() {
 		});
-		employeeList.forEach( System.out::println);
+		//employeeList.forEach( System.out::println);
 		return employeeList;
 	}
 	

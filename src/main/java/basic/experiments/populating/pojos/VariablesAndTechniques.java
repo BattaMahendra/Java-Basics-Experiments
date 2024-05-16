@@ -84,7 +84,7 @@ public class VariablesAndTechniques {
 					.l_name(mixAlphas[num])
 					.role(roles[random.nextInt(roles.length)])
 					.company(companies[random.nextInt(companies.length)])
-					.age(random.nextInt(65))
+					.age(random.nextInt(65)).salary(random.nextInt(1000)*100)
 					.build() );
 
 
