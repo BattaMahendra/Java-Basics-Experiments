@@ -14,8 +14,16 @@ public class Calculator {
 
     }
 
+    //comment out this method and check for the ambiguity
+
     private static void add(int a, int b) {
         System.out.println(a + b);
+    }
+    private static void add(int a, long c) {
+        System.out.println(a + c);
+    }
+    private static void add(long  a, int c) {
+        System.out.println(a + c);
     }
     private static void add(int a, short b) {
         System.out.println(" we are in overloaded method of int and short");
@@ -26,6 +34,9 @@ public class Calculator {
         System.out.println(" we are in overloaded method of byte and short");
         System.out.println(a + b);
     }
+
+    //byte --> short --> int --> long --> float --> double
+    //One type is not de-promoted implicitly for example double cannot be depromoted to any type implicitly.
 
     //even we can overload main method
     public static void main(String[] args,int i) {

@@ -28,8 +28,13 @@ public class SportsBike extends SmartBike {
 		System.out.println("SportsBike Static");
 	}
 
-
+	/*
+	* Printing order
+	* All parent classes static blocks ---> present classes static blocks ----> main method starting point
+	* ---->super() method in constructor of top parent class ---> instance blocks ---> constructor method of parent classes (this goes on sequentially untill invoked child class constructor is reached)
+	* */
 	public static void main(String[] args) {
+		System.out.println("SportsBike class :: main method");
 //		System.out.println("SportsBike : Main method");
 //		Bike s =new SportsBike();
 //		System.out.println(s.wheels);
@@ -37,12 +42,12 @@ public class SportsBike extends SmartBike {
 //		s.testInheritance();
 //		s.testInheritanceStatic();
 		
-		System.out.println("===========================");
-		SmartBike sm = new SmartBike();
-		sm.testInheritance();
-		sm.testInheritanceStatic();
+		//System.out.println("===========================");
+//		SmartBike sm = new SmartBike();
+//		sm.testInheritance();
+//		sm.testInheritanceStatic();
 //		System.out.println("===========================");
-//		RaceBike r = new RaceBike();
+		RaceBike r = new RaceBike();
 //		r.testInheritance();
 		
 		//Welcome.welcomemsg("Hema");

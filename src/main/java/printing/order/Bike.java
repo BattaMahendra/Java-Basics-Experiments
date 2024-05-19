@@ -20,11 +20,11 @@ public class Bike {
 	}
 
 	{
-		System.out.println("Bike basic block 1");
+		System.out.println("Bike instance block 1");
 	}
 
 	{
-		System.out.println("Bike basic block 2");
+		System.out.println("Bike instance block 2");
 	}
 
 	static {
