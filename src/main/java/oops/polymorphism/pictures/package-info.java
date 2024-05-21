@@ -21,6 +21,17 @@ Rules for method overriding
       Note: we can optionally use an annotation @Override.
 
 
+Q. Can we declare static methods as final in java ?
+
+In Java, you can't declare static methods as final because static methods are not overridden,
+they are hidden. The final keyword is used to prevent a method from being overridden in a subclass,
+but since static methods belong to the class itself and not to any particular instance,
+they can't be overridden.
+However, you can declare a static method in a class declared as final to prevent any subclass from
+hiding that method with a method of the same name.
+But it's not necessary to use the final keyword with static methods since they can't be overridden anyway.
+
+
 
 * */
 
