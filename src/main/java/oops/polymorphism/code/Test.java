@@ -22,5 +22,21 @@ public class Test {
 
         //unlike data members we don't need downcasting to call child methods.
         ((Bike) v).run();
+
+        // down casting problems
+
+        //Bike b = new Vehicle(); // results in compilation error
+
+        //Bike b = (Bike) new Vehicle(); // results in run time error as class cast exception
+
+        // proper way to downcast a object is
+
+        Vehicle v1 = new Vehicle();
+        Bike b = (Bike) v1;
+
+        // along with above approach we can also leverage instanceOf operator
+        // please refere : https://www.javatpoint.com/downcasting-with-instanceof-operator
+
+
     }
 }

@@ -32,12 +32,25 @@ hiding that method with a method of the same name.
 But it's not necessary to use the final keyword with static methods since they can't be overridden anyway.
 
 Q. Is runtime polymorphism applicable to data members along with methods ?
-
 A method is overridden, not the data members,
  so runtime polymorphism can't be achieved by data members.
  plz refer this : https://www.geeksforgeeks.org/parent-and-child-classes-having-same-data-member-in-java/
 
+How to do downcasting of a object in java ?
 
+for example we have Parent class and a Child class which extends Parent class
 
+We can't assign
+Child c = new Parent();   // results in compilation error
+
+Child c = (Child) new Parent();   // compiles successfully but gives runtime error as class cast exception
+
+we can do that by
+
+Parent p = new Parent();
+Child c = (Child) p;  // compiles and run successfully
+
+we can also use instanceOf operator to enhance downcasting and achieve loose coupling
+please refer : https://www.javatpoint.com/downcasting-with-instanceof-operator
 * */
 
