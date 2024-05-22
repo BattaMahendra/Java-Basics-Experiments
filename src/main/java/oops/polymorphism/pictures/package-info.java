@@ -31,6 +31,11 @@ However, you can declare a static method in a class declared as final to prevent
 hiding that method with a method of the same name.
 But it's not necessary to use the final keyword with static methods since they can't be overridden anyway.
 
+Q. Is runtime polymorphism applicable to data members along with methods ?
+
+A method is overridden, not the data members,
+ so runtime polymorphism can't be achieved by data members.
+
 
 
 * */
