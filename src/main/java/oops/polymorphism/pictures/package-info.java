@@ -35,6 +35,7 @@ Q. Is runtime polymorphism applicable to data members along with methods ?
 
 A method is overridden, not the data members,
  so runtime polymorphism can't be achieved by data members.
+ plz refer this : https://www.geeksforgeeks.org/parent-and-child-classes-having-same-data-member-in-java/
 
 
 
