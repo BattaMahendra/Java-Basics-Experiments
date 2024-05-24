@@ -52,5 +52,15 @@ Child c = (Child) p;  // compiles and run successfully
 
 we can also use instanceOf operator to enhance downcasting and achieve loose coupling
 please refer : https://www.javatpoint.com/downcasting-with-instanceof-operator
+
+
+Q. Can we override a private method in Java? (detailed answer)
+
+No,  you cannot override a private method in Java because
+the private method is not inherited by the subclass in Java,
+ which is essential for overriding. In fact, a private method is not visible to anyone outside the class and,
+  more importantly, a call to the private method is resolved at compile time
+  by using Type information as opposed to runtime by using the actual object.
+
 * */
 

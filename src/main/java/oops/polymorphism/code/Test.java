@@ -25,17 +25,24 @@ public class Test {
 
         // down casting problems
 
-        //Bike b = new Vehicle(); // results in compilation error
+         //Bike b = new Vehicle(); // results in compilation error
 
         //Bike b = (Bike) new Vehicle(); // results in run time error as class cast exception
 
         // proper way to downcast a object is
 
-        Vehicle v1 = new Vehicle();
+        Vehicle v1 = new Bike();
         Bike b = (Bike) v1;
 
         // along with above approach we can also leverage instanceOf operator
         // please refere : https://www.javatpoint.com/downcasting-with-instanceof-operator
+
+
+
+        Vehicle v2 = new Bike();
+        System.out.println(v2.vehicleType);
+
+
 
 
     }
