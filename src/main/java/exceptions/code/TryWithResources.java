@@ -26,7 +26,7 @@ public class TryWithResources {
         // printwriter is a effectively final variable
         // ( Put simply, a variable is effectively final if it doesn’t change after the first assignment, even though it’s not explicitly marked as final.)
         final Scanner scanner = new Scanner(inputStream);
-        PrintWriter printWriter = new PrintWriter(new File("C:\\Users\\batta.chowdary\\IdeaProjects\\Java-Basics-Experiments\\src\\main\\resources\\files\\File2.txt"))
+        PrintWriter printWriter = new PrintWriter(new File("C:\\Users\\batta.chowdary\\IdeaProjects\\Java-Basics-Experiments\\src\\main\\resources\\files\\File2.txt"));
 
         try (
                 scanner; printWriter
