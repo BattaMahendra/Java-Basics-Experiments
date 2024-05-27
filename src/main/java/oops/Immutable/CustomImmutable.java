@@ -1,9 +1,8 @@
-package Immutable;
+package oops.Immutable;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import lombok.Data;
 import lombok.ToString;
 
 @ToString

@@ -10,7 +10,7 @@ public abstract class Computer implements  IProcessor{
     int ROM;
 
     {
-        System.out.println(this.getClass().getName());
+        System.out.println("We are in the instance block of Computer class --->"+this.getClass().getName());
     }
     Computer (){
         System.out.println("In the constructor of Computer");

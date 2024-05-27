@@ -18,7 +18,7 @@ public class Laptop extends  Computer{
     }
     @Override
    public void process() {
-        System.out.println("Being processed");
+        System.out.println(" Being processed by Laptop");
     }
 
     /**
@@ -26,10 +26,10 @@ public class Laptop extends  Computer{
      */
 
 
-    //@Override
-//    public void details(){
-//        System.out.println("this is "+this.getClass());
-//    }
+    @Override
+    public void details(){
+        System.out.println("this is overrided method from "+this.getClass());
+    }
 
 
 
