@@ -44,7 +44,7 @@ public enum DateFormatter {
         return null;
     }
     
-    public String getFormatString() {
+    public  String getFormatString() {
         return formatString;
     }
     

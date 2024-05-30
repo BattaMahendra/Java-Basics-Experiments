@@ -1,4 +1,4 @@
-package inheritance;
+package oops.inheritance;
 
 /*
 * Talking about Multiple inheritance is

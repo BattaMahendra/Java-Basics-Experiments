@@ -1,4 +1,4 @@
-package oops.Immutable;
+package Immutable;
 
 import lombok.ToString;
 

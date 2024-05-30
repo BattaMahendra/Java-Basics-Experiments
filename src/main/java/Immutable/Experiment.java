@@ -1,4 +1,4 @@
-package oops.Immutable;
+package Immutable;
 
 import java.util.ArrayList;
 import java.util.HashMap;

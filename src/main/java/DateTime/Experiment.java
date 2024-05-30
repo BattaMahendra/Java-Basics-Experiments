@@ -64,8 +64,19 @@ public class Experiment {
 //		Instant instant = Instant.parse(Instant.now().toString());
 //		System.out.println(formatter.format( instant));
 //		System.out.println(LocalDate.now().getYear());
-		String s =null;
-		System.out.println(s.toString());
+//		String s =null;
+//		System.out.println(s.toString());
+		String date = "2024-04-01 00:00:00";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+		LocalDateTime dateTime = LocalDateTime.parse(date,formatter);
+		DateTimeFormatter formatter2 =  DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+				//.withLocale(Locale.getDefault());
+		System.out.println(dateTime.format(formatter2).toUpperCase());
+
+		DateFormatter ddmmmyyHhMmSsWithhyp = DateFormatter.DDMMMYY_HH_MM_SS_WITHHYP;
+		ddmmmyyHhMmSsWithhyp.getFormatString();
+
 	}
 
 }
