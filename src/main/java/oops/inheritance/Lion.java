@@ -1,4 +1,4 @@
-package inheritance;
+package oops.inheritance;
 
 public interface Lion {
     void habitat();

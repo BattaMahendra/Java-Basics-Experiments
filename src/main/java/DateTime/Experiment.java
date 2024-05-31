@@ -1,15 +1,21 @@
 package DateTime;
 
+import basic.experiments.pojos.Employee;
+import basic.experiments.populating.pojos.VariablesAndTechniques;
+
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class Experiment {
 	
@@ -73,10 +79,46 @@ public class Experiment {
 		DateTimeFormatter formatter2 =  DateTimeFormatter.ofPattern("dd-MMM-yyyy");
 				//.withLocale(Locale.getDefault());
 		System.out.println(dateTime.format(formatter2).toUpperCase());
+//
+//		DateFormatter ddmmmyyHhMmSsWithhyp = DateFormatter.DDMMMYY_HH_MM_SS_WITHHYP;
+//		ddmmmyyHhMmSsWithhyp.getFormatString();
 
-		DateFormatter ddmmmyyHhMmSsWithhyp = DateFormatter.DDMMMYY_HH_MM_SS_WITHHYP;
-		ddmmmyyHhMmSsWithhyp.getFormatString();
+		//List<Employee> employeeList = VariablesAndTechniques.getLargeEmployeeList().subList(0,10);
+//		List<Employee> convertedEmployeeList = employeeList.stream()
+//		.map(eachEmployee -> {
+//			System.out.println(eachEmployee);
+//
+//			return convertDate(eachEmployee);
+//
+//		}).collect(Collectors.toList());
+//		System.out.println(employeeList+"\n\n");
+//		employeeList.forEach(Experiment::convertDate);
+//		System.out.println(employeeList);
+		//System.out.println(employeeList.equals(convertedEmployeeList));
 
+	}
+
+	public void operation(){
+		List<Employee> employeeList = VariablesAndTechniques.getLargeEmployeeList().subList(0,10);
+		System.out.println(employeeList+"\n\n");
+		employeeList.forEach(Experiment::convertDate);
+		System.out.println(employeeList);
+	}
+
+	private  static void convertDate(Employee eachEmployee) {
+		String presentDate = eachEmployee.getDob();
+		DateTimeFormatter formatter =  new DateTimeFormatterBuilder()
+				.appendPattern("yyyy-MM-dd")
+				.parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
+				.parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
+				.parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
+				.toFormatter();;
+
+		LocalDateTime dateTime = LocalDateTime.parse(presentDate,formatter);
+		DateTimeFormatter formatter2 =  DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+		String convertedDate = dateTime.format(formatter2).toUpperCase();
+		eachEmployee.setDob(convertedDate);
+		//return eachEmployee;
 	}
 
 }

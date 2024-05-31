@@ -1,8 +1,5 @@
 package basic.experiments.pojos;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
@@ -16,7 +13,7 @@ public class Employee {
 		super();
 	}
 	
-	public Employee(int id,String empId, String f_name, String l_name, String company, String role, int age ,double salary, Address a) {
+	public Employee(int id,String empId, String f_name, String l_name, String company, String role, int age ,double salary, Address a , String doj) {
 		super();
 		this.id = id;
 		this.f_name = f_name;
@@ -27,6 +24,7 @@ public class Employee {
 		this.salary=salary;
 		this.address = a;
 		this.empId=empId;
+		this.dob =doj;
 	}
 	
 	int id;
@@ -38,6 +36,7 @@ public class Employee {
 	int age;
 	double salary;
 	Address address;
+	String dob;
 	
 	
 	public int getId() {

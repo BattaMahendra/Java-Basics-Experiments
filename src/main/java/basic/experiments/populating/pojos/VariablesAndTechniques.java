@@ -1,6 +1,5 @@
 package basic.experiments.populating.pojos;
 import java.io.File;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -184,6 +183,7 @@ public class VariablesAndTechniques {
 					.company(companies[random.nextInt(companies.length)])
 					.age(getRandomNumber(18,80))
 					.salary(getRandomNumber(10000, 9999999))
+					.dob(getARandomDate())
 					.address(addressList.get(random.nextInt(addressList.size()-1)))
 					.build());
 
@@ -198,6 +198,17 @@ public class VariablesAndTechniques {
 
 	static int getRandomNumber(int start, int end) {
 		return random.nextInt(end-start+1)+start;
+	}
+
+	static String getARandomDate(){
+		int date = getRandomNumber(1,31);
+		String sDate =date <10 ? "0"+date : String.valueOf(date);
+		int month = getRandomNumber(1,12);
+		String sMonth =month <10 ? "0"+month : String.valueOf(month);
+		int year = getRandomNumber(1999,2023);
+
+		return year+"-"+sMonth+"-"+sDate;
+
 	}
 
 
@@ -226,6 +237,8 @@ public class VariablesAndTechniques {
 		System.out.println(names);
 		Predicate<String> checkCountryCd = c -> names.stream().anyMatch(name -> name.equals(c));
 		System.out.println(checkCountryCd.test("Aarava"));
+
+		VariablesAndTechniques.getLargeEmployeeList().stream().limit(10).forEach(System.out::println);
 	}		
 
 
