@@ -1,4 +1,4 @@
-package Java_Streams;
+package java8.Java_Streams;
 
 import basic.experiments.pojos.Emp;
 import basic.experiments.pojos.Employee;

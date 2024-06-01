@@ -1,4 +1,4 @@
-package Java_Streams;
+package java8.Java_Streams;
 
 /*
 WHAT ARE STREAMS ?

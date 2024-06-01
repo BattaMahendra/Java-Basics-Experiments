@@ -1,18 +1,15 @@
-package Java_Streams;
+package java8.Java_Streams;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import basic.experiments.pojos.Employee;
 import basic.experiments.pojos.Names;
 import basic.experiments.populating.pojos.VariablesAndTechniques;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 public class MapBased {

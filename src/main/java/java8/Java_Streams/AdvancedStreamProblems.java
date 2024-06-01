@@ -1,9 +1,6 @@
-package Java_Streams;
+package java8.Java_Streams;
 
-import java.time.Instant;
-import java.time.LocalDate;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 

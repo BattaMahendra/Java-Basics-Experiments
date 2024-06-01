@@ -1,9 +1,7 @@
-package Java_Streams;
+package java8.Java_Streams;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import com.google.common.base.Stopwatch;
 
 import basic.experiments.pojos.Employee;
 import basic.experiments.populating.pojos.VariablesAndTechniques;
