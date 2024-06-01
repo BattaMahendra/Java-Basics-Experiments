@@ -5,7 +5,9 @@ public class MethodOverloading {
 	public static void print(int a) {
 		System.out.println("primitive");
 	}
-	
+	public static void print(long a) {
+		System.out.println("long");
+	}
 	public static void print(Integer a) {
 		System.out.println("Integer wrapper");
 	}
@@ -28,12 +30,17 @@ public class MethodOverloading {
 		short d =8;
 		byte e =9;
 		long f= 10;
-		print(a); //p
+		Byte g = 11;
+		Short h =12;
+		print(a); //
 		print(b); //
 		print(c); //
-		print(d); 
-		print(e); 
-		//print(f);
+		print(d); //
+		print(e); //
+		print(f);
+		print(g);
+		print(h);
+		print();
 	}
 	
 	
