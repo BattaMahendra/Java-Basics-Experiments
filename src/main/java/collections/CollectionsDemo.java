@@ -24,6 +24,7 @@ public class CollectionsDemo {
         collectionCompatabilityWithDifferentObjects();
     }
 
+    static int count =0;
     private static void collectionCompatabilityWithDifferentObjects() {
     /*
     collection is a main interface in java which has some common methods
@@ -38,5 +39,13 @@ public class CollectionsDemo {
         c.add(new ArrayList<>());
 
         System.out.println(c);
+
+        //experimenting on collections
+        //java will throw a concurrent modification exception if modify collection while iterating
+        c.forEach(object -> {
+            if(count == 0)
+            c.add("modification "+ count++);    //modifying the collection inside its own iteration
+
+        });
     }
 }
