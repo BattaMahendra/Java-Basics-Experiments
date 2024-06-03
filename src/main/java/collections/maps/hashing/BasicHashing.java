@@ -44,8 +44,8 @@ public class BasicHashing {
         /*Now using above hash arry we can easily find the frequency of given number in the given array
         * its just hash[ query_value] gives out the frequency*/
 
-        /*We may encounter a problem where the maximum array element may be very large like 109.
-        In that case, theoretically, we should declare an array of size 109+1. But we cannot do so.
+        /*We may encounter a problem where the maximum array element may be very large like 10^9.
+        In that case, theoretically, we should declare an array of size 10^9+1. But we cannot do so.
          The maximum size of an array can be the following:
         please refer article mentioned at the class declaration
          */
@@ -90,7 +90,7 @@ public class BasicHashing {
 
     /*
     * This operation takes O(N) considering arr contains N elements. Now consider we have
-    * given Q queries to search with then ovet all complexity with two for loops
+    * given Q queries to search with then over all complexity with two for loops
     * becomes O(M X N) suppose what if we have an array size of 10^5 abd queries to be
     * searched are 10^5 then whole operation becomes 10^10 which is very big and usually
     * 10^8 operations take 1 second time then 10^10 takes 100 seconds.
