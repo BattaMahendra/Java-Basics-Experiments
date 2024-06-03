@@ -76,6 +76,7 @@ public class MapExample {
         //howeever the above map is not recomended as it is slow and it is synchronised for all operations
         //the solution is Concurrent HashMap
 
+        //concurrent hashmaps can't have null values and null keys just like Hashtable
         ConcurrentHashMap<String , String> concurrentHashMap = new ConcurrentHashMap<>();
 
         //the above class comes from util.concurrent package and it is more efficient than Hash table and synchronised maps
