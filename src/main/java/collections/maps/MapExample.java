@@ -1,6 +1,7 @@
 package collections.maps;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MapExample {
 
@@ -66,6 +67,22 @@ public class MapExample {
         treeMap();
 
 
+        //thread safe hashmap
+
+        HashMap h = new HashMap();
+        //we can convert above hashmap into synchronised map by using
+        Map threadSafeMap =  Collections.synchronizedMap(h);
+
+        //howeever the above map is not recomended as it is slow and it is synchronised for all operations
+        //the solution is Concurrent HashMap
+
+        ConcurrentHashMap<String , String> concurrentHashMap = new ConcurrentHashMap<>();
+
+        //the above class comes from util.concurrent package and it is more efficient than Hash table and synchronised maps
+        // refer to this website : https://www.geeksforgeeks.org/concurrenthashmap-in-java/
+        //or read the Map-Info file in this package
+
+
 
 
     }
@@ -129,6 +146,7 @@ public class MapExample {
                                 (k,v) -> k ==5 && v.equals("five") ? v+" modified":"five unmodified");
 
         System.out.println(integerStringMap.toString());
+
 
     }
 }
