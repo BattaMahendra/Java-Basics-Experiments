@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestClass {
+
+    /*
+    * please refer this article for deeper understanding :  https://www.scaler.com/topics/java/generics-in-java/
+    * */
+
+
+
     public static void main(String[] args) {
         Generic<String> object = new Generic<>();
         object.aField = "Batta Mahendra";
