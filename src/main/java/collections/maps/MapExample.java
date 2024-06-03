@@ -115,5 +115,20 @@ public class MapExample {
                 .stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEach(System.out::println);
+
+        System.out.println("/n=======compute if absent============");
+
+        //sencond arguement is a function which takes key as input and should return a type of value which will be inserted into key value pair
+        //if the mentioned key is not present in the map
+        integerStringMap.computeIfAbsent(5 , key -> "five modified"); //doesn't execute as key 5 is already present
+        integerStringMap.computeIfAbsent(6 , key -> "six inserted using compute if absent");
+        System.out.println(integerStringMap);
+        System.out.println("/n=======compute if present ============");
+        integerStringMap
+                .computeIfPresent(5,
+                                (k,v) -> k ==5 && v.equals("five") ? v+" modified":"five unmodified");
+
+        System.out.println(integerStringMap.toString());
+
     }
 }
