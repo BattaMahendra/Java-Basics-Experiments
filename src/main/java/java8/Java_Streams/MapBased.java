@@ -41,7 +41,7 @@ public class MapBased {
 		Map<String , List<String>>
 						employeeNamesWithCompany = 	
 												employeeList.stream()
-															.collect(Collectors.groupingBy(Employee::getCompany, Collectors.mapping(Employee::getF_name, Collectors.toList())));
+															.collect(Collectors.groupingBy(Employee::getCompany, Collectors.mapping(Employee::getFirstName, Collectors.toList())));
 		employeeNamesWithCompany.entrySet().forEach(e -> System.out.println("company: "+e.getKey()+"  no of emp: "+ e.getValue().size()));
 		
 		//sort employees based on their salary

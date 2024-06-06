@@ -79,8 +79,8 @@ public class VariablesAndTechniques {
 			listOfEmp.add(
 					Employee.builder()
 					.id(random.nextInt(999))
-					.f_name("Employee : "+alphabets[num])
-					.l_name(mixAlphas[num])
+					.firstName("Employee : "+alphabets[num])
+					.lastName(mixAlphas[num])
 					.role(roles[random.nextInt(roles.length)])
 					.company(companies[random.nextInt(companies.length)])
 					.age(random.nextInt(65)).salary(random.nextInt(1000)*100)
@@ -103,8 +103,8 @@ public class VariablesAndTechniques {
 			listOfEmp.add(
 					Employee.builder()
 					.id(num)
-					.f_name("Employee : "+alphabets[random.nextInt(51)])
-					.l_name(mixAlphas[random.nextInt(mixAlphas.length-1)])
+					.firstName("Employee : "+alphabets[random.nextInt(51)])
+					.lastName(mixAlphas[random.nextInt(mixAlphas.length-1)])
 					.role(roles[random.nextInt(roles.length)])
 					.company(companies[random.nextInt(companies.length)])
 					.age(random.nextInt(65))
@@ -177,12 +177,12 @@ public class VariablesAndTechniques {
 							+mixAlphas[random.nextInt(mixAlphas.length-1)]+""
 							+getRandomNumber(100, 999)+"-"+
 							+getRandomNumber(1000, 9999))
-					.f_name(namesList.get(random.nextInt(namesList.size()-1)))
-					.l_name(surNamesList.get(random.nextInt(surNamesList.size()-1)))
+					.firstName(namesList.get(random.nextInt(namesList.size()-1)))
+					.lastName(surNamesList.get(random.nextInt(surNamesList.size()-1)))
 					.role(roles[random.nextInt(roles.length)])
 					.company(companies[random.nextInt(companies.length)])
 					.age(getRandomNumber(18,80))
-					.salary(getRandomNumber(10000, 9999999))
+					.salary(getRandomNumber(10000, 999999))
 					.dob(getARandomDate())
 					.address(addressList.get(random.nextInt(addressList.size()-1)))
 					.build());

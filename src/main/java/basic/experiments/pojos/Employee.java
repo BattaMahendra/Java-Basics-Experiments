@@ -13,11 +13,11 @@ public class Employee {
 		super();
 	}
 	
-	public Employee(int id,String empId, String f_name, String l_name, String company, String role, int age ,double salary, Address a , String doj) {
+	public Employee(int id, String empId, String f_name, String lastName, String company, String role, int age , double salary, Address a , String doj) {
 		super();
 		this.id = id;
-		this.f_name = f_name;
-		this.l_name = l_name;
+		this.firstName = f_name;
+		this.lastName = lastName;
 		this.company = company;
 		this.role = role;
 		this.age = age;
@@ -29,8 +29,8 @@ public class Employee {
 	
 	int id;
 	String empId;
-	String f_name;
-	String l_name;
+	String firstName;
+	String lastName;
 	String company;
 	String role;
 	int age;
@@ -45,17 +45,17 @@ public class Employee {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getF_name() {
-		return f_name;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setF_name(String f_name) {
-		this.f_name = f_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getL_name() {
-		return l_name;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setL_name(String l_name) {
-		this.l_name = l_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getCompany() {
 		return company;

@@ -10,13 +10,13 @@ public class Test {
         else System.out.println("false");
 
         Employee emp1 = new Employee();
-        emp1.setF_name("Pavan");
+        emp1.setFirstName("Pavan");
 
         Employee emp2 = new Employee();
-        emp2 .setF_name(emp1.getF_name());
+        emp2 .setFirstName(emp1.getFirstName());
         System.out.println("before assigning "+ emp2);
 
-        emp1.setF_name("Mahendra");
+        emp1.setFirstName("Mahendra");
 
         System.out.println(emp1+"\n"+emp2);
     }

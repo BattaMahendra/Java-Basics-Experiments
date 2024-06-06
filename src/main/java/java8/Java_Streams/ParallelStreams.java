@@ -26,7 +26,7 @@ public class ParallelStreams {
 														.map(emp -> {
 															NewEmployee n = new NewEmployee();
 															n.id=emp.getId();
-															n.name=emp.getF_name();
+															n.name=emp.getFirstName();
 															n.role=emp.getRole();
 															count+=emp.getId();
 															return n;
@@ -47,7 +47,7 @@ public class ParallelStreams {
 														.map(emp -> {
 															NewEmployee n = new NewEmployee();
 															n.id=emp.getId();
-															n.name=emp.getF_name();
+															n.name=emp.getFirstName();
 															n.role=emp.getRole();
 															count+=emp.getId();
 															return n;

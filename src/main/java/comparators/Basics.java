@@ -11,7 +11,7 @@ public class Basics {
 	static List<Employee> employees = VariablesAndTechniques.populateEmployee().subList(0, 6);
 
 	 //leveraging java 8 to create comparator interfaces --> using lambda functions
-	static Comparator<Employee> advancedNameComparator = (emp1 , emp2) -> emp1.getF_name().compareTo(emp2.getF_name());
+	static Comparator<Employee> advancedNameComparator = (emp1 , emp2) -> emp1.getFirstName().compareTo(emp2.getFirstName());
 	//more concise way of creating comparators --> using internal methods of comparator
 	static Comparator<Employee> idComparator = Comparator.comparing(Employee::getId);
 	//we can compare object with multiple fields 
@@ -21,7 +21,7 @@ public class Basics {
 														//we can use predefined comparators
 														.thenComparing(advancedNameComparator)
 														//we can use method referencing
-														.thenComparing(Employee::getF_name)
+														.thenComparing(Employee::getFirstName)
 														.thenComparing(idComparator)
 														.thenComparing(e -> e.getRole());
 																		
@@ -50,10 +50,10 @@ public class Basics {
 		employees.forEach(emp -> System.out.printf(emp.getAge()+" "));
 		
 		System.out.println("\nname of employees before sorting");
-		employees.forEach(emp -> System.out.println(emp.getF_name()+" "));
+		employees.forEach(emp -> System.out.println(emp.getFirstName()+" "));
 		employees.sort(advancedNameComparator);
 		System.out.println("\nname of employees after sorting");
-		employees.forEach(emp -> System.out.println(emp.getF_name()+" "));
+		employees.forEach(emp -> System.out.println(emp.getFirstName()+" "));
 		
 		System.out.println("\nid of employees before sorting");
 		employees.forEach(emp -> System.out.println(emp.getId()+" "));

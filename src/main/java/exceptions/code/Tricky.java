@@ -20,10 +20,11 @@ public class Tricky {
             return s.length();
         }catch(Exception e) {
             System.out.println(" we are in the catch block \n");
+
             return 0;
         }
         finally{
-            //System.exit(0);
+            // System.exit(0);
             System.out.println(" we are in the finally block \n");
             //return 1;
         }
