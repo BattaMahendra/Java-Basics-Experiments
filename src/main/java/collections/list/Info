@@ -1,0 +1,13 @@
+How does Array list grows in size ?
+
+1. When ever you initialize the default capacity of array list  is 10.
+2. The default load factor is 0.75
+3. ArrayList changes its capacity based on the calculation of threshold
+4. Threshold = (Load Factor) * (Current Capacity) ==> 0.75 X 10 = 7(approximately)
+5. So when the 7 elements gets filled in the array list its threshold is reached and it increases
+    size based on following formula
+    new capacity = old capacity + (old capacity >> 1)
+                 = 10 + (5)
+                 = 15
+                 15 will be the new capcity of array list
+
