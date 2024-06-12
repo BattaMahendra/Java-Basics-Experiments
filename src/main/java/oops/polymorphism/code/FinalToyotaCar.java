@@ -20,11 +20,18 @@ public final class FinalToyotaCar {
     }
 
     //instance final variable --if uninitialized then it must be initialized in constructor
+    //we can also do it in instance block also
 
     public final String color;
+
     public  String customization;
 
     public final String wheels ="MRF";
+
+    {
+        System.out.println("we are inside instance block");
+        //color = "Red";
+    }
 
     /*
     * Constructor can't be final as it can't be inherited
@@ -32,6 +39,11 @@ public final class FinalToyotaCar {
     public  FinalToyotaCar(String carColor){
         this.color = carColor;
     }
+
+    //if you have multiple constructors then in all the constructors we need to initialize final variables
+    public FinalToyotaCar(){
+        this.color = "Default color";
+    };
 
     //static final method
     //If you make any method as final, you cannot override it.
