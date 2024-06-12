@@ -27,6 +27,8 @@ public class Student implements Serializable {
     private transient final String city = "Ananthapuramu";
 
     //experimenting transient with final keyword when variable is declared
+    //here transient works as the field is being initialized in the constructor
+    //and when the object is deserialized the constructor is not called so the state value will be null when deserialized
     private transient  final String state;
 
     public Student (){
