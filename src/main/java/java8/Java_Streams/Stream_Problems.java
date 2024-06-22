@@ -23,6 +23,15 @@ public class Stream_Problems {
 
         System.out.println("Max and min values in list: "+max+" "+ min);
 
+        //Consider a array containing 0's and 1's and now move all 1's to right and zeros to left using java 8
+        Integer[] arr = {1,0,0,1,0,1,1,0,0};
+
+        List<Integer> arrayList = Arrays.asList(arr);
+
+
+        //using sort technique
+        arrayList.sort(Comparator.reverseOrder());
+        System.out.println(arrayList);
 
     }
 
