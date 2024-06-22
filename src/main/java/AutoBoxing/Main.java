@@ -1,5 +1,7 @@
 package AutoBoxing;
 
+import basic.experiments.pojos.Employee;
+
 public class Main{
     public static void main (String[] args) {
         
@@ -33,6 +35,15 @@ public class Main{
         System.out.println("c==d :"+ (c==d)); //true
         System.out.println("a==b :"+ (a==b)); //true
         System.out.println("e==f :"+ (e==f)); 
-        System.out.println("a1==a2 :"+ (a1==a2)); 
+        System.out.println("a1==a2 :"+ (a1==a2));
+
+        System.out.println("Testing something");
+        System.out.println("===================================");
+        Employee emp  = new Employee();
+        String empId = "1234567";
+        emp.setEmpId(empId);
+        empId ="";
+        System.out.println(emp);
+
     }
 }

@@ -28,7 +28,7 @@ public class FlatMap {
 	public static void main(String[] args) {
 		
 		usingAFlatMap();
-		//castingObjectsInStream();
+		castingObjectsInStream();
 		
 	}
 
@@ -38,12 +38,18 @@ public class FlatMap {
 		 * flat map always flattens the complex collections
 		 * flatMap = flattening + map()
 		 * map() is used for transformation only, but flatMap() is used for both transformation and flattening
-		 * finally a flat map same as map will return a stream 
+		 * finally a flat map same as map will return a stream
+		 *
+		 * It takes input as following
+		 * <R> Stream<R> flatMap(Function<? super T,? extends Stream<? extends R>> mapper)
+		 *
+		 * It accepts a Function named mapper
+		 * here T is the input parameter and stream will be the output of this function
 		 */
-		System.out.println("before using a flat map");
+		System.out.println("==========================before using a flat map==================================");
 		System.out.println(listOfList);
 		
-		System.out.println("\n after using a flat map");
+		System.out.println("\n ====================================after using a flat map==============================");
 		
 		listOfObjects=listOfList.stream()
 								//.flatMap(eachList->eachList.stream())
@@ -101,14 +107,14 @@ public class FlatMap {
 				 */
 				.filter(Employee.class::isInstance)
 				.map(Employee.class::cast)
-				.map(Employee::getCompany)
+				.map(Employee::getId)
 				
 				// the above two lines are decoded as 
 //				.map(employee ->{
 //					Employee emp =(Employee)employee;
 //					return emp.getId();
 //				})
-				
+				.sorted()
 				.collect(Collectors.toList());
 
 		System.out.println(listOfObjects);
