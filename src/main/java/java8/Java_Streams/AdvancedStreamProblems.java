@@ -38,19 +38,23 @@ public class AdvancedStreamProblems {
         //find 3 highest salaries
         highestSalariedEmployeesLimit3();
 
-        // Reverse each word of a string using Java 8 streams?
-        String s = " My name is Mahendra and I am practising java 8 streams";
-        String output =
-                Arrays.stream(s.split(" "))
-                                    .map(eachWord -> new StringBuilder(eachWord).reverse())
-                                    .collect(Collectors.joining(" "));
-        System.out.println(output);
 
+        String s = " My name is Mahendra and I am practising java 8 streams";
         //reverse a sentence
+        reverseASentence(s);
+
+        // Reverse each word of a string using Java 8 streams?
+        everyWordReverseInSentence(s);
+
+
+    }
+
+    private static void reverseASentence(String s) {
+        System.out.println("\n========== Reverse a given sentence=========== \n given sentence:  "+s);
         String output2 =
                 Arrays.stream(s.split(" ")).
                         reduce("", (growingSentence, eachWord) ->eachWord+" "+growingSentence );
-        System.out.println(output2);
+        System.out.println(" After reversing: "+output2);
 
         //method:2
         // Reverse the order of words using a Stream
@@ -60,8 +64,17 @@ public class AdvancedStreamProblems {
                 .ifPresent(joiner::add);
         System.out.println(joiner);
 
+    }
 
-
+    private static String everyWordReverseInSentence(String s) {
+        System.out.println("\n============= Word Reverse ==========");
+        System.out.println("Before reversing\n"+s);
+        String output =
+                Arrays.stream(s.split(" "))
+                                    .map(eachWord -> new StringBuilder(eachWord).reverse())
+                                    .collect(Collectors.joining(" "));
+        System.out.println("After reversing\n"+output);
+        return s;
     }
 
     private static void highestSalariedEmployeesLimit3() {
@@ -90,14 +103,14 @@ public class AdvancedStreamProblems {
                         );
 
         empPartitionByAge25.entrySet().forEach(entry -> {
-            System.out.println("\n");
-            System.out.println(entry.getKey());
-            System.out.println(entry.getValue());
+            System.out.println("\n=================== "+entry.getKey()+" ====================");
+            entry.getValue().forEach(System.out::println);
 
         });
     }
 
     private static void statistics() {
+        System.out.println("\n================ Summary statistics ==============================");
         DoubleSummaryStatistics summaryStatistics =
                 employeeList.stream().
                         collect(Collectors.summarizingDouble(Employee::getEmp_salary)
@@ -108,6 +121,8 @@ public class AdvancedStreamProblems {
     }
 
     private static void deptWiseSorting() {
+
+        System.out.println("\n ============================ youngest male employee in each department =========================================");
         Map<String, Optional<Employee>> youngMaleEmpDeptWise = employeeList.stream()
                                                     .filter(emp -> emp.getEmp_gender().equalsIgnoreCase("male"))
                                                     .collect(
@@ -125,26 +140,33 @@ public class AdvancedStreamProblems {
                         Collectors.collectingAndThen(
                                        Collectors.toList(),
                                             employeeList -> {
-                                            employeeList.sort(Comparator.comparing(Employee::getEmp_name).reversed());
+                                            employeeList.sort(Comparator.comparing(Employee::getEmp_age).reversed());
                                             return employeeList;
                                             })
 
                                ));
-
+        System.out.println("\n======= Printing list of employees(older to younger) department wise ============");
         deptWiseEmpList.entrySet().forEach(entry ->{
-            System.out.println(entry.getKey());
-            System.out.println(entry.getValue());
-            System.out.println("=======================");
+            System.out.println("\n============ "+ entry.getKey()+" ==============");
+            entry.getValue().forEach(System.out::println);
+
         });
     }
 
     private static void highestPaidEmployee() {
+        System.out.println("\n==================== Highest salaried Employee ======================");
         Employee highestSalaryEmployee = employeeList.stream().
                 sorted(Comparator.comparing(Employee::getEmp_salary).reversed()).
                 findFirst().orElse(null);
         //other way to find
         highestSalaryEmployee = employeeList.stream().
                                                 collect(Collectors.maxBy(Comparator.comparing(Employee::getEmp_salary))).orElse(null);
+
+        //using max()
+        highestSalaryEmployee = employeeList.stream().max(Comparator.comparing(Employee::getEmp_salary)).orElse(null);
+
+        //using max() , custom comparator
+        highestSalaryEmployee = employeeList.stream().max((e1,e2) -> (int)e1.getEmp_salary()-(int)e2.getEmp_salary()).orElse(null);
         System.out.println(highestSalaryEmployee);
     }
 
