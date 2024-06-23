@@ -3,6 +3,7 @@ package java8.Java_Streams;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.*;
 
@@ -118,7 +119,106 @@ public class Stream_Problems {
 
         usingStringInternalFunctions(s);
 
+        /**
+         * Find the sum of the first 10 natural numbers
+         *
+         * Write a Java 8 program to find the sum of the first 10 natural numbers using streams.
+         */
 
+        int sumOf10NaturalNumber = IntStream.rangeClosed(1, 10)
+                .sum();
+        System.out.println(sumOf10NaturalNumber);
+
+        /**
+         * Reverse an integer array
+         *
+         * Write a Java 8 program to reverse an integer array.
+         */
+        reverseArray(list);
+
+        /**
+         * Find the most repeated element in an array
+         *
+         * Write a Java 8 program to find the most repeated element in an array.
+         */
+
+        System.out.println("Most repeated element in array is : "+ mostRepeatedElememtInArray(list));
+        //alternative approach
+        mostRepeatedElement();
+
+        /**
+         * Check if a string is a palindrome using Java 8 streams
+         *
+         * Write a Java 8 program to check if a given string is a palindrome using the stream API and lambda expressions.
+         */
+
+        isPalindrome();
+
+
+
+    }
+
+    private static void isPalindrome() {
+        System.out.println("\n============Palindrome===============");
+        //method-1: using StringBuilder
+        Function<String, Boolean> isPalindrome = givenString -> {
+            StringBuilder sb = new StringBuilder(givenString).reverse();
+            return givenString.equals(sb.toString());
+        };
+        //tesitng
+        System.out.println("is given string palindrome: "+ isPalindrome.apply("faf"));
+
+        //method-2: using IntStream
+        String str = "momd";
+        String temp = str.replaceAll("\\s+", "").toLowerCase();
+        System.out.println("is palindrome string " +IntStream.range(0, temp.length() / 2)
+                .noneMatch(i -> temp.charAt(i) != temp.charAt(temp.length() - i - 1)));
+    }
+
+    private static void mostRepeatedElement() {
+        int [] elements = {2,3,1,4,4,1,4,333,3,333,2,2,2,5,222};
+
+        System.out.println("original Array" + Arrays.toString(elements));
+        Function<Map<Integer, Long>, Integer> maxValuesKey = integerLongMap ->
+                integerLongMap.entrySet()
+                        .stream()
+                        .max(Map.Entry.comparingByValue())
+                        .map(Map.Entry::getKey)
+                        .orElse(Integer.MAX_VALUE);
+
+        Integer maxDuplicateValue = Arrays.stream(elements)
+                .boxed()
+                .collect(collectingAndThen(groupingBy(Function.identity(),
+                        counting()), maxValuesKey));
+
+        System.out.println("max duplicate value in the array "+maxDuplicateValue);
+    }
+
+    private static Integer mostRepeatedElememtInArray(List<Integer> list) {
+        System.out.println("\n=============== Most Repeated Elememt In Array =================");
+        int[] givenArray = list.stream().mapToInt(i -> i).toArray();
+        System.out.println("Given array is :"+Arrays.toString(givenArray));
+        return Arrays.stream(givenArray)
+                .boxed() //converts int into Integer
+                .collect(Collectors.groupingBy(Function.identity(), counting()))
+                .entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .stream().findFirst().orElse(null);
+    }
+
+    private static void reverseArray(List<Integer> list) {
+        System.out.println("\n===============Reversing an array=================");
+        //given array is
+        int[] givenArray = list.stream().mapToInt(i -> i).toArray();
+        System.out.println("Given array is :"+Arrays.toString(givenArray));
+
+        //reversing array
+        int[] reversedArray = IntStream.rangeClosed(1, givenArray.length)
+                .map(number -> givenArray[givenArray.length - number])
+                .toArray();
+        System.out.println("reversedArray Array" + Arrays.toString(reversedArray));
     }
 
     private static void usingStringInternalFunctions(String s) {
