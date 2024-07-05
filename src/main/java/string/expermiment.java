@@ -1,6 +1,11 @@
 package string;
 
+import basic.experiments.pojos.Emp;
+import basic.experiments.pojos.Employee;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class expermiment {
@@ -33,7 +38,10 @@ public class expermiment {
 		System.out.println(s==v); 
 		System.out.println(s==t); 
 		System.out.println(u==t); 
-		System.out.println(s.equals(t)); 
+		System.out.println(s.equals(t));
+
+		Optional<Integer> hello = new ArrayList<Employee>().stream().filter(r -> r.getId() == 2).findFirst().map(Employee::getId);
+		System.out.println(hello);
 	}
 
 }

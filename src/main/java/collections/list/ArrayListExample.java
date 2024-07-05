@@ -1,6 +1,7 @@
 package collections.list;
 
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ArrayListExample {
 
@@ -48,5 +49,12 @@ public class ArrayListExample {
     public static void main(String[] args) {
         ArrayListExample obj = new ArrayListExample();
         obj.instaintiaion();
+
+        //thread-safe variant of array list --> CopyOnWriteArrayList
+
+        CopyOnWriteArrayList<String> synchronisedList = new CopyOnWriteArrayList<>();
+        synchronisedList.add("Hello");
+        synchronisedList.add("hi");
+
     }
 }
