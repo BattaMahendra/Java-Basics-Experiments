@@ -3,6 +3,8 @@
 3. HashMap and LinkedHashMap are generally faster for most operations, especially in scenarios with a large number of elements,
    but they do not guarantee any specific order.
 
+Internal working of Hashmap: https://dip-mazumder.medium.com/how-hashmap-internally-works-in-java-8-e72bb8697e06
+
 
 TreeMap vs LInkedHashMap vs HashMap vs HashTable
 
@@ -67,5 +69,23 @@ Key points of ConcurrentHashMap:
 highly recommended to go to this website and read up to last : https://www.geeksforgeeks.org/concurrenthashmap-in-java/
 
 also refer github repo for more qs on maps: https://github.com/BattaMahendra/Necessary/edit/master/Interview-questions/java8/maps
+
+
+
+Why HashTable Doesn’t Allow null and HashMap Do?
+
+In the above differences between HashTable and HashMap,
+there is a point : A HashMap can allow null keys and values, whereas a HashTable does not allow null.
+You must be wondering, why a HashMap can store a null whereas HashTable cannot store a null. Let us understand the reason in detail.
+
+A HashTable stores the object in the key, value pair.
+In order to store and retrieve the object successfully, the object which is used as a key must implement the hashCode method and the equals method.
+Since null is not an object, it cannot implement these hashCode method and the equals method.
+ So if we store null inside the HashTable, it will not work and throw a null pointer exception error.
+ However, HashMap is a modern version of HashTable and it was created later.
+ It will allow one null key and any number of null values.
+
+ In Hashmap if the key is null then hashing of null is 0 which means it is always stored in the first bucket.
+ In this way hashmap allows only one null key.
 
 

@@ -11,3 +11,35 @@ How does Array list grows in size ?
                  = 15
                  15 will be the new capcity of array list
 
+Synchronisation of Lists
+
+CopyOnWriteArrayList, Collections.synchronizedList, and Vector are all classes in Java that provide thread-safe access to lists,
+but they differ in their implementation and performance characteristics:
+
+ CopyOnwriteArrayList
+
+Thread Safety Mechanism:
+ Uses a copy-on-write mechanism to ensure thread safety.
+ This means that all mutative operations (add, set, remove, etc.) make a fresh copy of the underlying array.
+
+Performance:
+Iteration is very efficient since it reads directly from the array.
+However, mutative operations can be costly because they involve copying the entire array.
+
+Use Cases:
+Ideal for situations where reads vastly outnumber writes,
+ or where it's important not to have ConcurrentModificationException during iteration.
+
+
+ **Key Differences**:
+
+ - **Concurrency Mechanism**: CopyOnWriteArrayList uses a copy-on-write strategy, while Collections.synchronizedList and Vector use synchronized methods.
+ - **Performance**: CopyOnWriteArrayList has efficient iteration but costly mutative operations. synchronizedList and Vector can suffer from performance issues due to contention on the synchronized lock.
+ - **Flexibility**: CopyOnWriteArrayList allows concurrent reads and writes without explicit synchronization for reads, whereas synchronizedList and Vector require synchronized blocks or methods for both reads and writes.
+
+ **Choosing Between Them**:
+
+ - Use **CopyOnWriteArrayList** when you have frequent reads and occasional writes, and you want to avoid concurrent modification exceptions during iteration.
+ - Use **Collections.synchronizedList** if you have an existing List implementation (like ArrayList) and need thread safety without major code changes.
+ - **Vector** is less commonly used now due to its performance characteristics, but it can still be used if you're working with legacy code or require compatibility with older Java versions.
+
