@@ -24,6 +24,7 @@ public class TestJoin {
         printThreadState(t1, t2, t3);
         joinGivenThread(t1);
         printThreadState(t1, t2, t3);
+        System.out.println("===================================");
         //start the thread t2 only after join time is completed or t1 is dead
         startGivenThread(t2);
         printThreadState(t1, t2, t3);
@@ -31,9 +32,10 @@ public class TestJoin {
         joinGivenThread(t1);
         printThreadState(t1, t2, t3);
         //start the thread t3 only after join time is completed or t1 and t2 are dead
+        System.out.println("===================================");
         startGivenThread(t3);
         printThreadState(t1, t2, t3);
-
+        System.out.println("===================================");
         printThreadState(t1, t2, t3);
         joinGivenThread(t3);
         printThreadState(t1, t2, t3);
@@ -72,7 +74,7 @@ class MyRunnable implements Runnable{
         for (int i = 0; i < 3; i++) {
 
             try {
-                sleep(1500);
+                sleep(500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

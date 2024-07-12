@@ -26,7 +26,7 @@ public class StaticSynchronisation extends TestMultiThreading {
     public static synchronized void printLoop() {
 
         for (int i = 0; i <= 10; i++) {
-            System.out.println("This thread is " + Thread.currentThread().getName() + " wtih value " + i);
+            System.out.println("This thread is " + Thread.currentThread().getName() +" with priority as: "+Thread.currentThread().getPriority()+ " wtih value " + i);
         }
     }
 
@@ -55,10 +55,10 @@ public class StaticSynchronisation extends TestMultiThreading {
         * 5 as the priority
          Learn more here: https://www.javatpoint.com/thread-scheduler-in-java
          */
-        c1.setPriority(8);
-        c2.setPriority(10);
-        c3.setPriority(10);
-        c4.setPriority(10);
+        c1.setPriority(1);
+        c2.setPriority(5);
+        c3.setPriority(4);
+        c4.setPriority(8);
         c5.setPriority(10);
 
         startGivenThread(c1);
