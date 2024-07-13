@@ -1,7 +1,9 @@
 package experiment;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 public class Test2 {
 
@@ -20,5 +22,15 @@ public class Test2 {
         HashSet<Object> set = new HashSet<>();
         set.add(s);
         set.add(i);
+
+        List<String> names  = new ArrayList<>();
+        names.add("4");
+        names.add("2");
+        names.add("3");
+        names.add("1");
+
+        String str  = names.stream().findAny().get();
+        System.out.println(str);
+
     }
 }
