@@ -2,9 +2,7 @@ package multi_threading.synchronization;
 
 
 
-import multi_threading.ConcurrentThreads;
-import multi_threading.TestMultiThreading;
-import multi_threading.ThreadOperations;
+import multi_threading.ThreadPriority;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -18,7 +16,7 @@ import java.util.concurrent.CountDownLatch;
 * it acquires Object level lock and when it enters into synchronized static method or block it acquires class level lock.
 * */
 
-public class StaticSynchronisation extends TestMultiThreading {
+public class StaticSynchronisation extends ThreadPriority {
 
     /*
      * Try removing synchronised keyword and see the difference

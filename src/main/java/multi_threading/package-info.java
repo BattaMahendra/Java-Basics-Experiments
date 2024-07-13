@@ -27,4 +27,15 @@ Threads are independent.
 1) It doesn't block the user because threads are independent and you can perform multiple operations at the same time.
 2) You can perform many operations together, so it saves time.
 3) Threads are independent, so it doesn't affect other threads if an exception occurs in a single thread.
+*
+* Questions
+*
+* 1. Why the wait() and notify() are always used in synchronized method or block ?
+* 2. Why wait() method is always inside while loop rather than if statement ?
+* 3. How to stop a thread in java ?
+*   - a. we can use a boolean flag and while loop .
+*   - b. We can use Thread.interrupted method to stop  a thread in java
+*   - c. THere is stop() method in java , which we should avoid to use as it causes problems and it is also deprecated.
+* 4. Difference between wait() and sleep() in java?
+* 5. Difference between yield() and wait() methods in java ?
 * */

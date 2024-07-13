@@ -20,12 +20,22 @@ public class MainThread {
         System.out.println("===================");
         System.out.println("===================");
         System.out.println("===================");
-        System.out.printf(" %s got ended ",Thread.currentThread().getName());
+
 
         /*Achieving deadlock situation with main thread
         * Here the main thread is waiting for itself to terminate which
         * makes program to run forever and the deadlock is created*/
-        //Thread.currentThread().join();
+       // Thread.currentThread().join();
+
+        /*
+        * One more way to create deadlock with main thread
+        * */
+        String lock = "lock";
+        synchronized (lock){
+           // lock.wait(); // this will make main thread to wait() infinately
+        }
+
+        System.out.printf(" %s got ended ",Thread.currentThread().getName());
     }
 
     private static  Thread customThreadCreation() {

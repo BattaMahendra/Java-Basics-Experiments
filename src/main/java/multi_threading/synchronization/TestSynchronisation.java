@@ -1,8 +1,8 @@
 package multi_threading.synchronization;
 
-import multi_threading.TestMultiThreading;
+import multi_threading.ThreadPriority;
 
-public class TestSynchronisation extends TestMultiThreading {
+public class TestSynchronisation extends ThreadPriority {
 
     /*
     * Try using synchronised keyword in the following method signature and
