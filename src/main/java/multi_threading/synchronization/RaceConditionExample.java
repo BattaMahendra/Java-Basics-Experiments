@@ -19,7 +19,7 @@ public class RaceConditionExample{
     * if you runt this program multiple times you get varied result, ideally you should get 300 but
     * it varies due to race condtion
     * */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Counter c = new Counter();
 
@@ -31,14 +31,19 @@ public class RaceConditionExample{
 
         CountDownLatch latch = new CountDownLatch(1);
 
-        CustomConcurrentTask t2 = new CustomConcurrentTask(task , "thread2", latch );
-        CustomConcurrentTask t3 = new CustomConcurrentTask(task , "thread3", latch );
-        CustomConcurrentTask t1 = new CustomConcurrentTask(task , "thread1", latch );
+        CustomConcurrentTask c2 = new CustomConcurrentTask(task , "thread2", latch );
+        CustomConcurrentTask c3 = new CustomConcurrentTask(task , "thread3", latch );
+        CustomConcurrentTask c1 = new CustomConcurrentTask(task , "thread1", latch );
 
-        t1.run();
-        t2.run();
-        t3.run();
+        Thread t1 = new Thread(c1);
+        Thread t2 = new Thread(c2);
+        Thread t3 = new Thread(c3);
+
+        t1.start();
+        t2.start();
+        t3.start();
         latch.countDown();
+        Thread.sleep(1000);
         System.out.println("=====NOW RELEASE LATCH======");
 
 
