@@ -1,0 +1,68 @@
+
+
+Why volatile keyword fails in the incrementing of counter ?
+
+Understanding volatile in Java
+
+Definition and Purpose:
+The volatile keyword in Java is used to indicate that a variable's value will be modified by different threads.
+ It ensures that changes to the variable are always visible to other threads.
+  When a variable is declared as volatile, it means:
+
+Visibility Guarantee: Any read of a volatile variable will always return the most recent write by any thread.
+Happens-Before Relationship: A write to a volatile variable happens-before every subsequent read of that same variable.
+When to Use volatile:
+
+Flags and State Variables: When you have a flag or state variable that is read by multiple threads but only written to by one thread.
+Double-Checked Locking: To ensure the correct initialization of a singleton instance.
+Publishing Objects: To safely publish an object reference to other threads.
+Non-blocking Counters: In scenarios where you need visibility but not strict atomicity.
+Increment Operation and Atomicity
+
+Incrementing a counter (counter++) is not a single, atomic operation. Instead, it involves multiple steps:
+
+Read: The current value of the variable is read from memory.
+Increment: The value is incremented by one.
+Write: The new value is written back to memory.
+Even though volatile ensures visibility, it does not guarantee that these steps will be executed atomically. This means that when multiple threads are incrementing the same volatile variable, they can interfere with each other, leading to race conditions.
+
+Detailed Example of Race Condition
+
+Let's consider an example where two threads, Thread A and Thread B, are incrementing a volatile counter:
+
+Initial State:
+Counter is initialized to 0.
+Thread A and Thread B are both about to increment the counter.
+
+Thread A Reads:
+Thread A reads the value of the counter (0).
+
+Thread B Reads:
+Before Thread A can write back the incremented value, Thread B reads the value of the counter (still 0).
+
+Thread A Increments and Writes:
+Thread A increments the value to 1 and writes it back to the counter.
+
+Thread B Increments and Writes:
+Thread B, which read the counter as 0, increments it to 1 and writes it back to the counter.
+
+Final State:
+Both threads have incremented the counter once, but due to the race condition, the final value of the counter is 1 instead of the expected 2.
+Summary
+
+volatile ensures visibility but not atomicity.
+Increment operations (counter++) are not atomic and involve multiple steps.
+Using synchronized or AtomicInteger ensures atomicity, preventing race conditions and ensuring the correct final value.
+Difference Between volatile and AtomicInteger
+
+Volatile:
+Guarantees visibility of changes to variables across threads.
+Suitable for simple flags and state variables.
+Does not ensure atomicity for compound operations like incrementing.
+
+AtomicInteger:
+Ensures both visibility and atomicity for operations.
+Provides atomic methods like incrementAndGet() and decrementAndGet().
+Suitable for counters and other variables that require atomic operations.
+In conclusion, volatile is useful for ensuring visibility of changes to variables across threads without the overhead of synchronization but is not suitable for compound operations that require atomicity.
+For atomic operations, AtomicInteger or synchronization mechanisms like synchronized should be used.
