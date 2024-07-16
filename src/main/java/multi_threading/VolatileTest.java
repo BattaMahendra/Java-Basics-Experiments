@@ -1,7 +1,7 @@
 package multi_threading;
 
 /*
-* Read volatile keyword from internet
+* Read volatile keyword from internet or go to theory file in the same package
 * */
 public class VolatileTest {
 
