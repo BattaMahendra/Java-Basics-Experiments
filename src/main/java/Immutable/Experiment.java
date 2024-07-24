@@ -27,7 +27,8 @@ public class Experiment {
 		
 		SmartPhone s = new SmartPhone(0, "Apple", tempMap2, models, b);
 		System.out.println(s+"\n");
-		
+
+		System.out.println("After updating");
 		s.getSpecifications().put("update", "update");
 		s.getBattery().setCapacity(0);
 		System.out.println(s+"\n");

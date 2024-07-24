@@ -1,5 +1,7 @@
 package experiment;
 
+import basic.experiments.pojos.Employee;
+
 public class Main {
 
     static final int i;
@@ -14,6 +16,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
+        Employee emp = null;
+        System.out.println("This "+emp.getEmpId());
 
     }
 

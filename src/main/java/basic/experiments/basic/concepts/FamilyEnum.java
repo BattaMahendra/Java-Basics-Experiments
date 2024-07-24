@@ -10,6 +10,7 @@ package basic.experiments.basic.concepts;
 public enum FamilyEnum {
 	/** 
 	 * the constants of enum are by default static and final
+	 * Constructors in enums are always private by default
 	 * we can add values to this constants by having a constructor
 	 */
 	
@@ -24,6 +25,7 @@ public enum FamilyEnum {
 	MOTHER,
 	CHILDREN,
 	//using different constructor to have values to this constant
+
 	GRANDPARENTS("the elder members and advisors of the family");
 	
 	private String role;
@@ -52,11 +54,12 @@ public enum FamilyEnum {
 	}
 	
 	/**
+	 * Constructors in enums are always private by default
+	 *
 	 * up on running the application the constructor is always called for each constant , so 
 	 * instance block executes every time constructor is clled
-	 * 
 	 */
-	private FamilyEnum() {
+	 FamilyEnum() {
 		System.out.println("hey , I am inside NO ARGS CONSTRUCTOR and constant invoked is "+this.name());
 		
 	}
@@ -73,6 +76,7 @@ public enum FamilyEnum {
 		System.out.println(GRANDPARENTS.role);
 		
 	}
+
 
 
 }

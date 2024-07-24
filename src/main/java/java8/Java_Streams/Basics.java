@@ -22,6 +22,7 @@ public class Basics {
                 //It accepts as Consumer functional interface as input and return the original stream to next operatiosn.
                 //no changes are applied to original stream.
                 .peek(c -> {
+                    //here even though we change the value of c , after peek() completion original stream wil be returned
                         c = c+100;
                         System.out.println("we are in peek method"+c);
                     })

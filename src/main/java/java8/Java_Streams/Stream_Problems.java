@@ -12,7 +12,9 @@ public class Stream_Problems {
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(0,1,1,1,1,7,8,9,5,2,36,4,78,222,24,9);
 
+
         sumOfNumbersInTheList(list);
+
 
         averageOfNumbersInTheList(list);
 
@@ -101,6 +103,7 @@ public class Stream_Problems {
          */
         String[] words1 = {"hey", "hello", "Hii", "give", "damn", "said"};
         String[] words2 = {"hey", "how", "Hii", "give", "what", "said"};
+
 
         //using list internal methods
         List<String> wordList1 = Arrays.asList(words1);
@@ -421,13 +424,13 @@ public class Stream_Problems {
         System.out.println("Duplicates using counting method : "+duplicateIntegers);
 
 
-        List<Integer> uniqueElement = list
+        List<Integer> duplicateElements = list
                 .stream()
                 .filter(number -> list.indexOf(number)
                         != list.lastIndexOf(number))
                 .distinct()
                 .collect(toList());
-        System.out.println("Duplicates using indexOf method : "+uniqueElement);
+        System.out.println("Duplicates using indexOf method : "+duplicateElements);
     }
 
     private static void numbersStartingWith2(List<Integer> list) {
