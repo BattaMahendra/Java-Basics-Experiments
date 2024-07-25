@@ -55,6 +55,5 @@ public class ArrayListExample {
         CopyOnWriteArrayList<String> synchronisedList = new CopyOnWriteArrayList<>();
         synchronisedList.add("Hello");
         synchronisedList.add("hi");
-
     }
 }
