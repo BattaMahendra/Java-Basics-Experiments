@@ -12,6 +12,44 @@ public class TryCatchExperiments {
     public static void main(String[] args)  {
         aStaticMethod();
 
+        multipleExcepitonsInSameCatchBlock(args);
+
+        tryWithoutCatchBlock();
+
+    }
+
+    /*
+    * We can have try block wihtout catch block
+    * */
+
+
+    private static void tryWithoutCatchBlock() {
+        try {
+            System.out.println("Inside try block");
+            int result = 10 / 0; // This will cause an ArithmeticException
+        } finally {
+            System.out.println("Inside finally block");
+        }
+    }
+
+    /*
+    * using pipe " | " operator we can catch multiple exceptions in same catch block.
+    * */
+    private static void multipleExcepitonsInSameCatchBlock(String[] args) {
+        try {
+            System.out.println("Inside try block");
+            if (args.length > 0) {
+                int result = 10 / 0; // This will cause an ArithmeticException
+            } else {
+                int[] numbers = new int[2];
+                numbers[3] = 5; // This will cause an ArrayIndexOutOfBoundsException
+            }
+            //here you will be using single variable for all exceptions
+        } catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("Exception caught: " + e);
+        } finally {
+            System.out.println("Inside finally block");
+        }
     }
 
     static void aStaticMethod(){

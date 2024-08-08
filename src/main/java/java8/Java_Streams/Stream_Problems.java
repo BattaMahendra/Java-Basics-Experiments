@@ -356,6 +356,8 @@ public class Stream_Problems {
                 .collect(groupingBy(Function.identity(),
                         collectingAndThen(counting(), Long::intValue)));
         System.out.println(countCharacter);
+
+
     }
 
 

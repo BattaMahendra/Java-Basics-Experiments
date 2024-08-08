@@ -6,15 +6,46 @@ import java.util.TreeSet;
 public class ArrayProblems {
 
     public static void main(String[] args) {
-       // int[] arr = {22,22,21,21,20,6,2,9,1,4,8,3,7,2,10,10,9,8,22};
-        int[] arr = { 2,2,1,1,1,1,1,1,1,3,3};
+        int[] arr = {22,22,21,21,20,6,2,9,1,4,8,3,7,2,10,10,9,8,22};
+       // int[] arr = { 2,2,1,1,1,1,1,1,1,3,3};
         secondLargestElementUsingTreeSet(arr);
         //  {1,2,3,4,5,6}
         findSecondLargestElement(arr);
 
         System.out.println(checkIfArrayisSorted(arr));
         removeDuplicates(arr);
+        arr = new int[]{22, 22, 21, 21, 20, 6, 2, 9, 1,1,1,2,2, 4, 8, 3, 7, 2, 10, 10, 9, 8, 22};
+        thirdSmallestElement(arr);
 
+    }
+
+    private static void thirdSmallestElement(int[] arr) {
+        int minValue = Integer.MAX_VALUE;
+        int secondMinValue = Integer.MAX_VALUE;
+        int thirdMinValue = Integer.MAX_VALUE;
+        System.out.println(minValue);
+
+        for(int i = 0; i< arr.length; i++){
+            if( arr[i] < minValue ){
+
+                thirdMinValue = secondMinValue;
+                secondMinValue = minValue;
+                minValue = arr[i];
+            }else if(arr[i] < secondMinValue && arr[i] > minValue){
+
+                thirdMinValue = thirdMinValue;
+                secondMinValue = arr[i];
+
+
+
+            }else if(arr[i] < thirdMinValue && arr[i] > secondMinValue){
+
+                thirdMinValue = arr[i];
+            }
+
+        }
+
+        System.out.println("Smallest :"+ minValue +" "+secondMinValue+" "+thirdMinValue);
     }
 
     private static void removeDuplicates(int[] arr) {

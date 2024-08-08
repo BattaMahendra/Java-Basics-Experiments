@@ -14,6 +14,7 @@ is made visible to all threads and every thread reads value from  main memory in
 
 Visibility Guarantee: Any read of a volatile variable will always return the most recent write by any thread.
 Happens-Before Relationship: A write to a volatile variable happens-before every subsequent read of that same variable.
+
 When to Use volatile:
 
 Flags and State Variables: When you have a flag or state variable that is read by multiple threads but only written to by one thread.

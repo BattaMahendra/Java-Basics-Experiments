@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.util.ISO8601Utils;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Problem2 {
@@ -12,9 +13,10 @@ public class Problem2 {
         String input = "143Kishore";
         bruteForceApproach(input);
         regexApproach(input);
+        internalMethodsApproach(input);
 
         //Find first non repetetive character in Array
-        String s = "111aaaabbbbbbbbbcchccccccjjjjj";
+        String s = "111aaaabbbbbbbbbcchccccccjjjjjmapsbcdedfgijklmnopqrstuvw";
         indexBasedApproach(s);
         System.out.println(sortApproach(s));
         mapBased(s);
@@ -32,7 +34,7 @@ public class Problem2 {
     }
 
     private static Character sortApproach(String s) {
-        Map<Character,Integer> storeMap = new HashMap<>();
+        Map<Character,Integer> storeMap = new LinkedHashMap<>();
         char[] ch = s.toCharArray();
         Arrays.sort(ch);
         char firstNonRepetitive ;
@@ -47,22 +49,30 @@ public class Problem2 {
     }
 
     private static void mapBased(String s) {
-        Map<Character,Integer> storeMap = new HashMap<>();
+        Map<Character,Integer> storeMap = new LinkedHashMap<>();
         char[] ch = s.toCharArray();
         for(int i=0; i<ch.length; i++){
             if(storeMap.containsKey(ch[i]))
                 storeMap.put(ch[i] , storeMap.get(ch[i])+1);
-            else storeMap.put(ch[i],0);
+            else storeMap.put(ch[i],1);
         }
         System.out.println(storeMap);
-        storeMap.entrySet().stream().filter(entry -> entry.getValue()==0)
-                .forEach(entry -> System.out.println(entry.getKey()));
+        char reqChar  = storeMap.entrySet().stream().filter(entry -> entry.getValue()==1)
+                .findFirst().get().getKey();
+        System.out.println("map based "+ storeMap);
+        System.out.println(reqChar);
     }
 
     private static void regexApproach(String input) {
         int value = Integer.parseInt(input.replaceAll("[^0-9]", ""));
     }
-
+    private static void internalMethodsApproach(String input){
+        String output = "";
+        for(int i=0; i<input.length(); i++){
+            if(Character.isDigit( input.charAt(i))) output = output+input.charAt(i);
+        }
+        System.out.println("Extracting digits using string internal : "+output);
+    }
     private static void bruteForceApproach(String input) {
         char[] c = input.toCharArray();
         char[] numArray = {'0','1','2','3','4','5','6','7','8','9'};

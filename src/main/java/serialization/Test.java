@@ -23,6 +23,8 @@ public class Test {
         ObjectInputStream oin  = new ObjectInputStream(fin);
         Student deserializedStudent = (Student) oin.readObject();
         System.out.println("\n deserialized java object"+deserializedStudent);
+        //static variables
+        System.out.println(Student.stateBoard);
 
         oin.close();
         fin.close();

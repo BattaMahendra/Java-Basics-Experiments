@@ -46,6 +46,18 @@ public class AdvancedStreamProblems {
         // Reverse each word of a string using Java 8 streams?
         everyWordReverseInSentence(s);
 
+        String name = "Manju Angadi";
+
+        System.out.println("\n\n\nInterview Question");
+        Stream<String> st = Stream.iterate("", str -> str+"x");
+        System.out.println(st.limit(3).map(str -> str+"y"));
+
+        // xyx , yxy , xxy , map will do toString
+
+        Stream<String> pt = Stream.iterate("", str -> str+"x");
+        pt.limit(2).forEach(System.out::print);
+
+
 
     }
 
@@ -77,7 +89,9 @@ public class AdvancedStreamProblems {
         return s;
     }
 
+
     private static void highestSalariedEmployeesLimit3() {
+        System.out.println("\n\n Highest Salaried employees");
         List<Employee> highestSalaryEmployees =
                 employeeList.stream()
                         .sorted(Comparator.comparingDouble(Employee::getEmp_salary).reversed())
@@ -167,6 +181,8 @@ public class AdvancedStreamProblems {
 
         //using max() , custom comparator
         highestSalaryEmployee = employeeList.stream().max((e1,e2) -> (int)e1.getEmp_salary()-(int)e2.getEmp_salary()).orElse(null);
+
+        employeeList.stream().sorted(Comparator.comparing(Employee::getEmp_salary)).forEach(System.out::println);
         System.out.println(highestSalaryEmployee);
     }
 
