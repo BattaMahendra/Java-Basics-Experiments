@@ -410,7 +410,7 @@ public class Stream_Problems {
 
         //method-2: using Collections.frequency
         duplicateIntegers =list.stream()
-                               .filter(i -> Collections.frequency(list,i)>1)
+                               .filter(i -> Collections.frequency(list,i) > 1)
                                .distinct()
                                .collect(toList());
         System.out.println("Duplicates using frequency method : "+duplicateIntegers);
