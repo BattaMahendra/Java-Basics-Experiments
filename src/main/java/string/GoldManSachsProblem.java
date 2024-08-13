@@ -2,6 +2,7 @@ package string;
 
 import java.sql.SQLOutput;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class GoldManSachsProblem {
 
@@ -80,6 +81,14 @@ public class GoldManSachsProblem {
         String[] strArray2  = sentence.split(" ");
         Collections.reverse(Arrays.asList(strArray2));
         System.out.println(String.join(" ", strArray2));
+
+        //Method-3 using stack
+        Stack<String> stringStack = new Stack<>();
+        for(String s: sentence.split(" "))
+            stringStack.push(s);
+
+        String reversedSentence = stringStack.stream().collect(Collectors.joining(" "));
+        System.out.println("Reversing a sentence using a stack: "+reversedSentence);
     }
 
     private static void highestAverageMarks(String[][] objectArray) {
