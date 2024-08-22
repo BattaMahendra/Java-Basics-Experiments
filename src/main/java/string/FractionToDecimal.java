@@ -85,7 +85,7 @@ Write a function that takes two integers, `numerator` and `denominator`, and ret
 ```java
 public static String fractionToDecimal(int numerator, int denominator)
 ```
-
+---
 **Input**:
 - Two integers, `numerator` and `denominator`, where `denominator` is non-zero. The numerator can be zero or any integer (positive or negative), and the denominator is any non-zero integer (positive or negative).
 
