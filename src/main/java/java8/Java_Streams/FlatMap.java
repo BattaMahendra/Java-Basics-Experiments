@@ -42,6 +42,7 @@ public class FlatMap {
 		 *
 		 * It takes input as following
 		 * <R> Stream<R> flatMap(Function<? super T,? extends Stream<? extends R>> mapper)
+		 * flatMap in Java 8 does take a function that returns a Stream as input.
 		 *
 		 * It accepts a Function named mapper
 		 * here T is the input parameter and stream will be the output of this function
