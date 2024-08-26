@@ -42,6 +42,18 @@ public class expermiment {
 
 		Optional<Integer> hello = new ArrayList<Employee>().stream().filter(r -> r.getId() == 2).findFirst().map(Employee::getId);
 		System.out.println(hello);
+
+		String first = "1234";
+		String second = new Integer(1234).toString();
+
+		// intern() method forces jvm to add the applied string to string pool
+		String third = second.intern();
+
+		System.out.println("============================================="+"\n");
+		System.out.println(first==second);
+		System.out.println(first==third);
+		System.out.println(second==third);
+
 	}
 
 }
