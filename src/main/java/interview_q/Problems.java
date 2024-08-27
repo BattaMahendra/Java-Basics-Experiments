@@ -23,11 +23,12 @@ public class Problems {
     }
 
     private static void random4digitOTP() {
-        // usually Math.random() generates random values from 0.0 to o.9
+        // usually Math.random() generates random values from 0.0000.. to o.99999999.....
         // and our 4 digit otp should lie b/w 1000 and 9999
         //so we're multiplying with 9000 leads to max value of 8999.999 which is rounded to 8999
         // and 1000 is added initially to start with 1000
-        int otp = 1000 + (int) (Math.random() * 9000);
+        int otp = 1000 + (int) (Math.random() * 9);
+
         System.out.println(otp);
     }
 }
