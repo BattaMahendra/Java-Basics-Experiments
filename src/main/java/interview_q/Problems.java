@@ -27,7 +27,7 @@ public class Problems {
         // and our 4 digit otp should lie b/w 1000 and 9999
         //so we're multiplying with 9000 leads to max value of 8999.999 which is rounded to 8999
         // and 1000 is added initially to start with 1000
-        int otp = 1000 + (int) (Math.random() * 9);
+        int otp = 1000 + (int) (Math.random() * 9000);
 
         System.out.println(otp);
     }
