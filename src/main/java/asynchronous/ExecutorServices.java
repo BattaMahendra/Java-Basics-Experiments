@@ -1,5 +1,6 @@
 package asynchronous;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.ExecutorService;
 
@@ -16,13 +17,13 @@ public class ExecutorServices {
 	public static String returnAStringWithDelay(int seconds) throws Exception {
 		
 		Thread.sleep(seconds*1000);
-		if(seconds==13) throw new Exception();
+		if(seconds==13) throw new Exception("exception is thrown");
 		System.out.println("Hello World with timeout sec "+seconds);
 		
 		return "Hello World with timeout sec "+seconds;
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ExecutionException, InterruptedException {
 		
 		Future<String> future1= executors.submit(()->returnAStringWithDelay(15));
 		Future<String> future2=executors.submit(()->returnAStringWithDelay(1));
@@ -45,12 +46,23 @@ public class ExecutorServices {
 		/*
 		 * even after executing all above code the program will  be still running and in order to 
 		 * stop it shutdown() method is required.
+		 *
+		 * shutdown() method makes sure that no executor service takes no new tasks and wait
+		 * for currently executing tasks to finish and then shuts down
 		 */
 		executors.shutdown();
 		//System.out.println(executors.isShutdown());
 		
 		//this will stop the executor immediately without even executing above code
 		//executors.shutdownNow();
+
+		while(!future2.isDone()){
+			Thread.sleep(100);
+			System.out.println("Main thread is running simultaneously parallel");
+		}
+
+		//to get the exception
+		future3.get();
 	}
 
 }

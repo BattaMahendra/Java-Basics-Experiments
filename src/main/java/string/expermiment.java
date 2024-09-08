@@ -54,6 +54,17 @@ public class expermiment {
 		System.out.println(first==third);
 		System.out.println(second==third);
 
+
+		System.out.println("++++++++++++++++++++++++++");
+		List<String> ls = new ArrayList<>();
+		List<String> lo = ls;
+		lo.add("Mahendra");
+		System.out.println(ls);
+
+
+
+
+
 	}
 
 }

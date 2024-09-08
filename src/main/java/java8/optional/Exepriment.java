@@ -7,6 +7,7 @@ public class Exepriment {
     public static void main(String[] args) {
 
         /*
+            Difference b/w orElse() and orElseGet() in java ?
         * Comparing same code with Optional.orElse() and Optional.orElseGet()
         * Optional.orElseGet() is more efficient if fallback value computation is costly
         * */
@@ -20,7 +21,7 @@ public class Exepriment {
         System.out.println("============ Using orElseGEt()  ==============");
 
         String value2 = Optional.ofNullable("Mahendra")
-                .orElseGet(()->getDefaultValue()); // getDefaultValue() is called even if Optional has a value
+                .orElseGet(()->getDefaultValue()); // orElseGet(): The Supplier is only executed if the Optional is empty, making it more efficient for complex or costly computations.
         System.out.println(value2);
 
 

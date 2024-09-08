@@ -1,5 +1,6 @@
 package string;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,6 +43,9 @@ public class FractionToDecimalClone {
             remainder = remainder*10;
             result.append(remainder/denominator);
             remainder = remainder % denominator;
+
+            int[] arr = {5,10,12,15,17,20};
+            Arrays.stream(arr).filter(i -> i%5 ==0).forEach(System.out::println);
         }
 
 
