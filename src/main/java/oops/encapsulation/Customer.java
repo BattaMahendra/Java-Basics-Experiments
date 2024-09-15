@@ -5,7 +5,7 @@ import java.time.LocalDate;
 /*
 *
 *1. Encapsulation is about protecting and controlling access to the internal state of an object.
-* In java it is achieved through private fields so that they can't be accessed directly.
+* In Java, it is achieved through private fields so that they can't be accessed directly.
 *
 * 2.It groups related data and behavior together into a class. This bundling ensures that the
 *  internal state is only manipulated in the context of that class.
