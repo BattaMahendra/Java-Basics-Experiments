@@ -1,6 +1,11 @@
 package oops.abstraction.interfaces;
 
 interface Logger {
+
+    //this below statement is compiled as
+    // public static final
+    String loggerStarted = "STARTED";
+
     // Default method that uses private method
     default void logInfo(String message) {
 
@@ -24,7 +29,7 @@ interface Logger {
 
         //static method is using private static methods
         //private default methods are not allowed here
-        print("Started");
+        print("Started\n");
     }
 
     public static void printFooter(){
@@ -33,7 +38,7 @@ interface Logger {
 
     //private static methods - used to maintain reoccurring functionality of static methods
     private static void print(String term){
-        System.out.println("Logger functionality: "+ term);
+        System.out.println("\nLogger functionality: "+ term);
     }
 }
 
@@ -44,7 +49,7 @@ public class Main {
         Logger logger = new Logger() {}; // Anonymous class
         logger.logInfo("System is starting"); // Output: [INFO]: System is starting
         logger.logError("An error occurred"); // Output: [ERROR]: An error occurred
-
         Logger.printFooter();
+
     }
 }

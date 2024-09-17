@@ -27,14 +27,17 @@ public class Customer {
     private LocalDate dob;
 
     public int getId() {
+
         return id;
     }
 
     public void setId(int id) {
+
         this.id = id;
     }
 
     public String getName() {
+
         return name;
     }
 
@@ -59,7 +62,7 @@ public class Customer {
     * */
     public void setAge(int age) {
 
-        if(age < 0 ) System.out.println("Please enter valid age");
+        if(age < 18 ) System.out.println("Please enter valid age");
         else this.age = age;
     }
 
