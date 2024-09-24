@@ -76,6 +76,8 @@ public class AdvancedStreamProblems {
                 .ifPresent(joiner::add);
         System.out.println(joiner);
 
+
+
     }
 
     private static String everyWordReverseInSentence(String s) {
@@ -86,6 +88,12 @@ public class AdvancedStreamProblems {
                                     .map(eachWord -> new StringBuilder(eachWord).reverse())
                                     .collect(Collectors.joining(" "));
         System.out.println("After reversing\n"+output);
+        //same as above but using method references
+        String y = Arrays.stream(s.split(" "))
+                .map(StringBuilder::new)
+                .map(StringBuilder::reverse)
+                .collect(Collectors.joining(" ","[ "," ]"));
+        System.out.println(y);
         return s;
     }
 
@@ -115,6 +123,7 @@ public class AdvancedStreamProblems {
                                         )
                                 )
                         );
+
 
         empPartitionByAge25.entrySet().forEach(entry -> {
             System.out.println("\n=================== "+entry.getKey()+" ====================");
@@ -159,6 +168,7 @@ public class AdvancedStreamProblems {
                                             })
 
                                ));
+
         System.out.println("\n======= Printing list of employees(older to younger) department wise ============");
         deptWiseEmpList.entrySet().forEach(entry ->{
             System.out.println("\n============ "+ entry.getKey()+" ==============");

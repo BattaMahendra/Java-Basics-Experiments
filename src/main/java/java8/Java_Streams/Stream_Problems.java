@@ -18,11 +18,15 @@ public class Stream_Problems {
 
         averageOfNumbersInTheList(list);
 
+
+
         numbersStartingWith2(list);
 
         duplicatesInList(list);
 
         minAndMax(list);
+
+
 
         //Consider a array containing 0's and 1's and now move all 1's to right and zeros to left using java 8
         Integer[] arr = {1,0,0,1,0,1,1,0,0};
@@ -30,6 +34,9 @@ public class Stream_Problems {
         //using sort technique
         arrayList.sort(Comparator.reverseOrder());
         System.out.println(arrayList);
+        int[] convArr = arrayList.stream().mapToInt(Integer::intValue).toArray();
+        System.out.println(Arrays.toString(convArr));
+
 
         /**
          * Separate odd and even numbers in a list of integers.
@@ -108,10 +115,20 @@ public class Stream_Problems {
         //using list internal methods
         List<String> wordList1 = Arrays.asList(words1);
         List<String> wordList2 = Arrays.asList(words2);
-
+        System.out.println("Finding common elements in the following lists: \n"
+                                +wordList1+"\n"+wordList2+"\n");
         for(String s: wordList1){
-            wordList2.contains(s);
+           if( wordList2.contains(s) )
+                System.out.println(s);
         }
+
+        // Find common elements using streams
+        List<String> commonElements = wordList1.stream()
+                .filter(wordList2::contains) // Check if elements in list1 are in list2
+                .collect(Collectors.toList()); // Collect the results into a list
+
+        // Print the common elements
+        System.out.println("Common elements: " + commonElements);
 
         String s = "helohellok";
 
@@ -172,10 +189,12 @@ public class Stream_Problems {
         System.out.println("is given string palindrome: "+ isPalindrome.apply("faf"));
 
         //method-2: using IntStream
-        String str = "momd";
+        String str = "mom";
         String temp = str.replaceAll("\\s+", "").toLowerCase();
         System.out.println("is palindrome string " +IntStream.range(0, temp.length() / 2)
-                .noneMatch(i -> temp.charAt(i) != temp.charAt(temp.length() - i - 1)));
+               // .noneMatch(i -> temp.charAt(i) != temp.charAt(temp.length() - i - 1)));
+
+                .allMatch(i -> temp.charAt(i) == temp.charAt(temp.length()-1 -i)));
     }
 
     private static void mostRepeatedElement() {
@@ -295,10 +314,17 @@ public class Stream_Problems {
     }
 
     private static void minAndMax(List<Integer> list) {
+        //using max
         Integer max = list.stream().max(Comparator.comparing(Integer::valueOf)).orElse(Integer.MAX_VALUE);
+        //using reduce
+        int max3 = list.stream().reduce(0, (ma, next) -> next>= ma? next:ma);
+        //using find first method
+       Optional<Integer> max1= list.stream().sorted(Comparator.reverseOrder()).findFirst();
+        System.out.println(max1 + " "+ max3);
 
         //using Integer::compareTo
         Integer max2 = list.stream().max(Integer::compareTo).orElse(Integer.MAX_VALUE);
+
         Integer min = list.stream().min((i, j)->  i-j).orElse(-1);
 
         System.out.println("Max and min values in list: "+max+" "+ min);
@@ -358,6 +384,16 @@ public class Stream_Problems {
         System.out.println(countCharacter);
 
 
+        Map<Character, Long> characterCount = name.chars() // Create an IntStream
+                .mapToObj(c -> (char) c) // Convert to Character
+                .collect(Collectors.toMap(
+                        c -> c, // Key: character
+                        c -> 1L, // Value: initial count
+                        Long::sum // Merge function to sum counts
+                ));
+        System.out.println(characterCount);
+
+
     }
 
 
@@ -395,6 +431,7 @@ public class Stream_Problems {
             System.out.println("\n==== "+entry.getKey()+" ==========");
             entry.getValue().forEach(i -> System.out.print(i+" "));
         });
+
     }
 
     private static void duplicatesInList(List<Integer> list) {
@@ -446,6 +483,9 @@ public class Stream_Problems {
     private static void averageOfNumbersInTheList(List<Integer> list) {
         OptionalDouble average = list.stream().mapToInt(i -> i).average();
         System.out.println("Average of numbers in the list:"+ list +" is  "+average);
+
+        double i2 = (double) list.stream().reduce(0, Integer::sum) / list.size();
+        System.out.println("Average of numbers in the list:"+ list +" is  "+i2);
 
         //square & filter and find avarage
 
