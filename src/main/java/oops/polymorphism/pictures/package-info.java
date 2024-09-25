@@ -15,7 +15,7 @@ Note: we can Overload main method , but we cannot override main method because i
 
 Rules for method overriding
        I. The return type of method must be same as declared in super class.
-       (please read about co-varient return types in java)
+       (please read about co-variant return types in java)
       II. Method name must be same as declared in super class.
       III. Signature must be same as declared as in super class. Logic can be different.
       Note: we can optionally use an annotation @Override.
@@ -50,7 +50,7 @@ we can do that by
 Parent p = new Parent();
 Child c = (Child) p;  // compiles and run successfully
 
-we can also use instanceOf operator to enhance downcasting and achieve loose coupling
+we can also use instanceOf operator to enhance down-casting and achieve loose coupling
 please refer : https://www.javatpoint.com/downcasting-with-instanceof-operator
 
 

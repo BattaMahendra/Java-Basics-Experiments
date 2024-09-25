@@ -9,8 +9,8 @@ public class Vehicle {
         System.out.println("Vehicle is moving");
     }
 
-    //static methods can't be overriden because they belong to class not object.
-    //static belongs to class area where as object belongs to heap area.
+    //static methods can't be overridden because they belong to class not object.
+    //static belongs to class area whereas object belongs to heap area.
     public static void create(){
         System.out.println("creating vehicle");
     }

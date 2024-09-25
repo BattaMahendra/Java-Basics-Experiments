@@ -26,7 +26,9 @@ public class Tricky {
         finally{
              //System.exit(0);
             System.out.println(" we are in the finally block \n");
-            //return 1;
+           // return 1;
         }
     }
+
+
 }

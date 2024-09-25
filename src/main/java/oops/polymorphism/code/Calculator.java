@@ -20,9 +20,11 @@ public class Calculator {
         System.out.println(a + b);
     }
     private static void add(int a, long c) {
+        System.out.println(" we are in overloaded method of int and long");
         System.out.println(a + c);
     }
     private static void add(long  a, int c) {
+        System.out.println(" we are in overloaded method of long and int");
         System.out.println(a + c);
     }
     private static void add(int a, short b) {
