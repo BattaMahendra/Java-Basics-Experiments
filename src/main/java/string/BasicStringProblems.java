@@ -19,6 +19,31 @@ public class BasicStringProblems {
 //            return str.indexOf('a')
 //        })
 
+        String s = " Hello        World      ";
+        s =s.trim();
+        System.out.println(s);
+        System.out.println(Arrays.toString(s.split(" ")));
+
+        String num = "12345";
+        int i = Integer.valueOf(num);
+        System.out.println(i);
+        System.out.println(num.substring(4,5));
+
+        System.out.println(('7'-'0')+2);
+        System.out.println(('7')+2);
+
+        String s1 = "30";
+        String s2 = "3";
+        System.out.println(s2.substring(0,1));
+
+
+
+
+        System.out.println(s2.compareTo(s1 ) ) ;
+
+
+
+
 
     }
 

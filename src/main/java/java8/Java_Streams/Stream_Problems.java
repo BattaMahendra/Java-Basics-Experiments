@@ -277,6 +277,9 @@ public class Stream_Problems {
             num = num /10;
         }
         System.out.println("\nSum of digits in given number is: "+sum);
+
+        String s = "Mahenddra";
+
     }
 
     private static void isAnagramUsingJava8(String first, String second) {

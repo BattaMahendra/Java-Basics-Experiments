@@ -1,0 +1,28 @@
+Date: 7 Nov 2024
+
+Hema, you have to complete these topics by tomorrow.
+
+Basics
+
+What are advantages of Collections over arrays
+List vs Array
+List characteristics
+ArrayList vs Arrays
+Purpose of ArrayList
+ArrayList operations -- adding , deleting, adding at specific indices,
+                        contains(), adding mulitple lists, sorting, searching an element
+
+Basics-2
+
+ArrayList --> internal  data structure
+          --> internal working mechanism --> how it resizes
+          --> multithreading varieties of ArrayList (CopyOnwrite array list)
+
+Problems on ArrayList
+
+1. Remove Duplicates in Array list --> do it in 4 different methods
+   for above problem first do in normal for loops
+   then convert them into streams
+
+
+
