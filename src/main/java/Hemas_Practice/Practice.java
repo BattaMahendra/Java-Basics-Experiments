@@ -1,6 +1,7 @@
 package Hemas_Practice;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -25,11 +26,25 @@ public class Practice {
 
             int value = list.get(i);
 
-            if( list.indexOf(value) != list.lastIndexOf(value)){
+            if( list.indexOf(value) == list.lastIndexOf(value)){
                 System.out.println(value);
             }
 
         }
+
+        Collections.sort(list);
+
+        System.out.println("\n\nPrinting non duplicate elements");
+        for(int i =1; i< list.size(); i++){
+
+            if(list.get(i-1) != list.get(i)){
+                System.out.println(list.get(i-1));
+            }
+
+
+        }
+
+
 
 
     }
