@@ -23,6 +23,8 @@ Problems on ArrayList
 1. Remove Duplicates in Array list --> do it in 4 different methods
    for above problem first do in normal for loops
    then convert them into streams
+2. Find the min and max elements in a integer arraylist. 
+    first do it in normal loops and then in streams.
 
 
 
