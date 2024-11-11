@@ -9,7 +9,7 @@ public class AreaOfTriangle {
         double val = 1.0/180;
         double radiansConversion = pi*val*angle;
 
-        System.out.println("Hey I am just printing out");
+
         //calculation of sin value
        double sinAngle = Math.sin(radiansConversion);
 
