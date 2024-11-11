@@ -32,4 +32,12 @@ public class BasicExperiments {
 //            System.out.println("Hello world");
 //        }
     }
+
+//    public Integer reverseAInteger(int num){
+//
+//        String s = "" + num;
+//
+//        for(int i )
+//
+//    }
 }
