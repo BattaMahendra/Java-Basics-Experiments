@@ -9,9 +9,9 @@ public class Test {
         Puppy p = new Puppy();
         p.lives();
         p.eat();
-
-        Dog a = (Dog) new Animal();
-        a.lives();
-        a.eat();
+//
+//        Dog a = (Dog) new Animal();
+//        a.lives();
+//        a.eat();
     }
 }

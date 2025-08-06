@@ -20,6 +20,8 @@ public class Liger  implements  Lion,Tiger{
     public void habitat() {
         System.out.println("Liger lives in the zoo");
     }
+
+
     /*
     * Here we have eat() method as default in both interfaces.
     * When overriding we can specifically call any default method from both

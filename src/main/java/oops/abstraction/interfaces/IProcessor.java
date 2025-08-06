@@ -17,4 +17,5 @@ public interface IProcessor {
 
   void setCores(int cores);
 
+
 }

@@ -30,6 +30,10 @@ class Dog extends  Animal{
 
 class Puppy extends  Dog{
 
+    public Puppy(){
+        System.out.println("Puppy is being constructed");
+    }
+
     @Override
     public void lives(){
         System.out.println("Puppy lives");

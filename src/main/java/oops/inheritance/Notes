@@ -1,0 +1,14 @@
+
+Things to learn in java inheritance
+
+1. Method Overriding
+    1. rules
+    2. access modifiers
+    3. static
+    4. final
+
+2. this and super keywords
+3. constructor chaining in inheritance
+4. static keyword (classes, methods, data members) (Method hiding with reference to child and parent references)
+5. final keyword (classes, methods, data members)
+6. Diamond problem

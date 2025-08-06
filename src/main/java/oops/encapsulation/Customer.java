@@ -15,6 +15,9 @@ import java.time.LocalDate;
 *
 * V-IMP: Suppose in future if we want to change any functionality the external systems won't affect as we
 * are changing only in this class and we will provide same data type to external system
+*
+*
+* Java Reflection is used to break the encapsulation.
 * */
 
 //using encapsulation we are binding data (fields) and methods (functionality) into single unit (class)

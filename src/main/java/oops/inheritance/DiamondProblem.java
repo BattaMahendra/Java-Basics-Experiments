@@ -9,6 +9,8 @@ public class DiamondProblem {
         int c= a+b;
 
         System.out.println(a+" + "+b+" = "+c);
+
+        //when we create a child constructor then all the constructors of parents are constructed before it.
         C b1 = new C();
     }
 }
