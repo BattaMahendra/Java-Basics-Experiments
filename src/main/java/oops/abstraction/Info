@@ -4,3 +4,13 @@ Read about Object in this link: https://stackoverflow.com/questions/18219339/tro
 
 Difference between Interface(after java 8) and abstract class
 https://www.baeldung.com/java-interface-default-method-vs-abstract-class#:~:text=The%20abstract%20class%20can%20have,t%20access%20the%20implementation's%20state.
+
+
+Interfaces evolution
+
+From java 8 , Interfaces can have default and static methods which are used for reusing the concrete codes in child interfaces
+
+From java 9, private methods are introduced in interfaces (private and private static)
+
+            1. Reusability of code with in interfaces(preferably in default and static methods).
+            2. We need not expose these private methods to child implementing classes.
