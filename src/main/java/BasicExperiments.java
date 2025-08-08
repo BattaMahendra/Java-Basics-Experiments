@@ -1,7 +1,13 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 public class BasicExperiments {
+
+    public void BasicExperiments(){
+
+    }
 
     public static void main(String[] args) {
        Optional find =  Stream.of("one", "two", "three", "four")
@@ -31,6 +37,72 @@ public class BasicExperiments {
 //        for(int i=0;0;i++){
 //            System.out.println("Hello world");
 //        }
+
+        int[] arr = new int[]{1,2,3,-2,2,4,-1,1,2,-1};
+        //subarraySum(arr, 3);
+        longestSubarray(arr, 5);
+    }
+
+    public static int longestSubarray(int[] nums, int k) {
+
+        Map<Integer, Integer> map = new HashMap<>();
+        int len = 0;
+        int sum = 0;
+
+        for(int i = 0; i < nums.length; i++){
+
+            sum = sum + nums[i];
+            if(sum == k) len = Math.max(len, i+1);
+
+            if(map.containsKey(sum - k)){
+                len = Math.max(len, i-map.get(sum-k));
+            }
+
+            map.put(sum, map.getOrDefault(sum-k,i));
+        }
+        if(map.containsKey(sum - k)){
+            len = Math.max(len, nums.length-1-map.get(sum-k));
+        }
+
+        return len;
+
+    }
+
+    public static int subarraySum(int[] nums, int k) {
+
+        int left = 0;
+        int right = left;
+        int sum = nums[left];
+        int count = 0;
+        while(left <= right && right < nums.length){
+
+            sum = sum + nums[right];
+            if(sum == k){
+                count++;
+                right++;
+            }else if( sum < k && sum > 0){
+                right++;
+            }else if( sum > k && sum > 0){
+                left++;
+                right = left;
+                sum = 0;
+            }else if(sum < k && sum <0){
+
+                right++;
+
+            }else if( sum > k && sum < 0){
+                left++;
+                right = left;
+                sum = 0;
+
+            }
+
+        }
+
+
+
+        return count;
+
     }
 
 //    public Integer reverseAInteger(int num){

@@ -11,4 +11,5 @@ Things to learn in java inheritance
 3. constructor chaining in inheritance
 4. static keyword (classes, methods, data members) (Method hiding with reference to child and parent references)
 5. final keyword (classes, methods, data members)
-6. Diamond problem
+6. instanceOf keyword
+7. Diamond problem
