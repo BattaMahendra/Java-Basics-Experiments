@@ -9,6 +9,30 @@ public class BasicExperiments {
 
     }
 
+    public static String reverseWords(String s) {
+
+        s = s.trim();
+        String[] arr = s.split(" ");
+
+        int n = arr.length;
+
+        for(int i = 0; i < n/2; i++){
+
+            String temp = arr[i];
+            arr[i] = arr[n-1-i];
+            arr[n-1-i] = temp;
+        }
+
+        String ans = "";
+        for(String m: arr){
+            String q = m.trim();
+            ans = ans+q+" ";
+        }
+
+        return ans.trim();
+
+    }
+
     public static void main(String[] args) {
        Optional find =  Stream.of("one", "two", "three", "four")
                 .map(String::toUpperCase)
@@ -38,9 +62,11 @@ public class BasicExperiments {
 //            System.out.println("Hello world");
 //        }
 
-        int[] arr = new int[]{1,2,3,-2,2,4,-1,1,2,-1};
-        //subarraySum(arr, 3);
-        longestSubarray(arr, 5);
+//        int[] arr = new int[]{1,2,3,-2,2,4,-1,1,2,-1};
+//        //subarraySum(arr, 3);
+//        longestSubarray(arr, 5);
+
+        reverseWords("gmo   cpqa   zfu   ldqu  t");
     }
 
     public static int longestSubarray(int[] nums, int k) {

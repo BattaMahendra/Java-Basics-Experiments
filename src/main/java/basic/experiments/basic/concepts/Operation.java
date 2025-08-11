@@ -4,7 +4,7 @@ public enum Operation {
     PLUS {
         @Override
         public double apply(double x, double y) {
-            return x + y;
+            return x+y;
         }
     },
     MINUS {
