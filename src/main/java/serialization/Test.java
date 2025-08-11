@@ -16,10 +16,26 @@ public class Test {
 
         //deserialize the same object from file
         deserialize();
+
+
+        // externalization
+        System.out.println("\n == Externalization ==");
+        Teacher teacher = new Teacher();
+        teacher.name = "Mahesh";
+        teacher.dept = "Java";
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("C:\\Users\\batta\\IdeaProjects\\Java-Basics-Experiments\\src\\main\\resources\\files\\externalized-objects.txt"))) {
+            oos.writeObject(teacher);
+        }
+
+        // De externalize
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("C:\\Users\\batta\\IdeaProjects\\Java-Basics-Experiments\\src\\main\\resources\\files\\externalized-objects.txt"))) {
+            Teacher p2 = (Teacher) ois.readObject();
+            System.out.println("After deserialization: " + p2);
+        }
     }
 
     private static void deserialize() throws IOException, ClassNotFoundException {
-        FileInputStream fin = new FileInputStream("C:\\Users\\batta.chowdary\\IdeaProjects\\Java-Basics-Experiments\\src\\main\\resources\\files\\Serialized-Objects.txt");
+        FileInputStream fin = new FileInputStream("C:\\Users\\batta\\IdeaProjects\\Java-Basics-Experiments\\src\\main\\resources\\files\\Serialized-Objects.txt");
         ObjectInputStream oin  = new ObjectInputStream(fin);
         Student deserializedStudent = (Student) oin.readObject();
         System.out.println("\n deserialized java object"+deserializedStudent);
@@ -31,7 +47,9 @@ public class Test {
     }
 
     private static void serialize(Student s) throws IOException {
-        FileOutputStream fo = new FileOutputStream("C:\\Users\\batta.chowdary\\IdeaProjects\\Java-Basics-Experiments\\src\\main\\resources\\files\\Serialized-Objects.txt");
+
+        System.out.println("Object about to get serialized: "+ s.toString());
+        FileOutputStream fo = new FileOutputStream("C:\\Users\\batta\\IdeaProjects\\Java-Basics-Experiments\\src\\main\\resources\\files\\Serialized-Objects.txt");
         ObjectOutputStream oo = new ObjectOutputStream(fo);
 
         oo.writeObject(s);

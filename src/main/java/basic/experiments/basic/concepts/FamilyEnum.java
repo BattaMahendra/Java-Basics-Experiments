@@ -5,7 +5,10 @@ import java.util.EnumSet;
 /**
  * 
  * @author batta.chowdary
- * 
+ *
+ * An enum in Java is a special data type that enables for a variable to be a set of predefined constants.
+ * It's introduced in Java 5 and is implemented as a class type.
+ *
  * Enum may implement many interfaces but cannot extend any class because it internally extends Enum class
  *
  */
@@ -22,6 +25,11 @@ public enum FamilyEnum {
 	 * this is the reason instance blocks and constructors are called even before the static blocks
 	 * as static variables are loaded first
 	 */
+
+	/*
+	* Unlike public static final keywords the enum constants have added behaviour
+	* 	1. It can have private methods(which can be ovrrided)
+	* */
 
 	FATHER{
 
