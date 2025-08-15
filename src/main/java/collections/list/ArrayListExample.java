@@ -46,6 +46,14 @@ public class ArrayListExample {
         System.out.println(arrayList);
     }
 
+    public static void addElements(ArrayList arr,int size){
+
+        for(int i = 0; i <size; i++){
+            arr.add(i);
+        }
+
+    }
+
     public static void main(String[] args) {
         ArrayListExample obj = new ArrayListExample();
         obj.instaintiaion();
@@ -55,5 +63,18 @@ public class ArrayListExample {
         CopyOnWriteArrayList<String> synchronisedList = new CopyOnWriteArrayList<>();
         synchronisedList.add("Hello");
         synchronisedList.add("hi");
+
+        /*
+        * Here we are modifying the copyOnWriteArrayList while iterating and as you can observe
+        * it doesn't throw concurrentModificationException. If its a plain arraylist then it would throw the exception*/
+        for(int i =0; i < synchronisedList.size(); i++){
+
+            synchronisedList.add("Hey");
+            System.out.println(synchronisedList.get(i));
+        }
+
+
+
+
     }
 }

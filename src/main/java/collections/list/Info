@@ -6,10 +6,11 @@ How does Array list grows in size ?
 4. Threshold = (Load Factor) * (Current Capacity) ==> 0.75 X 10 = 7(approximately)
 5. So when the 7 elements gets filled in the array list its threshold is reached and it increases
     size based on following formula
-    new capacity = old capacity + (old capacity >> 1)
+    new capacity = old capacity + (old capacity >> 1)  [ i.e., 1.5× old capacity ]
                  = 10 + (5)
                  = 15
                  15 will be the new capcity of array list
+    new threshold = (0.75) * (15) = 11.25 ~= 11
 
 Synchronisation of Lists
 

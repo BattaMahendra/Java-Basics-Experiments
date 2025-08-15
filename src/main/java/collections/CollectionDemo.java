@@ -2,8 +2,9 @@ package collections;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
-public class CollectionsDemo {
+public class CollectionDemo {
     /*
     Array is a linear data structure that is a collection of similar data types.
      Arrays are stored in contiguous memory locations.
@@ -43,9 +44,29 @@ public class CollectionsDemo {
         //experimenting on collections
         //java will throw a concurrent modification exception if modify collection while iterating
         c.forEach(object -> {
-            if(count == 0)
-            c.add("modification "+ count++);    //modifying the collection inside its own iteration
-
+//            if(count == 0)
+//            c.add("modification "+ count++);    //modifying the collection inside its own iteration
         });
+
+        /**
+         * Difference between Collection and Collections
+         *
+         * 1. Collection - An interface which is implemented by other interfaces List, Set, Queue
+         * 2. Collections - An utility class which have some static utility methods for manipulating collections
+         * */
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Uday");
+        list.add("Mahi");
+        list.add("Sabari");
+        list.add("Ranga");
+
+
+        System.out.println();
+        list.forEach(System.out::print);
+
+        Collections.sort(list);
+        System.out.println();
+        list.forEach(System.out::print);
     }
 }
