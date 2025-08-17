@@ -15,7 +15,7 @@ public class Linked_list_Example {
 
         List l2 = new LinkedList<String>( List.of("1","2"));
         //for the difference between linked list and array list please go through
-        //https://www.javatpoint.com/difference-between-arraylist-and-linkedlist
+        //https://www.tpointtech.com/difference-between-arraylist-and-linkedlist
         //https://www.geeksforgeeks.org/arraylist-vs-linkedlist-java/
 
         Vector v  = new Vector<>();

@@ -9,8 +9,8 @@ public class MapExample {
         Map map = new HashMap();
         map.put(1,"one");
         map.put(new Object(),"two");
-        map.put("Hello","three");
-        map.put(new ArrayList<>(),"four");
+        map.put("Hello",3);
+        map.put(new ArrayList<>(),new Object());
 
         //you can observe here the map doesn't follow insertion order
         map.entrySet().forEach(System.out::println);
@@ -28,6 +28,11 @@ public class MapExample {
         *    but this can degrade to O(n) in the worst-case scenario.
         * */
         hashmap();
+
+        iteratingOverMap();
+
+
+
 
         /*
         *1. Miantains insertion order
@@ -73,7 +78,7 @@ public class MapExample {
         //we can convert above hashmap into synchronised map by using
         Map threadSafeMap =  Collections.synchronizedMap(h);
 
-        //howeever the above map is not recomended as it is slow and it is synchronised for all operations
+        //howeever the above map is not recommended as it is slow and synchronised for all operations
         //the solution is Concurrent HashMap
 
         //concurrent hashmaps can't have null values and null keys just like Hashtable
@@ -88,7 +93,43 @@ public class MapExample {
 
     }
 
+    private static void iteratingOverMap() {
+        Map<Integer, String> integerStringMap = new HashMap<>();
+        integerStringMap.put(1,"one");
+        integerStringMap.put(1,"one");
+        integerStringMap.put(2,"two");
+        integerStringMap.put(4,"four");
+        integerStringMap.put(5,"five");
+
+        /*
+        * entrySet() method always returns a set of Map.Entry interfaces of that map
+        *
+        * Map.Entry is an interface which is used to extract both key and value using the entry object while iteration
+        * Entry is interface which is combination key and value with methods such as getKey(), getValue(), setValue()*/
+        Set<Map.Entry<Integer, String>> entriesSet = integerStringMap.entrySet();
+
+        for(Map.Entry<Integer, String> entry: entriesSet){
+
+            entry.getKey();
+            entry.getValue();
+            //updating the value for particular entry
+            if (entry.getKey() == 1 )
+                entry.setValue("ONE");
+        }
+
+        /*
+        * keySet() in map is used to extract only keys of the map
+        * values() is used to extract only value of map*/
+        Set<Integer> keySet = integerStringMap.keySet();
+
+        // values() method returns collection of values as values can be in duplicated nature
+        Collection<String> valueSet =  integerStringMap.values();
+    }
+
     private static void treeMap() {
+
+        // we can introduce custom comparator if required
+
         TreeMap<Integer , String> t = new TreeMap<Integer , String>();
         t.put(1,"one" );
         t.put(2,"two" );
@@ -96,6 +137,7 @@ public class MapExample {
         t.put(5,"five");
         System.out.println("================================= Tree Map ============================");
         System.out.println(t.toString());
+
     }
 
     private static void linkedHashMap() {

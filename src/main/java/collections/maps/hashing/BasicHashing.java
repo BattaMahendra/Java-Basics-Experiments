@@ -105,7 +105,7 @@ public class BasicHashing {
 
     /*
     * Character hashing
-    * We will declare an array of 256 size which accomodates both capital and small characters
+    * We will declare an array of 256 size which accommodates both capital and small characters
     * 'a' = 97 and goes on incremental for 'b' and so on. For 'A' = 65*/
 
     public static void characterHashing( String givenString){

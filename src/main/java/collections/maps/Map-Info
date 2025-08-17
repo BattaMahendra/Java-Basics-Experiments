@@ -12,7 +12,7 @@ TreeMap vs LInkedHashMap vs HashMap vs HashTable
 
 TreeMap:
 
-Data Structure: Implemented as a red-black tree.
+Data Structure: Implemented as a red-black tree. ( a self balancing binary search tree - with red and black nodes)
 Ordering: Maintains elements sorted based on keys (natural order or custom comparator).
 Performance: Logarithmic time complexity for most operations.
 Nulls: Doesn't allow null keys, but allows null values if the comparator supports them.

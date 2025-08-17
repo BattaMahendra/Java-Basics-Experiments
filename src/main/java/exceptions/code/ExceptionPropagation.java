@@ -22,8 +22,8 @@ public class ExceptionPropagation {
         throw new IOException();
     }
     private static void method2() throws IOException {
-        System.out.println("We are in method 2");
-        method1();
+            System.out.println("We are in method 2");
+            method1();
     }
     private static void method3() throws IOException {
         System.out.println("We are in method 3");

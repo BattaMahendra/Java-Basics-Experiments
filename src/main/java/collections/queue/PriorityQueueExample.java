@@ -43,7 +43,7 @@ public class PriorityQueueExample {
         System.out.println("Max Heap (using reverse order comparator): " + maxHeap);
 
 
-        System.out.println("==== priority queue storing objects implementing comparator ===========");
+        System.out.println("\n\t\t==== priority queue storing objects implementing comparable ===========\n");
         // Example of custom objects in priority queue
         PriorityQueue<Task> taskQueue = new PriorityQueue<>();
         taskQueue.offer(new Task("Task 1", 3));
@@ -55,7 +55,7 @@ public class PriorityQueueExample {
             System.out.println("Processed task: " + task.name);
         }
 
-        System.out.println("==== priority queue storing objects implementing custome comparator ===========");
+        System.out.println("\n\t\t==== priority queue storing objects implementing custom comparator ===========\n");
         // Example of a priority queue for tasks with custom comparator
         PriorityQueue<Task> taskQueueWithCustomComaprator = new PriorityQueue<>(new TaskComparator());
 

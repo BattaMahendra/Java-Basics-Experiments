@@ -82,5 +82,11 @@ public class Student implements Serializable {
 * 4. How to customize serialization ? ( wirteObject() and readObject() methods)
 * 5. How is inheritance possible in serializable parent or serializable child ?
 * 6. What happens if a serializable class contains non serializable object reference ? ( how to handle it )
+*     ans.   // ❌ Throws java.io.NotSerializableException
+*           how to handle it
+*           THree ways
+*           1. Mark that field as transient
+*           2. handle in  customization i.e use writeObject() and readObject() methods
+*           3. Make that object class serializable
 * */
 
