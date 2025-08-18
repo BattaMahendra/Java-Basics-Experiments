@@ -28,6 +28,7 @@ public class ArrayListExample {
         modifyList(arrayList);
 
 
+
     }
 
 
@@ -69,9 +70,11 @@ public class ArrayListExample {
         * it doesn't throw concurrentModificationException. If its a plain arraylist then it would throw the exception*/
         for(int i =0; i < synchronisedList.size(); i++){
 
-            synchronisedList.add("Hey");
+            //synchronisedList.add("Hey");
             System.out.println(synchronisedList.get(i));
         }
+
+
 
 
 

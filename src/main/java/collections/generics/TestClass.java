@@ -1,7 +1,10 @@
 package collections.generics;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TestClass {
 
@@ -32,18 +35,33 @@ public class TestClass {
         //printUsingGenericT_specific(integerListList);   //compile time error as T extends String --> only String types are allowed
 
         //very important --> using Object
-        // printUsingObject(stringList);   // compile time error --> as it accepts only List<Object> and not List<String>
+         //printUsingObject(stringList);   // compile time error --> as it accepts only List<Object> and not List<String>
 
       // using raw list
         print(stringList);
 
+        // Generics can't be used with primitives like int, float, double etc..
+        // instead use wrappers like Integer, Float, Double
+        // why ? -> generics are designed to work with Objects. And primitives like int, float are not objects.
+        // Remember as primitives exist in Java and it is why java is not pure object-oriented language.
+
+        //List<int> intLIst; // compile time error as int is not an object.
+        List<Integer> intList; // allowed as Integer is object.
+
+    }
+
+    public static <T> T[] toArray(List<T> list, Class<T> clazz) {
+        // Use reflection to create an array of runtime type 'clazz'
+//        @SuppressWarnings("unchecked")
+        T[] array = (T[]) Array.newInstance(clazz, list.size());
+        return list.toArray(array);
     }
 
 //we can restrict incoming parameter using List<? extends String> or any other class
     private static void printUsingGeneric(List<?> list) {
         System.out.println("Printing using Generics ? ");
         System.out.println(list);
-       // list.add("hello");        //results in compile time error
+//        list.add("hello");        //results in compile time error
     }
 
 
@@ -54,7 +72,8 @@ public class TestClass {
     }
 
     /*
-     * Here unlike wild card ? , we can force T to be specific type*/
+     * Here unlike wild card ? , we can force T to be specific type
+     * Now T means either it should be a string or its subclass*/
     private static <T extends  String>  void printUsingGenericT_specific(List<T> list) {
         System.out.println("Printing using Generics T  extends String");
         System.out.println(list);
@@ -74,6 +93,12 @@ public class TestClass {
     }
 
     // ? VS Object in java
+
+
+
+
+
+
 
 
 }
