@@ -3,6 +3,7 @@ package collections;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 
 public class CollectionDemo {
     /*
@@ -47,6 +48,15 @@ public class CollectionDemo {
 //            if(count == 0)
 //            c.add("modification "+ count++);    //modifying the collection inside its own iteration
         });
+
+        System.out.println("Using iterator");
+        Iterator iterator = c.iterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.next());
+            //modifying the collection
+            iterator.remove();                 // JVM doesn't throw concurrent modification exception
+            }                                  // if modification is done using iterator
+
 
         /**
          * Difference between Collection and Collections

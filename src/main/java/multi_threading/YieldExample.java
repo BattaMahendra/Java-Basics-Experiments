@@ -34,7 +34,7 @@ class TaskProducer implements Runnable {
         for (int i = 0; i < 5; i++) {
             System.out.println(Thread.currentThread().getName() + " producing: " + i);
             // Yield control to other threads
-            Thread.yield();
+            //Thread.yield();
         }
     }
 }

@@ -9,10 +9,10 @@ public class ThreadPriority {
 
     public static void main(String[] args) throws InterruptedException {
 
-        testThreadPriority();
-       // Thread.sleep(5000);
-       // testThreadPriorityWithConcurrentThreads();
-        testExecutorServices();
+//        testThreadPriority();
+        Thread.sleep(5000);
+        testThreadPriorityWithConcurrentThreads();
+//        testExecutorServices();
         System.out.println("last statement of main method with "+ Thread.currentThread().getName());
 
     }
@@ -49,11 +49,11 @@ public class ThreadPriority {
         System.out.println("Testing thread priority using concurrent threads");
         System.out.println("==================================================");
         CountDownLatch latch = new CountDownLatch(1);
-        ConcurrentThreads c1 = new ConcurrentThreads("c1",latch);
-        ConcurrentThreads c2 = new ConcurrentThreads("c2",latch);
-        ConcurrentThreads c3 = new ConcurrentThreads("c3",latch);
-        ConcurrentThreads c4 = new ConcurrentThreads("c4",latch);
-        ConcurrentThreads c5 = new ConcurrentThreads("c5",latch);
+        ConcurrentThreads c1 = new ConcurrentThreads("c1",latch,10);
+        ConcurrentThreads c2 = new ConcurrentThreads("c2",latch,5);
+        ConcurrentThreads c3 = new ConcurrentThreads("c3",latch,5);
+        ConcurrentThreads c4 = new ConcurrentThreads("c4",latch,5);
+        ConcurrentThreads c5 = new ConcurrentThreads("c5",latch,15);
 
 
 
@@ -65,9 +65,9 @@ public class ThreadPriority {
          Learn more here: https://www.javatpoint.com/thread-scheduler-in-java
          */
         c1.setPriority(8);
-        c2.setPriority(1);
-        c3.setPriority(1);
-        c4.setPriority(10);
+        c2.setPriority(3);
+        c3.setPriority(2);
+        c4.setPriority(1);
         c5.setPriority(10);
 
         startGivenThread(c1);
@@ -78,15 +78,16 @@ public class ThreadPriority {
         //latch starts counting down from 1 to 0
         latch.countDown();
         System.out.println("=====NOW RELEASE LATCH======");
+       // c5.yield();
     }
 
     private static void testThreadPriority() {
         Thread t1 = new Thread(new CustomRunnable(), "T1");
         Thread t2 = new Thread(new CustomRunnable(), "T2");
         Thread t3 = new Thread(new CustomRunnable(), "T3");
-        t1.setPriority(9);
-        t2.setPriority(6);
-        t3.setPriority(1);
+        t1.setPriority(1);
+        t2.setPriority(9);
+        t3.setPriority(10);
         startGivenThread(t1);
         startGivenThread(t2);
         startGivenThread(t3);

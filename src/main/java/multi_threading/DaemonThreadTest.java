@@ -2,7 +2,7 @@ package multi_threading;
 
 
 public class DaemonThreadTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         CustomThread t1 = new CustomThread();
         t1.setName("t1");
         CustomThread t2 = new CustomThread();
@@ -16,6 +16,7 @@ public class DaemonThreadTest {
         t1.start();
         t2.start();
         t3.start();
+
     }
 }
  class CustomThread extends Thread {
@@ -31,6 +32,12 @@ To put it simply, daemon threads serve user threads by handling background tasks
 *  have no role other than supporting the main execution.*/
 
     public void run() {
+
+        try {
+            sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("Current thread is "
                 + Thread.currentThread().getName()+
                 " at exact time "+ System.currentTimeMillis());

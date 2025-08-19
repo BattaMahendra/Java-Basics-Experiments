@@ -43,7 +43,7 @@ public class TestClass {
         // Generics can't be used with primitives like int, float, double etc..
         // instead use wrappers like Integer, Float, Double
         // why ? -> generics are designed to work with Objects. And primitives like int, float are not objects.
-        // Remember as primitives exist in Java and it is why java is not pure object-oriented language.
+        // Remember as primitives exist in Java and i.e. why java is not pure object-oriented language.
 
         //List<int> intLIst; // compile time error as int is not an object.
         List<Integer> intList; // allowed as Integer is object.
@@ -74,7 +74,7 @@ public class TestClass {
     /*
      * Here unlike wild card ? , we can force T to be specific type
      * Now T means either it should be a string or its subclass*/
-    private static <T extends  String>  void printUsingGenericT_specific(List<T> list) {
+    private static <T extends String>  void printUsingGenericT_specific(List<T> list) {
         System.out.println("Printing using Generics T  extends String");
         System.out.println(list);
         // list.add("hello");        //results in compile time error

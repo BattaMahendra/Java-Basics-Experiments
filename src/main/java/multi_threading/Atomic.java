@@ -26,15 +26,16 @@ public class Atomic {
     * here the volatile fails because of race condition between threads
     * go and read more about it in the Theory file in this package
     * */
-    static void process() {
+    static  void process() {
 
         int max = 1_000_00_00;
+        max = 1000;
 
         threadLocal.set(0);
        // normalVariable =0;
 
 
-        for (int i = 0; i <= max; i++) {
+        for (int i = 0; i < max; i++) {
             unsafeCounter++;
             atomicInteger.getAndIncrement();
             volatileInteger++;
@@ -58,6 +59,7 @@ public class Atomic {
         t2.join();
         t3.join();
 
+        System.out.println("\n Ideal count of every opertion should be 3000\n");
         System.out.println("Normal integer after operation : "+unsafeCounter);
         System.out.println("Atomic integer after operation : "+atomicInteger);
         System.out.println("Volatile integer after operation : "+volatileInteger);

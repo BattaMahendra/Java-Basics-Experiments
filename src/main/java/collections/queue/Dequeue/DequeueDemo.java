@@ -45,8 +45,8 @@ public class DequeueDemo {
         * A class implementing multiple interfaces
         * For example class A implements interfaces B and C
         *
-        * if we use  B b = new A(); then we can't access specific methods of C
-        * Because at the compile time compiler searches for methods of C in B and it ca't find so it doens't allow
+        * if we use  B b = new A(); then we can't access specific methods of Interface C
+        * Because at the compile time compiler searches for methods of C in B and can't find so it doesn't allow
         *
         * But JVM will allow all methods at runtime
         * i.e observe following

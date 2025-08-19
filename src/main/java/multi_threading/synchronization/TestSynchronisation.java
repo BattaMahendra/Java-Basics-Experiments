@@ -9,7 +9,7 @@ public class TestSynchronisation extends ThreadPriority {
     * see the difference*/
     static  int sum =0;
     int instanceSum =0;
-    public static synchronized void nonSynchronisedStaticMethod(int n ){
+    public static  void nonSynchronisedStaticMethod(int n ){
 
         for(int i =0; i<=10; i++){
             System.out.println("This thread is "+Thread.currentThread().getName()+" wtih value "+n*i);
@@ -46,7 +46,7 @@ public class TestSynchronisation extends ThreadPriority {
 
     public static void main(String[] args) throws InterruptedException {
         MyThread t1 = new MyThread(1);
-        MyThread t2 = new MyThread(-1);
+        MyThread t2 = new MyThread(1);
         t1.setName("1");
         t2.setName("2");
 
@@ -58,7 +58,7 @@ public class TestSynchronisation extends ThreadPriority {
         Thread.sleep(4000);
         System.out.println("\n\n===================================");
         //testing instance synchronisation with same and different objects
-        testSync();
+        //testSync();
 
 
 

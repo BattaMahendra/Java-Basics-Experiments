@@ -44,7 +44,7 @@ public class MainThread {
             public void run() {
                 try {
                     System.out.printf("\n %s got created ",Thread.currentThread().getName());
-                    Thread.sleep(2000);
+                    Thread.sleep(20000);
                    // Thread.interrupted();
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
@@ -52,6 +52,8 @@ public class MainThread {
                 System.out.printf("\n %s got ended ",Thread.currentThread().getName());
             }
         };
+
+
 
        return t1;
     }

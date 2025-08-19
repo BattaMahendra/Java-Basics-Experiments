@@ -10,7 +10,7 @@ public class ThreadStatesExample {
                 synchronized (ThreadStatesExample.class) {
                     // Simulate some work
                     try {
-                        Thread.sleep(100); // Thread 1 sleeps for 100 milliseconds
+                        Thread.sleep(1000*10); // Thread 1 sleeps for 100 milliseconds
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -25,7 +25,7 @@ public class ThreadStatesExample {
                 synchronized (ThreadStatesExample.class) {
                     // Simulate some work
                     try {
-                        Thread.sleep(2000); // Thread 2 sleeps for 2000 milliseconds
+                        Thread.sleep(1000*10); // Thread 2 sleeps for 2000 milliseconds
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -39,7 +39,7 @@ public class ThreadStatesExample {
 
         // Start Thread 1
         thread1.start();
-        System.out.println("Thread 1 state after starting: " + thread1.getState());
+        System.out.println("Thread 1 state after start() : " + thread1.getState());
 
         // Sleep briefly to allow Thread 1 to enter synchronized block
         Thread.sleep(50);
@@ -53,6 +53,8 @@ public class ThreadStatesExample {
         Thread.sleep(500);
         System.out.println("Thread 2 state while sleeping (TIMED_WAITING): " + thread2.getState());
 
+        System.out.println("Main thread state :"+ Thread.currentThread().getState());
+
         // Wait for Thread 2 to finish
         thread2.join();
         System.out.println("Thread 2 state after joining: " + thread2.getState());
@@ -63,5 +65,7 @@ public class ThreadStatesExample {
         }
         thread1.join();
         System.out.println("Thread 1 state after joining: " + thread1.getState());
+
+       
     }
 }

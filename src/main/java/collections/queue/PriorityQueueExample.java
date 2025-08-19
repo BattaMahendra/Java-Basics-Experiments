@@ -40,7 +40,12 @@ public class PriorityQueueExample {
         maxHeap.offer(1);
         maxHeap.offer(5);
 
+
         System.out.println("Max Heap (using reverse order comparator): " + maxHeap);
+        int i =0;
+        while(i < maxHeap.size())
+        System.out.println(maxHeap.poll());
+
 
 
         System.out.println("\n\t\t==== priority queue storing objects implementing comparable ===========\n");

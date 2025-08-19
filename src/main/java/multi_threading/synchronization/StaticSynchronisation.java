@@ -21,7 +21,7 @@ public class StaticSynchronisation extends ThreadPriority {
     /*
      * Try removing synchronised keyword and see the difference
      * */
-    public static synchronized void printLoop() {
+    public synchronized  static  void printLoop() {
 
         for (int i = 0; i <= 10; i++) {
             System.out.println("This thread is " + Thread.currentThread().getName() +" with priority as: "+Thread.currentThread().getPriority()+ " wtih value " + i);
@@ -56,7 +56,7 @@ public class StaticSynchronisation extends ThreadPriority {
         c1.setPriority(1);
         c2.setPriority(5);
         c3.setPriority(4);
-        c4.setPriority(8);
+        c4.setPriority(10);
         c5.setPriority(10);
 
         startGivenThread(c1);
