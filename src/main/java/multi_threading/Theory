@@ -6,10 +6,12 @@ Understanding volatile in Java
 
 Definition and Purpose:
 The volatile keyword in Java is used to indicate that a variable's value will be modified by different threads.
- It ensures that changes to the variable are always visible to other threads.
-Usually threads have local cache memory of variables and they take the value from that memory.
-But when we use volatile keyword for a variable then it is always ensured that any change made to variable
-is made visible to all threads and every thread reads value from  main memory instead of local thread memory
+It ensures that changes to the variable are always visible to other threads.
+
+Normally, each thread can cache variables in its own CPU cache → meaning a change made by one thread might not be visible to another thread immediately.
+When you declare a variable volatile, you’re telling the JVM:
+                “Always read and write this variable directly from the main memory, not from a thread’s local cache.”
+
   When a variable is declared as volatile, it means:
 
 Visibility Guarantee: Any read of a volatile variable will always return the most recent write by any thread.

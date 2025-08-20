@@ -1,8 +1,9 @@
 package multi_threading;
 
 
-import lombok.extern.slf4j.Slf4j;
-
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.logging.Logger;
 
 /*
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
 * */
 
 public class ThreadCreation {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
       //  usingOnlyRun();
         First first1 = new First("Thread-1");
         first1.start();
@@ -40,7 +41,7 @@ public class ThreadCreation {
         Thread third = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("Third thread created using Runnable anonymous inner class");
+                System.out.println("callable thread created using Runnable anonymous inner class");
             }
         });
         third.start();
@@ -58,6 +59,15 @@ public class ThreadCreation {
             }
         };
         fifth.start();
+
+        // Using callable - Callable can't be used directly with Thread
+        // It has to be used with Executor services
+        callable callable = new callable();
+        Future<String> f = Executors
+                                .newFixedThreadPool(1)
+                                        .submit(callable);
+        f.get(); // this is a blocking call i.e. blocks all other operations until get() completes
+
     }
 
     /*
@@ -119,6 +129,20 @@ class  Second implements Runnable{
         System.out.println("I am in the run method from the "+this.name
                 +"and thread is "+Thread.currentThread());
 
+    }
+}
+
+/*
+* Creation of task using Callable interface ( a functional interface - has one method  public T call() )
+* Unlike Runnable it returns the value and also throws checked exceptions
+* It can't be used with Thread class but rather should be used with Executor services*/
+
+class callable implements Callable<String> {
+
+    // we need to override the call method of callable interface
+    @Override
+    public String call() throws Exception {
+        return "I am a task from callable";
     }
 }
 

@@ -1,4 +1,4 @@
-package multi_threading;
+package multi_threading.Volatile;
 
 /*
 * Read volatile keyword from internet or go to theory file in the same package
@@ -6,7 +6,7 @@ package multi_threading;
 public class VolatileTest {
 
 	//keep and remove volatile for experimenting
-	private static volatile int MY_INT = 0;
+	private static  int MY_INT = 0;
 
 	public static void main(String[] args)
 	{
@@ -18,7 +18,7 @@ public class VolatileTest {
 		@Override public void run()
 		{
 			int local_value = MY_INT;
-			while (local_value <=5) {
+			while (local_value <5) {
 				if (local_value != MY_INT) {
 					System.out.printf("\nGot Change for MY_INT : %s",MY_INT);
 
