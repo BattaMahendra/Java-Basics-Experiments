@@ -33,9 +33,9 @@ public class Test {
 
     //we can't do that with lambdas
 
-   // FucInterface fuc4 = () -> System.out.println(this.)
+    //FucInterface fuc4 = () -> System.out.println(this.);
 
-    FucInterface printInstanceVariable = () -> System.out.println(instanceVariable);
+    FucInterface printInstanceVariable = () -> System.out.println(this.instanceVariable);
 
 
     public static void main(String[] args) {

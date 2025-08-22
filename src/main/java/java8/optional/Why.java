@@ -5,6 +5,9 @@ import basic.experiments.pojos.Employee;
 
 import java.util.Optional;
 
+/*
+* Go through this official documentation
+* https://www.oracle.com/technical-resources/articles/java/java8-optional.html*/
 public class Why {
 
     /**
@@ -109,5 +112,10 @@ public class Why {
  * "Optional doesn’t replace null checks for performance.
  * Its real strength is in making the possibility of absence explicit in the type system,
  * forcing safe handling and improving API clarity, while reducing the chances of runtime NullPointerExceptions."
+ *
+ * Remember
+ * stream.findFirst() → returns Optional<T>.
+ * stream.reduce(...) → returns Optional<T>.
+ *
  * */
 
