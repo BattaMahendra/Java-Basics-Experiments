@@ -1,0 +1,25 @@
+
+Common Pitfalls
+
+Mixing Different Natural Orders
+
+    If you define multiple comparators for the same class, ensure they’re not contradictory.
+
+    Example: Sorting by price ascending in one case and descending in another. If you mix them inside a TreeSet,
+    elements may appear missing because the comparator treats equal differently.
+
+    📌 Pitfall: Using comparator that doesn’t agree with equals().
+    Example: Two products with same price but different names may be treated as equal in a TreeSet if comparator only compares by price.
+    Result → one product "disappears" in the set.
+
+Using Subtraction for Numeric Comparison
+
+BAD:
+    Comparator<Product> cmp = (p1, p2) -> (int)(p1.getPrice() - p2.getPrice());
+    Risk of overflow (if values are large) what p1 = Integer.MaxValue and p2 is -2
+    then Integer.MaxValue - (-1) lead to overflow and results in less than zero
+    where as actually Integer.MaxValue is greater than -1
+
+    Risk of wrong results when dealing with decimals (double/float)
+    Correct
+    Comparator<Product> cmp = Comparator.comparingDouble(Product::getPrice);

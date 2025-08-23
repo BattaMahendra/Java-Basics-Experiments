@@ -7,7 +7,7 @@ import lombok.ToString;
 @Data
 @Builder
 @ToString
-public class Employee {
+public class Employee implements  Comparable<Employee>{
 	
 	public Employee() {
 		super();
@@ -71,6 +71,10 @@ public class Employee {
 	}
 
 
+	@Override
+	public int compareTo(Employee o) {
+		return Integer.compare(this.id ,o.id);
+	}
 }
 
 
