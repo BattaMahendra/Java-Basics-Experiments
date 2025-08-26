@@ -1,5 +1,8 @@
 package collections.queue;
 
+import basic.experiments.pojos.Emp;
+import java8.Java_Streams.Employee;
+
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
@@ -55,6 +58,9 @@ public class PriorityQueueExample {
         taskQueue.offer(new Task("Task 2", 1));
         taskQueue.offer(new Task("Task 3", 5));
 
+        //throws exception
+       // taskQueue.offer(null);
+
         while (!taskQueue.isEmpty()) {
             Task task = taskQueue.poll();
             System.out.println("Processed task: " + task.name);
@@ -72,6 +78,14 @@ public class PriorityQueueExample {
             Task task = taskQueueWithCustomComaprator.poll();
             System.out.println("Processed task: " + task.name);
         }
+
+        /*
+       * If we populate priorityQueue with custom objects which doesn't implement Comparable then it throws exception
+       * */
+        PriorityQueue<Employee> employeePriorityQueue = new PriorityQueue<>();
+     //   Employee.populateEmployee().forEach(employee -> employeePriorityQueue.offer(employee));
+
+//        employeePriorityQueue.forEach(s -> System.out.println(s));
 
 
     }

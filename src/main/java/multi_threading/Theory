@@ -30,7 +30,8 @@ Incrementing a counter (counter++) is not a single, atomic operation. Instead, i
 Read: The current value of the variable is read from memory.
 Increment: The value is incremented by one.
 Write: The new value is written back to memory.
-Even though volatile ensures visibility, it does not guarantee that these steps will be executed atomically. This means that when multiple threads are incrementing the same volatile variable, they can interfere with each other, leading to race conditions.
+Even though volatile ensures visibility, it does not guarantee that these steps will be executed atomically.
+This means that when multiple threads are incrementing the same volatile variable, they can interfere with each other, leading to race conditions.
 
 Detailed Example of Race Condition
 
@@ -66,7 +67,7 @@ Guarantees visibility of changes to variables across threads.
 Suitable for simple flags and state variables.
 Does not ensure atomicity for compound operations like incrementing.
 
-AtomicInteger:
+AtomicInteger: --> Internally user COMPARE AND SWAP (CAS) method ( that is a atomic operation)
 Ensures both visibility and atomicity for operations.
 Provides atomic methods like incrementAndGet() and decrementAndGet().
 Suitable for counters and other variables that require atomic operations.

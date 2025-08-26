@@ -28,7 +28,7 @@ public class LiveLockExample {
          * We can create Threads using lambda ==>
          *  Thread processingThread = new Thread(() -> processor.processMessages());
          * but as the processMessage() method doesn't take any parameter and also doesn't return anything
-         * it is same as run() method in runnable , so we can modify the above lambda to followinng
+         * it is same as run() method in runnable , so we can modify the above lambda to following
          * method reference
          * */
         Thread processingThread = new Thread(processor::processMessages);

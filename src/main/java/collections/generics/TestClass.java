@@ -2,9 +2,7 @@ package collections.generics;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class TestClass {
 
@@ -26,6 +24,27 @@ public class TestClass {
 
         //using wildcard ?
         printUsingGeneric(stringList);
+        /*Why do we need wild cards ?
+        * Observe below*/
+
+        List<Number> numbers = List.of(1,2,3,4,5,6,7,8,9);
+        //lets suppose we have a method which accepts list of Numbers and prints them
+        printNumberList(numbers);
+
+        //now lets have another list of integers
+        List<Integer> integerList = List.of(1,2,3,4,5,6,7,8,9);
+        //the method won't accept List<Integer> although Integer is subtype of Number
+        //printNumberList(integerList);  //compile time error
+
+        /*
+        * To avoid above scenario we can use wild cards where observe below*/
+
+        printNumber(numbers);
+        printNumber(integerList); //using wild cards accepts both
+
+
+
+
 
         //using generic T
         printUsingGenericT(stringList);
@@ -48,6 +67,18 @@ public class TestClass {
         //List<int> intLIst; // compile time error as int is not an object.
         List<Integer> intList; // allowed as Integer is object.
 
+    }
+/*
+*
+* here there are three types
+* 1. upper bounded wild cards - List<? extends  Number> --> allows all subtypes of Number
+* 2. Lower bounded wild cards - List<? super Number> --> allows Number and its possible parents
+* 3. Unbounded wild cards - List<?> --> allows anything of List  */
+    public static void printNumber(List<? extends  Number> list){
+        list.forEach(System.out::println);
+    }
+    public static void printNumberList(List<Number> list){
+        list.forEach(System.out::println);
     }
 
     public static <T> T[] toArray(List<T> list, Class<T> clazz) {

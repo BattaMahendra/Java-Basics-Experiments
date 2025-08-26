@@ -55,7 +55,7 @@ public class ArrayDeq {
      * why ?
      * Usually in java original stack (implements Vector interface) is heavily synchronized  and thread safe
      *
-     * Where as a ArrrayDeque operates on internal dyanmic array and best to use on single thread stack
+     * Where as a ArrayDeque operates on internal dynamic array and best to use on single thread stack
      * */
 
     private static void usingArrayDequeForStackOperations(ArrayDeque<Integer> adq) {

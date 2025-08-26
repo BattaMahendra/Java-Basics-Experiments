@@ -81,7 +81,7 @@ class DisplayNumbers {
  * - In this code, wait() is called inside the synchronized block to ensure that the current thread releases the lock
  *   and waits for the other thread to notify it.
  * - The wait() method releases the lock prior to waiting, and reacquires the lock prior to returning from the wait() method. This is done so that no race condition exists.
- * - This method should always be used in a synchronized method and moreever you should use it inside loop rather than if statement
+ * - This method should always be used in a synchronized method and moreover you should use it inside loop rather than if statement
  *
  * 2. notify():
  * - The notify() method is used to wake up a single thread that is waiting on the same object.

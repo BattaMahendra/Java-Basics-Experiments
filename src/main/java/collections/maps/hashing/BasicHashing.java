@@ -83,7 +83,7 @@ public class BasicHashing {
                     leastRepeatedChar= entry.getKey();
                 }
         }
-
+        System.out.println("The original map is : "+map);
         System.out.println("Most repeated char is "+mostRepeatedChar + " for "+max);
         System.out.println("Least repeated char is "+leastRepeatedChar + " for "+min);
     }

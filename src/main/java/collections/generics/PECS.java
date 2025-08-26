@@ -25,7 +25,7 @@ public class PECS {
         // basket.add(new Apple()); //❌ Not allowed
         /*
         * Why above line not allowed ?
-        * Becuase compiler doesn't know at the moment whether list is List<Orange> or List<Apple>
+        * Because compiler doesn't know at the moment whether list is List<Orange> or List<Apple>
         * What if at run time List is List<Orange> , then it would break at runtime
         * */
     }
@@ -39,7 +39,7 @@ public class PECS {
         * as we can see List param is super Apple , which means Apple and its super classes but not subclasses of apple
         * here List can be either List<Apple> , List<Fruit> and List<Object>
         *  now in above line what if the List was of type List<Apple>
-        *  new Apple() will always allowed as in above line becuase of rule it should be Apple or its supertypes
+        *  new Apple() will always allowed as in above line because of rule it should be Apple or its supertypes
         *  where Apple would fit in all cases
         */
     }
