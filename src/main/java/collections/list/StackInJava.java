@@ -7,7 +7,7 @@ public class StackInJava {
     /*
     * Stack is the child of Vector class
     * Stack is also synchronized as like its parent
-    * Follows List In First Out principle*/
+    * Follows  Last-In, First-Out (LIFO)  principle*/
 
     public static void main(String[] args) {
 

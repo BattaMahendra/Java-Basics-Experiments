@@ -12,8 +12,8 @@ import java.util.concurrent.CountDownLatch;
 * you can give like this synchronised(MyClass.class){} --> it is equivalent of
 * static synchronised method.
 *
-* When thread enters into synchronized instance method or block,
-* it acquires Object level lock and when it enters into synchronized static method or block it acquires class level lock.
+* When thread enters into synchronised instance method or block,
+* it acquires Object level lock and when it enters into synchronised static method or block it acquires class level lock.
 * */
 
 public class StaticSynchronisation extends ThreadPriority {

@@ -40,7 +40,7 @@ public class ThreadPriority {
     * If suppose all the threads are running at the same time then
     * the threads with higher priority runs first
     * If two or more threads having same priority are run at once then JVM follows
-    * first come first serve method
+    * first come, first served method
     *
     *  */
     private static void testThreadPriorityWithConcurrentThreads()  {

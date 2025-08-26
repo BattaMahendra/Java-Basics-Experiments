@@ -26,6 +26,7 @@ public class ExecutorServices {
 	public static void main(String[] args) throws ExecutionException, InterruptedException {
 
 		//submit() returns a Future representing the pending result.
+		//here submit() takes input as callable
 		Future<String> future1= executors.submit(()->returnAStringWithDelay(15));
 		Future<String> future2=executors.submit(()->returnAStringWithDelay(1));
 		Future<String> future3=executors.submit(()->returnAStringWithDelay(13));
@@ -50,7 +51,7 @@ public class ExecutorServices {
 
 		
 		/*
-		 * the above code ensures that all the 10 futures are executed simultaneously and 
+		 * the above code ensures that all the 12 futures are executed simultaneously and
 		 * you can see the result your  self.
 		 */
 			

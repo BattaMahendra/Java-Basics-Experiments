@@ -25,7 +25,8 @@ public class CustomMapTest {
         map2.put(48,17);
         map2.put(3,17);
         map2.put(null,17);
-        map2.remove(80);
+        System.out.println(map2);
+        map2.remove(16);
         System.out.println(map2);
 
         System.out.println(map2.get(49));

@@ -20,14 +20,14 @@ public class WithOutAtomicVariables implements ThreadOperations {
     and vice versa*/
 
 
-    // private static int count;
+     private static int count;
 
-    private static AtomicInteger count = new AtomicInteger(0);
+    //private static AtomicInteger count = new AtomicInteger(0);
 
     public static void counter() {
         for (int i = 0; i <= 4; i++) {
-//            count=count+1;
-            count.getAndIncrement();
+            count=count+1;
+           // count.getAndIncrement();
             System.out.println("This thread is " + Thread.currentThread().getName() +
                     " Incremented counter value " + count);
         }

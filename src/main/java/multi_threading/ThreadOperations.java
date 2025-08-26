@@ -40,4 +40,9 @@ public interface ThreadOperations {
         t.notifyAll();
     }
 
+    public static void interruptGivenThread(Thread t){
+        System.out.println( " Calling interrupt() method on thread: "+t.getName());
+        t.interrupt();
+    }
+
 }

@@ -24,6 +24,7 @@ public class TestSynchronisation extends ThreadPriority {
                 System.out.println("This thread is " + Thread.currentThread().getName() + " wtih value " + i);
                 instanceSum = instanceSum+i;
             }
+            System.out.println("The total sum by thread: "+Thread.currentThread().getName()+ " is "+instanceSum);
         }
     }
 
@@ -55,10 +56,10 @@ public class TestSynchronisation extends ThreadPriority {
         startGivenThread(t1);
         startGivenThread(t2);
 
-        Thread.sleep(4000);
-        System.out.println("\n\n===================================");
+        Thread.sleep(5000);
+        System.out.println("\n\n==============  Instance Synchronisation  =====================");
         //testing instance synchronisation with same and different objects
-        //testSync();
+        testSync();
 
 
 
@@ -91,8 +92,8 @@ public class TestSynchronisation extends ThreadPriority {
                     throw new RuntimeException(e);
                 }
                 System.out.println("======================================");
-                obj1.synchronisedInstanceMethod();
-               // obj1.methodContainingSynchronizedBlock();
+               // obj1.synchronisedInstanceMethod();
+                obj1.methodContainingSynchronizedBlock();
             }
         };
 
@@ -106,8 +107,8 @@ public class TestSynchronisation extends ThreadPriority {
                 * */
 
 
-                obj1.synchronisedInstanceMethod();
-              //  obj2.methodContainingSynchronizedBlock();
+               // obj1.synchronisedInstanceMethod();
+                obj2.methodContainingSynchronizedBlock();
             }
         };
 

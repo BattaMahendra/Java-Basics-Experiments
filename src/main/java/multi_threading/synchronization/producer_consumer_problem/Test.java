@@ -37,7 +37,7 @@ class Producer extends Thread{
 
     public void run(){
         try {
-            this.queue.add(this.message);
+            System.out.println("The sent message is "+this.queue.add(this.message));
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

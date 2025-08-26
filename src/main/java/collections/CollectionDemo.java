@@ -5,6 +5,15 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
+/**
+ * 🌍 Why was there a need for Collections (its arrival)?
+ *
+ * Before Java 2 (JDK 1.2), developers used:
+ * 1. Arrays → Fixed size, no built-in methods for operations like sorting, searching.
+ * 2. Legacy classes → Vector, Hashtable, Stack, Properties.
+ *      These existed, but had inconsistent APIs and limited flexibility.
+ *
+ * */
 public class CollectionDemo {
     /*
     Array is a linear data structure that is a collection of similar data types.

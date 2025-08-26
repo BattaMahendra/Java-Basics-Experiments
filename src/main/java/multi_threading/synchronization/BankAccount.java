@@ -15,9 +15,9 @@ public class BankAccount {
     /*
     * Try using synchronized and notice the difference*/
 
-    public int withdrawBalance(int amount)  {
+    public synchronized int withdrawBalance(int amount)  {
 
-        if(balance >= 1000){
+        if(balance >= amount){
             //simulating delay
             try {
                 Thread.sleep(10);

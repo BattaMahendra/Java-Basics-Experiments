@@ -38,7 +38,8 @@ public class DequeueDemo {
         * Linked list also extends List interface but in above case we used reference as Deque
         * so the list internal methods can't be called by object linkedListDeque
         * because reference type methods are verified during compile time itself
-        * so when we try to reference linkedListDeque.get() doesn't work as get() method is specific to List interface
+        * so when we try to reference linkedListDeque.get() doesn't work as get() method is specific to List interface and
+        *    compiler searches for it in Queue interface and won't be able to find it
         *
         * Key concept in Inheritance
         *

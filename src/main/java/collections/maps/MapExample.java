@@ -141,7 +141,7 @@ public class MapExample {
     }
 
     private static void linkedHashMap() {
-        Map<String, Integer> stringIntegerMap = new LinkedHashMap<>();
+        LinkedHashMap<String, Integer> stringIntegerMap = new LinkedHashMap<>();
         stringIntegerMap.put("one" ,1);
         stringIntegerMap.put("two" ,2);
         stringIntegerMap.put("four",4);

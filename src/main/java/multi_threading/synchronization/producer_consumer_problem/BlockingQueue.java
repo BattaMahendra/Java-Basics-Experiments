@@ -19,7 +19,7 @@ public class BlockingQueue {
             }
             cloudQueue.add(toBeAdded);
             cloudQueue.notifyAll();
-            System.out.println(cloudQueue);
+          //  System.out.println(cloudQueue);
             return true;
 
         }
@@ -32,7 +32,7 @@ public class BlockingQueue {
             }
             String removedElement = cloudQueue.poll();
             cloudQueue.notifyAll();
-            System.out.println(cloudQueue);
+           // System.out.println(cloudQueue);
             return removedElement;
 
         }

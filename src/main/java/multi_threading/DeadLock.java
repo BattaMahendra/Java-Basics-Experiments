@@ -6,9 +6,11 @@ public class DeadLock {
     public static Object lock1 = new Object();
     public static Object lock2 = new Object();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         new Thread1().start();
         new Thread2().start();
+        Thread.sleep(2000);
+        System.out.println("\n\nNow both threads are waiting forever");
     }
 
     /*

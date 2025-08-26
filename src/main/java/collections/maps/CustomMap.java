@@ -71,7 +71,7 @@ public class CustomMap<K,V> {
             Node prevNode = presentNode;
 
             while(presentNode != null){   //traverse all the linked nodes to find the last node
-                if(presentNode.key.equals(key)){   //check if any linked nodes's key matches with given key
+                if(presentNode.key.equals(key)){   //check if any linked node's key matches with given key
                     V returnableValue = (V)presentNode.value;
                     presentNode.value = value;  // update the value of present node and return old value
                     return returnableValue;
@@ -111,7 +111,7 @@ public class CustomMap<K,V> {
 
         if(head == null) return null;
 
-        Node presentNode = head.next;
+        Node presentNode = head;
         Node prevNode = null;
         while( presentNode!= null){
 
@@ -120,7 +120,7 @@ public class CustomMap<K,V> {
                    bucketArray[hash] = presentNode.next; //remove head node
                 }
                 else{
-                    prevNode = presentNode.next; //remove any middle node
+                    prevNode.next = presentNode.next; //remove any middle node
                 }
 
                 threshold--;
