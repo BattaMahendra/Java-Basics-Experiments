@@ -1,6 +1,5 @@
-package string;
+package string.String_Props;
 
-import basic.experiments.pojos.Emp;
 import basic.experiments.pojos.Employee;
 
 import java.util.ArrayList;
@@ -59,6 +58,7 @@ public class expermiment {
 		List<String> ls = new ArrayList<>();
 		List<String> lo = ls;
 		lo.add("Mahendra");
+		System.out.println(lo == ls);
 		System.out.println(ls);
 
 

@@ -68,9 +68,40 @@ public class BasicExperiments {
 //        //subarraySum(arr, 3);
 //        longestSubarray(arr, 5);
 
+
+
         reverseWords("gmo   cpqa   zfu   ldqu  t");
+
+        int[] arr = new int[]{5, 4, 1, 8, 7, 1, 3};
+        maxScore(arr, 3);
     }
 
+    public static int maxScore(int[] arr, int k) {
+        //your code goes here
+
+        int maxSum = 0;
+        int leftSum = 0;
+        int rightSum = 0;
+
+        for(int i=0; i<k; i++){
+
+            leftSum = leftSum + arr[i];
+
+        }
+        maxSum = leftSum;
+        int r = arr.length-1;
+        System.out.println(maxSum);
+
+        for(int i = k-1; i >=0; i--){
+
+            rightSum = rightSum + arr[r];
+            r--;
+            leftSum = leftSum - arr[i];
+            maxSum = Math.max(maxSum, leftSum+rightSum);
+            System.out.println(maxSum);
+        }
+        return rightSum;
+    }
     public static int longestSubarray(int[] nums, int k) {
 
         Map<Integer, Integer> map = new HashMap<>();

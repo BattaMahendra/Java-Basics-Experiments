@@ -50,6 +50,7 @@ public final class CustomImmutable {
 		Map<Integer , String> map2 =new HashMap<Integer , String>();
 		CustomImmutable c = new CustomImmutable(0, 5,map);
 		System.out.println(c);
+		c.map.put(2,"Mahendra");
 		System.out.println(c);
 
 	}

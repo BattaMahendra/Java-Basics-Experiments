@@ -16,7 +16,7 @@ public enum FamilyEnum {
 	/** 
 	 * the constants of enum are by default static and final
 	 * Constructors in enums are always private by default
-	 * we can add values to this constants by having a constructor
+	 * we can add values to these constants by having a constructor
 	 */
 	
 	/**
@@ -28,7 +28,7 @@ public enum FamilyEnum {
 
 	/*
 	* Unlike public static final keywords the enum constants have added behaviour
-	* 	1. It can have private methods(which can be ovrrided)
+	* 	1. It can have private methods(which can be overridden)
 	* */
 
 	FATHER{
@@ -61,7 +61,7 @@ public enum FamilyEnum {
 		
 		// looping through enum values ( here we are using special method called values() )
 		for(FamilyEnum e : FamilyEnum.values()) {
-			System.out.println(e);
+			System.out.println("Name of enum "+e+" is "+e.name());
 
 			// ordinal() is special method in enum which prints 0 based index number of enums (chek out below result)
 			System.out.println("Length of enum "+ e+ " is  "+ e.ordinal());
