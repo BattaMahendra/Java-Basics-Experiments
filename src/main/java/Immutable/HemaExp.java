@@ -8,7 +8,7 @@ public class HemaExp {
 		
 		String m ="HEMA";
 		
-		//s = "HEMA LATHA";
+		s = "HEMA LATHA";
 		s = s.concat("LATHA"); //HEMA LATHA
 		 System.out.println(s);
 		 
