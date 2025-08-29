@@ -12,8 +12,10 @@ public class Experiment {
 		tempMap.put(1, "hello");
 		tempMap.put(2, "jack");
 		CustomImmutable custom = new CustomImmutable(1, 2,tempMap);
-		
+
+		custom.getMap().remove(2);
 		System.out.println(custom);
+
 		
 		Map<String , String> tempMap2 = new HashMap<>();
 		tempMap2.put("hello", "hello");
