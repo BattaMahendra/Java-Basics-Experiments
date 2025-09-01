@@ -326,6 +326,14 @@ public class Stream_Problems {
         System.out.println(max1 + " "+ max3);
 
         //using Integer::compareTo
+        /*
+        * In the below operation you can observe we have used max(Integer::compareTo)
+        * we are passing comparable function where as max() method expects input as comparator
+        *
+        * then how come this is achieved ?
+        * usually comparator means takes two params and return same type of param  i.e (a,b) -> compare(a,b)
+        * the below method reference also can be treated as Integer::compareTo [method reference]
+        * can be equal to (a,b) -> a.compareTo(b); [lambda expression] ==> satisfies the max() input*/
         Integer max2 = list.stream().max(Integer::compareTo).orElse(Integer.MAX_VALUE);
 
         Integer min = list.stream().min((i, j)->  i-j).orElse(-1);

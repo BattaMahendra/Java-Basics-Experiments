@@ -74,6 +74,14 @@ public class BasicExperiments {
 
         int[] arr = new int[]{5, 4, 1, 8, 7, 1, 3};
         maxScore(arr, 3);
+
+        print(1,2,3,4,5);
+
+
+    }
+
+    public static void print(Integer ... nums){
+        System.out.println(nums.length);
     }
 
     public static int maxScore(int[] arr, int k) {

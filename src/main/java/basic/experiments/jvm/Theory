@@ -1,0 +1,134 @@
+
+  1. JDK --> ( JRE + COMPILER + OTHER TOOLS)
+  2. JRE --> (JVM + JAVA API LIBRARIES)
+
+ Usually java code written by a developer undergoes through following steps
+
+                Student.java  --> written by developer
+                    |
+                    |  ==> javac Student.java  (compiler converts it into byte code)
+                    V
+                Student.class  --> byte code  ==> This will be executed by JVM
+
+                remember byte code is platform independent (it can run on any machine if JVM is installed on the machine)
+                It just needs JVM to be there. (Write once Run Anywhere)
+
+                JVM - platform dependent ( different software for MAC/WIN/LINUX)
+
+
+
+ once byte code is ready JVM takes lead and class loader comes into play
+
+       [Student.class]   <-- Compiled Bytecode
+              |
+              v
+     +---------------------------------------------------+
+     |              Class Loader Subsystem               |
+     +---------------------------------------------------+
+     |                                                   |
+     |   1. Loading                                      |
+     |      - Read .class bytecode                       |   Delegation principle --> First byte code comes into Application loader level
+     |      - Create java.lang.Class object              |    --> App CL delegates it for parent [Extension loader]
+     |      - Delegation:                                |    --> Extension CL delegates for its PARENT [Bootstrap CL]
+     |        Bootstrap -> Extension -> Application CL   |    --> If Bootstrap CL finds then it loads the class
+     |                                                   |    --> other wise delegated to Extension CL
+     |   2. Linking                                      |    --> Extension CL checks if the class is in its libraries , if present loads otherwise
+     |      a) Verification:                             |    --> Delegates to low level APP CL and it loads the classes.
+     |         - Bytecode validity (stack map frames,    |
+     |           type safety, illegal access checks)     |
+     |         - Prevents security breaches              |
+     |                                                   |
+     |      b) Preparation:                              |
+     |         - Allocate memory for static variables    |
+     |         - Initialize them with *default* values   |
+     |           (int=0, boolean=false, obj=null)        |
+     |                                                   |
+     |      c) Resolution:                               |
+     |         - Convert symbolic references in          |
+     |           constant pool into direct memory refs   |
+     |         - E.g., "java/lang/System" → memory addr  |
+     |                                                   |
+     |   3. Initialization                               |
+     |      - Execute <clinit>() method (if present)     |
+     |      - Assign *real* values to static variables   |
+     |      - Run static blocks in order of appearance   |
+     |      - Example:                                   |
+     |         static int x = 10;                        |
+     |         static { System.out.println("Init"); }    |
+     |                                                   |
+     +---------------------------------------------------+
+              |
+              v
+       [Classes now ready in Method Area → Execution Engine]
+
+
+
+
+
+
+
+
+
+
+                OBSERVE THIS WHOLE HIERARCHY
+
+               +--------------------------------------+
+               |         Class Loader Subsystem        |
+               +--------------------------------------+
+                  | Loading | Linking | Initialization
+                  v
+ +---------------------------------------------------------------+
+ |                    Runtime Data Areas                         |
+ |                                                               |
+ |   +----------------------+    +----------------------------+  |
+ |   |      Method Area     |    |           Heap             |  |
+ |   | (class info, static, |    | (objects, arrays,          |  |
+ |   |  runtime constant    |    |  instance variables)       |  |
+ |   |  pool, methods)      |    |                            |  |
+ |   +----------------------+    +----------------------------+  |
+ |                                                               |
+ |   +----------------------+    +----------------------------+  |
+ |   |   JVM Stack (per     |    |  PC Register (per thread)  |  |
+ |   |   thread, frames:    |    | (address of current        |  |
+ |   |   locals + operand   |    |  instruction)              |  |
+ |   |   stack + method ref)|    +----------------------------+  |
+ |   +----------------------+                                   |
+ |                                                               |
+ |   +--------------------------------------------------------+ |
+ |   |     Native Method Stack (per thread)                   | |
+ |   | (used for C/C++ native methods via JNI)                | |
+ |   +--------------------------------------------------------+ |
+ +---------------------------------------------------------------+
+
+                           |
+                           v
+ +---------------------------------------------------------------+
+ |                     Execution Engine                          |
+ |                                                               |
+ |   +---------------------+   +-------------------------------+ |
+ |   |    Interpreter      |   |  JIT Compiler (HotSpot)       | |
+ |   | (executes bytecode  |   | (compiles hot code into       | |
+ |   |  line by line)      |   |  native machine instructions) | |
+ |   +---------------------+   +-------------------------------+ |
+ |                                                               |
+ |   +---------------------------------------------------------+ |
+ |   |          Garbage Collector (GC)                         | |
+ |   | (frees unused objects from Heap, manages memory)        | |
+ |   +---------------------------------------------------------+ |
+ +---------------------------------------------------------------+
+
+                           |
+                           v
+ +---------------------------------------------------------------+
+ |        JNI (Java Native Interface) + Native Libraries         |
+ |   (bridges between JVM & C/C++ system libraries, OS calls)    |
+ +---------------------------------------------------------------+
+
+                           |
+                           v
+ +---------------------------------------------------------------+
+ |                   Underlying OS + Hardware                    |
+ +---------------------------------------------------------------+
+                            |
+                            v
+                        "hello world!"

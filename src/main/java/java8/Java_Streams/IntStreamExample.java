@@ -33,6 +33,8 @@ public class IntStreamExample {
         // 1. forEach
         System.out.println("1. forEach:");
         IntStream.of(numbers).forEach(System.out::println);
+        //if you want to define for loops
+        IntStream.range(0,10).forEach(i -> System.out.println(i));
 
         // 2. sum
         System.out.println("\n2. sum:");
