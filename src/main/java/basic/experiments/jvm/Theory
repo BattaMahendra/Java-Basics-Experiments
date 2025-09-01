@@ -2,6 +2,7 @@
   1. JDK --> ( JRE + COMPILER + OTHER TOOLS)
   2. JRE --> (JVM + JAVA API LIBRARIES)
 
+Go through website: https://medium.com/@amitvsolutions/jvm-part-2-architecture-1bf3044a9378
  Usually java code written by a developer undergoes through following steps
 
                 Student.java  --> written by developer
