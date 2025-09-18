@@ -21,9 +21,9 @@ public final class SmartPhone {
 //				.forEach(entry -> temporary.put(entry.getKey(), entry.getValue()));
 //		this.specifications = temporary;
 		
-		this.specifications = specifications;
-		this.subModels = subModels;
-		this.battery = battery;
+		this.specifications = specifications;		//this is a mistake as we are assigning other object directly here
+		this.subModels = subModels;		//this is a mistake as we are assigning other object directly here
+		this.battery = battery;		//this is a mistake as we are assigning other object directly here
 	}
 
 	private final double price;
@@ -75,10 +75,10 @@ public final class SmartPhone {
 	@Override
 	public String toString() {
 		try {
-			return "SmartPhone [price=" + price + ", model=" + model + ", specifications=" + specifications + ", subModels="
-					+ subModels + ", battery=" + battery + ", getPrice()=" + getPrice() + ", getModel()=" + getModel()
-					+ ", getSpecifications()=" + getSpecifications() + ", getSubModels()=" + getSubModels()
-					+ ", getBattery()=" + getBattery() + "]";
+			return "SmartPhone\n [price=" + price + ",\n model=" + model + ",\n specifications=" + specifications + ",\n subModels="
+					+ subModels + ",\n battery=" + battery + ",\n getPrice()=" + getPrice() + ",\n getModel()=" + getModel()
+					+ ",\n getSpecifications()=" + getSpecifications() + ",\n getSubModels()=" + getSubModels()
+					+ ",\n getBattery()=" + getBattery() + "]";
 		} catch (CloneNotSupportedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

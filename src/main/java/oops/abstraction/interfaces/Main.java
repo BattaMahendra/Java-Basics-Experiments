@@ -32,6 +32,12 @@ interface Logger {
         print("Started\n");
     }
 
+
+    /*
+    * Static methods can't be overridden
+    * They are Interface level methods which can be used by anyone by using Interface name
+    * We don't need to implement Interface to use static methods
+    * */
     public static void printFooter(){
         print("ended");
     }
@@ -49,7 +55,11 @@ public class Main {
         Logger logger = new Logger() {}; // Anonymous class
         logger.logInfo("System is starting"); // Output: [INFO]: System is starting
         logger.logError("An error occurred"); // Output: [ERROR]: An error occurred
-        Logger.printFooter();
+
+
+        Logger.printFooter(); // for using static methods in interfaces we don't need to create objects
+
+
 
     }
 }

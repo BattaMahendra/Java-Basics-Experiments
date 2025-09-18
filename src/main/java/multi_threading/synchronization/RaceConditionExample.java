@@ -75,6 +75,7 @@ public class RaceConditionExample{
 
 class Counter {
     private int count = 0;
+    private Integer integerObject = new Integer(0);
 
     // Increment method that will be called by multiple threads at the same time
     // which leads to race condition
@@ -82,7 +83,8 @@ class Counter {
         //this below operation is not atomic because it contains multiple operations
         //i.e read and then write and then modify , so there is a possibility of race condition here
         count = count + 1;
-        System.out.println(threadName + " incremented count to " + getCount());
+        integerObject = integerObject+1;
+        System.out.println(threadName + " incremented count to " + getCount() +" and integerObject to :"+integerObject);
     }
 
     // Get method to return the current count

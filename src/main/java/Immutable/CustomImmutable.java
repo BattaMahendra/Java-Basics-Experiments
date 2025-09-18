@@ -1,5 +1,6 @@
 package Immutable;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,16 +8,22 @@ import lombok.ToString;
 
 @ToString
 /*
- * we need to make class final so that it 
- * can't be extended
+ * 1. we need to make class final so that it can't be extended
+ * 2. Data members should be private and final and should be initialized in costructor
+ * 3. Setters should be avoided
+ * 4. If Reference objects are data members then their copy should be returned in getter
  */
 public final class CustomImmutable {
 
+	/* Data members should be private final*/
 	private  final int variable;
 
 	private  final Integer variable2;
 
 	private final Map<Integer , String> map ;
+
+	/*
+	* Data members should be initialized in constructor itself*/
 
 	public CustomImmutable(int a , Integer b , Map<Integer , String> map) {
 

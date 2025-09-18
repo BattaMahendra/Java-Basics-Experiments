@@ -2,16 +2,53 @@ package basic.experiments.jvm;
 
 import lombok.ToString;
 
+import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
+
 
 /*Also read
 *
 * https://www.geeksforgeeks.org/island-of-isolation-in-java/*/
 public class GarbageCollection {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println("===========================================================");
         testingFinalizeMethod();
+        System.out.println("===========================================================");
         eligibleObjectsForGC();
+        System.out.println("===========================================================");
         System.gc();
+
+        Thread.sleep(1000);
+        //strong reference
+        Integer i = new Integer(1);
+        /**
+         * 1. Object is collected by GC if no strong references exist, even if weak references exist.
+         * 2. Common use: caches (like WeakHashMap).*/
+        WeakReference<Integer> w = new WeakReference<>(1);
+
+        /*  1. Similar to weak references, but GC keeps them longer.
+            2. Objects are cleared only when JVM really needs memory.
+            3. Best for caching memory-sensitive objects.
+            */
+        SoftReference<Integer> s = new SoftReference<>(1);
+
+        System.out.println("\n BEFORE GC ");
+        System.out.println(i);
+        System.out.println(w.get());
+        System.out.println(s.get());
+
+        System.gc();
+
+        System.out.println("\n AFTER GC ");
+        System.out.println(i);
+        System.out.println(w.get());
+        System.out.println(s.get());
+
+
+
+
+
 
 
 
@@ -87,7 +124,7 @@ class Employee{
     {
 
 
-        System.out.println(this + " object successfully garbage collected");
+        System.out.println(this + " object successfully garbage collected "+" done by thread: "+Thread.currentThread().getName());
         --nextEmpId;
 
     }
