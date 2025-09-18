@@ -174,6 +174,16 @@ public class Stream_Problems {
 
         isPalindrome();
 
+        String p = "malayalam";
+        int n = p.length()-1;
+        for(int i =0; i <n/2; i++){
+            if(p.charAt(i) != p.charAt(n-i)){
+                System.out.println(p+" is Not a palindrome");
+            }
+        }
+        System.out.println(p+" is a palindrome");
+
+
 
 
     }

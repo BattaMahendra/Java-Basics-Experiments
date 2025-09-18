@@ -58,6 +58,7 @@ public enum FamilyEnum {
 		System.out.println("Inside static block");
 		FamilyEnum father = FamilyEnum.FATHER;
 		System.out.println(father);
+
 		
 		// looping through enum values ( here we are using special method called values() )
 		for(FamilyEnum e : FamilyEnum.values()) {
@@ -74,14 +75,14 @@ public enum FamilyEnum {
 
 	// instance block
 	{
-		System.out.println("hey , I am inside non static method");
+		System.out.println("hey , I am inside non static method(instance block)");
 	}
 	
 	/**
 	 * Constructors in enums are always private by default
 	 *
 	 * up on running the application the constructor is always called for each constant , so 
-	 * instance block executes every time constructor is clled
+	 * instance block executes every time constructor is called
 	 */
 	// enum constructor - cannot be public or protected (they can private and package private)
 	 FamilyEnum() {
@@ -98,7 +99,7 @@ public enum FamilyEnum {
 		this.role=role;
 	}
 
-	// enums can have normal methods as well and they can be overrided with constants
+	// enums can have normal methods as well, and they can be overridden with constants
 	public String description(){
 		return "";
 	}

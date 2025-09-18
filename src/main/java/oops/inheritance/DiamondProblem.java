@@ -23,12 +23,15 @@ class A {
     public A(String s) {
         System.out.println(s);
     }
+
 }
 
 class B extends A {
     public B() {
         System.out.println("B");
     }
+
+
 }
 
 class C extends B {

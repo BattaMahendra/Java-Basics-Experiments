@@ -1,5 +1,6 @@
 package serialization;
 
+
 import lombok.Data;
 import lombok.ToString;
 
@@ -17,6 +18,8 @@ Basics & Why
 What is Serialization / Deserialization
 
 Serialization: converting an object graph into a byte stream (so it can be stored or sent).
+1. So that we can transfer the object over a network
+2. To Store object into DB or save in file
 
 Deserialization: reconstructing objects back from that byte stream.
 
@@ -48,6 +51,7 @@ public class Student implements Serializable {
     private int rollno;
     //using transient keyword which doesn't get serialized
     transient  private int age;
+
     //experimenting transient with final keyword  when literal is initialized -- transient doesn't work in this case
     /*
     * The final modifier makes no difference when it has literal initialization.
@@ -65,9 +69,27 @@ public class Student implements Serializable {
 
     private Teacher teacher;
 
+    //non serialized object
+    //private Department department; // results in runtime error as Department is not a serializable object.
+
+
     public Student (){
         this.state ="Andhra Pradesh";
         teacher = new Teacher("Mahesh", "JAVA");
+       // department = new Department(1, "CS");
+    }
+
+
+}
+
+class Department{
+
+    int id;
+    String name;
+
+    public Department(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
 

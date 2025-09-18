@@ -5,4 +5,6 @@ public interface IGraphicCard {
     void provideGraphics();
 
     void process();
+
+
 }

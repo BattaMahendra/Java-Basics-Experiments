@@ -62,5 +62,16 @@ the private method is not inherited by the subclass in Java,
   more importantly, a call to the private method is resolved at compile time
   by using Type information as opposed to runtime by using the actual object.
 
+
+  Method Overloading
+
+  Change in method signature is allowed
+  1.Method Signature of a method is composed of the method name and its parameter list only.
+ *2. Method signature does not include return type of method.
+  3. Declaring two methods with same name but different signatures is called Method Overloading.
+  4.We cannot achieve Method Overloading by changing the return type of two methods. (results in compilation error)
+
+It is not possible to declare two methods in a class with the same method signature.
+
 * */
 

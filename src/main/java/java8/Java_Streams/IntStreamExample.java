@@ -12,7 +12,8 @@ import java.util.stream.Stream;
  * IntStream - refers to streaming of primitive values of int
  *
  * Generally Streams only process objects i.e Stream<int> is not possible , only Stream<Integer> is only possible
- *  as generics allow only objects. Primitives are not objects (in fact i.e. why java is not pure object-oriented language)
+ *  as generics allow only objects.
+ *  Fun Fact: Primitives are not objects (in fact i.e. why java is not pure object-oriented language)
  *
 * */
 public class IntStreamExample {
