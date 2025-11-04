@@ -13,18 +13,18 @@ public class Basics {
         System.out.println("\n=============================================================\n");
         IntStream.range(0,10)
                 .filter( i -> {
-                        System.out.println("filter method was called: "+i);
+                        System.out.println("filter  "+i);
                         return i%2 == 0; })
                  .map(i -> {
                             System.out.println("map method was called: "+i);
-                            return i+2; })
+                            return i; })
                 //an intermediate operation used for debugging and logging in streams.
                 //It accepts as Consumer functional interface as input and return the original stream to next operatiosn.
                 //no changes are applied to original stream.
                 .peek(c -> {
                     //here even though we change the value of c , after peek() completion original stream wil be returned
                         c = c+100;
-                        System.out.println("we are in peek method"+c);
+                        System.out.println(" peek "+c);
                     })
                 .sorted()
                 .forEach(System.out::println);
@@ -53,6 +53,7 @@ public class Basics {
     }
 
 
+
     /*Creating streams
     * */
 
@@ -60,6 +61,31 @@ public class Basics {
 
         creationOfStreams();
         intermediateOperations();
+        lazyEvaluationOfStreams();
 
+    }
+
+    /**
+     * Streams are lazy - intermediate operations are lazy which means they are only called when there
+     * is a terminal operation
+     * */
+
+    private static void lazyEvaluationOfStreams() {
+        System.out.println("\n=========================== LAZY EVALUATION ==================================\n");
+        //observe this
+        // Here the print statements will not get printed as there is no terminal operation
+        Stream<Integer> integerStream = IntStream.range(0,10).
+                filter(i -> {    // filtering out integers greater than -1
+                        System.out.println("filter -> "+i);
+                        return i>-1;
+                          }).
+                mapToObj(e -> {   // converting int to Integer
+                        System.out.println("map -> "+e);
+                        return Integer.valueOf(e);
+                    });
+
+        //observe this --> count is a terminal operation
+        // now you can observe the intermediate operations are executed
+        long count = integerStream.count();
     }
 }

@@ -15,6 +15,6 @@ WHY STREAMS ?
      making your code less error-prone and easier to reason about.
      3. Lazy Evaluation: Streams perform operations on elements of a collection only when necessary.
       This laziness can lead to better performance by avoiding unnecessary computations.
-     4. Lazy evaluation.
+     4.  Lazy evaluation = operations are only executed when a terminal operation is invoked.
 
  */

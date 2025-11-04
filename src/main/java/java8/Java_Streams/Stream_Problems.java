@@ -12,20 +12,15 @@ public class Stream_Problems {
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(0,1,1,1,1,7,8,9,5,2,36,4,78,222,24,9);
 
-
         sumOfNumbersInTheList(list);
 
-
         averageOfNumbersInTheList(list);
-
-
 
         numbersStartingWith2(list);
 
         duplicatesInList(list);
 
         minAndMax(list);
-
 
 
         //Consider a array containing 0's and 1's and now move all 1's to right and zeros to left using java 8
@@ -155,6 +150,7 @@ public class Stream_Problems {
          * Write a Java 8 program to reverse an integer array.
          */
         reverseArray(list);
+
 
         /**
          * Find the most repeated element in an array
