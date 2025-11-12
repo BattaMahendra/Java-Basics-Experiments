@@ -55,7 +55,7 @@ public class AdvancedStreamProblems {
         // xyx , yxy , xxy , map will do toString
 
         Stream<String> pt = Stream.iterate("", str -> str+"x");
-        pt.limit(2).forEach(System.out::print);
+        pt.limit(3).map(str -> str+"y").forEach(System.out::println);
 
 
 
@@ -141,6 +141,19 @@ public class AdvancedStreamProblems {
         System.out.println("Organisational avg salary: "+summaryStatistics.getAverage());
         System.out.println("Organisational total salary: "+summaryStatistics.getSum());
         System.out.println("Organisational max salary: "+summaryStatistics.getMax());
+
+        /*Dept wise summary statistics*/
+
+        Map<String, IntSummaryStatistics> deptWiseSalaryStats
+                = employeeList.stream().
+                     collect(Collectors.groupingBy(Employee::getEmp_dept, Collectors.summarizingInt((e -> {
+                         return (int)e.getEmp_salary();
+                     }))));
+
+        System.out.println("\n================ Dept wise Summary statistics ==============================\n");
+        deptWiseSalaryStats.entrySet().forEach( e -> {
+            System.out.println(e.getKey()+" --> "+ e.getValue());
+        });
     }
 
     private static void deptWiseSorting() {
@@ -192,6 +205,7 @@ public class AdvancedStreamProblems {
         //using max() , custom comparator
         highestSalaryEmployee = employeeList.stream().max((e1,e2) -> (int)e1.getEmp_salary()-(int)e2.getEmp_salary()).orElse(null);
 
+        //lists all salaries from lowest to highest. i.e why we need to use reverse comparator
         employeeList.stream().sorted(Comparator.comparing(Employee::getEmp_salary)).forEach(System.out::println);
         System.out.println(highestSalaryEmployee);
     }
