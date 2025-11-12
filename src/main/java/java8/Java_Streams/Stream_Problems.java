@@ -504,13 +504,15 @@ public class Stream_Problems {
         double i2 = (double) list.stream().reduce(0, Integer::sum) / list.size();
         System.out.println("Average of numbers in the list:"+ list +" is  "+i2);
 
-        //square & filter and find avarage
+        //square & filter and find average
 
         Double average2 = list.stream()
                                         .map(i -> i*i)
                                         .filter(i -> i>100).mapToInt(i -> i)
                                         .average().orElse(0);
         System.out.println("Average of numbers in the list:"+ list +" is  "+average2);
+
+
     }
 
     private static void sumOfNumbersInTheList(List<Integer> list) {
