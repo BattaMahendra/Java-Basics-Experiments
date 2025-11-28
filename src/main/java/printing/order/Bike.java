@@ -9,7 +9,9 @@ public class Bike {
 	String sA="hello Bike";
 	
 	//static variables are loaded first , you can uncomment below line and check
-	static  Bike b = new Bike("Black");
+	//static  Bike b = new Bike("Black");
+	static  String test = X.test();
+
 	
 	public void testInheritance(){
 		System.out.println("Bike  and wheels "+ this.wheels);
@@ -64,5 +66,12 @@ public class Bike {
 		System.out.println(" Bike this is static block 2");
 	}
 
+}
+
+class X{
+	public static String test(){
+		System.out.println("We are testing in X class");
+		return "We are testing in X class";
+	}
 }
 

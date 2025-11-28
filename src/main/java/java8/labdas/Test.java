@@ -17,9 +17,9 @@ public class Test {
     };
 
     //We can avoid above implementation  using Lambdas
-    static FucInterface fuc2 = () -> System.out.println("We are using lamdas ");
+    static FucInterface fuc2 = () -> System.out.println("We are using lambdas ");
 
-    // Note that anonymoys inner classes can have state (Object) but lammbdas can't have that
+    // Note that anonymous inner classes can have state (Object) but lambdas can't have that
 
     static FucInterface fuc3 = new FucInterface() {
         // it can have its own objects state

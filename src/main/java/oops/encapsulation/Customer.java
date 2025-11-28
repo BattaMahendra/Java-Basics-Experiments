@@ -17,7 +17,7 @@ import java.time.LocalDate;
 * are changing only in this class and  will provide same data type to external system
 *
 *
-* Java Reflection is used to break the encapsulation.
+* Java Reflection is used to break the encapsulation. - So encapsulation is only design safety but not absolute safety
 * */
 
 //using encapsulation we are binding data (fields) and methods (functionality) into single unit (class)

@@ -6,6 +6,8 @@ interface Logger {
     // public static final
     String loggerStarted = "STARTED";
 
+    /*
+    * */
     // Default method that uses private method
     default void logInfo(String message) {
 
@@ -13,7 +15,7 @@ interface Logger {
     }
 
     // Default method that uses private method
-    default void logError(String message) {
+    default  void logError(String message) {
 
         log("ERROR", message);
     }
@@ -46,18 +48,47 @@ interface Logger {
     private static void print(String term){
         System.out.println("\nLogger functionality: "+ term);
     }
+
+    /* the below is not allowed as equals(Object o):boolean method belongs to Object class and
+     they are not allowed to be overridden. */
+//    default  boolean equals(Object o){
+//        return true;
+//    }
+
+
+
 }
 
 public class Main {
     public static void main(String[] args) {
 
         Logger.printHeader();
-        Logger logger = new Logger() {}; // Anonymous class
+        Logger logger = new Logger() {}; // Anonymous class - not overriding anything as we don't have abstract methods
         logger.logInfo("System is starting"); // Output: [INFO]: System is starting
         logger.logError("An error occurred"); // Output: [ERROR]: An error occurred
 
-
         Logger.printFooter(); // for using static methods in interfaces we don't need to create objects
+
+        //default methods can also be called as
+
+
+
+
+        //anonymous inner class with overridden default methods - optional
+        Logger logger1 = new Logger() {
+
+            @Override
+            public void logInfo(String message) {
+                System.out.println("Overridden default methods");
+                System.out.println("[INFO]: " + message);
+            }
+
+            // you can also choose not to override like object logger declared above
+            @Override
+            public void logError(String message) {
+                System.out.println("[ERROR]: " + message);
+            }
+        };
 
 
 

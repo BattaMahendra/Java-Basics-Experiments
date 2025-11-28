@@ -10,8 +10,7 @@ package oops.abstraction.interfaces;
 3.It can be used to achieve loose coupling.
 * */
 public interface IProcessor {
-
-
+  
 
   void process();
 
@@ -23,6 +22,7 @@ public interface IProcessor {
   *
   * 1. They can be overridden by child classes or interfaces.
   * 2. They are instance methods with a body.
+  * 3. Default methods can't override the methods of Object class (equals(), hashcode(), clone(), toString() etc..)
   * */
    default void getDescription(){
 
@@ -30,11 +30,12 @@ public interface IProcessor {
   }
 
   /*
-  * Static methods are Interface level methods which can be used as utility methods
+  * Static methods are Interface level methods which can be directly used as utility methods
+  *  means we can access like :  Iprocessor.productionDetails();
   *
   * 1. They can't be overridden
   * 2. They can be directly accessed with Interface name */
-  static void productionDetails(){
+   static void productionDetails(){
     System.out.println(" This design belongs to Intel company");
   }
 

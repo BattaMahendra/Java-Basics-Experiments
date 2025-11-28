@@ -30,8 +30,12 @@ public class SportsBike extends SmartBike {
 
 	/*
 	* Printing order
-	* All parent classes static blocks ---> present classes static blocks ----> main method starting point
-	* ---->super() method in constructor of top parent class ---> instance blocks ---> constructor method of parent classes (this goes on sequentially untill invoked child class constructor is reached)
+	* All parent classes static initializers in the order of class(both static blocks and static variables)
+	* ---> present classes static initializers in the order
+	* ----> main method starting point
+	* ---->super() method in constructor of top parent class
+	* ---> instance blocks
+	* ---> constructor method of parent classes (this goes on sequentially untill invoked child class constructor is reached)
 	* */
 	public static void main(String[] args) {
 		System.out.println("SportsBike class :: main method");

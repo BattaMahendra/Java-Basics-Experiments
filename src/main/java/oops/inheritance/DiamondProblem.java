@@ -17,6 +17,8 @@ public class DiamondProblem {
     }
 }
 class A {
+    int i = 5;
+    private int  j = 7;
     public A() {
         System.out.println("A");
     }
@@ -37,6 +39,7 @@ class B extends A {
 class C extends B {
     public C() {
         System.out.println("C");
+
     }
 }
 
