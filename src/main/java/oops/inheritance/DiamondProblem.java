@@ -14,11 +14,15 @@ public class DiamondProblem {
 
         //when we create a child constructor then all the constructors of parents are constructed before it.
         C b1 = new C();
+        b1.k = 9;  // static members of parent can be accessed via object reference of child
+        C.k = 8;   // can also be accessed by Class reference of Child
+        A.k = 10;  // best practice
     }
 }
 class A {
     int i = 5;
     private int  j = 7;
+    static int  k = 7;
     public A() {
         System.out.println("A");
     }
@@ -37,6 +41,7 @@ class B extends A {
 }
 
 class C extends B {
+
     public C() {
         System.out.println("C");
 

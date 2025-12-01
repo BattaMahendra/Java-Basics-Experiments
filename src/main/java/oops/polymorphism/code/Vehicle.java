@@ -45,4 +45,5 @@ class Boat extends Vehicle{
     public static void create(){
         System.out.println("Boat is created");
     }
+
 }

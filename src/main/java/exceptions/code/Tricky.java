@@ -16,7 +16,7 @@ public class Tricky {
         try{
             System.out.println("we are in the try block");
             String s = "Mahendra";
-//            String s = null;
+             s = null;
             return s.length();
         }catch(Exception e) {
             System.out.println(" we are in the catch block \n");

@@ -3,7 +3,7 @@ package basic.experiments.tricky;
 public class This {
 
     This(This t){
-        //this(this) ;
+//        this(this) ;
         System.out.println("hello");
     }
 
