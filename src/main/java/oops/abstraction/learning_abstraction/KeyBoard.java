@@ -2,6 +2,10 @@ package oops.abstraction.learning_abstraction;
 
 public abstract class KeyBoard implements  IKeyboard{
 
+
+    public KeyBoard(){
+        System.out.println("Executing Keyboard abstract constructor");
+    }
     //this is a abstract method
     public abstract Character pressAlphabetCharacters(Character c);
 

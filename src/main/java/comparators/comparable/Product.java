@@ -34,10 +34,13 @@ public class Product implements Comparable<Product> {
     @Override
     public int compareTo(Product other) {
 
+        if(this.getId() > other.getId()) return 1;
+        else if( this.getId() < other.getId() ) return -1;
+        else return 0;
 
 
-        // Default compare by id
-        return Integer.compare(this.id, other.id);
+        // Default compare by id - more concise way
+        //return Integer.compare(this.id, other.id);
 
 
     }

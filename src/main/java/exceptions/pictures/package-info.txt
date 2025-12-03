@@ -1,0 +1,219 @@
+package exceptions.pictures;
+
+⭐ 1. The Root: Throwable
+
+1. Throwable is the top most parent of Exception and Error.
+    Throwable contains important classes such as printStackTrace(), getMessage(), suppressedExceptions(), etc..
+
+    🔴 Stack Trace or printStackTrace() method
+
+        Exception type (e.g., NullPointerException)
+        Exception message
+        Exact line number where error occurred
+        Call hierarchy (method → method → method)
+        The full path from main() to the error
+
+        Eg:
+            Exception in thread "main" java.lang.ArithmeticException: / by zero
+                at Test.divide(Test.java:10)
+                at Test.main(Test.java:5)
+
+       ‼️IMPORTANT‼️  printStackTrace() is written to console directly. So in spring boot use Logger so
+                      that it can be seen in logs
+                      Best practice is to wrap it with Custom exceptions and trim it.
+
+
+
+⭐ 2. Error Class (Unrecoverable Conditions)
+
+    Error represents serious, unrecoverable issues caused by the JVM (not your code).
+        👉 Errors represent critical system-level failures — you should never catch or handle them.
+                If you catch Errors through catch blocks then you might miss bugs and your system might become unstable
+        💡 Real use of Error: detect system failure in logs.
+
+        Eg: OutOfMemoryError
+            StackOverFlowError
+            NoClassDefFoundError
+            UnknownError
+
+⭐ 3. Exception Class (Recoverable Issues)
+
+    Exceptions represent conditions your program can handle.
+
+    Exception
+        |
+        |-- Checked Exceptions (must handle) 👉 Checked by compiler at thats why called Checked Exceptions
+        |-- Unchecked Exceptions (RuntimeException)
+
+⭐ 4. Checked Exceptions (Compile-Time Checking)
+
+            These are predictable, recoverable, external problems.
+
+            Examples:
+
+            Checked Exception	-   Meaning
+            IOException	            File/network I/O failures
+            SQLException	        Database issues
+            ParseException	        Parsing error
+            ClassNotFoundException	Class not found
+
+        Must be handled using try-catch blocks or must use throws keyword on method signature
+
+        👉 Checked exceptions force the programmer to handle recoverable external errors.
+
+⭐ 5. Unchecked Exceptions (RuntimeException)
+
+    👉 All classes extending RuntimeException are unchecked
+
+    | RuntimeException                | Meaning                    |
+    | ------------------------------- | -------------------------- |
+    | NullPointerException            | Using null reference       |
+    | ArrayIndexOutOfBoundsException  | Bad array index            |
+    | IllegalArgumentException        | Invalid method input       |
+    | ArithmeticException             | / by zero                  |
+    | ConcurrentModificationException | Fail-fast collection issue |
+
+    🔥 Unchecked exception represents programmer mistakes
+
+    ✔ Why they don’t require try-catch?
+        1. Because if we catch them like Checked Exceptions then they might make system unstable
+        2. They represent application bugs
+        3. They need to be handled by programmer itself
+
+        Because they represent programming mistakes, not recoverable conditions.
+        You should fix the code, not catch them.
+
+        Example:
+        int x = a / b;  // if b is 0 ⇒ bug
+
+        Interview one-liner:
+        👉 RuntimeExceptions represent logic errors; Java doesn’t force handling.
+
+
+Throwable
+  |
+  +-- Error (unrecoverable, never catch) ==> JVM takes care of it internally
+  |
+  +-- Exception
+        |
+        +-- Checked Exceptions (recoverable)
+        |
+        +-- RuntimeException (programming bugs)
+
+‼️IMPORTANT‼️ ==> We should always catch specific exceptions and not parents like Throwable or Exception class
+                  They might hide and swallow up smaller exceptions
+
+‼️IMPORTANT‼️ ==> Constructor can also throw exceptions and if it throws object is not created
+
+
+                                    🏆 TRY - CATCH - FINALLY
+
+⭐ Try block
+
+    1. Place where exception triggering code should be kept
+    2. Must be followed by either catch() or finally{} or both
+    3. Can exist without catch(){} but we need to add finally{}
+
+⭐ Try with resources (since JAVA 7+)
+
+    Eg: try (MyResource r = new MyResource()){}
+
+     👉 We generally used finally{} to close the opened connections
+     👉 But with Try() {}
+            We can have multiple resources open
+            The Resources are automatically closed
+            The resource must implement AutoClosable
+
+    🚨 For eg: if our try block throws an Exception A and while closing resource i.e r.close() throws Exception B
+               then Exception B is suppressed and Exception A is highlighted
+
+               You can see suppressed exceptions using:
+               ex.getSuppressed();
+
+               ✅ In try-with-resources, exceptions thrown during resource closing are stored as suppressed exceptions,
+                preserving the original exception.
+
+⭐ Catch Block
+
+    ✅ Can't exist without try block
+    1. Catches the exception in try and handles it
+    2. We can have multiple catch blocks
+        The specific or child exception should be placed first. --> Otherwise compilation error
+    3. multi catch block
+        👉 Useful when we have same handling logic for multiple exceptions
+        👉  We can pass multiple exceptions in same catch block using | ==> but should be unrelated exceptions
+        ==> Should not be parent child exceptions
+        Eg: try {
+                riskyOperation();
+            } catch (IOException | SQLException | ClassNotFoundException e) {
+                log.error("Error occurred", e);
+            }
+          ✅  Allowed: catch (IOException | SQLException e)
+          ❌ Not allowed: catch (IOException | Exception e) // Compilation ERROR - Because Exception already catches all IOExceptions.
+                Exceptions that have parent–child relationship
+
+⭐ Finally block
+
+    No matter what it is executed
+        Doesn't execute only when system crashes or program exists i.e  System.exit(0);
+
+    👉  We usually use finally block to close the printReaders or Stream readers
+    👉  We also use it to close opened connections
+
+    ‼️IMPORTANT‼️  Return statements in finally block overrides try and catch block return statements
+                    i.e why never return or throw any exceptions in finally because that will be final and rest will be ignored
+
+
+    🚨  When an exception is thrown in try or catch blocks
+            First finally statements are executed and then
+            Exceptions are thrown later. Experiment and see
+
+
+⭐ Exception Propagation
+
+     🔴  Unchecked exceptions
+            Automatically propagated to top method until caught or finally thrown if uncaught
+            Handled by JVM itself
+
+     🔴  Checked exceptions
+            Developer must catch or use throws keyword in method signature
+            Propagated through top method stack trace
+
+
+⭐  throws keyword
+    👉 Used on method signature to signify or foretell this method might throw declared exception
+    👉 Alternative of try catch blocks
+    👉 Mostly used on Checked Exceptions
+    👉 If Exception occurs then takes exception to calling method.
+
+
+⭐ Exceptions in case of Method overriding
+
+    ⭐ Unchecked exceptions
+            Can be used however you want. There are no restrictions
+            These are not part of method signatures
+    ⭐ Checked Exceptions
+        🔴 If Parent throws Checked Exception E then overridden method of Child can
+                 ✅  Can throw same exception as parent method
+                 ✅  Can throw narrower or child exception
+                 ✅  Can decide not to throw any exception
+                 ❌ Should not throw unrelated Checked Exception or Super class of parent method exception
+
+
+⭐⭐⭐⭐⭐ NULL POINTER EXCEPTION
+
+    👉 A NullPointerException (NPE) occurs when you try to perform an
+       operation on a null reference — meaning the variable points to no object in memory.
+        For Eg:
+                String s = null;
+                s.length();   // NPE here
+
+
+    🔴 Very dangerous and unpredictable - Most common exception
+
+     ✅ How to avoid
+         🎯 Use Optional ==> Forces dev to check for NPE
+         🎯 Use Objects.requireNonNull()
+         🎯 Traditional null checks (if-else)
+         🎯 Avoid returning null from methods
+

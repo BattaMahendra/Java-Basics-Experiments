@@ -1,9 +1,6 @@
 package collections;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * 🌍 Why was there a need for Collections (its arrival)?
@@ -87,5 +84,37 @@ public class CollectionDemo {
         Collections.sort(list);
         System.out.println();
         list.forEach(System.out::print);
+
+        /*
+        * One of main difference between collections
+        * Type Safety at compile time
+        * Generics can enforce type safety at compile time itself
+        *
+        * Observe below*/
+
+        String[] i = new String[5];
+        Object[] o = i;   // compiles successfully
+        //o[0] = 1;         // run time error - leading to bugs
+
+        // Collections can work with Generics
+        List<String> l = new ArrayList<>();
+        //List<Object> lO = l;   // compile time error itself
+        System.out.println("\n\n====================");
+
+        /**
+         * TRICKY
+         * */
+
+        Collection collection = new ArrayList();
+        collection.add(1);
+        collection.add(1);
+        collection.add(null);
+        collection.add(null);
+        collection.add(null);
+
+        System.out.println(collection.size());
+        System.out.println(collection);
+
+
     }
 }

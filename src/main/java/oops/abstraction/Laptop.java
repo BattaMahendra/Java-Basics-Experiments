@@ -32,5 +32,4 @@ public class Laptop extends  Computer{
     }
 
 
-
 }

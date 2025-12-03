@@ -1,0 +1,43 @@
+
+For suppose we  have a class A - then
+
+1. Static blocks and static variables in the order they are present in the class
+    [Do not miss understand it - neither block nor variables comes first - purely depends on the order they are present]
+2. Main method if triggered.
+3. Constructor is called and executes firest line - implicit super() and then not the body of constructor and rather
+4. Instance blocks and instance variable in the order they are present in the class
+     [Do not miss understand it - neither block nor variables comes first - purely depends on the order they are present]
+5. Constructor body is initialized after instance initializers.
+
+
+Summary - in case of inheritance - when object of child triggered [A <-- B <-- C]
+
+1. Parent static initializers in the order they are present in the class. [blocks and variables]
+2. Child static initializers - in the order
+3. Parent instance initializers - in the order they are present in class. [instance blocks and instance variables]
+4. Child constructor first line triggered - implicit super() - goes to immediate parent constructor
+5. Immediate parent constructor first line - implicit super() - goes to top parent constructor
+6. Top parent constructor first line and then parent initializers[blocks and variables]
+7.  so on.
+
+Example summary in case of [A <-- B <-- C]
+A - top parent
+C - child
+In test class we called C c = new C();
+
+1. A’s static initializers (static variables and static blocks) in the order they appear in class A
+2. B’s static initializers (static variables and static blocks) in the order they appear in class B
+3. C static initializers in order [same as above]
+4. C - constructor triggered - first line --> implicit super() --> goes to B() --> super() --> goes to A()
+5. In A() (top-most constructor)--> first line is an implicit super() to Object().
+6. After returning from Object(), A’s instance initializers (instance variables + instance blocks) run in the order they appear in A.
+7. Then A’s constructor body executes and A() completes.
+8. B Constructor takes the debugger --> first line super() completed so now
+9. B instance initializers
+10. B() completed
+11. C() takes control
+12. C’s instance initializers (instance variables + instance blocks) run in textual order in class C.
+13, C() gets completed.
+
+
+

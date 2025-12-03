@@ -84,6 +84,7 @@ public class Basics {
 				else 	return 0;
 			}
 		});
+
 		employees.forEach(emp -> System.out.printf(emp.getAge()+" "));
 		
 		System.out.println("\nname of employees before sorting");
@@ -111,16 +112,60 @@ public class Basics {
 		System.out.println("Employees before sorting");
 		employees.stream().forEach(System.out::println);
 	}
+
+
+	public void evolution(){
+
+		/* Using EmployeeAgeComparator directly */
+		EmployeeAgeComparator employeeAgeComparator = new EmployeeAgeComparator();
+		Collections.sort(employees, employeeAgeComparator);
+		// the above can also be written as
+		employees.sort(employeeAgeComparator);
+
+		/* We can also have anonymous inner class instead of above*/
+		employees.sort(new Comparator<Employee>() {
+
+			//static String comparatorStaticId = "S12345";  // supported from java 16
+			int comparatorId = 12345; // we can have instance variables in case of inner anonymous class
+			@Override
+			public int compare(Employee o1, Employee o2) {
+				return o1.getAge() > o2.getAge() ? 1 : (o1.getAge() == o2. getAge() ? 0 : -1);
+
+				//return Integer.compare(o1.getAge(),o2.getAge()); // the above can be written as this
+			}
+		});
+
+		/*
+		* The above anonymous class can be reduced to lambda*/
+
+		// Using Integer class compare method as age is an integer
+		Comparator<Employee> ageComparatorLambda1 = (e1,e2) -> Integer.compare(e1.getAge(),e2.getAge());
+
+		// Using comparing int
+		Comparator<Employee> ageComparatorLambda2 =  Comparator.comparingInt(e -> e.getAge());
+
+		// Using Method reference
+		Comparator<Employee> ageComparatorLambda3 =  Comparator.comparingInt(Employee::getAge);
+
+
+		Comparator<Employee> ageComparatorLambda4 =  Comparator.comparing(Employee::getAge);
+
+		/*
+		* We can use above as following*/
+		employees.sort(ageComparatorLambda4);
+	}
 }
 
 //creating a comparator class to define the comparators
-class EmployeeAgeComparator implements Comparator<Employee>{
+class
+EmployeeAgeComparator implements Comparator<Employee>{
 
 	@Override
 	public int compare(Employee o1, Employee o2) {
 		if(o1.getAge()>o2.getAge()) return 1;
 		else if (o1.getAge()<o2.getAge()) return -1;
 		else 	return 0;
+
 	}
 
 }
