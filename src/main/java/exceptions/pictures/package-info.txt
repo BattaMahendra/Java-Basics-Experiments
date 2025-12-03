@@ -47,7 +47,7 @@ package exceptions.pictures;
 
 ⭐ 4. Checked Exceptions (Compile-Time Checking)
 
-            These are predictable, recoverable, external problems.
+            These are predictable, recoverable, external problems(Mostly caused by System resources failures than programmers mistakes)
 
             Examples:
 
