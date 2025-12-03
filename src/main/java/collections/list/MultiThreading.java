@@ -16,7 +16,7 @@ public class MultiThreading {
         List<Integer> arr = new ArrayList<>();
 
         //same above arraylist synchronised
-       // arr = Collections.synchronizedList(arr);
+        arr = Collections.synchronizedList(arr);
 
         // copyOnwriteArrayList which is a synchronised one
        // CopyOnWriteArrayList arr = new CopyOnWriteArrayList<Integer>();

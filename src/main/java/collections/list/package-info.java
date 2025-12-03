@@ -9,9 +9,9 @@ package collections.list;
  *
  * Properties
  * 1. Ordered → maintains insertion order
- * 2. Allows Duplicates
+ * 2. Allows Duplicates  (makes sense as it is a ordered collection )
  * 3. Allows null
- * 4. Allows retrieval and insertion based on index
+ * 4. Allows retrieval and insertion based on index  --> Eg:   `E set(int index, E element)`
  *
  *
  * Important functions

@@ -23,6 +23,7 @@ public class DequeueDemo {
         linkedListDeque.add("Mahi");
 
 
+
         /* the below method doesn't work as get() method belongs to List interface*/
         //linkedListDeque.get("Mahi");
 

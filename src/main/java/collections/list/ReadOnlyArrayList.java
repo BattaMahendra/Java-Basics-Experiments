@@ -27,5 +27,9 @@ public class ReadOnlyArrayList {
 
         // Print the read-only list again to see the changes reflect
         System.out.println("Read-only List after modifying original list: " + readOnlyList);
+
+
+
+
     }
 }

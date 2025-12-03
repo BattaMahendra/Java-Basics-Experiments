@@ -23,7 +23,8 @@ public class ArrayListExample {
 
         //you can initialize with preexisting arrays
         Integer[] arr = {1,2,3,4,5};
-        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(arr));
+        List<Integer> list1 = Arrays.asList(arr);  // this is also array list internally
+        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(arr)); // we can also do explicitly
 
         modifyList(arrayList);
 
@@ -65,12 +66,15 @@ public class ArrayListExample {
         synchronisedList.add("Hello");
         synchronisedList.add("hi");
 
+        List<Integer> l2 = new ArrayList<>();
+        Collections.synchronizedList(l2);
+
         /*
         * Here we are modifying the copyOnWriteArrayList while iterating and as you can observe
         * it doesn't throw concurrentModificationException. If its a plain arraylist then it would throw the exception*/
         for(int i =0; i < synchronisedList.size(); i++){
 
-            //synchronisedList.add("Hey");
+            synchronisedList.add("Hey");
             System.out.println(synchronisedList.get(i));
         }
 
