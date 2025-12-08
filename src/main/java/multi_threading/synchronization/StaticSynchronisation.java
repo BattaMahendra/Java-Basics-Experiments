@@ -18,13 +18,18 @@ import java.util.concurrent.CountDownLatch;
 
 public class StaticSynchronisation extends ThreadPriority {
 
+
+    static  int count = 0;
     /*
      * Try removing synchronised keyword and see the difference
      * */
-    public synchronized  static  void printLoop() {
+    public synchronized static  void printLoop() {
+        
 
-        for (int i = 0; i <= 10; i++) {
-            System.out.println("This thread is " + Thread.currentThread().getName() +" with priority as: "+Thread.currentThread().getPriority()+ " wtih value " + i);
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("This thread is " + Thread.currentThread().getName() +" " +
+                    "with priority as: "+Thread.currentThread().getPriority()+ " wtih value " + i +" with count value as : "+ ++count);
         }
     }
 

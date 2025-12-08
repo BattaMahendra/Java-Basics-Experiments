@@ -49,11 +49,11 @@ public class ThreadPriority {
         System.out.println("Testing thread priority using concurrent threads");
         System.out.println("==================================================");
         CountDownLatch latch = new CountDownLatch(1);
-        ConcurrentThreads c1 = new ConcurrentThreads("c1",latch,10);
+        ConcurrentThreads c1 = new ConcurrentThreads("c1",latch,5);
         ConcurrentThreads c2 = new ConcurrentThreads("c2",latch,5);
         ConcurrentThreads c3 = new ConcurrentThreads("c3",latch,5);
         ConcurrentThreads c4 = new ConcurrentThreads("c4",latch,5);
-        ConcurrentThreads c5 = new ConcurrentThreads("c5",latch,15);
+        ConcurrentThreads c5 = new ConcurrentThreads("c5",latch,5);
 
 
 
@@ -65,10 +65,10 @@ public class ThreadPriority {
          Learn more here: https://www.javatpoint.com/thread-scheduler-in-java
          */
         c1.setPriority(8);
-        c2.setPriority(3);
-        c3.setPriority(2);
-        c4.setPriority(1);
-        c5.setPriority(10);
+        c2.setPriority(5);  //  c2.setPriority(Thread.NORM_PRIORITY); //5
+        c3.setPriority(9);
+        c4.setPriority(1);  //  c4.setPriority(Thread.MIN_PRIORITY); //1
+        c5.setPriority(10); //  c5.setPriority(Thread.MAX_PRIORITY); // 10
 
         startGivenThread(c1);
         startGivenThread(c2);

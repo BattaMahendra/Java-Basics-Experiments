@@ -23,8 +23,10 @@ public class Test {
         };
 
         Thread sender = new Thread(send);
+        Thread receiver = new Thread(receive);
 
         sender.start();
+        receiver.start();
 
     }
 

@@ -84,9 +84,18 @@ public class PriorityQueueExample {
        * If we populate priorityQueue with custom objects which doesn't implement Comparable then it throws exception
        * */
         PriorityQueue<Employee> employeePriorityQueue = new PriorityQueue<>();
-     //   Employee.populateEmployee().forEach(employee -> employeePriorityQueue.offer(employee));
+//        Employee.populateEmployee().forEach(employee -> employeePriorityQueue.offer(employee));
 
 //        employeePriorityQueue.forEach(s -> System.out.println(s));
+
+
+        /*
+        * Even if we don't have the object implementing comparable , its okay to pass comparator*/
+        Comparator<Employee> employeeComparator = (e1,e2) ->e1.getEmp_name().compareTo(e2.getEmp_name()) ;
+        PriorityQueue<Employee> employeePriorityQueue2 = new PriorityQueue<>(employeeComparator);
+        Employee.populateEmployee().forEach(employee -> employeePriorityQueue2.offer(employee));
+
+
 
 
     }

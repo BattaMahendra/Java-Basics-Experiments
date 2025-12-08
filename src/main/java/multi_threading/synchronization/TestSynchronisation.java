@@ -52,7 +52,8 @@ public class TestSynchronisation extends ThreadPriority {
         t2.setName("2");
 
         /*
-        * Observe how the value of sum changes if the method is not synchronised*/
+        * Observe how the value of sum changes if the method is not synchronised
+        * */
         startGivenThread(t1);
         startGivenThread(t2);
 
@@ -61,17 +62,14 @@ public class TestSynchronisation extends ThreadPriority {
         //testing instance synchronisation with same and different objects
         testSync();
 
-
-
-
     }
 
     /*
     * Trying to print an instance synchronised method with two different instances
-    * i.e we are using two different objects to invoke the synchronisedInstanceMethod method.
-    * THen although the method is synchronised, as we are using two different objects as locks
+    * i.e, we are using two different objects to invoke the synchronisedInstanceMethod method.
+    * Then although the method is synchronised, as we are using two different objects as locks
     * two threads are able to access the method at a time.
-    * When an instance method is synchronised it is set by a instance lock(monitor)
+    * When an instance method is synchronised it is set by an instance lock(monitor)
     * if we try to access the object with two different instances , the synchronisation fails
     *
     * in the thread run methods use same object to invoke the synchronisedInstanceMethod() method
@@ -108,7 +106,7 @@ public class TestSynchronisation extends ThreadPriority {
 
 
                // obj1.synchronisedInstanceMethod();
-                obj2.methodContainingSynchronizedBlock();
+                obj1.methodContainingSynchronizedBlock();
             }
         };
 

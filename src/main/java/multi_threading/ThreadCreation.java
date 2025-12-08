@@ -2,6 +2,7 @@ package multi_threading;
 
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.logging.Logger;
@@ -16,12 +17,12 @@ import java.util.logging.Logger;
 
 public class ThreadCreation {
     public static void main(String[] args) throws Exception {
-      //  usingOnlyRun();
+        //usingOnlyRun();
         First first1 = new First("Thread-1");
         first1.start();
         //we can't use start method twice on same method
         //It gives IllegalThreadStateException
-       // first1.start();
+//        first1.start();
 
 
         /*
@@ -46,7 +47,7 @@ public class ThreadCreation {
         });
         third.start();
 
-        // the above can be reduced to lambda function
+        // the above can be reduced to lambda function - Here lambda function is nothing but a runnable lambda
         Thread fourth = new Thread(()->{
             System.out.println("Fourth thread created using Runnable anonymous inner class");
         });
@@ -68,6 +69,28 @@ public class ThreadCreation {
                                         .submit(callable);
         f.get(); // this is a blocking call i.e. blocks all other operations until get() completes
 
+
+        //Using lambda for callable
+
+        Callable<String> callableTask = ()->{
+            Thread.sleep(4000); //simulation of delay time
+            return "Welcome Mahendra";
+        };
+
+
+
+        // We can't use the above with Thread class - we need Executor Service
+
+        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(1);
+
+        Future<String> futureString = fixedThreadPool.submit(callableTask);
+
+        String result = futureString.get(); // blocks current thread until it completes
+
+        fixedThreadPool.shutdown(); // shut down pool once the task completes
+
+
+
     }
 
     /*
@@ -75,7 +98,7 @@ public class ThreadCreation {
     * Main difference is that when program calls start() method a new Thread is created and
     *  code inside run() method is executed in new Thread
     * while if you call run() method directly no new Thread is created and
-    * code inside run() will execute on the current Thread.
+    * code inside run() will execute on the current executing Thread i.e, main thread in present case.
     *
     *
     * Another difference between start vs run in Java thread is that

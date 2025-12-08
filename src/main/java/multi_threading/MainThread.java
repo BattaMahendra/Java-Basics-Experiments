@@ -32,7 +32,7 @@ public class MainThread {
         * */
         String lock = "lock";
         synchronized (lock){
-           // lock.wait(); // this will make main thread to wait() infinately
+           // lock.wait(); // this will make main thread to wait() infinitely
         }
 
         System.out.printf(" %s got ended ",Thread.currentThread().getName());

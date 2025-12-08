@@ -4,7 +4,7 @@ package multi_threading.synchronization;
 * This example can be used to understand both Synchronization and Race condition*/
 public class BankAccount {
 
-    private int balance;
+    private  int balance;
 
 
 
