@@ -14,6 +14,21 @@ public class Generic<B> {
 
     B aField;
 
+
+
+    //public static B b;  // Generics are not possible with static variables
+
+    /*Because the above static will be shared by all objects of class
+    * What if in future we crate Objects like following
+    *
+    * Generic<Car> car = new Generic<>();
+    * Generic<Bike> bike = new Generic<>();
+    * Generic<SmartPhone> mobile = new Generic<>();
+    *
+    * Now what will be condition of static field B b; Static has to same for all objects,
+    * but now it is different for each object.
+    * */
+
     /*
     * not only K,V,E,N,T  we can use any combination of Alphabets as generics*/
     public <MAHENDRA> MAHENDRA printAndRetrun(MAHENDRA b){
@@ -22,6 +37,31 @@ public class Generic<B> {
 
         return b;
     }
+
+    public static void get(){
+        List<? extends  Number> l = new ArrayList<>();
+
+        Number n = 4;
+        Integer i = new Integer(7);
+        Double k = new Double(8.0);
+
+
+    }
+
+    /*They can have constructors like following*/
+
+    public Generic(B b){
+        this.aField = b;
+        // B b1 = new B();        // compilation error
+    }
+
+    // no args constructor
+    public Generic(){
+
+    }
+
+    /*
+    * But we can't instantiate the Type parameter itself : B b = new B(); ==> not possible */
 
 }
 
@@ -44,6 +84,18 @@ public class Generic<B> {
  *     Because of type erasure
  *          1. We can't have static data members of Generic i.e private static T t; (not possible)
  *          2. We can't create generic exceptions ( because at run time , the type is erased)
+ *
+ *   Limitations:
+ *
+ *   Lets suppose A generic class  G<B> and a non generic class NonGeneric(NG)
+ *    1. G<B> can extend NG
+ *    2. Generic class can extend other generic class only if they have same param
+ *        i.e, class genericSubClass<T, V> extends GenericSuperClass<T>
+ *    3. NGC can not extend GC
+ *    4. NGC can extend if GC<NGC>
+ *
+ *
+ *   In above class we cant create B b = new B(); it is not allowed
  *
  *
  *

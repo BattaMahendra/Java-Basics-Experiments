@@ -75,7 +75,8 @@ package exceptions.pictures;
 
     🔥 Unchecked exception represents programmer mistakes
 
-    ✔ Why they don’t require try-catch?
+    ✔ Why they don’t compiler force them to handle at compile time ?
+    
         1. Because if we catch them like Checked Exceptions then they might make system unstable
         2. They represent application bugs
         3. They need to be handled by programmer itself

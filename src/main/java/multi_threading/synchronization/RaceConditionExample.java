@@ -53,7 +53,7 @@ public class RaceConditionExample{
             System.out.println("=====NOW RELEASE LATCH======");
             i++;
         }while (i < 10);
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         System.out.println("Final count of the counter: "+ c.getCount());
 
 

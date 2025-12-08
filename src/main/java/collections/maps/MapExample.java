@@ -16,6 +16,8 @@ public class MapExample {
         map.entrySet().forEach(System.out::println);
 
 
+
+
         /*
         * HashMap
         * 1. All unique keys and can have duplicate values
@@ -30,6 +32,11 @@ public class MapExample {
         hashmap();
 
         iteratingOverMap();
+
+        /*Importance of immutable keys in HashMap*/
+
+        immutabilityImportanceInHashMap();
+
 
 
 
@@ -93,6 +100,53 @@ public class MapExample {
 
     }
 
+    private static void immutabilityImportanceInHashMap() {
+
+        System.out.println("\n\n=========== Importance of immutable keys in HashMap ================");
+
+
+        /*
+        * Surprised Mahendra
+        * We can use classes inside methods - these are called local classes and can be accessed only inside this method
+        * It can't be static class - because static belongs to Outer bigger class  */
+        class Task{
+
+            int id;
+
+            public Task(int id) {
+                this.id = id;
+            }
+
+            @Override
+            public boolean equals(Object o) {
+                if (o == null || getClass() != o.getClass()) return false;
+                Task task = (Task) o;
+                return id == task.id;
+            }
+
+            @Override
+            public int hashCode() {
+                return id;
+            }
+        }
+
+        //Lets create some objects of Task
+        Task t1 = new Task(1);
+        HashMap<Task, Integer> hashMap = new HashMap<>();
+        hashMap.put(t1, t1.id);
+        System.out.println(hashMap.get(t1));
+
+        //now what if we change the t1 id to something else i.e,
+        t1.id=2;
+        System.out.println(hashMap.get(t1)); //returns null
+
+        /*
+        * i.e, why it is preferred to use immutable keys objects in java*/
+
+        //now we can never access the t1 inside map and it stays there forever without reference
+        System.out.println("=========== ================\n\n");
+    }
+
     private static void iteratingOverMap() {
         Map<Integer, String> integerStringMap = new HashMap<>();
         integerStringMap.put(1,"one");
@@ -131,12 +185,15 @@ public class MapExample {
         // we can introduce custom comparator if required
 
         TreeMap<Integer , String> t = new TreeMap<Integer , String>();
+       // t.comparator().reversed();
         t.put(1,"one" );
         t.put(2,"two" );
         t.put(4,"four");
         t.put(5,"five");
         System.out.println("================================= Tree Map ============================");
         System.out.println(t.toString());
+
+        TreeMap<Integer , String> t2 = new TreeMap<Integer , String>(Comparator.reverseOrder()); // you can also pass custom comparator
 
     }
 

@@ -1,5 +1,7 @@
 package multi_threading;
 
+import lombok.SneakyThrows;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -18,6 +20,8 @@ import java.util.Queue;
 public class LiveLockExample {
 
 
+
+
     public static void main(String[] args) {
         Queue<String> queue = new LinkedList<>();
         queue.add("Unwanted Message");
@@ -33,6 +37,7 @@ public class LiveLockExample {
          * */
         Thread processingThread = new Thread(processor::processMessages);
         processingThread.start();
+
     }
 }
 
@@ -57,6 +62,7 @@ class MessageListener {
                 }catch (Exception ex) {
                     System.out.println("Encountered unwanted message. Re-adding to queue.");
                     //rollback the incoming message back to queue
+
                     queue.add(incomingMessage);
                 }
             }

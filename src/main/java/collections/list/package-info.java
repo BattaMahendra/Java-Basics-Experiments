@@ -36,7 +36,7 @@ package collections.list;
  *
  * ArrayList - A list based on Array data structure
  *
- * Retrieval is very fast i.e arrayList.get(index) takes O(n)
+ * Retrieval is very fast i.e arrayList.get(index) takes O(1)
  * Adding element takes amortized constant time O(1)
  * searching takes O(n)
  * Inserting or deleting takes O(n) as we need to reshuffle all the elements

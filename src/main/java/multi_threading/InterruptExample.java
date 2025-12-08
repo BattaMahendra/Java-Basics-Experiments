@@ -17,7 +17,7 @@ public class InterruptExample {
     public static void main(String[] args) {
 
         Thread t1 = new Thread(()->{
-            for(int i=0; i<100; i++){
+            for(int i=0; i<10000; i++){
 
                 System.out.println("Thread on loop: "+i);
             }

@@ -48,6 +48,8 @@ public class CollectionDemo {
 
         System.out.println(c);
 
+
+
         //experimenting on collections
         //java will throw a concurrent modification exception if modify collection while iterating
         c.forEach(object -> {
@@ -57,6 +59,7 @@ public class CollectionDemo {
 
         System.out.println("Using iterator");
         Iterator iterator = c.iterator();
+
         while(iterator.hasNext()){
             System.out.println(iterator.next());
             //modifying the collection

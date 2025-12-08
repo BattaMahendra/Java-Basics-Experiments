@@ -25,7 +25,7 @@ public class PECS {
         // basket.add(new Apple()); //❌ Not allowed
         /*
         * Why above line not allowed ?
-        * Because compiler doesn't know at the moment whether list is List<Orange> or List<Apple>
+        * Because compiler doesn't know at the moment whether incoming list is List<Orange> or List<Apple>
         * What if at run time List is List<Orange> , then it would break at runtime
         * */
     }

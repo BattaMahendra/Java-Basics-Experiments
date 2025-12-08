@@ -10,7 +10,7 @@ public class ThreadStatesExample {
                 synchronized (ThreadStatesExample.class) {
                     // Simulate some work
                     try {
-                        Thread.sleep(1000*10); // Thread 1 sleeps for 100 milliseconds
+                        Thread.sleep(1000*10); // Thread 1 sleeps for 10000 milliseconds
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -25,7 +25,7 @@ public class ThreadStatesExample {
                 synchronized (ThreadStatesExample.class) {
                     // Simulate some work
                     try {
-                        Thread.sleep(1000*10); // Thread 2 sleeps for 2000 milliseconds
+                        Thread.sleep(1000); // Thread 2 sleeps for 2000 milliseconds
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -50,7 +50,7 @@ public class ThreadStatesExample {
         System.out.println("Thread 2 state after starting: " + thread2.getState());
 
         // Sleep briefly to allow Thread 2 to enter TIMED_WAITING state
-        Thread.sleep(500);
+        Thread.sleep(50);
         System.out.println("Thread 2 state while sleeping (TIMED_WAITING): " + thread2.getState());
 
         System.out.println("Main thread state :"+ Thread.currentThread().getState());

@@ -67,7 +67,7 @@ Guarantees visibility of changes to variables across threads.
 Suitable for simple flags and state variables.
 Does not ensure atomicity for compound operations like incrementing.
 
-AtomicInteger: --> Internally user COMPARE AND SWAP (CAS) method ( that is a atomic operation)
+AtomicInteger: --> Internally uses COMPARE AND SWAP (CAS) method ( that is a atomic operation)
 Ensures both visibility and atomicity for operations.
 Provides atomic methods like incrementAndGet() and decrementAndGet().
 Suitable for counters and other variables that require atomic operations.

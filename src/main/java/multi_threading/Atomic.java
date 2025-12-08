@@ -1,21 +1,20 @@
 package multi_threading;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Atomic {
 
-   static int unsafeCounter =0;
-    static AtomicInteger atomicInteger = new AtomicInteger(0);
+    static int unsafeCounter =0;
+
+    static AtomicInteger atomicCounter = new AtomicInteger(0);
 
     static volatile  int volatileInteger =0;
 
     static ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();
 
-    static int normalVariable ;
 
-    static{
-        normalVariable =0;
-    }
 
 
     /*
@@ -32,19 +31,18 @@ public class Atomic {
         max = 1000;
 
         threadLocal.set(0);
-       // normalVariable =0;
 
 
         for (int i = 0; i < max; i++) {
             unsafeCounter++;
-            atomicInteger.getAndIncrement();
+            atomicCounter.getAndIncrement();
             volatileInteger++;
             threadLocal .set( threadLocal.get()+1);
-            ++normalVariable;
+
         }
 
         System.out.println("Current thread:"+Thread.currentThread().getName()+" threadLocal :"+threadLocal.get());
-        System.out.println("Current thread:"+Thread.currentThread().getName()+" normal variable :"+normalVariable);
+        System.out.println("Current thread:"+Thread.currentThread().getName()+" normal variable :"+unsafeCounter);
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -61,12 +59,12 @@ public class Atomic {
 
         System.out.println("\n Ideal count of every opertion should be 3000\n");
         System.out.println("Normal integer after operation : "+unsafeCounter);
-        System.out.println("Atomic integer after operation : "+atomicInteger);
+        System.out.println("Atomic integer after operation : "+ atomicCounter);
         System.out.println("Volatile integer after operation : "+volatileInteger);
         //it will be null for this statement as this is executed by main thread
         System.out.println("ThreadLocal integer after operation : "+threadLocal.get());
 
-        System.out.println("Normal integer after operation : "+normalVariable);
+
 
     }
 

@@ -24,6 +24,7 @@ public class ArrayListExample {
         //you can initialize with preexisting arrays
         Integer[] arr = {1,2,3,4,5};
         List<Integer> list1 = Arrays.asList(arr);  // this is also array list internally
+        list1.add(3);  // throws exception at runtime
         ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(arr)); // we can also do explicitly
 
         modifyList(arrayList);
@@ -74,7 +75,7 @@ public class ArrayListExample {
         * it doesn't throw concurrentModificationException. If its a plain arraylist then it would throw the exception*/
         for(int i =0; i < synchronisedList.size(); i++){
 
-            synchronisedList.add("Hey");
+           // synchronisedList.add("Hey");
             System.out.println(synchronisedList.get(i));
         }
 

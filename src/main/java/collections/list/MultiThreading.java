@@ -21,8 +21,8 @@ public class MultiThreading {
         // copyOnwriteArrayList which is a synchronised one
        // CopyOnWriteArrayList arr = new CopyOnWriteArrayList<Integer>();
 
-        MyRunnable runnable1 = new MyRunnable(arr,1,1000);
-        MyRunnable runnable2 = new MyRunnable(arr,1001,2000);
+        MyRunnable runnable1 = new MyRunnable(arr,1,10000);
+        MyRunnable runnable2 = new MyRunnable(arr,10001,20000);
 
         Thread t1 = new Thread(runnable1);
         Thread t2 = new Thread(runnable2);
@@ -34,7 +34,7 @@ public class MultiThreading {
         t2.join();
 
         // here ideal size should be 2000
-        System.out.println(arr.size());
+        System.out.println("\n\n"+arr.size());
 
 
     }
