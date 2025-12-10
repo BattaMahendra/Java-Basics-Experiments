@@ -33,15 +33,47 @@ public class OptionalHow {
         //map(function) --> returns an optional value if present , executes orElse if not.
         employeeOptional.map(Employee::getEmp_salary).orElse(0.0);
 
-        //chaining
+        System.out.println("==================== Chaining =========================");
+        //chaining  ==> in optional chaining , you don't need to do explicit null checks - internally it does for you. ==> just concentrate on logic.
         //finding employee salary who is male and age above 21
         employeeList.stream().findAny()
                 //findAny() in stream usually return optional
-                .filter( employee1 -> employee1.getEmp_gender().equals("M"))
+                // the below filter(), map() belong to Optional class and not the stream one.
+                .filter( employee1 -> employee1.getEmp_gender().equals("Male"))
                 .filter(emp -> emp.getEmp_age()>21)
                 .map(employee1 -> employee1.getEmp_salary())
-                .map(salary -> salary%100)
+                .map(salary -> {System.out.println(salary); return salary;})
                 .orElse(0.0);
+
+        System.out.println("=============== Without Optional ================");
+
+        // rewriting above without using optional
+
+                Employee foundEmployee = null;
+
+                // Step 1: mimic findAny()
+                for (Employee employee : employeeList) {
+                    foundEmployee = employee;
+                    break; // pick any one element
+                }
+
+                if (foundEmployee != null) {
+
+                    // Step 2: first filter
+                    if ("Male".equals(foundEmployee.getEmp_gender())) {
+
+                        // Step 3: second filter
+                        if (foundEmployee.getEmp_age() > 21) {
+
+                            // Step 4: map to salary
+                            Double salary = foundEmployee.getEmp_salary();
+
+                            // Step 5: side effect
+                            System.out.println(salary);
+
+                        }
+                    }
+                }
     }
 
 
@@ -60,12 +92,15 @@ public class OptionalHow {
         //Optional.of(name);
 
         //In such ambiguous cases when you don't know original has null or not
-        // it is safer to use Optional.ofNullable() which means it might contain null or non null
+        // it is safer to use Optional.ofNullable() which means it might contain null or non-null
         Optional<String> mayBeName = Optional.ofNullable(name);
         System.out.println(mayBeName);
 
+        //very bad practice - how can optional itself be null - optional should be used as wrapper class
+        Optional<String> opt = null; // ❌ pointless and wrong
+
         /*.get() method returns value if present , if not then throws no such element exception
-        So don't ever use get() until you are sure it is bad practise*/
+        So don't ever use get() until you are sure. It is bad practise*/
         //mayBeName.get();
 
         /*How to avoid it
@@ -74,6 +109,14 @@ public class OptionalHow {
                               .orElse(0);
         System.out.println(length);
 
+        //traditional approach with Optional - isPresent():boolean
+        if(mayBeName.isPresent()){
+            System.out.println(mayBeName.get());
+        }else{
+            System.out.println("mayBeName is empty");
+        }
+
+        // functional approach which combines optional and java-8
         //ifPresent(Consumer) --> executes consumer if value is present , if not doesn't do anything
         mayBeName.ifPresent(System.out::println);
     }

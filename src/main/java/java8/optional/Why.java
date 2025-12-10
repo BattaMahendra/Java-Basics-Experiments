@@ -3,6 +3,7 @@ package java8.optional;
 import basic.experiments.pojos.Address;
 import basic.experiments.pojos.Employee;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /*
@@ -21,7 +22,11 @@ public class Why {
         Employee employee = new Employee();
         // for example now if we want to check whether employee home district is Anantapur or not
         //traditional nested checks
-        System.out.println(traditonalNullChecks(employee));
+
+        Address address = new Address();
+        employee.setAddress(address);
+
+        System.out.println(traditionalNullChecks(employee));
 
 
         // with Optional
@@ -33,15 +38,28 @@ public class Why {
     /**
      * How does optional solve our problem
      * <p>
-     * First of all there is no performance improvement compared to nested conditonal statements
+     * First of all there is no performance improvement compared to nested conditional statements
      * rather optional is a bit slower due to wrapping
      * then how does it help us ?
+     *
+     *
+     *  ❔ The Problem: The "Billion Dollar Mistake"
+     * In traditional Java, if a method returns null, the compiler doesn't warn you.
+     * You have to remember to check the documentation or the implementation. If you forget, your application crashes with a NullPointerException (NPE) at runtime.
+     *
+     * 👉 The Solution: Explicit Intent 👉 Optional fixes this by using the Type System.
+     *
+     * 🚩 Traditional: public User findUser(String id) -> Returns User or null.
+     *    You don't know if you need to check for null just by looking at the signature. Dev needs to check everytime and sometimes he might forget.
+     *
+     * ✅️ Optional: public Optional<User> findUser(String id) -> The signature explicitly shouts, "I might not find a user!" You represent the possibility of absence in the API itself.
+     *
      * <p>
      * Optional is container which might contain value or not
      * So developer is forced to check the conditions
      * With Optional, the compiler/type system forces the caller to handle absence.
      * <p>
-     * if a method is returning Optional then dev is enforced by syste to check for null
+     * if a method is returning Optional then dev is enforced by system to check for null
      * So this reduces the possibility of risk of NPE
      * <p>
      * one more advantage is it comes with functional style approach which combines java 8 stream methods
@@ -53,6 +71,7 @@ public class Why {
         Optional<Employee> empOpt = Optional.ofNullable(employee);
 
         return empOpt.map(Employee::getAddress)
+                 //.map(e -> e.getAddress())
                 .map(Address::getDistrictName)
                 .filter(district -> district.equals("ATP"))
                 .orElse("No District");
@@ -66,12 +85,14 @@ public class Why {
 *
 * So dev has to remember and check
 * *  */
-    private static String traditonalNullChecks(Employee employee) {
-        if(employee.getAddress()!=null){
+    private static String traditionalNullChecks(Employee employee) {
+        if(employee != null && employee.getAddress()!=null ){         // if (Objects.nonNull(employee) && Objects.nonNull(employee.getAddress()))
+
+
             String district = employee.getAddress().getDistrictName();
 
             //Easy to forget a null check → risk of NullPointerException.
-            if(district!= null && district.equals("ATP")) {
+            if(district!=null && district.equals("ATP")) {
                 return district;
             }
 
