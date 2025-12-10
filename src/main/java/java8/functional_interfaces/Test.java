@@ -58,12 +58,61 @@ public class Test {
 
         int sum = addition.apply(1,2);
 
+        usingPredicate();
+
         System.out.println("================= Consumer in action ===================");
         printDepartmentsOfEmployees.accept(employeeList);
 
         System.out.println("================= Predicate and Supplier in action ===================");
         Test t = new Test();
         t.getFemaleEmployees.get().forEach(System.out::println);
+
+        usingSupplier();
+
+
+    }
+
+    //Supplier = “Don’t give me input. I’ll give you data when you ask.”
+    private static void usingSupplier() {
+        Supplier<Integer> random =
+                () -> (int) (Math.random() * 100);
+
+        System.out.println(random.get());
+        System.out.println(random.get());
+    }
+
+    private static void usingPredicate() {
+        String input = "ADMIN";
+
+        /*
+        * internal methods
+        *
+        * test(T t):boolean  ==> SAM
+        *
+        * other methods
+        * and(), or(), negate()
+        * */
+
+        Predicate<String> isNotNull = s -> s != null;
+
+        Predicate<String> isNotEmpty = s -> !s.isEmpty();
+
+        Predicate<String> hasNoSpaces = s -> !s.contains(" ");
+
+        Predicate<String> isAdmin = s -> "ADMIN".equalsIgnoreCase(s);
+
+        Predicate<String> isUser = s -> "USER".equalsIgnoreCase(s);
+
+        Predicate<String> validRole = isAdmin.or(isUser);               // OR
+
+        Predicate<String> validUsername =
+                        isNotNull                          // AND
+                        .and(isNotEmpty)
+                        .and(hasNoSpaces)
+                        .and(validRole);
+
+        Predicate<String> usernameWithSpaces = hasNoSpaces.negate();
+        usernameWithSpaces.test("Hello world");  // returns ture
     }
 
     private static void functionIllustration() {
@@ -79,6 +128,10 @@ public class Test {
                .apply(employeeList);
 
         System.out.println(Arrays.toString(namesArray));
+    }
+
+    private static void test() {
+
     }
 
 

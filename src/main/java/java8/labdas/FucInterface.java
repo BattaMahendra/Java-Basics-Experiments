@@ -21,6 +21,7 @@ public interface FucInterface {
     String toString();
 
 
+
     // a functional interface can have n number of default and static methods
     default void aDefaultMethod() {
         //implementation
