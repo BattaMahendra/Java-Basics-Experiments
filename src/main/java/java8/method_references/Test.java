@@ -38,7 +38,8 @@ public class Test {
         IPerformer staticMethodReference = Test::aStaticMethod;
         //the above code is same as
         IPerformer staticWithoutMethodReference = ()->Test.aStaticMethod();
-        staticMethodReference.perform();;
+        staticMethodReference.perform();
+        staticWithoutMethodReference.perform();
 
         Test obj1 = new Test();
         IPerformer instanceMethodCall = () -> obj1.anInstanceMethod();
@@ -83,8 +84,48 @@ public class Test {
          * So the string object ("Mahendra") is the arbitrary object supplied at runtime
          *
          * The above is although instance we have used String (class name) instead of object
-         * "Instance method of arbitrary object of a particular type".*/
+         * "Instance method of arbitrary object of a particular type".
+         * */
 
+        /**
+         *
+         * 📜  Method reference is NOT magic. ⁀➴ It’s just a prettier lambda.
+         * If a lambda is just:
+         *
+         * “Take input → call a method with it”
+         * then method reference is perfect.
+         *
+         * ✅ ClassName::methodName  ➤ static method
+         * ✅ objectRef::methodName  ➤ instance method
+         * ✅ ClassName::new         ➤ constructor
+         *
+         * 🔴 When You CAN Use Method Reference
+         * ✅ When
+         * Lambda body has single method call
+         * Parameters match automatically
+         * No additional logic
+         *
+         * ❌
+         *      x -> {
+         *          System.out.println(x);
+         *          return x.length();
+         *      }
+         *
+         *
+         *
+         * ⚠️⚠️⚠️
+         * Method Reference vs Lambda (Quick Decision Rule)
+         *
+         * 👤 Ask yourself:
+         *
+         * ⭐⭐⭐⭐⭐ “Is my lambda doing anything other than calling ONE existing method?”
+         *
+         * ➪ Yes → Lambda
+         *
+         * ➪ No → Method reference ✅
+         *
+         * Thank You 😊❣️
+         * */
 
 
     }

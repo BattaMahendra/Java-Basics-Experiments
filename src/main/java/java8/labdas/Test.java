@@ -9,6 +9,7 @@ public class Test {
     String instanceVariable = "Test class instance variable";
     static String staticVariable = "Test class static variable";
 
+    //using anonymous class
    static  FucInterface fucInterface1 = new FucInterface() {
         @Override
         public void singleAbstractMethod() {
@@ -25,6 +26,9 @@ public class Test {
         // it can have its own objects state
         //anonymous inner classes can have its own instance variables
         String variable = "instance Variable";
+        /*
+        * Can't have static variables and methods but allows constants*/
+        final static int x = 10;  // static final allowed
         @Override
         public void singleAbstractMethod() {
             System.out.println(this.variable);
@@ -47,14 +51,14 @@ public class Test {
         //anonymous inner class with a instance variable
         fuc3.singleAbstractMethod();
 
-        //Behaviour of lambdas with local variables , instace variables and static variables
+        //Behaviour of lambdas with local variables , instance variables and static variables
 
         String local = "local variable";
         FucInterface fuc5 = ()->{
             System.out.println(local);
             //Variable used in lambda expression should be final or effectively final
             // the below line can't be executed
-           // local = "local variable modified";
+            //local = "local variable modified";
         };
 
         System.out.println("\n Before changing the instance variable");

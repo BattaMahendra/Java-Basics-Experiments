@@ -38,9 +38,42 @@ public class CompletableFutures {
 				.thenAccept(name -> System.out.println("Employee Name whose age is above 21 :"+ name))
 				// this one takes function as parameter and returns a completable future itself
 				// here you can do any operation and should finally return a completable future itself
+				// acts as a flat map and avoids situations like CompletableFuture< CompletableFuture< Employee > >
 				.thenCompose( input->cf2)
 				// thenRun() takes runnable as param and returns nothing
 				.thenRun(()-> System.out.println(" Operation completed"));
+
+
+
+		/*
+		* One more example
+		* */
+
+		CompletableFuture<Integer> cf = CompletableFuture.supplyAsync(() -> 10);
+
+			// 1. thenApply ==> Takes CF<T> --> returns CF<R>
+					CompletableFuture<String> step1 =
+							cf.thenApply(n -> "x = " + n);
+
+			// 2. thenAccept ==> Takes CF<T> --> returns CF<Void>
+					CompletableFuture<Void> step2 =
+							step1.thenAccept(s -> System.out.println("step1: " + s));
+
+			// 3. thenRun -> no input and run the task without return
+					CompletableFuture<Void> step3 =
+							step2.thenRun(() -> System.out.println("All done!"));
+
+			//4. Difference b/w thenAccept() and thenCompose()
+
+		/*
+		* We are trying to return a completable future only
+		* What thenApply() or supplyAsync() does is they wrap everything in Completable future*/
+		CompletableFuture<CompletableFuture<Integer>> cfApply = cf.thenApply(n -> cf);
+		CompletableFuture<CompletableFuture<Integer>> cfSupply = CompletableFuture.supplyAsync(() -> cf);
+
+		// where as thenCombine() solves it by flattening it
+		CompletableFuture<Integer> composed = cf.thenCompose(n -> cf);
+
 
 
 
