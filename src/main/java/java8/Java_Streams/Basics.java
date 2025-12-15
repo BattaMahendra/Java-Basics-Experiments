@@ -2,6 +2,8 @@ package java8.Java_Streams;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -19,7 +21,7 @@ public class Basics {
                             System.out.println("map method was called: "+i);
                             return i; })
                 //an intermediate operation used for debugging and logging in streams.
-                //It accepts as Consumer functional interface as input and return the original stream to next operatiosn.
+                //It accepts as Consumer functional interface as input and return the original stream to next operations.
                 //no changes are applied to original stream.
                 .peek(c -> {
                     //here even though we change the value of c , after peek() completion original stream wil be returned
@@ -28,6 +30,8 @@ public class Basics {
                     })
                 .sorted()
                 .forEach(System.out::println);
+
+
     }
     public static void creationOfStreams(){
 
@@ -72,8 +76,7 @@ public class Basics {
         * are no results */
 
         //observe here
-        System.out.println(evenStream);
-        //System.out.println(evenStream.map(i -> i+3)); //Still doesn't come to reality as there is no terminal operation
+       // evenStream.map(i -> i+3); //Still doesn't come to reality as there is no terminal operation
 
         // when we give terminal operation -- so iterate() function is lazily evaluated
         evenStream.limit(5).forEach(System.out::print);
@@ -94,6 +97,23 @@ public class Basics {
         // Print all numbers in the stream
         numbersStream.forEach(System.out::println); // Generate a stream of numbers from 0 to 9
 
+        // Stream can only be used once and can't be used once its been consumed.
+       // numbersStream.forEach(System.out::println);  // Throws exception
+
+        //Generate a stream of random doubles
+        Stream<Double> random = Stream.generate(Math::random);
+
+        // terminal operation on stream to print all ramdoms
+        random.limit(10).forEach(System.out::println);
+
+
+        List list = List.of(1,2,3,4);
+        // Mechanism to reuse streams - best way
+        Supplier<Stream<Integer>> supplier =
+                () -> list.stream().filter(i -> (int)i > 0);
+
+        supplier.get().forEach(System.out::println);  // fresh stream
+        supplier.get().count();                      // Considered as fresh stream
 
 
 

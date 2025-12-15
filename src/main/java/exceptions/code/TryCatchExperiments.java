@@ -36,6 +36,8 @@ public class TryCatchExperiments {
 
     /*
     * using pipe " | " operator we can catch multiple exceptions in same catch block.
+    *
+    * Used when you want same catching logic for different kind of exceptions
     * */
     private static void multipleExcepitonsInSameCatchBlock(String[] args) {
         try {

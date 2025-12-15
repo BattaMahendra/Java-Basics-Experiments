@@ -1,6 +1,9 @@
+import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 
 public class Test {
+
 
     public static void main(String[] args) {
         C c = new C();
@@ -12,7 +15,6 @@ public class Test {
             System.out.println(x+x);
 
         });
-
 
 
     }

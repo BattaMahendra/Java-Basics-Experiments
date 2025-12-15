@@ -32,7 +32,7 @@ public class VariablesAndTechniques {
 			.collect(Collectors.joining())
 			.split(",");
 
-	public static String[] roles ={"developer","tester","support engineer","manager","director","supervisor","programmer specialist","team lead","project amnager"," operations manager","networking engineer","supporting staff","security personel","junior developer","fresher engineer","maintanace staff","plumber","Solutions Architect"};											
+	public static String[] roles ={"developer","tester","support engineer","manager","director","supervisor","programmer specialist","team lead","project manager"," operations manager","networking engineer","supporting staff","security personal","junior developer","fresher engineer","maintenance staff","plumber","Solutions Architect"};
 	public static String[] companies ={"Mphasis","Capgemini","Cognizant","Accenture","SAP LABS", "LTI-Mindtree","TCS"};	
 	public static String[] state = { "Andhra Pradesh",
 			"Arunachal Pradesh",

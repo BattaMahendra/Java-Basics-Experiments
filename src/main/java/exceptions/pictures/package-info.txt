@@ -3,7 +3,7 @@ package exceptions.pictures;
 ⭐ 1. The Root: Throwable
 
 1. Throwable is the top most parent of Exception and Error.
-    Throwable contains important classes such as printStackTrace(), getMessage(), suppressedExceptions(), etc..
+    Throwable contains important methods such as printStackTrace(), getMessage(), suppressedExceptions(), etc..
 
     🔴 Stack Trace or printStackTrace() method
 
@@ -42,7 +42,7 @@ package exceptions.pictures;
 
     Exception
         |
-        |-- Checked Exceptions (must handle) 👉 Checked by compiler at thats why called Checked Exceptions
+        |-- Checked Exceptions (must handle) 👉 Checked by compiler at that's why called Checked Exceptions
         |-- Unchecked Exceptions (RuntimeException)
 
 ⭐ 4. Checked Exceptions (Compile-Time Checking)

@@ -1,5 +1,7 @@
 package comparators.comparable;
 
+import java.util.Collections;
+
 /*
 * Comparable is a interface with compareTo() method which takes another object
 * The main aim of comparable interface is the class which is extending can define a
@@ -41,7 +43,6 @@ public class Product implements Comparable<Product> {
 
         // Default compare by id - more concise way
         //return Integer.compare(this.id, other.id);
-
 
     }
 }

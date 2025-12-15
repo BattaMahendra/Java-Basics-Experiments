@@ -16,7 +16,7 @@ public enum FamilyEnum {
 	/** 
 	 * the constants of enum are by default static and final
 	 * Constructors in enums are always private by default
-	 * we can add values to these constants by having a constructor
+	 * we can add values to these constants by having a overloaded constructor
 	 */
 	
 	/**
@@ -44,11 +44,12 @@ public enum FamilyEnum {
 	//using different constructor to have values to this constant
 	// here this sentence will go as private instance variable role
 	GRANDPARENTS("the elder members and advisors of the family");
-	
-	private String role;
+
+
+	//the private variable bind to param based constructor
+	private String role; 	// Mutable field
 
 	/**
-	 * 
 	 * printing the constants of enum and also looping through them.
 	 */
 
@@ -59,7 +60,6 @@ public enum FamilyEnum {
 		FamilyEnum father = FamilyEnum.FATHER;
 		System.out.println(father);
 
-		
 		// looping through enum values ( here we are using special method called values() )
 		for(FamilyEnum e : FamilyEnum.values()) {
 			System.out.println("Name of enum "+e+" is "+e.name());
@@ -68,7 +68,6 @@ public enum FamilyEnum {
 			System.out.println("Length of enum "+ e+ " is  "+ e.ordinal());
 
 		}
-		
 		System.out.println("end of static block");
 	}
 
@@ -109,12 +108,9 @@ public enum FamilyEnum {
 
 		System.out.println(FATHER.description());
 
-		EnumSet<FamilyEnum> elderGroup = EnumSet.of(GRANDPARENTS);
+		EnumSet<FamilyEnum> elderGroup = EnumSet.of(GRANDPARENTS, FATHER, MOTHER);
 		// we can also use EnumMap - learn about it in chatgpt
 
-
-
-		
 	}
 
 
@@ -136,4 +132,5 @@ public enum FamilyEnum {
 *		1. Thread-safe by default.
 *		2. Guaranteed against reflection attacks.
 *		3. Guaranteed against serialization attacks.
+*
 * */

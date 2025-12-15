@@ -109,6 +109,9 @@ public class OptionalHow {
                               .orElse(0);
         System.out.println(length);
 
+        String finalName = mayBeName.orElse("default");
+        System.out.println(finalName);
+
         //traditional approach with Optional - isPresent():boolean
         if(mayBeName.isPresent()){
             System.out.println(mayBeName.get());

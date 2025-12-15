@@ -4,7 +4,7 @@ import java.util.stream.IntStream;
 
 /**
  * interrupt() method used to interrupt the existing thread
- * calling it makes the interrupt flag in thread to ture and thats it
+ * calling it makes the interrupt flag in thread to true and that's it
  * thread continues to work. per suppose if thread is in TIMED_WAITING or WAITING  state then it will
  * throw interrupted exception
  *
