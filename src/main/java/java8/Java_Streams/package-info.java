@@ -5,7 +5,7 @@ WHAT ARE STREAMS ?
 
 * Simply put, streams are wrappers around a data source, allowing us to operate with that data source and making bulk processing convenient and fast.
 * A stream does not store data and, in that sense, is not a data structure.
-* It also never modifies the underlying data source.
+* It also never modifies the underlying data source unless we explicitly code.
 
 
 WHY STREAMS ?

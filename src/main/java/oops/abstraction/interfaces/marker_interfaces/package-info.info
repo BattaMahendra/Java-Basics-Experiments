@@ -1,0 +1,35 @@
+
+
+🔴 A Marker Interface (also known as a tag interface) is an interface in Java that has no methods, fields, or constants.
+   It is completely empty.
+🔴 Sole purpose is to tag a class or interface or to group a certain classes in a single group
+
+👀 Its usage became less after Java 5 because of introduction of Annotations in java
+
+➡️ mainly works with keyword instanceOf
+
+➡️ Eg: Serializable, Clonable, etc..
+
+
+📣 common interview trap ⚠️
+
+    ❓ Why not use annotations instead?
+
+        ✔ Marker interfaces:
+
+            1. Are part of the type system
+            2. Can be used in generics
+            3. <T extends Serializable>
+
+
+        ❌ Annotations cannot do this
+
+📣 Marker interface vs Annotation (VERY important)
+
+
+| Marker Interface  | Annotation               |
+| ----------------- | ------------------------ |
+| Pre-Java 5        | Java 5+                  |
+| Uses `instanceof` | Uses reflection          |
+| Only for classes  | Classes, methods, fields |
+| Cannot hold data  | Can hold values          |

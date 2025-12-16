@@ -23,6 +23,8 @@ Serialization: converting an object graph into a byte stream (so it can be store
 
 Deserialization: reconstructing objects back from that byte stream.
 
+
+
 Typical APIs: ObjectOutputStream / ObjectInputStream.
 
 When to use
@@ -30,13 +32,26 @@ When to use
 Persisting objects to disk, sending objects over network (RMI, cached state), or implementing deep cloning
 * */
 
+/**
+ * Why do we need Serialization and Deserialization
+ *
+ *👉 Without serialization:
+ *
+ *🔸 Objects live only in memory
+ *🔸 JVM shutdown = object lost
+ *
+ *👉 With serialization:
+ *
+ *🔸 Object can outlive the JVM
+ *🔸 Object can move between JVMs
+ * */
 @Data
 @ToString
 public class Student implements Serializable {
 
     /*
     *   Used when to check compatibility during deserialization
-    *   If we dont provide it then compiler automatically generates one by class features.
+    *   If we don't provide it then compiler automatically generates one by class structure.
     *   (Be careful as different java versions create different ids , so during deserialization it might break)
     * */
     private static final long serialVersionUID = 1L;
@@ -47,6 +62,7 @@ public class Student implements Serializable {
     public static String stateBoard = "SSC";
 
 
+    //private   String s;
     private   String name;
     private int rollno;
     //using transient keyword which doesn't get serialized
@@ -67,7 +83,7 @@ public class Student implements Serializable {
     //and when the object is deserialized the constructor is not called so the state value will be null when deserialized
     private transient  final String state;
 
-    private Teacher teacher;
+    private Teacher teacher;  // an externalizable object
 
     //non serialized object
     //private Department department; // results in runtime error as Department is not a serializable object.
@@ -101,12 +117,12 @@ class Department{
 * 1. What is externalization ( how it is helpful as alternative of serialization)
 * 2. Serialization on Enums ( they follow different mechanisms compared to serialization)
 * 3. What is readResolve() method is useful ?
-* 4. How to customize serialization ? ( wirteObject() and readObject() methods)
+* 4. How to customize serialization ? ( writeObject( ObjectOutputStream ) and readObject(ObjectInputStream) methods)
 * 5. How is inheritance possible in serializable parent or serializable child ?
-* 6. What happens if a serializable class contains non serializable object reference ? ( how to handle it )
-*     ans.   // ❌ Throws java.io.NotSerializableException
+* 6. What happens if a serializable class contains non-serializable object reference ? ( how to handle it )
+*     ans.  ❌ Throws java.io.NotSerializableException
 *           how to handle it
-*           THree ways
+*           Three ways
 *           1. Mark that field as transient
 *           2. handle in  customization i.e use writeObject() and readObject() methods
 *           3. Make that object class serializable

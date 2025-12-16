@@ -11,6 +11,8 @@ import java.io.ObjectOutput;
 *
 * Externalization is an alternative to serialization where developer have full control over
 * serialization and deserialization
+*
+* Externalizable internally extends Serializable interface
 * */
 
 @ToString

@@ -2,6 +2,7 @@ package java8.Java_Streams;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Test {
 
@@ -25,6 +26,11 @@ public class Test {
             return s;
         }).forEach(System.out::println);
 
+
         System.out.println(list);
+
+
+
+
     }
 }

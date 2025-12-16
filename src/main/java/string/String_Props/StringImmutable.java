@@ -32,9 +32,17 @@ public class StringImmutable {
         System.out.println(o==n); // false as o got its value from pool where as n is still from heap
 
 
+        System.out.println("==============   HASH CODES  ======================");
         /*
         * But remember hash codes of all objects remain same as object hashcode is calculated from value of string
         * i.e "Mahendra"*/
+
+        System.out.println(s.hashCode());
+        System.out.println(m.hashCode());
+        System.out.println(n.hashCode());
+        System.out.println(o.hashCode());
+
+        System.out.println("====================================");
 
         //equals() method
         String a = "Hello";

@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 /*
  * 1. we need to make class final so that it can't be extended
- * 2. Data members should be private and final and should be initialized in costructor
+ * 2. Data members should be private and final and should be initialized in constructor
  * 3. Setters should be avoided
  * 4. If Reference objects are data members then their copy should be returned in getter
  */

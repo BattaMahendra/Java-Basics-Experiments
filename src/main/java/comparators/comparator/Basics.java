@@ -3,9 +3,11 @@ package comparators.comparator;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
 
 import basic.experiments.pojos.Employee;
 import basic.experiments.populating.pojos.VariablesAndTechniques;
+import lombok.ToString;
 
 /*
 * Comparator is a interface with compare() method
@@ -14,11 +16,13 @@ import basic.experiments.populating.pojos.VariablesAndTechniques;
 * */
 public class Basics {
 	//Learning Comparators basics
-	static List<Employee> employees = VariablesAndTechniques.populateEmployee().subList(0, 6);
+	static List<Employee> employees = VariablesAndTechniques.populateEmployee().subList(0, 10);
 
 	 //leveraging java 8 to create comparator interfaces --> using lambda functions
 	static Comparator<Employee> advancedNameComparator = (emp1 , emp2) -> emp1.getFirstName().compareTo(emp2.getFirstName());
 	//more concise way of creating comparators --> using internal methods of comparator
+	static Comparator<Employee> idComparator1 = Comparator.comparing(employee ->  employee.getId());  // just supply required function to the comparing() method
+	// the above can be rewritten as
 	static Comparator<Employee> idComparator = Comparator.comparing(Employee::getId);
 	// Using internal methods to sort the values of type Double
 	// ( we also methods for ComparingInt, comparingLong)
@@ -27,15 +31,29 @@ public class Basics {
 	static Comparator<Employee> salarysComparator = idComparator.reversed();
 	//we can compare object with multiple fields 
 	static Comparator<Employee> employeeComparator = Comparator
-														// we can use lambda functions
+														// we can use lambda functions to compare employees with their age
 														.comparing((Employee e) -> e.getAge())
-														//we can use predefined comparators
-														.thenComparing(advancedNameComparator)
-														//we can use method referencing
-														.thenComparing(Employee::getFirstName)
+														// now what if two  employees age is equal and how you want to sort those who are equal
+														// then you can choose to sort equal age employees using their first name
+														// we can do this chaining by thenComparing() method
+														.thenComparing(advancedNameComparator)  // takes param as a comparator and sorts
+														// instead of passing comparator  as a param
+			                                            // you can directly pass the field which you want to compare for equal age and equal first name employees
+														.thenComparing(Employee::getFirstName)    // takes a function as param - return type will be compared
 														//if you want reverse order
 														.thenComparing(idComparator)
 														.thenComparing(e -> e.getRole());
+/**
+ *
+ * Lets suppose you want to sort employees based on their age - you can use ageComparator
+ *
+ * But what if some of the employees age is equal - then what to do - if you want to sort out only equal age employees further
+ * you can use 1.  thenComparing(Comparator)  ==> you can pass any comparator
+ * 		       2.  thenComparator(Function)   ==> you can pass any function , which return value is used to compare
+ *
+ * ✔️ 💡  thenComparing() runs only when the previous comparison returns 0
+ * 🌟 thenComparing() = “If previous comparison ties, use this next.”
+ * */
 
 	/**
 	 * Extremely important - If the collection have nulls then we need to handle them
@@ -104,6 +122,8 @@ public class Basics {
 		//employees.forEach(emp ->
 
 		sortedInStreams();
+
+		commonPitFalls();
 		
 	}
 
@@ -111,6 +131,33 @@ public class Basics {
 		System.out.println("\n=========================================================\n");
 		System.out.println("Employees before sorting");
 		employees.stream().forEach(System.out::println);
+
+		System.out.println("Employees after sorting");
+		employees.stream().sorted().forEach(System.out::println); // uses comparable
+
+		employees.sort(salaryComparator.reversed()); // sorting using salary comparator - highest salary first
+		System.out.println("\nEmployees after sorting with salary comparator\n");
+		employees.forEach(System.out::println);
+
+		// streams ==> comparator
+		employees.stream().sorted(idComparator.thenComparing(advancedNameComparator))  // we can pass custom comparator in sorted()
+				.forEach(System.out::println);
+
+		System.out.println("\n================= Sorting with max() and min() ======================\n");
+
+		//streams ==> max()  ==> returns optional of highest element
+		// max() , min() - terminal operation
+		// a special case of reduce()
+		employees.stream()
+				.max(Comparator.comparing(Employee::getSalary))
+				.ifPresent(System.out::println);
+
+		// returns minimum element of stream according to provided comparator
+		// min() ==> returns an optional wrapped element
+		employees.stream().min(Comparator.comparing(Employee::getSalary)).ifPresent(System.out::println);
+
+		System.out.println("\n=========================================================\n");
+
 	}
 
 
@@ -125,7 +172,7 @@ public class Basics {
 		/* We can also have anonymous inner class instead of above*/
 		employees.sort(new Comparator<Employee>() {
 
-			//static String comparatorStaticId = "S12345";  // supported from java 16
+			//static String comparatorStaticId = "S12345";  // only static final constants allowed
 			int comparatorId = 12345; // we can have instance variables in case of inner anonymous class
 			@Override
 			public int compare(Employee o1, Employee o2) {
@@ -141,6 +188,9 @@ public class Basics {
 		// Using Integer class compare method as age is an integer
 		Comparator<Employee> ageComparatorLambda1 = (e1,e2) -> Integer.compare(e1.getAge(),e2.getAge());
 
+		//Using Comparator.comparing()
+		Comparator<Employee> ageComparatorLambda4 =  Comparator.comparing(Employee::getAge);
+
 		// Using comparing int
 		Comparator<Employee> ageComparatorLambda2 =  Comparator.comparingInt(e -> e.getAge());
 
@@ -148,11 +198,48 @@ public class Basics {
 		Comparator<Employee> ageComparatorLambda3 =  Comparator.comparingInt(Employee::getAge);
 
 
-		Comparator<Employee> ageComparatorLambda4 =  Comparator.comparing(Employee::getAge);
+
 
 		/*
 		* We can use above as following*/
 		employees.sort(ageComparatorLambda4);
+	}
+
+	public static void commonPitFalls(){
+
+		@ToString
+		class Product{
+			int price;
+			String name;
+
+			Product(int price, String name){
+				this.name = name;
+				this.price = price;
+			}
+		}
+
+		Product p1 = new Product(10, "Pen");
+		Product p2 = new Product(20, "Book");
+		Product p3 = new Product(10, "Pencil");
+		Product p4 = new Product(10, "Pen-Pencil");
+
+		Comparator<Product> productComparator = Comparator.comparing(p -> p.price);
+
+		TreeSet<Product> productTreeSet = new TreeSet<>(productComparator);
+
+		productTreeSet.add(p1);
+		productTreeSet.add(p2);
+		productTreeSet.add(p3);
+		productTreeSet.add(p4);
+
+		// you will see only two entry as TreeSet compares everything by the comparator we provided, and it is price
+		// price is same for all products
+
+		System.out.println(productTreeSet);
+
+
+
+
 	}
 }
 
@@ -165,6 +252,12 @@ EmployeeAgeComparator implements Comparator<Employee>{
 		if(o1.getAge()>o2.getAge()) return 1;
 		else if (o1.getAge()<o2.getAge()) return -1;
 		else 	return 0;
+
+		/*
+		* compare(a, b) < 0 → a moves left in the order
+		* compare(a, b) > 0 → a moves right in the order
+		* compare(a, b) = 0 → no movement needed in the order
+		* */
 
 	}
 

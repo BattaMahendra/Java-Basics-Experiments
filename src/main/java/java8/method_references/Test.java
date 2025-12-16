@@ -105,7 +105,7 @@ public class Test {
          * Parameters match automatically
          * No additional logic
          *
-         * ❌
+         * ❌  method reference won't work for below lambda.
          *      x -> {
          *          System.out.println(x);
          *          return x.length();
