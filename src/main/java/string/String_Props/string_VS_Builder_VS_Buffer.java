@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
  *
  *      Use String        → When data won’t change often. (Eg: Fixed data, constants, security-sensitive)
  *      Use StringBuilder → When data changes frequently in single-threaded context.(Eg: Single-threaded modifications)
- *      Use StringBuffer  → When data changes frequently in multi-threaded context.(Eg: Multi-threaded modifications)
+ *      Use StringBuffer  → When data changes frequently in multithreaded context.(Eg: Multi-threaded modifications)
  *      */
 
 public class string_VS_Builder_VS_Buffer {
@@ -42,6 +42,10 @@ public class string_VS_Builder_VS_Buffer {
      ==> Introduced in Java 5 as a faster alternative to StringBuffer.
      *
      * cons : ==> Not synchronized → Not thread-safe.
+     *
+     * 🧠 Mental Rule (One Line)
+     * ✅️ If you’re modifying strings repeatedly → use StringBuilder.
+     * ☝️ If not → use String.
 *
 * */
         //StringBuilder
