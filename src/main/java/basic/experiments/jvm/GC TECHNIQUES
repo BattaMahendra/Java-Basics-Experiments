@@ -1,0 +1,151 @@
+                        🧠 GARBAGE COLLECTION TECHNIQUES IN JAVA
+
+🟢 Serial GC
+
+    Meaning:
+        Single-threaded garbage collection with Stop-The-World pauses
+
+    How it works:
+        🧹 One GC thread cleans Young and Old generations
+
+    Where used:
+        🖥️ Small apps, low-memory systems
+
+    Pros:
+        ✅ Simple, low overhead
+
+    Cons:
+        ❌ Long pauses
+
+    JVM option:
+        -XX:+UseSerialGC
+
+
+
+🔵 Parallel GC (Throughput GC)
+
+    Meaning:
+        Multi-threaded GC focused on maximum throughput
+
+    How it works:
+        ⚙️ Multiple GC threads, full Stop-The-World
+
+    Where used:
+        🏭 Batch jobs, CPU-heavy workloads
+
+    Pros:
+        🚀 High throughput
+
+    Cons:
+        ❌ Long pause times
+
+    Default GC:
+        Java 7, Java 8
+
+    JVM option:
+        -XX:+UseParallelGC
+
+
+
+🟠 CMS GC (Deprecated)
+
+        Meaning:
+            Low-pause GC using concurrent marking
+
+        How it works:
+            ⏳ Most GC runs alongside the app
+
+        Pros:
+            ⏱️ Shorter pauses than Parallel GC
+
+        Cons:
+            ❌ Fragmentation, deprecated
+
+        Status:
+            🚫 Deprecated (Java 9), Removed (Java 14)
+
+
+
+🟣 G1 GC ⭐ (Most Common)
+
+      Meaning:
+        Region-based GC designed for large heaps and predictable pause times.
+
+      How it works:
+          • Heap divided into small regions
+          • Collects regions with most garbage first
+          • Mixes Young + Old collection
+          • Concurrent marking
+
+      Where it is used:
+          • Spring Boot microservices
+          • Large heap production systems
+          • General-purpose server apps
+
+      Pros:
+          • Predictable pause times
+          • Good balance of throughput and latency
+          • Default GC from Java 9+
+
+      Cons:
+        • Slightly more CPU overhead than Parallel GC
+
+      Default GC:
+          • Java 9+
+          • Java 11
+          • Java 17
+          • Java 21
+
+      JVM option:
+        -XX:+UseG1GC
+
+
+🟡 ZGC
+
+        Meaning:
+            Ultra-low latency garbage collector
+
+        How it works:
+            🎯 Concurrent GC with pauses usually <10ms
+
+        Where used:
+            💹 Real-time and very large heap systems
+
+        Pros:
+            ⚡ Extremely low pauses
+
+        Cons:
+            ❌ Higher CPU usage
+
+        JVM option:
+            -XX:+UseZGC
+
+
+
+🔴 Shenandoah GC
+
+        Meaning:
+            Low-latency GC developed by Red Hat
+
+        How it works:
+            🔄 Concurrent compaction and cleanup
+
+        Where used:
+            🧪 Latency-sensitive systems
+
+        Pros:
+            🧘 Minimal pause times
+
+        JVM option:
+            -XX:+UseShenandoahGC
+
+
+📌 QUICK MEMORY HOOK
+
+        Serial GC → Simple, slow, single-threaded
+        Parallel GC → Fast throughput, long pauses
+        CMS GC → Deprecated, avoid
+        G1GC → Balanced, production default ⭐
+        ZGC → Ultra-low latency, modern systems
+        Shenandoah → Low latency, Red Hat ecosystem
+

@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-* This is an example to illustrate the pass by value in java*/
+* This is an example to illustrate the pass by value in java
+* */
 class PassByValue {
     // swap() doesn't swap i and j
     public static void swap(Integer i, Integer j)

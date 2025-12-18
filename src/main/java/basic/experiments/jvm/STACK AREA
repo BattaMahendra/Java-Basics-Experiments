@@ -1,0 +1,64 @@
+                            🧵 2️⃣ STACK AREA (JAVA STACK)
+
+        What it is:
+            Memory used for method execution
+
+        Key rule (burn this in):
+            🧵 One Stack per Thread
+
+        What lives in stack frames:
+            📌 Local variables
+            📌 Method parameters
+            📌 Return address
+            📌 Partial results
+
+
+📞 HOW STACK WORKS (REAL FLOW)
+
+        void a() {
+            b();
+        }
+
+        void b() {
+            c();
+        }
+
+        void c() {
+        }
+
+        Execution order:
+            a() → b() → c()
+
+        Stack growth:
+            Frame for c()
+            Frame for b()
+            Frame for a()
+
+        c() finishes → frame popped
+        b() finishes → frame popped
+        a() finishes → stack empty
+
+        LIFO. Always. No exceptions.
+
+💥 StackOverflowError (why it happens)
+
+        Cause:
+            • Deep recursion
+            • Infinite method calls
+
+        Not caused by:
+            ❌ Heap size
+            ❌ GC
+
+        JVM tuning:
+            -Xss1m  (stack size per thread)
+
+
+🧠 PRACTICAL STACK FACT
+
+    Local primitives → stored directly in stack
+    Object references → stored in stack, object in heap
+
+    So yes:
+        Changing object fields does NOT change the reference
+
