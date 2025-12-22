@@ -68,14 +68,14 @@ public class GarbageCollection {
 
     }
 
-    private static void withMaps() {
+    private static void withMaps() throws InterruptedException {
         Employee strongEmployee = new Employee("Strong" , 40);
 
 
         //adding into Hashmap
         Map <Employee, Integer> map = new HashMap<>();
         map.put(strongEmployee, 1);
-        map.put(new Employee("No reference", 25), 3);  // although the key has no strong reference still it is not eligible for GC as it is in map
+        map.put(new Employee("No reference at all", 25), 3);  // although the key has no strong reference still it is not eligible for GC as it is in map
 
         strongEmployee = null; // removing reference of strong employee
 
@@ -87,6 +87,7 @@ public class GarbageCollection {
         System.gc();
 
 
+        System.out.println("\n+++++++++++++  we will be learning about Weak references +++++++++++++++\n");
         Employee weakEmployee = new Employee("weak" , 30);
 
 
@@ -99,8 +100,14 @@ public class GarbageCollection {
         weakEmployee = null;  // it is immediately eligible for GC
 
         // the below is also immediately eligible for GC
-        WeakReference<Employee> weakReference2 = new WeakReference<>(new Employee("weak - no reference", 45));
+        WeakReference<Employee> weakReference2 = new WeakReference<>(new Employee("weak - with Reference", 45));
         System.gc();
+
+
+        Thread.sleep(500);
+
+
+        System.out.println("\n+++++++++++++  we will be learning about Soft references +++++++++++++++\n");
 
         Employee softEmployee = new Employee("Soft" , 30);
         SoftReference<Employee> softReference = new SoftReference<>(softEmployee);
@@ -121,11 +128,12 @@ public class GarbageCollection {
         Employee e2 =  new Employee("Other Referenced", 24);
 
         //other referenced objects - now e2 is also referenced to e1
-        //but original e1 becomes unreferenced , so it is eligible for gc
+        //but original e2 becomes unreferenced , so it is eligible for gc
         e2 = e1;
 
         //null referenced objects
-        e2 = null;
+        Employee e3 = new Employee("Hemalatha Eppili", 27);
+        e3 = null;
 
         // objects created inside method
         method();

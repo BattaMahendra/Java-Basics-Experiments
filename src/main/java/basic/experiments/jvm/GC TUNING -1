@@ -33,13 +33,13 @@
 
 # 3️⃣ Why do we need GC tuning?
 
-    Because default GC settings are generic, not tailored to your app.
+    Because default GC settings are generic according to Java version, not tailored to your app.
 
     🔴 Real problems caused by untuned GC
 
         | Problem         | What user experiences            |
         | --------------- | -------------------------------- |
-        | Long GC pauses  | App freezes / API latency spikes |
+        | Long GC pauses  | App freezes / API latency spikes |  ==> time out errors in APIs
         | Too frequent GC | CPU wastage                      |
         | Memory pressure | OutOfMemoryError                 |
         | Over-sized heap | Slow startup + wasted RAM        |
@@ -63,7 +63,7 @@
 
     GC tuning DOES mean:
 
-            🔹 Choosing GC algorithm
+            🔹 Choosing appropriate GC algorithm for your needs
             🔹 Configuring heap sizes
             🔹 Controlling pause time goals
             🔹 Optimizing object lifecycle behavior
