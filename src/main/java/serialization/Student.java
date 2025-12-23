@@ -14,36 +14,37 @@ import java.io.Serializable;
 *
 *
 *
-Basics & Why
-What is Serialization / Deserialization
+    Basics & Why
 
-Serialization: converting an object graph into a byte stream (so it can be stored or sent).
-1. So that we can transfer the object over a network
-2. To Store object into DB or save in file
+        What is Serialization / Deserialization
 
-Deserialization: reconstructing objects back from that byte stream.
+            Serialization: converting an object graph into a byte stream (so it can be stored or sent).
+                1. So that we can transfer the object over a network
+                2. To Store object into DB or save in file
+
+            Deserialization: reconstructing objects back from that byte stream.
 
 
 
-Typical APIs: ObjectOutputStream / ObjectInputStream.
+    Typical APIs: ObjectOutputStream / ObjectInputStream.
 
-When to use
+    When to use
 
-Persisting objects to disk, sending objects over network (RMI, cached state), or implementing deep cloning
+         Persisting objects to disk, sending objects over network (RMI, cached state), or implementing deep cloning
 * */
 
 /**
  * Why do we need Serialization and Deserialization
  *
- *👉 Without serialization:
+ *  👉 Without serialization:
  *
- *🔸 Objects live only in memory
- *🔸 JVM shutdown = object lost
+ *      🔸 Objects live only in memory
+ *      🔸 JVM shutdown = object lost
  *
- *👉 With serialization:
+ *  👉 With serialization:
  *
- *🔸 Object can outlive the JVM
- *🔸 Object can move between JVMs
+ *      🔸 Object can outlive the JVM
+ *      🔸 Object can move between JVMs
  * */
 @Data
 @ToString

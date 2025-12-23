@@ -26,17 +26,23 @@
         void c() {
         }
 
+        main(String[] args){
+             a();
+        }
+
         Execution order:
             a() → b() → c()
 
-        Stack growth:
+        Stack growth: LIFO
             Frame for c()
             Frame for b()
             Frame for a()
+            Frame for main() method
 
-        c() finishes → frame popped
-        b() finishes → frame popped
-        a() finishes → stack empty
+        c() finishes     → frame popped
+        b() finishes     → frame popped
+        a() finishes     → frame popped
+        main() finishes  → stack empty
 
         LIFO. Always. No exceptions.
 
