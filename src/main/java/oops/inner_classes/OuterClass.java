@@ -32,12 +32,13 @@ class OuterClass {
 
     //anonymous inner class
     //can't have constructor - but can have state and multiple extra methods if we want
-    //can have static and state variables
+    //can have static final and state variables
     //can't have static variables and methods - but can have static final variables (constants)
     AnAbstractClass anonymousInnerClass = new AnAbstractClass(2) {
 
         static final String roll="";   //only constants are supposed to be there
         String name;  // can have its own variables
+        String age = "22";
         @Override
         void print() {
             //logic
