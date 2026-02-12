@@ -100,4 +100,7 @@ public class TryCatchExperiments {
             System.out.println(" I am in the finally block");
         }
     }
+
+
+    //Experiment with checked exceptions
 }

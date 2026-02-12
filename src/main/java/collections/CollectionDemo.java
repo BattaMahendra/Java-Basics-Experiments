@@ -89,7 +89,7 @@ public class CollectionDemo {
         list.forEach(System.out::print);
 
         /*
-        * One of main difference between collections
+        * One of main difference between collections and array is
         * Type Safety at compile time
         * Generics can enforce type safety at compile time itself
         *
@@ -101,7 +101,7 @@ public class CollectionDemo {
 
         // Collections can work with Generics
         List<String> l = new ArrayList<>();
-        //List<Object> lO = l;   // compile time error itself
+//        List<Object> lO = l;   // compile time error itself
         System.out.println("\n\n====================");
 
         /**

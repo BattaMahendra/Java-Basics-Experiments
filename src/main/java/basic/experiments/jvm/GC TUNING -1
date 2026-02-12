@@ -39,7 +39,7 @@
 
         | Problem         | What user experiences            |
         | --------------- | -------------------------------- |
-        | Long GC pauses  | App freezes / API latency spikes |  ==> time out errors in APIs
+        | Long GC pauses  | App freezes / API latency spikes |  ==> time out errors in API calls
         | Too frequent GC | CPU wastage                      |
         | Memory pressure | OutOfMemoryError                 |
         | Over-sized heap | Slow startup + wasted RAM        |
@@ -167,7 +167,7 @@
         | Low pause      | G1 / ZGC         |
         | Huge heaps     | ZGC / Shenandoah |
 
-    throughput - how much amount of garbage is being cleaned
+    throughput - how much amount of garbage(unreferenced objects) is being cleaned
     pause : how much time app is being paused because of GC
 ---
 

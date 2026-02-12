@@ -4,9 +4,7 @@ import lombok.ToString;
 
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.*;
 
 
 /*Also read
@@ -100,7 +98,7 @@ public class GarbageCollection {
         weakEmployee = null;  // it is immediately eligible for GC
 
         // the below is also immediately eligible for GC
-        WeakReference<Employee> weakReference2 = new WeakReference<>(new Employee("weak - with Reference", 45));
+        WeakReference<Employee> weakReference2 = new WeakReference<>(new Employee("weak - with out Reference", 45));
         System.gc();
 
 
@@ -116,6 +114,13 @@ public class GarbageCollection {
         // the below object is not immediately eligible for GC.
         SoftReference<Employee> softReference2 =new SoftReference<Employee>(new Employee("soft - no reference", 57));
         System.gc();
+
+        //let's fill up jvm with so much space - then soft reference might be ejected out as jvm absolutely needs memory
+        List<byte[]> list = new ArrayList<>();
+        while (true) {
+            list.add(new byte[1024 * 1024]); // 1 MB each time  - outOfMemory Error - Heap is full
+        }
+
 
     }
 
@@ -186,7 +191,7 @@ class Employee{
 
     /*Custom implementation of finalize method. JVM calls this method before system.gc() is being used
     **/
-    protected void finalize()
+     public void finalize()
     {
 
 

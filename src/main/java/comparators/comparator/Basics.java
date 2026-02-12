@@ -10,7 +10,7 @@ import basic.experiments.populating.pojos.VariablesAndTechniques;
 import lombok.ToString;
 
 /*
-* Comparator is a interface with compare() method
+* Comparator is a interface with compare(T t1, T t2):int method
 * This is very useful if you want to define multiple comparison strategies
 * There is no need to change original product/Employee class because we define comparators outside as another classes
 * */

@@ -54,11 +54,11 @@ public class Why {
      *
      * ✅️ Optional: public Optional<User> findUser(String id) -> The signature explicitly shouts, "I might not find a user!" You represent the possibility of absence in the API itself.
      *
-     * <p>
+     *
      * Optional is container which might contain value or not
      * So developer is forced to check the conditions
      * With Optional, the compiler/type system forces the caller to handle absence.
-     * <p>
+     *
      * if a method is returning Optional then dev is enforced by system to check for null
      * So this reduces the possibility of risk of NPE
      * <p>
@@ -117,16 +117,16 @@ public class Why {
 
 /**
  * Where should we use Optional and where not?
- * Answer:
- * ✅ Use Optional as return type from repository/service methods when value may not exist.
- * ❌ Avoid in fields (e.g., JPA entities) → complicates serialization.
- * ❌ Avoid in method parameters → unnecessary overhead.
- * ❌ Avoid in collections → better to return empty collection instead of Optional<List<T>>.
+ *    Answer:
+ *      ✅ Use Optional as return type from repository/service methods when value may not exist.
+ *      ❌ Avoid in fields (e.g., JPA entities) → complicates serialization.
+ *      ❌ Avoid in method parameters → unnecessary overhead.
+ *      ❌ Avoid in collections → better to return empty collection instead of Optional<List<T>>.
  *
  * What are best practices in Optional ?
  *
- * Best practice: use .orElse, .orElseThrow, .ifPresent instead of .get().
- * because .get() is same as null check and can cause problems
+ *      Best practice: use .orElse, .orElseThrow, .ifPresent instead of .get().
+ *      because .get() is same as null check and can cause problems
  *
  *
  * ✅ Crisp takeaway line for interview:

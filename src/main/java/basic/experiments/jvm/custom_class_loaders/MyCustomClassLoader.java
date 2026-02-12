@@ -13,7 +13,7 @@ public class MyCustomClassLoader extends ClassLoader {
 
     /**
      * ⚠️ Learn about usage of findClass() vs loadClass() methods in custom class loaders
-     * 🚨 Why we have overrided findClass() method below rather than loadClass()
+     * 🚨 Why we have overridden findClass() method below rather than loadClass()
      * */
     @Override
     protected Class<?> findClass(String className) throws ClassNotFoundException {

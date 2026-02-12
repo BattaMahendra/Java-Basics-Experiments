@@ -19,7 +19,7 @@ public class MultiThreading {
         arr = Collections.synchronizedList(arr);
 
         // copyOnwriteArrayList which is a synchronised one
-       // CopyOnWriteArrayList arr = new CopyOnWriteArrayList<Integer>();
+//        CopyOnWriteArrayList arr = new CopyOnWriteArrayList<Integer>();
 
         MyRunnable runnable1 = new MyRunnable(arr,1,10000);
         MyRunnable runnable2 = new MyRunnable(arr,10001,20000);

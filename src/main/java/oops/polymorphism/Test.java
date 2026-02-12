@@ -36,6 +36,8 @@ public class Test{
         Child c = new Child();
 
         Parent p = new Child();
+        p.init();
+
 
     }
 }
