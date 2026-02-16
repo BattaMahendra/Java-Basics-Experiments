@@ -21,7 +21,7 @@ public class LinkedListDemo {
          * 2. It implements both List and Dequeue Interfaces unlike arraylist
          * 3. Preferred for frequent insertions and deletions
          * 4. Traversal and random access is slow compared to ArrayList (To access an element, we need to iterate from the beginning to the element.)
-         * 5. More memory overhead as linkedlist contains nodes ( each node stores data + 2 references: prev and next)
+         * 5. More memory overhead as Linked-list contains nodes ( each node stores data + 2 references: prev and next)
          *      Arraylist is better as it internally uses array which stores elements in contiguous memory locations
          *
          *
