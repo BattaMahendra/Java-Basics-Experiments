@@ -23,8 +23,8 @@ public class ArrayDeq {
     }
 
     private static void DequeOperations(ArrayDeque<Integer> adq) {
-        System.out.println("\n====================================== Using array deque for bothe end operations ===============================\n");
-        System.out.println("adq before deque operaitons demo: "+ adq);
+        System.out.println("\n====================================== Using array deque for both end operations ===============================\n");
+        System.out.println("adq before deque operations demo: "+ adq);
 
         //adding elements at starting
         adq.offerFirst(4);
@@ -32,6 +32,7 @@ public class ArrayDeq {
         System.out.println("adq after offerFirst() operation: "+ adq);
         //peeking elements at starting
         adq.peekFirst();
+
         adq.pollFirst();
         System.out.println("adq after pollFirst() operation: "+ adq);
 
@@ -43,9 +44,10 @@ public class ArrayDeq {
 
         //removing elements at the end of array
         adq.peekLast(); // for looking at rear end element without removing
+        adq.poll();
+        System.out.println("adq after poll() : "+ adq);
         adq.pollLast();
-        adq.pollLast();
-        System.out.println("adq after poll() or pollLast() method: "+ adq);
+        System.out.println("adq after  pollLast() method: "+ adq);
 
     }
 
