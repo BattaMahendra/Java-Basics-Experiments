@@ -12,6 +12,10 @@ import java.io.ObjectOutput;
 * Externalization is an alternative to serialization where developer have full control over
 * serialization and deserialization
 *
+* ** Unlike Serializable interface externalizable is not a marker interface. Rather it contains two abstract methods
+*    1. writeExternal(ObjectOutput )
+*    2. readExternal(ObjectInput)
+*
 * Externalizable internally extends Serializable interface
 * */
 
@@ -30,6 +34,10 @@ public class Teacher implements Externalizable {
         this.dept = dept;
     }
 
+
+    /**
+     * Must be overridden methods
+    * */
 
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {

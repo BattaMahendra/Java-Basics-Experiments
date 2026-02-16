@@ -1,0 +1,33 @@
+                                    🧭 3️⃣ PC REGISTER (PROGRAM COUNTER)
+
+This one is tiny but crucial.
+
+    What it is:
+        A small register that stores the address of the current JVM instruction
+
+    Why it exists:
+        CPU executes one instruction at a time
+        JVM must remember where it left off
+
+
+🧠 PC REGISTER RULES
+
+    • One PC Register per thread
+    • Updated after every instruction
+    • Points to bytecode instruction, not source code
+
+    Native methods:
+        PC Register = undefined
+
+🎯 SIMPLE EXECUTION EXAMPLE
+
+        int x = 10;
+        int y = x + 5;
+
+        PC Register:
+            👉 points to instruction: load x
+            👉 then add 5
+            👉 then store y
+
+        Without PC Register:
+            CPU would have amnesia

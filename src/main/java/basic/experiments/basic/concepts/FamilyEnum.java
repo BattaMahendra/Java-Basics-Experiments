@@ -16,7 +16,7 @@ public enum FamilyEnum {
 	/** 
 	 * the constants of enum are by default static and final
 	 * Constructors in enums are always private by default
-	 * we can add values to these constants by having a overloaded constructor
+	 * we can add values to these constants by having an overloaded constructor
 	 */
 	
 	/**
@@ -132,5 +132,6 @@ public enum FamilyEnum {
 *		1. Thread-safe by default.
 *		2. Guaranteed against reflection attacks.
 *		3. Guaranteed against serialization attacks.
+* 		4. Guaranteed against cloning
 *
 * */

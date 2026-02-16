@@ -1,13 +1,13 @@
 
-  1. JDK --> ( JRE + COMPILER + OTHER TOOLS)
-  2. JRE --> (JVM + JAVA API LIBRARIES)
+  1. JDK --> ( JRE + COMPILER + DEBUGGER + DOCUMENTATIONS + OTHER TOOLS)  ==> Kit needed by dev to develop apps and programs.
+  2. JRE --> (JVM + JAVA API LIBRARIES ==> java.util.* , java.lang.*)
 
 Go through website: https://medium.com/@amitvsolutions/jvm-part-2-architecture-1bf3044a9378
  Usually java code written by a developer undergoes through following steps
 
                 Student.java  --> written by developer
                     |
-                    |  ==> javac Student.java  (compiler converts it into byte code)
+                    |  ==> javac Student.java  (compiler converts it into byte code  ==> .class file)
                     V
                 Student.class  --> byte code  ==> This will be executed by JVM
 
@@ -100,7 +100,7 @@ Go through website: https://medium.com/@amitvsolutions/jvm-part-2-architecture-1
  |   | (used for C/C++ native methods via JNI)                | |
  |   +--------------------------------------------------------+ |
  +---------------------------------------------------------------+
-
+                           |
                            |
                            v
  +---------------------------------------------------------------+
@@ -117,14 +117,14 @@ Go through website: https://medium.com/@amitvsolutions/jvm-part-2-architecture-1
  |   | (frees unused objects from Heap, manages memory)        | |
  |   +---------------------------------------------------------+ |
  +---------------------------------------------------------------+
-
+                           |
                            |
                            v
  +---------------------------------------------------------------+
  |        JNI (Java Native Interface) + Native Libraries         |
  |   (bridges between JVM & C/C++ system libraries, OS calls)    |
  +---------------------------------------------------------------+
-
+                           |
                            |
                            v
  +---------------------------------------------------------------+

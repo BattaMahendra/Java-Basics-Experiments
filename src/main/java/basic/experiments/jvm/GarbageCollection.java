@@ -4,6 +4,7 @@ import lombok.ToString;
 
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+import java.util.*;
 
 
 /*Also read
@@ -11,13 +12,24 @@ import java.lang.ref.WeakReference;
 * https://www.geeksforgeeks.org/island-of-isolation-in-java/*/
 public class GarbageCollection {
 
+
+    static {
+        Employee e1  = new Employee("static block", 7);
+    }
+
+    public static  Employee e1;
+
+
     public static void main(String[] args) throws InterruptedException {
         System.out.println("===========================================================");
         testingFinalizeMethod();
+        Thread.sleep(1000);
         System.out.println("===========================================================");
         eligibleObjectsForGC();
-        System.out.println("===========================================================");
+        Thread.sleep(1000);
+        System.out.println("=============================  GC  ==============================");
         System.gc();
+        System.out.println("===========================================================");
 
         Thread.sleep(1000);
         //strong reference
@@ -46,10 +58,68 @@ public class GarbageCollection {
         System.out.println(s.get());
 
 
+        // with Hashmaps
+
+        System.out.println("\n\n====================== MAPS ===========================");
+        withMaps();
 
 
+    }
+
+    private static void withMaps() throws InterruptedException {
+        Employee strongEmployee = new Employee("Strong" , 40);
 
 
+        //adding into Hashmap
+        Map <Employee, Integer> map = new HashMap<>();
+        map.put(strongEmployee, 1);
+        map.put(new Employee("No reference at all", 25), 3);  // although the key has no strong reference still it is not eligible for GC as it is in map
+
+        strongEmployee = null; // removing reference of strong employee
+
+        // ideally the strongEmployee should have been eligible for GC
+        // but it won't because it is contained in HashMap
+        // you can observe below object will be eligible for GC
+
+        new Employee("Idle" , 40);   // eligible for GC cause no strong reference and no entry in hashmap.
+        System.gc();
+
+
+        System.out.println("\n+++++++++++++  we will be learning about Weak references +++++++++++++++\n");
+        Employee weakEmployee = new Employee("weak" , 30);
+
+
+        WeakReference<Employee> weakReference = new WeakReference<>(weakEmployee);
+
+        WeakHashMap<WeakReference<Employee>, String> weakHashMap = new WeakHashMap<>();
+
+        weakHashMap.put(weakReference, "Putting a weak employee reference");
+
+        weakEmployee = null;  // it is immediately eligible for GC
+
+        // the below is also immediately eligible for GC
+        WeakReference<Employee> weakReference2 = new WeakReference<>(new Employee("weak - with out Reference", 45));
+        System.gc();
+
+
+        Thread.sleep(500);
+
+
+        System.out.println("\n+++++++++++++  we will be learning about Soft references +++++++++++++++\n");
+
+        Employee softEmployee = new Employee("Soft" , 30);
+        SoftReference<Employee> softReference = new SoftReference<>(softEmployee);
+        softEmployee = null;  // not immediately eligible for GC. GC only sweeps it if JVM absolutely needs some memory
+
+        // the below object is not immediately eligible for GC.
+        SoftReference<Employee> softReference2 =new SoftReference<Employee>(new Employee("soft - no reference", 57));
+        System.gc();
+
+        //let's fill up jvm with so much space - then soft reference might be ejected out as jvm absolutely needs memory
+        List<byte[]> list = new ArrayList<>();
+        while (true) {
+            list.add(new byte[1024 * 1024]); // 1 MB each time  - outOfMemory Error - Heap is full
+        }
 
 
     }
@@ -59,15 +129,16 @@ public class GarbageCollection {
         new Employee("unreferenced", 24);
 
 
-        Employee e1 =  new Employee("Vishwa", 24);
+        e1 =  new Employee("Vishwa", 24);
         Employee e2 =  new Employee("Other Referenced", 24);
 
         //other referenced objects - now e2 is also referenced to e1
-        //but original e1 becomes unreferenced , so it is eligible for gc
+        //but original e2 becomes unreferenced , so it is eligible for gc
         e2 = e1;
 
         //null referenced objects
-        e2 = null;
+        Employee e3 = new Employee("Hemalatha Eppili", 27);
+        e3 = null;
 
         // objects created inside method
         method();
@@ -95,7 +166,7 @@ public class GarbageCollection {
             Employee Y = new Employee("GFG5", 21);
             X = Y = null;
             System.gc();
-            System.runFinalization();
+           // System.runFinalization();
         }
 
         Employee employee4 = new Employee("3", 24);
@@ -115,12 +186,12 @@ class Employee{
     public Employee(String name, int age){
         this.age = age;
         this.name = name;
-        this.empId = nextEmpId++;
+        this.empId = ++nextEmpId;
     }
 
     /*Custom implementation of finalize method. JVM calls this method before system.gc() is being used
     **/
-    protected void finalize()
+     public void finalize()
     {
 
 

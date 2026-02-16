@@ -1,0 +1,54 @@
+                                            🧱 1️⃣ METHOD AREA (METASPACE)
+
+What it is:
+	Stores class-level information loaded by the ClassLoader
+
+        What lives here:
+            📘 Class metadata (class name, modifiers)
+            📘 Method bytecode
+            📘 Static variables
+            📘 Runtime constant pool
+
+        Important clarification (many get this wrong):
+            ❌ No objects here
+            ❌ No method calls
+            ✅ Only class structure and definitions
+
+📦 PERMGEN vs METASPACE (critical)
+        Before Java 8:
+            PermGen
+            • Fixed size
+            • OOM: PermGen space (infamous)
+
+        Java 8+:
+            Metaspace
+            • Allocated from native memory
+            • Grows dynamically
+            • OOM: Metaspace (still possible, just sneakier)
+
+        Why change happened:
+            Because fixed PermGen caused pain and rage
+
+🧠 PRACTICAL METASPACE EXAMPLE
+
+        class UserService {
+            static int counter = 0;
+            void process() {}
+        }
+
+        Stored in Metaspace:
+            • Class name: UserService
+            • Method signature: process()
+            • Static variable: counter
+
+        Stored in Heap:
+            • new UserService() objects
+
+⚠️ When Metaspace blows up
+
+        • Too many dynamic classes
+        • Excessive proxies (Spring, Hibernate)
+        • ClassLoader leaks
+
+        JVM tuning example:
+            -XX:MaxMetaspaceSize=512m

@@ -1,0 +1,60 @@
+
+
+GC commands are not used in spring boot code but they are actually used in docker files, kubernetes files, system md files. GC is not encouraged during run
+time of app but during jvm start up only. We can start the spring boot jar app with GC commands
+
+If you want to use in local intelliJ spring boot app then you need to give them in VM options
+
+
+Eg of real life GC command
+
+
+java -Xms4g -Xmx4g \
+  -XX:+UseG1GC \
+  -XX:MaxGCPauseMillis=200 \
+  -XX:ParallelGCThreads=4 \
+  -XX:ConcGCThreads=1 \
+  -XX:InitiatingHeapOccupancyPercent=45 \
+  -XX:+ParallelRefProcEnabled \
+  -Xlog:gc*:file=/var/log/app/gc.log:time,uptime,level,tags:filecount=10,filesize=20M \
+  -jar my-spring-boot-app.jar
+
+
+Explanation
+
+| Description (What it does)                                           | JVM Option                                                                            |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Starts the Java Virtual Machine with custom memory and GC settings   | `java`                                                                                |
+| Sets the initial heap size to 4 GB to avoid early heap resizing      | `-Xms4g`                                                                              |
+| Sets the maximum heap size to 4 GB to cap memory usage               | `-Xmx4g`                                                                              |
+| Enables the G1 Garbage Collector for balanced latency and throughput | `-XX:+UseG1GC`                                                                        |
+| Targets a maximum GC pause time of 200 milliseconds                  | `-XX:MaxGCPauseMillis=200`                                                            |
+| Limits the number of threads used for parallel GC work to 4          | `-XX:ParallelGCThreads=4`                                                             |
+| Limits concurrent GC (marking) threads to 1 to reduce CPU contention | `-XX:ConcGCThreads=1`                                                                 |
+| Starts concurrent marking when heap occupancy reaches 45%            | `-XX:InitiatingHeapOccupancyPercent=45`                                               |
+| Processes reference objects (Soft, Weak, Phantom) in parallel        | `-XX:+ParallelRefProcEnabled`                                                         |
+| Enables detailed GC logging and writes logs to a rotating log file   | `-Xlog:gc*:file=/var/log/app/gc.log:time,uptime,level,tags:filecount=10,filesize=20M` |
+| Runs the Spring Boot application JAR with the above JVM settings     | `-jar my-spring-boot-app.jar`                                                         |
+
+
+GC logs examples
+
+
+    [2025-12-18T10:00:05.123+0000][info][gc] GC(15) Pause Young (Normal) (G1 Evacuation Pause) 1024M->256M(4096M) 15.420ms
+
+    explanation
+
+    | Component              | Meaning                                                                  |
+    | ---------------------- | ------------------------------------------------------------------------ |
+    | `GC(15)`               | The 15th garbage collection event since the JVM started.                 |
+    | `Pause Young (Normal)` | A Stop-The-World garbage collection affecting only the Young Generation. |
+    | `1024M->256M`          | Heap memory usage reduced from 1024 MB before GC to 256 MB after GC.     |  total freed (1024 - 256)
+    | `(4096M)`              | Total heap capacity available to the JVM at that time.                   |
+    | `15.420ms`             | Total duration for which the application was paused during this GC.      |
+
+Example-2
+
+    [2025-12-18T10:15:20.450+0000][info][gc] GC(42) Concurrent Cycle 45.120ms
+
+
+

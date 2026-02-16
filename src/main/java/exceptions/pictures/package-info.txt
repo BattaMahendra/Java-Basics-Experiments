@@ -182,7 +182,7 @@ Throwable
 
 
 ⭐  throws keyword
-    👉 Used on method signature to signify or foretell this method might throw declared exception
+    👉 Used on method signature to signify or foretell this method might throw declared checked exception
     👉 Alternative of try catch blocks
     👉 Mostly used on Checked Exceptions
     👉 If Exception occurs then takes exception to calling method.

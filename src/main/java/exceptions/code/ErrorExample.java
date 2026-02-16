@@ -15,7 +15,7 @@ class HeapOOM {
         List<byte[]> list = new ArrayList<>();
 
         while (true) {
-            list.add(new byte[1024 * 1024]); // 1 MB each time  - outOfMemory Error
+            list.add(new byte[1024 * 1024]); // 1 MB each time  - outOfMemory Error - Heap is full
         }
     }
 }

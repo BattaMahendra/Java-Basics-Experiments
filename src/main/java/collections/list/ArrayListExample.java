@@ -23,9 +23,18 @@ public class ArrayListExample {
 
         //you can initialize with preexisting arrays
         Integer[] arr = {1,2,3,4,5};
-        List<Integer> list1 = Arrays.asList(arr);  // this is also array list internally
-        list1.add(3);  // throws exception at runtime
-        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(arr)); // we can also do explicitly
+        List list1 = Arrays.asList(arr);  // this is also returns ArrayList with fixed size of the given array
+       // list1.add(3);  // throws exception at runtime because here list1 is an ArrayList with fixed size of 5. can't add any thing to it.
+        //below is possible
+        list1.set(0, 0);
+        System.out.println(list1);
+
+        int[] arr2 = {1,2,3,4,5};
+        List list2 = Arrays.asList(arr2);
+        System.out.println(list2.size());  // very interesting behaviour - cause whole int[] is treated as single element in array list.
+
+        // to avoid above scenarios do this - we will get a standard resizable array
+        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(new Integer[]{1,2,3,4,5})); // we can also do explicitly
 
         modifyList(arrayList);
 
@@ -62,27 +71,45 @@ public class ArrayListExample {
         obj.instaintiaion();
 
         //thread-safe variant of array list --> CopyOnWriteArrayList
+        threadSafeVariants();
 
-        CopyOnWriteArrayList<String> synchronisedList = new CopyOnWriteArrayList<>();
-        synchronisedList.add("Hello");
-        synchronisedList.add("hi");
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(1);
+        arrayList.add(2);
+        arrayList.add(3);
+        arrayList.add(4);
 
-        List<Integer> l2 = new ArrayList<>();
-        Collections.synchronizedList(l2);
+        arrayList.set(0,2);  // just sets the element at 0 index
+        arrayList.add(1, 1000); // adds the element at 1 index and shifts all elements towards right
+        System.out.println(arrayList);
+
+
+
+
+    }
+
+    private static void threadSafeVariants() {
+        CopyOnWriteArrayList<String> copyOnWrteArrayList = new CopyOnWriteArrayList<>();
+        copyOnWrteArrayList.add("Hello");
+        copyOnWrteArrayList.add("hi");
+
+        List<Integer> l2 = new ArrayList<>(List.of(1,2,3));
+        List<Integer> synchronizedList = Collections.synchronizedList(l2);
 
         /*
         * Here we are modifying the copyOnWriteArrayList while iterating and as you can observe
         * it doesn't throw concurrentModificationException. If its a plain arraylist then it would throw the exception*/
-        for(int i =0; i < synchronisedList.size(); i++){
+        for(int i =0; i < copyOnWrteArrayList.size(); i++){
 
-           // synchronisedList.add("Hey");
-            System.out.println(synchronisedList.get(i));
+//            copyOnWrteArrayList.add("Hey");
+            System.out.println(copyOnWrteArrayList.get(i));
         }
 
+        // same with Collections.synchronizedList() also
+        for(int i =0; i < synchronizedList.size(); i++){
 
-
-
-
-
+//            synchronizedList.add(1);
+            System.out.println(synchronizedList.get(i));
+        }
     }
 }
