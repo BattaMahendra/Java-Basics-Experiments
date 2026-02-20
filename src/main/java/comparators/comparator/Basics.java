@@ -15,6 +15,61 @@ import lombok.ToString;
 * There is no need to change original product/Employee class because we define comparators outside as another classes
 * */
 public class Basics {
+
+
+
+	public static void main(String[] args) {
+		System.out.println("age of employees before sorting ");
+		employees.forEach(emp -> System.out.printf(emp.getAge()+" "));
+		System.out.println("\n age of employees after sorting ");
+
+		//creating a comparator object and using it in the sort method
+		EmployeeAgeComparator ageComparator =new EmployeeAgeComparator();
+		//employees.sort(c);
+
+		// We can also pass like this
+		Collections.sort(employees,ageComparator);
+
+		/*
+		 * instead of creating another class for comparator
+		 * we can rather use anonymous inner classes to create comparator object
+		 */
+		employees.sort(new Comparator<Employee>() {
+			@Override
+			public int compare(Employee o1, Employee o2) {
+				if(o1.getAge()>o2.getAge()) return 1;
+				else if (o1.getAge()<o2.getAge()) return -1;
+				else 	return 0;
+			}
+		});
+
+		employees.forEach(emp -> System.out.printf(emp.getAge()+" "));
+
+		System.out.println("\nname of employees before sorting");
+		employees.forEach(emp -> System.out.println(emp.getFirstName()+" "));
+		employees.sort(advancedNameComparator);
+		System.out.println("\nname of employees after sorting");
+		employees.forEach(emp -> System.out.println(emp.getFirstName()+" "));
+
+		System.out.println("\nid of employees before sorting");
+		employees.forEach(emp -> System.out.println(emp.getId()+" "));
+		//using lambda functions to compare
+		employees.sort(idComparator);
+		//we can directly use lambdas to sort the list
+		//employees.sort((e1,e2)->e1.getRole().compareTo(e2.getRole()));
+		System.out.println("\nid of employees before sorting");
+		employees.forEach(emp -> System.out.println(emp.getId()+" "));
+		//employees.forEach(emp ->
+
+		sortedInStreams();
+
+		commonPitFalls();
+
+	}
+
+
+
+
 	//Learning Comparators basics
 	static List<Employee> employees = VariablesAndTechniques.populateEmployee().subList(0, 10);
 
@@ -61,7 +116,7 @@ public class Basics {
 	 * If you don't handle then it throws NPE
 	 * */
 	Comparator<Employee> nullSafeComparator = Comparator.nullsFirst(idComparator); // places null first
-	Comparator<Employee> nullLastComparator = Comparator.nullsLast(idComparator); // places null first
+	Comparator<Employee> nullLastComparator = Comparator.nullsLast(idComparator); // places null last
 
 	/**
 	 * If you want reverse order */
@@ -78,54 +133,7 @@ public class Basics {
 
 
 
-	public static void main(String[] args) {
-		System.out.println("age of employees before sorting ");
-		employees.forEach(emp -> System.out.printf(emp.getAge()+" "));
-		System.out.println("\n age of employees after sorting ");
-		
-		//creating a comparator object and using it in the sort method
-		EmployeeAgeComparator ageComparator =new EmployeeAgeComparator();
-		//employees.sort(c);
 
-		// We can also pass like this
-		Collections.sort(employees,ageComparator);
-		
-		/*
-		 * instead of creating another class for comparator
-		 * we can rather use anonymous inner classes to create comparator object
-		 */
-		employees.sort(new Comparator<Employee>() {
-			@Override
-			public int compare(Employee o1, Employee o2) {
-				if(o1.getAge()>o2.getAge()) return 1;
-				else if (o1.getAge()<o2.getAge()) return -1;
-				else 	return 0;
-			}
-		});
-
-		employees.forEach(emp -> System.out.printf(emp.getAge()+" "));
-		
-		System.out.println("\nname of employees before sorting");
-		employees.forEach(emp -> System.out.println(emp.getFirstName()+" "));
-		employees.sort(advancedNameComparator);
-		System.out.println("\nname of employees after sorting");
-		employees.forEach(emp -> System.out.println(emp.getFirstName()+" "));
-		
-		System.out.println("\nid of employees before sorting");
-		employees.forEach(emp -> System.out.println(emp.getId()+" "));
-		//using lambda functions to compare
-		employees.sort(idComparator);
-		//we can directly use lambdas to sort the list
-		//employees.sort((e1,e2)->e1.getRole().compareTo(e2.getRole()));
-		System.out.println("\nid of employees before sorting");
-		employees.forEach(emp -> System.out.println(emp.getId()+" "));
-		//employees.forEach(emp ->
-
-		sortedInStreams();
-
-		commonPitFalls();
-		
-	}
 
 	public static void sortedInStreams(){
 		System.out.println("\n=========================================================\n");
@@ -196,6 +204,7 @@ public class Basics {
 
 		// Using Method reference
 		Comparator<Employee> ageComparatorLambda3 =  Comparator.comparingInt(Employee::getAge);
+
 
 
 

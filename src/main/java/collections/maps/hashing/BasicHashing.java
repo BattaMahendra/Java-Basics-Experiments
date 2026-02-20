@@ -31,7 +31,7 @@ public class BasicHashing {
         /*First create a hash array with the element value to be searched , for example
         * in the above scenario (2,4,1,9)the max element to be searched is 9 so we will create hash array
         * with size max_element_to_be_searched + 1 i.e 9+1 = 10
-        * basically index starts from zero and ends with 9 . Inittially every value will be 0
+        * basically index starts from zero and ends with 9 . Initially every value will be 0
         * we iterate and make the frequency of all elements in the given array
         * so the hash array index will represent the original array number and hash array value represents frequency*/
 

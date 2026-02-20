@@ -45,4 +45,8 @@ public interface ThreadOperations {
         t.interrupt();
     }
 
+    public static void sleepGivenThread(Thread t, int seconds){
+        try {t.sleep(seconds);} catch (InterruptedException e) {throw new RuntimeException(e);}
+    }
+
 }

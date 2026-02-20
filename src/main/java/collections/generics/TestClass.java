@@ -10,9 +10,21 @@ public class TestClass {
     * please refer this article for deeper understanding :  https://www.scaler.com/topics/java/generics-in-java/
     * */
 
+    // a generic static method - just as any other generic method
+
+    public static <X> void perform(X x ){
+        System.out.println(x);
+        // some logic
+    }
+
 
 
     public static void main(String[] args) {
+
+        perform(5);
+        perform("Hello");
+        perform(new Object());
+
         Generic<String> object = new Generic<>();
         object.aField = "Batta Mahendra";
         object.printAndRetrun(1);
@@ -30,6 +42,7 @@ public class TestClass {
         List<Number> numbers = List.of(1,2,3,4,5,6,7,8,9);
         //let's suppose we have a method which accepts list of Numbers and prints them
         printNumberList(numbers);
+
 
         //now let's have another list of integers
         List<Integer> integerList = List.of(1,2,3,4,5,6,7,8,9);
@@ -65,6 +78,7 @@ public class TestClass {
 
       // using raw list
         print(stringList);
+       // print(integerList);  // results in runtime error
 
         // Generics can't be used with primitives like int, float, double etc..
         // instead use wrappers like Integer, Float, Double
@@ -73,6 +87,24 @@ public class TestClass {
 
         //List<int> intLIst; // compile time error as int is not an object.
         List<Integer> intList; // allowed as Integer is object.
+
+        List s = new ArrayList<String>();
+        s.add("");
+        s.add(100);  // now compiles very well but later if you try to extract it then run time error.
+
+        String secondItem = (String)s.get(1);
+        // the above line leads to class cast exception in run time. and i.e the reason exactly generics are useful. They impose type safety
+        //observe below
+
+        List<String> s2 = new ArrayList<>();
+        s2.add("");
+        //s2.add(100);  // compile time error -- which means safety check at compile time itself.
+
+
+
+        List<?> l = new ArrayList<Integer>();
+       // l.add(1);   // compile time error.
+        l.add(null); // allowed
 
     }
 /*
@@ -99,9 +131,11 @@ public class TestClass {
     private static void printUsingGeneric(List<?> list) {
         System.out.println("Printing using Generics ? ");
         System.out.println(list);
+        // but we can't add elements to the List as we don't know which type is coming
   //      list.add("hello");        //results in compile time error
                                     // because tomorrow what if user passes List<Integer>
                                     // then this rigid adding of "Hello" will break
+        list.add(null);  // this is only allowed
     }
 
 
@@ -120,6 +154,11 @@ public class TestClass {
         // list.add("hello");        //results in compile time error
     }
 
+    /*
+    * Here we can't pass List<String>, List<Integer> or anything into the following method.
+    * We can only pass List<Object>
+    *  ==> in java List<Object> is not parent of List<Integer> or any other list.
+    */
     private static void printUsingObject(List<Object> list) {
         System.out.println("Printing using Object");
         System.out.println(list);
@@ -133,6 +172,22 @@ public class TestClass {
     }
 
     // ? VS Object in java
+
+    /*
+    *  Generally in Java List<Object> != List<String> or any thing.
+    *  i.e if we have a method signature as --  private static void printUsingObject(List<Object> list)
+    *  then we can't pass List<String>, List<Integer> or anything. we can only pass List<Object>
+    *
+    * Wild-cards
+    *
+    * suppose we have method  ===> public void print(List<?> list)
+    * then this accepts everything like
+    * print(new ArrayList<String>()); or print(new ArrayList<Integer>()); or  print(new ArrayList<Double>());
+    *
+    * */
+
+
+
 
 
 

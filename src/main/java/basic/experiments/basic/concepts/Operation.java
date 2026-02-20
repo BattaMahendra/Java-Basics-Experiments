@@ -68,6 +68,7 @@ public enum Operation {
         // more ways to initialize
         EnumSet<FamilyEnum> elderGroup = EnumSet.of(FamilyEnum.GRANDPARENTS, FamilyEnum.FATHER, FamilyEnum.MOTHER);
 
+        System.out.println("\n==========================================\n");
         EnumMap<Operation, String> operationStringEnumMap = new EnumMap<>(Operation.class);
 
         operationStringEnumMap.put(Operation.PLUS,"Addition");

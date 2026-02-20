@@ -31,6 +31,7 @@ public class MapExample {
         * */
         hashmap();
 
+
         iteratingOverMap();
 
         /*Importance of immutable keys in HashMap*/
@@ -42,7 +43,7 @@ public class MapExample {
 
 
         /*
-        *1. Miantains insertion order
+        *1. Maintains insertion order
         *2. It internally uses a doubly linked list along with a hash table for storing key-value pairs.
         *3. Retrieval and insertion operations are slightly slower compared to HashMap due to
         *   maintaining the insertion order (still generally O(1)).
@@ -148,9 +149,16 @@ public class MapExample {
     }
 
     private static void iteratingOverMap() {
+        System.out.println("\n=======  Iteration ============");
+
         Map<Integer, String> integerStringMap = new HashMap<>();
-        integerStringMap.put(1,"one");
-        integerStringMap.put(1,"one");
+
+        String returnedValue1 = integerStringMap.put(1,"one");   // put() returns prev value if key present; if key not present then null
+        System.out.println(returnedValue1);
+
+        String returnedValue2 = integerStringMap.put(1,"one");
+        System.out.println(returnedValue2);
+
         integerStringMap.put(2,"two");
         integerStringMap.put(4,"four");
         integerStringMap.put(5,"five");
@@ -178,6 +186,8 @@ public class MapExample {
 
         // values() method returns collection of values as values can be in duplicated nature
         Collection<String> valueSet =  integerStringMap.values();
+
+        System.out.println("=========== ================\n\n");
     }
 
     private static void treeMap() {
@@ -185,13 +195,26 @@ public class MapExample {
         // we can introduce custom comparator if required
 
         TreeMap<Integer , String> t = new TreeMap<Integer , String>();
-       // t.comparator().reversed();
         t.put(1,"one" );
         t.put(2,"two" );
-        t.put(4,"four");
         t.put(5,"five");
-        System.out.println("================================= Tree Map ============================");
+        t.put(4,"four");
+        t.put(7,"seven");
+        t.put(6,"six");
+        t.put(9,"nine");
+        t.put(0,"zero");
+
+        System.out.println("\n\n================================= Tree Map ============================\n");
         System.out.println(t.toString());
+
+        Map.Entry<Integer, String> entry = t.firstEntry();
+        System.out.println(entry);
+        t.firstKey();
+        Map.Entry<Integer, String> higherEntry = t.higherEntry(8); // gives something just higher than 8
+        Map.Entry<Integer, String> lowerEntry = t.lowerEntry(0); // gives an entry which is just lower than 0 ==> null if nothing lower than key 0
+        System.out.println("\n"+higherEntry+"\n"+lowerEntry);
+
+
 
         TreeMap<Integer , String> t2 = new TreeMap<Integer , String>(Comparator.reverseOrder()); // you can also pass custom comparator
 
@@ -218,7 +241,9 @@ public class MapExample {
         integerStringMap.put(2,"two");
         integerStringMap.put(4,"four");
         integerStringMap.put(5,"five");
+        integerStringMap.put(6,"six");
 
+        integerStringMap.remove(6);  // returns the value of removed key-value pair
 
         System.out.println("================== Using basic sorted for keys ==================");
         integerStringMap.entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(System.out::println);
@@ -233,19 +258,46 @@ public class MapExample {
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEach(System.out::println);
 
-        System.out.println("/n=======compute if absent============");
+        System.out.println("\n======= compute() ============");
 
-        //sencond arguement is a function which takes key as input and should return a type of value which will be inserted into key value pair
-        //if the mentioned key is not present in the map
+        /*
+        * compute()
+        *
+        * --> Inserts (4, "four") if key 4 is not present
+        * --> if key 4 is already present then inserts (4, "four modified")
+        * */
+
+        integerStringMap.compute(4, (k,v)-> v.equals(null) ? "four" : "four modified using compute()" );
+
+        System.out.println("\n=======compute if absent ============");
+
+        /*
+        * If key is absent → run the function to generate value.
+        * If key is present → do NOT run the function.
+        * ❗map.computeIfAbsent("B", k -> null);  ==> B will not be loaded in this case
+         * */
         integerStringMap.computeIfAbsent(5 , key -> "five modified"); //doesn't execute as key 5 is already present
         integerStringMap.computeIfAbsent(6 , key -> "six inserted using compute if absent");
         System.out.println(integerStringMap);
-        System.out.println("/n=======compute if present ============");
+
+        System.out.println("\n=======compute if present ============");
+
+        //It updates a value only if the key already exists.
         integerStringMap
                 .computeIfPresent(5,
                                 (k,v) -> k ==5 && v.equals("five") ? v+" modified":"five unmodified");
 
         System.out.println(integerStringMap.toString());
+        System.out.println("\n======= putIfAbsent() ============");
+        integerStringMap.putIfAbsent(7, "seven");  //directly inserts the key-value pair
+        integerStringMap.putIfAbsent(7, "seven modified - using putIfAbsent()");
+        System.out.println(integerStringMap);
+
+       /*
+       *🛑 Learn putIfAbsent() and compute() and computeIfPresent(), computeIfAbsent()
+       *
+       *⚠️ map.computeIfPresent("A", (k, v) -> null);  ==> Key gets deleted if the function returns null
+       * */
 
 
 

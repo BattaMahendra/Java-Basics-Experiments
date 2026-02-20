@@ -32,14 +32,14 @@ Go through website: https://medium.com/@amitvsolutions/jvm-part-2-architecture-1
      |      - Create java.lang.Class object              |    --> App CL delegates it for parent [Extension loader]
      |      - Delegation:                                |    --> Extension CL delegates for its PARENT [Bootstrap CL]
      |        Bootstrap -> Extension -> Application CL   |    --> If Bootstrap CL finds then it loads the class
-     |                                                   |    --> other wise delegated to Extension CL
+     |                                                   |    --> other wise delegated to Extension CL  / replaced by Platform ClassLoader after JAVA 9+
      |   2. Linking                                      |    --> Extension CL checks if the class is in its libraries , if present loads otherwise
      |      a) Verification:                             |    --> Delegates to low level APP CL and it loads the classes.
-     |         - Bytecode validity (stack map frames,    |
-     |           type safety, illegal access checks)     |
-     |         - Prevents security breaches              |
-     |                                                   |
-     |      b) Preparation:                              |
+     |         - Bytecode validity (stack map frames,    |    -->
+     |           type safety, illegal access checks)     |    --> BootStrap class loader contains rt.jar ==> (java.util.*, java.lang.*) - main java core classes
+     |         - Prevents security breaches              |    --> Extension class/Platform class loader - extension classes from libraries
+     |                                                   |    --> Application class loader - class path (src/main), dependencies etc..
+     |      b) Preparation:                              |    -->
      |         - Allocate memory for static variables    |
      |         - Initialize them with *default* values   |
      |           (int=0, boolean=false, obj=null)        |

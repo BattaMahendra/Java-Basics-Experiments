@@ -11,7 +11,7 @@ public class ExecutorServices {
 	
 	/*
 	* newCachedThreadPool() creates required threads and reuses them if they are idle
-	* It is efficient way of thread management*/
+	* It is a efficient way of thread management*/
 	public static ExecutorService executors = Executors.newCachedThreadPool();
 	
 	public static String returnAStringWithDelay(int seconds) throws Exception {
@@ -48,6 +48,8 @@ public class ExecutorServices {
 		Future<?> future11=executors.submit(printString);
 		Future<?> future12=executors.submit(printString);
 
+		executors.execute(printString);  // takes runnable and returns nothing. If exception occurs then goes to thread handler
+
 
 		
 		/*
@@ -75,6 +77,7 @@ public class ExecutorServices {
 
 		//to get the exception
 		future1.get();  // this is blocking call , everything else is blocked
+		//future3.get();  // Exception is thrown but only displayed if get() is called upon.
 
 		// the below line is blocked until the above get() is finished
 		System.out.println("Main thread last statement execution");
@@ -87,11 +90,11 @@ public class ExecutorServices {
 		ExecutorService executors = Executors.newCachedThreadPool();
 
 		List<Callable<Integer>> callableTasks =  Arrays.asList(
-				() -> { Thread.sleep(300); return 1; },
-				() -> { Thread.sleep(200); return 2; },
-				() -> { Thread.sleep(100); return 3; },
-				() -> { Thread.sleep(100); return 4; },
-				() -> { Thread.sleep(100); return 5; }
+				() -> { Thread.sleep(1000); return 1; },
+				() -> { Thread.sleep(1000); return 2; },
+				() -> { Thread.sleep(1000); return 3; },
+				() -> { Thread.sleep(1000); return 4; },
+				() -> { Thread.sleep(1000); return 5; }
 		);
 
 		// we can use invokeAll() to invoke all callables at once
@@ -106,3 +109,13 @@ public class ExecutorServices {
 	}
 
 }
+
+/**
+ *
+ * Learn about ExecutorServices
+ *
+ * 1. submit() vs execute()
+ * 2. FixedThreadPool() vs CachedThreadPool()
+ * 3. invokeAll() vs invokeAny()
+ *
+ * Understand why do senior devs prefer ThreadPoolExecutor over Executor Service*/

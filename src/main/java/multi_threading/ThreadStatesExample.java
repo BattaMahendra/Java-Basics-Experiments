@@ -22,16 +22,20 @@ public class ThreadStatesExample {
         Thread thread2 = new Thread(new Runnable() {
             @Override
             public void run() {
+
+                // Simulate some work
+                try {
+                    Thread.sleep(2000); // Thread 2 sleeps for 2000 milliseconds
+                    System.out.println("Thread-2 out of sleep");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 synchronized (ThreadStatesExample.class) {
-                    // Simulate some work
-                    try {
-                        Thread.sleep(1000); // Thread 2 sleeps for 2000 milliseconds
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                   // some task
                 }
             }
         });
+
 
         // Print initial states of both threads
         System.out.println("Thread 1 state after creation: " + thread1.getState());

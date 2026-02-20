@@ -14,7 +14,7 @@ public class Test {
                 new Product(5, "Tablet", 20000.0, 4.2),
                 new Product(2, "Monitor", 15000.0, 4.1),
                 new Product(4, "Keyboard", 2000.0, 3.9)
-              //  ,null //adding null values to spice up things
+                //,null //adding null values to spice up things
               //  null  //To deal with nulls → prefer Comparator.nullsFirst / nullsLast.
         );
     }
@@ -28,6 +28,7 @@ public class Test {
 
         //Let's sort
         Collections.sort(products);
+        //products.sort(null);   // internal code of above sort()
         System.out.println("\nAfter sorting by sort() method\n");
         products.forEach(System.out::println);
 

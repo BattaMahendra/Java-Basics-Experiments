@@ -53,9 +53,11 @@ public class Atomic {
         t1.start();
         t2.start();
         t3.start();
-        t1.join();
-        t2.join();
-        t3.join();
+//        t1.join();
+//        t2.join();
+//        t3.join();
+
+        Thread.currentThread().sleep(1000);
 
         System.out.println("\n Ideal count of every opertion should be 3000\n");
         System.out.println("Normal integer after operation : "+unsafeCounter);

@@ -73,3 +73,15 @@ Provides atomic methods like incrementAndGet() and decrementAndGet().
 Suitable for counters and other variables that require atomic operations.
 In conclusion, volatile is useful for ensuring visibility of changes to variables across threads without the overhead of synchronization but is not suitable for compound operations that require atomicity.
 For atomic operations, AtomicInteger or synchronization mechanisms like synchronized should be used.
+
+
+Remember AtomicVariables also fail in race conditions in following cases
+
+if (count.get() > 0) {
+    count.decrementAndGet(); // ❌ still race possible
+}
+
+because on the above we have a check and an atomic operation. So total (check + atomic) != atomic operation
+==> Two threads might pass the condition check at same time
+
+Remember only incrementAndGet(), decrementAndGet() , getAndIncrement(), compareAndSwap() are only atomic. We should not combine them with checks and conditions

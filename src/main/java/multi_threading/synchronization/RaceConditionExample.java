@@ -6,6 +6,7 @@ import multi_threading.Task;
 
 import java.awt.*;
 import java.util.concurrent.CountDownLatch;
+import java.util.stream.IntStream;
 
 
 /*
@@ -26,7 +27,7 @@ public class RaceConditionExample{
         // Defining the task (not yet executing)
         Task task = (threadName) -> {
             for (int i = 0; i < 10; i++) {
-                c.increment(threadName);
+                c.increment();
             }
 
         };
@@ -56,7 +57,24 @@ public class RaceConditionExample{
         Thread.sleep(2000);
         System.out.println("Final count of the counter: "+ c.getCount());
 
+        aSimpleRaceCondition(c);
 
+
+    }
+
+    private static void aSimpleRaceCondition(Counter c) {
+        Runnable r = () -> {
+            for(int i=0; i <10000; i++){
+                c.increment();
+            }
+        };
+
+        Thread t1 = new Thread(r);
+        Thread t2 = new Thread(r);
+        Thread t3 = new Thread(r);
+        t1.start();
+        t2.start();
+        t3.start();
     }
 }
 
@@ -79,12 +97,12 @@ class Counter {
 
     // Increment method that will be called by multiple threads at the same time
     // which leads to race condition
-    public  void increment(String threadName) {
+    public  void increment() {
         //this below operation is not atomic because it contains multiple operations
         //i.e read and then write and then modify , so there is a possibility of race condition here
         count = count + 1;
         integerObject = integerObject+1;
-        System.out.println(threadName + " incremented count to " + getCount() +" and integerObject to :"+integerObject);
+        System.out.println(Thread.currentThread().getName() + " incremented count to " + getCount() +" and integerObject to :"+integerObject);
     }
 
     // Get method to return the current count

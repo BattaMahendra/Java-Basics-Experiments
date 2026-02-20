@@ -53,5 +53,5 @@ public class PhantomReferenceDemo {
 
 /*
 * Phantom references are useful for managing non-Java resources like files, native memory, or database connections, allowing you to clean them up after the object is finalized but before it is actually removed from memory.
-*Unlike other references, you cannot access the object through a phantom reference; it's only a signal that the object is ready to be cleaned up.
+* Unlike other references, you cannot access the object through a phantom reference; it's only a signal that the object is ready to be cleaned up.
 * */
