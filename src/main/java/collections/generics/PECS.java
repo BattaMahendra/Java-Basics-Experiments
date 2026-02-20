@@ -1,5 +1,7 @@
 package collections.generics;
 
+import oops.inheritance.basic_experiments.Animal;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class PECS {
     // Consumer - super ==> should be used for writing mode
     static void addApples(List<? super Apple> basket) {
         basket.add(new Apple()); // ✅ Safe
-        // basket.add(new Fruit()); // ❌ Not allowed
+//         basket.add(new Fruit()); // ❌ Not allowed
         /*
         * Why not allowed ?
         * as we can see List param is super Apple , which means Apple and its super classes but not subclasses of apple
@@ -42,6 +44,8 @@ public class PECS {
         *  new Apple() will always allowed as in above line because of rule it should be Apple or its supertypes
         *  where Apple would fit in all cases
         */
+
+        Object apple = basket.get(0); // allowed
     }
 
     public static void main(String[] args) {

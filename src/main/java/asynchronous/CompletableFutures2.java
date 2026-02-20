@@ -12,6 +12,7 @@ public class CompletableFutures2 {
 
         /*
         * Future represents only the result which will come in future
+        * Future only stores the value which will be obtained after computation
         *
         * Completable future represents both result and as well as completion stage
         * */
@@ -86,6 +87,7 @@ public class CompletableFutures2 {
 
         // we could have avoided both of above lines using this
         CompletableFuture<Void> printDirect = greet.thenAcceptBoth(name , (g,n) -> System.out.println(g + " " + n));
+
 
 
 

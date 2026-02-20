@@ -59,7 +59,7 @@ public class ThreadPriority {
 
         /*
         setting priorities to threads
-        * 10 is highest and 1 is lowest and 5 is normal
+        * 10 is highest and 1 is lowest and 5 is normal and default
         *If we don't assign any priorities manually then JVM usually assigns
         * 5 as the priority
          Learn more here: https://www.javatpoint.com/thread-scheduler-in-java

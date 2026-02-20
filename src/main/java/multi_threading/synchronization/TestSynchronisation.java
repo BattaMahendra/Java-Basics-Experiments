@@ -62,6 +62,8 @@ public class TestSynchronisation extends ThreadPriority {
         //testing instance synchronisation with same and different objects
         testSync();
 
+
+
     }
 
     /*

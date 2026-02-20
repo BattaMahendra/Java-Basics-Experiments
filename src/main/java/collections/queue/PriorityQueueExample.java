@@ -2,6 +2,7 @@ package collections.queue;
 
 import basic.experiments.pojos.Emp;
 import java8.Java_Streams.Employee;
+import lombok.ToString;
 
 import java.util.Comparator;
 import java.util.Iterator;
@@ -21,11 +22,11 @@ public class PriorityQueueExample {
         // Example of basic operations
         System.out.println("Priority Queue: " + pq); // Output: Priority Queue: [1, 3, 5]
 
-        int highestPriority = pq.poll(); // Retrieves and removes the head of the queue (the smallest element)
-        System.out.println("Removed element with highest priority: " + highestPriority); // Output: Removed element with highest priority: 1
+        int highestPriority = pq.poll(); // Retrieves and removes the head of the queue (the smallest element - highest priority)
+        System.out.println("Removed element with highest priority: " + highestPriority); // Output: Removed element with the highest priority: 1
 
         int peekElement = pq.peek(); // Retrieves, but does not remove, the head of the queue
-        System.out.println("Element with highest priority (peek): " + peekElement); // Output: Element with highest priority (peek): 3
+        System.out.println("Element with highest priority (peek): " + peekElement); // Output: Element with the highest priority (peek): 3
 
         boolean isEmpty = pq.isEmpty(); // Checks if the queue is empty
         System.out.println("Is priority queue empty? " + isEmpty); // Output: Is priority queue empty? false
@@ -69,14 +70,16 @@ public class PriorityQueueExample {
 
         System.out.println("\n\t\t==== priority queue storing objects implementing custom comparator ===========\n");
         // Example of a priority queue for tasks with custom comparator
-        PriorityQueue<Task> taskQueueWithCustomComaprator = new PriorityQueue<>(new TaskComparator());
+        PriorityQueue<Task> taskQueueWithCustomComparator = new PriorityQueue<>(new TaskComparator());
 
-        taskQueueWithCustomComaprator.offer(new Task("Task 1", 3));
-        taskQueueWithCustomComaprator.offer(new Task("Task 2", 1));
-        taskQueueWithCustomComaprator.offer(new Task("Task 3", 5));
+        taskQueueWithCustomComparator.offer(new Task("Task 1", 3));
+        taskQueueWithCustomComparator.offer(new Task("Task 2", 1));
+        taskQueueWithCustomComparator.offer(new Task("Task 3", 5));
 
-        while (!taskQueueWithCustomComaprator.isEmpty()) {
-            Task task = taskQueueWithCustomComaprator.poll();
+        System.out.println("taskQueueWithCustomComparator : "+taskQueueWithCustomComparator);
+
+        while (!taskQueueWithCustomComparator.isEmpty()) {
+            Task task = taskQueueWithCustomComparator.poll();
             System.out.println("Processed task: " + task.name);
         }
 
@@ -85,7 +88,6 @@ public class PriorityQueueExample {
        * */
         PriorityQueue<Employee> employeePriorityQueue = new PriorityQueue<>();
 //        Employee.populateEmployee().forEach(employee -> employeePriorityQueue.offer(employee));
-
 //        employeePriorityQueue.forEach(s -> System.out.println(s));
 
 
@@ -101,6 +103,7 @@ public class PriorityQueueExample {
     }
 
     // Example of a custom class for tasks with priority
+   @ToString
     static class Task implements Comparable<Task> {
         String name;
         int priority;
@@ -114,6 +117,9 @@ public class PriorityQueueExample {
         public int compareTo(Task other) {
             return Integer.compare(this.priority, other.priority);
         }
+
+
+
     }
 
     // Example of a custom comparator for tasks

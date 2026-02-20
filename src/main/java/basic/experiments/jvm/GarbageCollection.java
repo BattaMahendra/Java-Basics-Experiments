@@ -21,10 +21,10 @@ public class GarbageCollection {
 
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println("===========================================================");
+        System.out.println("=========================== TESTING FINALIZE METHOD ================================\n");
         testingFinalizeMethod();
         Thread.sleep(1000);
-        System.out.println("===========================================================");
+        System.out.println("\n============================ ELIGIBLE OBJECTS FOR GC ===============================\n");
         eligibleObjectsForGC();
         Thread.sleep(1000);
         System.out.println("=============================  GC  ==============================");
@@ -82,8 +82,10 @@ public class GarbageCollection {
         // you can observe below object will be eligible for GC
 
         new Employee("Idle" , 40);   // eligible for GC cause no strong reference and no entry in hashmap.
+        System.out.println("=============================  GC in MAPS ==============================");
         System.gc();
 
+        Thread.sleep(100);
 
         System.out.println("\n+++++++++++++  we will be learning about Weak references +++++++++++++++\n");
         Employee weakEmployee = new Employee("weak" , 30);

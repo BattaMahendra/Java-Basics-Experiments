@@ -70,11 +70,11 @@ public class ArrayDeq {
 
         //peek operation (allows us to see the last element of the stack without popping)
         System.out.println(adq.peek());
-        System.out.println("ArratDeque Stack after the peek(): "+ adq);
+        System.out.println("ArrayDeque Stack after the peek(): "+ adq);
 
         //pop operation (popping out last item)
         System.out.println(adq.pop());
-        System.out.println("ArratDeque Stack after the pop(): "+ adq);
+        System.out.println("ArrayDeque Stack after the pop(): "+ adq);
 
 
     }

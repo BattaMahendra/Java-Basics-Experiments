@@ -12,10 +12,12 @@ public class HashSetExample {
 
        //adding elemens
 
-        hashSet.add(1);
+        boolean b = hashSet.add(1);
+        System.out.println(b);
         hashSet.add(2);
         hashSet.add(3);
-        hashSet.add(1);
+        boolean b2 = hashSet.add(1);
+     System.out.println(b2);
 
         //check for elements
         hashSet.contains(1); // returns true or false
@@ -38,8 +40,8 @@ public class HashSetExample {
         System.out.println(hashSet);
 
         //check whether its a subset
-        boolean b = hashSet.containsAll(hashSet2);
-        System.out.println(b);
+        boolean bool = hashSet.containsAll(hashSet2);
+        System.out.println(bool);
 
         /*
         *

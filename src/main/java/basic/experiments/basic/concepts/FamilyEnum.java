@@ -33,6 +33,7 @@ public enum FamilyEnum {
 
 	FATHER{
 
+		public String colour = "Red";
 		// here we are overriding the method description
 		// if we don't override then default method is executed when it is called
 		@Override

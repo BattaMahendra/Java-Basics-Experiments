@@ -18,7 +18,7 @@ public class InterruptExample {
 
         Thread t1 = new Thread(()->{
             for(int i=0; i<10000; i++){
-
+                ThreadOperations.sleepGivenThread(Thread.currentThread(), 10);
                 System.out.println("Thread on loop: "+i);
             }
         });
@@ -37,6 +37,7 @@ public class InterruptExample {
         }
 
         IntStream.range(0,10).forEach(i ->{
+            ThreadOperations.sleepGivenThread(Thread.currentThread(), 100);
             System.out.println(Thread.currentThread().getName()+ " executing loop "+ i);
         });
 

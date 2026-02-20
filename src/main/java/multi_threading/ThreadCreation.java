@@ -52,14 +52,22 @@ public class ThreadCreation {
             System.out.println("Fourth thread created using Runnable anonymous inner class");
         });
         fourth.start();
+
+        /*
+        * We can create anonymous inner classes for  1. Anonymous Implementation Interfaces
+        *                                            2. Anonymous Subclasses of Abstract classes
+        *                                            3. Anonymous subclasses of concrete classes
+        * */
         // Creating Thread using anonymous inner class (Thread)
-        Thread fifth = new Thread(){
+        Thread fifth =  new Thread(){
             @Override
             public void run(){
                 System.out.println("Fifth thread created using Runnable anonymous inner class");
             }
         };
         fifth.start();
+
+
 
         // Using callable - Callable can't be used directly with Thread
         // It has to be used with Executor services
@@ -81,7 +89,7 @@ public class ThreadCreation {
 
         // We can't use the above with Thread class - we need Executor Service
 
-        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(1);
+        ExecutorService fixedThreadPool = Executors.newWorkStealingPool(1);
 
         Future<String> futureString = fixedThreadPool.submit(callableTask);
 

@@ -24,7 +24,7 @@ What it is:
             Metaspace
             • Allocated from native memory
             • Grows dynamically
-            • OOM: Metaspace (still possible, just sneakier)
+            • OutOfMemoryError (OOM): Metaspace (still possible, just sneakier)
 
         Why change happened:
             Because fixed PermGen caused pain and rage

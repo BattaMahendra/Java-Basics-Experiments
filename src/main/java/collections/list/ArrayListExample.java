@@ -29,6 +29,7 @@ public class ArrayListExample {
         list1.set(0, 0);
         System.out.println(list1);
 
+        System.out.println("\n -----------------------------\n");
         int[] arr2 = {1,2,3,4,5};
         List list2 = Arrays.asList(arr2);
         System.out.println(list2.size());  // very interesting behaviour - cause whole int[] is treated as single element in array list.

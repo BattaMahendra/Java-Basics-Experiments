@@ -1,15 +1,11 @@
 package asynchronous;
 
-import basic.experiments.pojos.Emp;
-import basic.experiments.populating.pojos.Employees;
 import java8.Java_Streams.Employee;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
-public class CompletableFutures {
+public class CompletableFutures1 {
 	static int i =0;
 	public static void main(String[] args) throws InterruptedException {
 

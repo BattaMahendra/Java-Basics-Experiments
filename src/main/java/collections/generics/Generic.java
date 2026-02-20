@@ -30,7 +30,8 @@ public class Generic<B> {
     * */
 
     /*
-    * not only K,V,E,N,T  we can use any combination of Alphabets as generics*/
+    * not only K,V,E,N,T  we can use any combination of Alphabets as generics
+    * */
     public <MAHENDRA> MAHENDRA printAndRetrun(MAHENDRA b){
         System.out.println(b);
 
@@ -59,6 +60,8 @@ public class Generic<B> {
     public Generic(){
 
     }
+
+
 
     /*
     * But we can't instantiate the Type parameter itself : B b = new B(); ==> not possible */
