@@ -31,8 +31,11 @@ public class string_VS_Builder_VS_Buffer {
         String s = "Mahendra";
         for(int i =0; i <10; i++){
             s= s+i; // every time creates new object as string is immutable
-            System.out.println(s +" and hashcode is "+s.hashCode());
+            System.out.println(s +" and hashcode is "+s.hashCode() +" and memory location is : "+System.identityHashCode(s));
         }
+
+
+        System.out.println("\n\n");
 /*
 *
 * StringBuilder
@@ -52,7 +55,7 @@ public class string_VS_Builder_VS_Buffer {
         StringBuilder sb = new StringBuilder("Mahendra");
         for(int i=0; i<10; i++){
             sb.append(i); //appends the value to same object
-            System.out.println(sb +" and hashcode is "+sb.hashCode());
+            System.out.println(sb +" and hashcode is "+sb.hashCode()+" and memory location is : "+System.identityHashCode(sb));
         }
 
         /*

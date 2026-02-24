@@ -10,7 +10,10 @@ public class Main {
     public String name;
 
     public Main(String name){
+
         this.name = name;
+        return;    // allowed in constructor
+
     }
 
     public static void main(String[] args) {

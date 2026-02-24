@@ -210,6 +210,9 @@ public class MapExample {
         Map.Entry<Integer, String> entry = t.firstEntry();
         System.out.println(entry);
         t.firstKey();
+        t.lastKey();
+        t.firstEntry();
+
         Map.Entry<Integer, String> higherEntry = t.higherEntry(8); // gives something just higher than 8
         Map.Entry<Integer, String> lowerEntry = t.lowerEntry(0); // gives an entry which is just lower than 0 ==> null if nothing lower than key 0
         System.out.println("\n"+higherEntry+"\n"+lowerEntry);

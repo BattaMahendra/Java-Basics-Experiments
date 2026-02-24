@@ -20,6 +20,7 @@ public class CollectionDemo {
     Pros:
     efficient memory management
     faster retrieval
+    works with primitives and objects as well
 
     cons:
     fixed size
@@ -97,11 +98,11 @@ public class CollectionDemo {
 
         String[] i = new String[5];
         Object[] o = i;   // compiles successfully
-        //o[0] = 1;         // run time error - leading to bugs
+//        o[0] = 1;         // run time error - leading to bugs
 
-        // Collections can work with Generics
+// Collections can work with Generics
         List<String> l = new ArrayList<>();
-//        List<Object> lO = l;   // compile time error itself
+//        List<Object> lO = l;   //  error at compile time itself
         System.out.println("\n\n====================");
 
         /**
@@ -111,7 +112,7 @@ public class CollectionDemo {
         Collection collection = new ArrayList();
         collection.add(1);
         collection.add(1);
-        collection.add(null);
+        collection.add(null);  // every null is treated as an object.
         collection.add(null);
         collection.add(null);
 
