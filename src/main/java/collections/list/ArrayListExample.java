@@ -2,6 +2,8 @@ package collections.list;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ArrayListExample {
 
@@ -84,6 +86,47 @@ public class ArrayListExample {
         arrayList.add(1, 1000); // adds the element at 1 index and shifts all elements towards right
         System.out.println(arrayList);
 
+
+        // Array initialization techniques
+
+        //With initial Size
+        List<Integer> list = new ArrayList<>(25); // best if we already know the initial size - avoids frequent resizing
+
+        // Using Arrays.asList()
+        List<Integer> list1 = new ArrayList<>(Arrays.asList(1,2,3));
+
+        Integer[] arr = new Integer[]{1,2,4,5,6};
+        List<Integer> list2 = new ArrayList<>(Arrays.asList(arr));
+
+        /*
+        * Using Collections.addAll()*/
+        List<String> list7 = new ArrayList<>();
+        Collections.addAll(list7, "A", "B", "C");
+
+        // JAVA 9+. Using List.of()
+        List<String> fixed = Arrays.asList("A", "B"); // fixed size!
+        fixed.add("C"); // ❌ UnsupportedOperationException
+
+        // so wrap it with ArrayList
+        List<String> list3 = new ArrayList<>(List.of("A", "B", "C"));
+
+
+        //double brace initialization
+        List<String> list4 = new ArrayList<String>() {{
+            add("A");
+            add("B");
+            add("C");
+        }};
+
+        /*
+        * The above is not recommended as it is using anonymous class and an instance block.
+        *  it creates Extra class file
+        * */
+
+        //streams
+        List<String> list5 =
+                Stream.of("A", "B", "C")
+                        .collect(Collectors.toCollection(ArrayList::new));
 
 
 

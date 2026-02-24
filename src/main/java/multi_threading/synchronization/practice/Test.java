@@ -1,5 +1,9 @@
 package multi_threading.synchronization.practice;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
@@ -51,6 +55,13 @@ public class Test {
 
         t1.start();
        // t2.start();
+
+        Executors.newFixedThreadPool(8);
+    new ArrayList<>().sort(null);;
+
+
+
+
     }
 }
 

@@ -61,11 +61,6 @@ public class expermiment {
 		System.out.println(lo == ls);
 		System.out.println(ls);
 
-
-
-
-
-
 	}
 
 }

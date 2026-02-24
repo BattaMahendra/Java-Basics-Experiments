@@ -2,6 +2,7 @@ package oops.inner_classes;
 
 import java.util.*;
 class OuterClass {
+    public static final Double pi = new Double( 3.14);
     int instanceVar = 42;
     
     // Non-static Nested Inner class
@@ -14,7 +15,8 @@ class OuterClass {
     //static inner classes
     static class InnerStaticClass {
         void display() {
-            System.out.println("static variable: ");
+
+            System.out.println("static variable: "+pi);
         }
     }
 

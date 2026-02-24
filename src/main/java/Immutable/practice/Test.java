@@ -71,6 +71,24 @@ public class Test {
            * */
 
 
+        Address ad = new Address("Bengaluru", 560087, "Varthur");
+        Address ad2 = ad;
+        Department d2 = new Department();
+        d.setName("IT");
+        List<Department> departmentList = new ArrayList<>();
+        departments.add(d2);
+
+        List<String> skills2 = new ArrayList<>();
+        skills2.add("JAVA");
+        Map<String, String> metadata2 = new HashMap<>();
+        metadata2.put("Dept", "IT");
+        Employee e2 = new Employee("Ranga", skills2,metadata2,ad2,departmentList);
+
+        ad2.setAddress("Changed");
+
+        System.out.println(e2);
+
+        System.out.println(ad2);
 
 
 

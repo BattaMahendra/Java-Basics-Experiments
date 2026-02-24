@@ -65,7 +65,7 @@ public class Tricky {
         s.replace('H','Y');
         System.out.println(s);      //Hello
 
-        System.out.println("\n ====================================== \n");
+        System.out.println("\n ==================  MAPS  ==================== \n");
         //observe below
         Map<String, Integer> map = new HashMap<>();
         String key = "Java";
@@ -134,7 +134,7 @@ public class Tricky {
         StringBuilder sb = new StringBuilder("Hello");
         s3 = sb.toString();  // creates new String in heap
 
-       // System.out.println(s1 == sb);  // compile time error
+//        System.out.println(s1 == sb);  // compile time error
         System.out.println(s1 == s3);  // false
 
         s3 = s3.intern();
