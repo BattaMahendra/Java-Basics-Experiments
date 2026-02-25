@@ -59,6 +59,10 @@ public class Tricky {
         String s5 = "123";
         System.out.println(s4+s5);  //null123
 
+        System.out.println("Hello"+5);
+        System.out.println(5+"Hello");
+        System.out.println(10+5);
+
         System.out.println("\n ====================================== \n");
         //4.
         String s = "Hello";

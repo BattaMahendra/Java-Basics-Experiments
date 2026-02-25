@@ -3,10 +3,8 @@ package java8.functional_interfaces;
 import basic.experiments.populating.pojos.VariablesAndTechniques;
 import java8.Java_Streams.Employee;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.security.SecureRandom;
+import java.util.*;
 import java.util.function.*;
 import java.util.stream.Collectors;
 
@@ -17,13 +15,14 @@ public class Test {
     //Function --> takes a input and returns a output
     static Function<List<Employee>, List<String>>
             getNamesOfEmployees =
-                                employeeList -> employeeList.stream().map(Employee::getEmp_name).collect(Collectors.toList());
+                                anyEmpList -> anyEmpList.stream().map(Employee::getEmp_name).collect(Collectors.toList());
+
 
     // takes two intput parameter and returns a output paramter
     static BiFunction<Integer , Integer , Integer> addition = ( i ,j) -> i+j;
 
     //Consumer --> takes a input param and returns nothing
-    static Consumer<List<Employee>> printDepartmentsOfEmployees = employeeList -> employeeList.stream().map(Employee::getEmp_dept).forEach(System.out::println);
+    static Consumer<List<Employee>> printDepartmentsOfEmployees = anyEmpList -> anyEmpList.stream().map(Employee::getEmp_dept).forEach(System.out::println);
 
     //Predicate --> accepts input and returns boolean
     static Predicate<Employee> checkForFemale = (e) -> e.getEmp_gender().equalsIgnoreCase("Female");
@@ -68,7 +67,12 @@ public class Test {
         t.getFemaleEmployees.get().forEach(System.out::println);
 
         usingSupplier();
+        System.out.println("=============================");
 
+        for(int i =0; i <10; i++){
+
+            System.out.println(generateOTP(4));
+        }
 
     }
 
@@ -79,6 +83,19 @@ public class Test {
 
         System.out.println(random.get());
         System.out.println(random.get());
+    }
+
+    /*
+    * Designing a random otp generator with supplier*/
+
+    static Function<Integer, Integer> otpGenerator =
+                                    d -> (int)(Math.pow(10,d-1) + Math.random()*(9*Math.pow(10,d-1)));
+    private static Optional<Integer> generateOTP(int digit){
+        if(digit < 7 && digit >3) {
+            return Optional.of(otpGenerator.apply(digit));
+        }else return Optional.of(null);
+
+
     }
 
     private static void usingPredicate() {
