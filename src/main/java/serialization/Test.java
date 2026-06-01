@@ -58,7 +58,7 @@ public class Test {
         oo.close();
 
         // Close the file.
-        oo.close();
+        fo.close();
         System.out.printf("Object serialized");
     }
 }

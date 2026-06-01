@@ -47,8 +47,8 @@ public class Bike {
 	}
 	
 
-	public static  void main(String[] hems) {
-		
+	public static  void main(String[] hems) throws InterruptedException {
+
 		System.out.println("Main method started at "+ LocalDateTime.now());
 		new Bike();
 //		new Bike();
@@ -56,11 +56,15 @@ public class Bike {
 //		System.out.println("this is a "+blackBike.color+ " Bike with "+blackBike.wheels+" wheels");
 		System.out.println("Main method ended at " + LocalDateTime.now());
 
+		synchronized (Bike.class){
+			Bike.class.wait();
+		}
+
 	}
-	
-//	static void main(String[] args, String msg) {
-//		System.out.println("hello");
-//	}
+
+	static void main(String[] args, String msg) {
+		System.out.println("hello");
+	}
 	
 	static {
 		System.out.println(" Bike this is static block 2");

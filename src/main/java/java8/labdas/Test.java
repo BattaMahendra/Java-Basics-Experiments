@@ -32,6 +32,11 @@ public class Test {
         @Override
         public void singleAbstractMethod() {
             System.out.println(this.variable);
+            hello();
+        }
+        // Anonymous classes can have its own instance methods  -- but you can't call it directly by variable fuc3
+        public void hello(){
+            System.out.println("Hello World");
         }
     };
 
@@ -50,6 +55,7 @@ public class Test {
 
         //anonymous inner class with a instance variable
         fuc3.singleAbstractMethod();
+        //fuc3.hello();  --> compilation error
 
         //Behaviour of lambdas with local variables , instance variables and static variables
 

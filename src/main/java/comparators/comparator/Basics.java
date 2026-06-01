@@ -65,6 +65,15 @@ public class Basics {
 
 		commonPitFalls();
 
+		EmployeeAgeComparator comp = new EmployeeAgeComparator();
+
+//		employees.add(null);
+//		employees.add(null);
+//		employees.add(null);
+
+		Collections.sort(employees,comp);
+		System.out.println(employees);
+
 	}
 
 
@@ -258,14 +267,27 @@ EmployeeAgeComparator implements Comparator<Employee>{
 
 	@Override
 	public int compare(Employee o1, Employee o2) {
+
+		//handling nulls - nulls come at last
+//		if(o1 == null && o2 == null) return 0;
+//		else if(o1 == null)  return 1;
+//		else if (o2 == null) return -1;
+
+		//handling nulls - nulls come at first
+//		if(o1 == null && o2 == null) return 0;
+//		else if(o1 == null)  return -1;
+//		else if (o2 == null) return 1;
+
+
+
 		if(o1.getAge()>o2.getAge()) return 1;
 		else if (o1.getAge()<o2.getAge()) return -1;
 		else 	return 0;
 
 		/*
-		* compare(a, b) < 0 → a moves left in the order
-		* compare(a, b) > 0 → a moves right in the order
-		* compare(a, b) = 0 → no movement needed in the order
+		* compare(a, b) < 0 → a moves left in the order ==> a,b
+		* compare(a, b) > 0 → a moves right in the order ==> b,a
+		* compare(a, b) = 0 → no movement needed in the order ==> a,b
 		* */
 
 	}

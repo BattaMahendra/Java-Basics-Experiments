@@ -155,5 +155,10 @@ public class ArrayListExample {
 //            synchronizedList.add(1);
             System.out.println(synchronizedList.get(i));
         }
+
+        List<Integer> readOnlyList = Collections.unmodifiableList(l2);
+        readOnlyList.remove(3); // throws exception
+        readOnlyList.add(4); // throws exception
+
     }
 }

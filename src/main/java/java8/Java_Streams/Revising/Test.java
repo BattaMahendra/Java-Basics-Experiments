@@ -114,6 +114,24 @@ public class Test {
 
 
 
+        List<String> words2 = List.of("apple", "banana", "apple", "cherry", "banana", "apple");
+
+        String mostFrequent = words2.stream()
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        Collectors.counting())
+                )
+                .entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(null);
+
+
+
+
+        System.out.println("\n Most frequent element: " + mostFrequent);
+
 
 
 

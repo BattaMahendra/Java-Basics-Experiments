@@ -36,6 +36,9 @@ public class Product implements Comparable<Product> {
     @Override
     public int compareTo(Product other) {
 
+
+
+
         if(this.getId() > other.getId()) return 1;
         else if( this.getId() < other.getId() ) return -1;
         else return 0;

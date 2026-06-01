@@ -17,6 +17,47 @@ Synchronisation of Lists
 CopyOnWriteArrayList, Collections.synchronizedList, and Vector are all classes in Java that provide thread-safe access to lists,
 but they differ in their implementation and performance characteristics:
 
+Collections.synchronizedList is still not safe in iterations. As during iterations we perform mulitple operations and they are combinedly
+not atomic. each individual method in synchronized list is atomic but not as a whole.
+give example.
+
+Thread reader = new Thread(() -> {
+    for (Integer n : list) {   // ⚠️ iteration
+        System.out.println("Read: " + n);
+        try { Thread.sleep(100); } catch (Exception e) {}
+    }
+});
+
+Thread writer = new Thread(() -> {
+    try { Thread.sleep(150); } catch (Exception e) {}
+    list.add(99);               // modification during iteration
+    System.out.println("Added 99");
+});
+
+reader.start();
+writer.start();
+
+Output:
+
+Read: 1
+Read: 2
+Added 99
+💥 ConcurrentModificationException
+
+
+✅ Fix (ONLY ONE LINE ADDED)
+Thread reader = new Thread(() -> {
+    synchronized (list) {          // ⭐ IMPORTANT
+        for (Integer n : list) {
+            System.out.println("Read: " + n);
+            try { Thread.sleep(100); } catch (Exception e) {}
+        }
+    }
+});
+
+The synchronization provided by synchronizedList does not prevent structural modifications to the list during iteration.
+For such scenarios, you might need to use CopyOnWriteArrayList or use synchronized blocks for iterations.
+
  CopyOnwriteArrayList
 
 Thread Safety Mechanism:

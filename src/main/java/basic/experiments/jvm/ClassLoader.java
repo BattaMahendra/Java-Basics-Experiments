@@ -35,6 +35,10 @@ public class ClassLoader {
         System.out.println(test);
     }
 
+    /*
+    * Trigger: Usually caused by explicit calls to Class.forName(), ClassLoader.loadClass(), or ClassLoader.findSystemClass().
+    * The Cause: You told the program to look for a specific class name, but you forgot to include the JAR or .class file in the build path.
+    */
     private static void generateClassNotFoundException() {
         try {
 

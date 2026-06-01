@@ -90,11 +90,11 @@ public class ExecutorServices {
 		ExecutorService executors = Executors.newCachedThreadPool();
 
 		List<Callable<Integer>> callableTasks =  Arrays.asList(
-				() -> { Thread.sleep(1000); return 1; },
-				() -> { Thread.sleep(1000); return 2; },
-				() -> { Thread.sleep(1000); return 3; },
-				() -> { Thread.sleep(1000); return 4; },
-				() -> { Thread.sleep(1000); return 5; }
+				() -> {  System.out.println("we are in thread - 1"); Thread.sleep(1000);  return 1; },
+				() -> {  System.out.println("we are in thread - 2"); Thread.sleep(1000);  return 2; },
+				() -> {  System.out.println("we are in thread - 3"); Thread.sleep(1000);  return 3; },
+				() -> {  System.out.println("we are in thread - 4"); Thread.sleep(1000);  return 4; },
+				() -> {  System.out.println("we are in thread - 5"); Thread.sleep(1000);  return 5; }
 		);
 
 		// we can use invokeAll() to invoke all callables at once

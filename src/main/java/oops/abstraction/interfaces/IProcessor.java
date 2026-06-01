@@ -36,10 +36,33 @@ public interface IProcessor {
   * 1. They can't be overridden
   * 2. They can be directly accessed with Interface name */
    static void productionDetails(){
-    System.out.println(" This design belongs to Intel company");
+
+       InnerClass i = new InnerClass();
+       System.out.println(" This design belongs to Intel company");
   }
 
   // we can have private methods also in interfaces which acts as supporting methods for default and static methods
+
+
+    //it can even have inner classes  --> implicitly --> public and static
+
+    class InnerClass implements innerInterface{
+
+       void printInnerClass(){
+           System.out.println("Hello, I am instance method coming from inner class inside a interface");
+       }
+
+        @Override
+        public void printInnerInterface() {
+
+            System.out.println("Hello, I am an overridden instance method coming from inner class inside a interface");
+
+        }
+    }
+
+    interface innerInterface{
+        void printInnerInterface();
+    }
 
 
 }

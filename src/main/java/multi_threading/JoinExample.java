@@ -53,15 +53,18 @@ public class JoinExample {
         });
 
 
+
+
         // Start Thread 1
         thread1.start();
-        thread2.start();
-        // Wait for Thread 1 to finish using join()
-        Thread.sleep(100);
         System.out.println("Joining the thread 1");
         thread1.join();  // main thread waits until thread-1 completes
+        // Wait for Thread 1 to finish using join()
+        Thread.sleep(100);
+
         System.out.println("Thread 1 has finished, so Thread 2 can start now");
 
+        thread2.start();
         // Start Thread 2
         System.out.println("Joining the thread 2");
         thread2.join(); // main thread waits until thread-1 completes

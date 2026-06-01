@@ -1,6 +1,7 @@
 package java8.Java_Streams;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -11,6 +12,20 @@ public class AdvancedStreamProblems {
 
        // How many male and female employees are there in the organization?
         countByGender();
+
+        // Group Employees by Department
+         Map<String, List<Employee>> employeeByDept = employeeList.stream().collect(Collectors.groupingBy(Employee::getEmp_dept));
+
+        //Count employees based on dept
+        Map<String, Long> employeeCountByDept = employeeList.stream().collect(Collectors.groupingBy(Employee::getEmp_dept, Collectors.counting()));
+
+        // Highest salaried employee in each department using reduce
+        employeeList.stream().reduce((e1,e2) ->  e1.getEmp_salary() > e2.getEmp_salary() ? e1 : e2)  //returns optional employee
+                .ifPresent(employee -> System.out.println("Highest salaried employee in the organization: "+employee));
+        //using max  --> a special implementation of reduce method
+        employeeList.stream().max(Comparator.comparing(Employee::getEmp_salary))
+                .ifPresentOrElse(e -> System.out.println(e), () -> System.out.println("No employee found"));
+
        // Print the name of all departments in the organization.
         employeeList.stream().map(emp -> emp.getEmp_dept()).distinct().forEach(System.out::println);
 
@@ -19,6 +34,11 @@ public class AdvancedStreamProblems {
 
        //Get the details of highest paid employee in the organization.
         highestPaidEmployee();
+
+        // Group Strings by length
+        List<String> words = List.of("cat", "dog", "elephant", "bat");
+
+        Map<Integer, List<String>> groupedWords =  words.stream().collect(Collectors.groupingBy(s -> s.length()));
 
        //Who has the most working experience in the organization?  (given only date of joining)
 
@@ -191,7 +211,7 @@ public class AdvancedStreamProblems {
     }
 
     private static void highestPaidEmployee() {
-        System.out.println("\n==================== Highest salaried Employee ======================");
+        System.out.println("\n==================== Highest salaried Employee ======================\n");
         Employee highestSalaryEmployee = employeeList.stream().
                 sorted(Comparator.comparing(Employee::getEmp_salary).reversed()).
                 findFirst().orElse(null);
@@ -208,6 +228,12 @@ public class AdvancedStreamProblems {
         //lists all salaries from lowest to highest. i.e why we need to use reverse comparator
         employeeList.stream().sorted(Comparator.comparing(Employee::getEmp_salary)).forEach(System.out::println);
         System.out.println(highestSalaryEmployee);
+
+        //using sorted
+        employeeList.stream().sorted(Comparator.comparing(Employee::getEmp_salary).reversed())
+                .findFirst().ifPresentOrElse(System.out::println, ()-> System.out.println("No employee found"));
+
+        System.out.println("\n ================================================================== \n");
     }
 
     private static void genderBasedAgeAverage() {

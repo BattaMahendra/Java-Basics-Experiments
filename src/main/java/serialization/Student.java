@@ -96,6 +96,30 @@ public class Student implements Serializable {
        // department = new Department(1, "CS");
     }
 
+    /**
+     * readResolve() is called after deserialization to restore the object state.
+     * It's useful for:
+     * 1. Restoring transient fields to their default values
+     * 2. Validating the deserialized object
+     * 3. Implementing singleton pattern during deserialization
+     * 4. Enforcing invariants after deserialization
+     */
+    private Object readResolve() {
+        System.out.println("Executing readResolve - Restoring transient fields");
+
+        // The transient field 'age' will be 0 (default int value) after deserialization
+        // If you want to set a specific default value, do it here
+        // this.age = 0; // Already 0 by default
+
+        // The transient final field 'state' won't be initialized during deserialization
+        // since the constructor is not called. If needed, it would require reflection to set
+        // but since it's final, we can't modify it after initialization
+
+        // Perform any validation or restoration logic here
+        System.out.println("Object restored with name: " + this.name + ", rollno: " + this.rollno);
+
+        return this;
+    }
 
 }
 
@@ -128,4 +152,3 @@ class Department{
 *           2. handle in  customization i.e use writeObject() and readObject() methods
 *           3. Make that object class serializable
 * */
-

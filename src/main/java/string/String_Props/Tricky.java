@@ -46,7 +46,9 @@ public class Tricky {
          * 🧠 One Golden Mental Rule
          *
          * 💛 If a variable is involved → runtime → Heap
-         * 💛 If only literals/constants(final) → compile time → SCP*/
+         * 💛 If only literals/constants(final) → compile time → SCP
+         *
+         *  */
 
         //3.
         /*
@@ -155,6 +157,13 @@ public class Tricky {
         // so the references are compared here , so they will be false
 
         System.out.println("\n ====================================== \n");
+
+        String r1 = new String("test") + new
+                String("test");
+        String r2 = "testtest";
+        System.out.println(r1 == r2);
+        System.out.println(r1.equals(r2));
+
 
     }
 }

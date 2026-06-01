@@ -92,6 +92,10 @@ public class IntStreamExample {
 
     private static void creationOfIntStreams() {
         Stream<Integer> integerStream = Stream.of(1,2,3,4,5,6,7,8,9); //stream of integers
+        Stream<Integer> infinateIntegerStream = Stream.iterate(0, i -> i+1);
+        Stream<Integer> finateIntegerStream = Stream.iterate(0,  i-> i<10, i -> i+1);
+
+
 
         // converting them into intstreams
         IntStream intStream = integerStream.mapToInt(i -> i);

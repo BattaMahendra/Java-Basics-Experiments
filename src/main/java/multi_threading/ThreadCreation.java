@@ -30,6 +30,8 @@ public class ThreadCreation {
         * we need to use Thread class constructor as shown below */
 
         Second second = new Second("Thread-2");
+
+        // passing runnable to a new thread
         Thread t = new Thread(second);
         t.start();
         first1.join();

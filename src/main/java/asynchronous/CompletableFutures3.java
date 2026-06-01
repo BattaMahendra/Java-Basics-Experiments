@@ -13,6 +13,7 @@ public class CompletableFutures3 {
 
     public static Integer divide()  {
 
+        System.out.println("Current execuing thread: "+Thread.currentThread().getName());
         try{Thread.sleep(1000);} catch (InterruptedException e) {throw new RuntimeException(e);}
         int i = 10/0;
         return i;

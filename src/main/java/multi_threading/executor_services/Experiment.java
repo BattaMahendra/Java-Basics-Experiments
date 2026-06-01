@@ -1,6 +1,7 @@
 package multi_threading.executor_services;
 
 import multi_threading.ExecutorServices;
+import multi_threading.ThreadCreation;
 
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
@@ -11,8 +12,8 @@ public class Experiment {
 
    private static Runnable r = () -> {
        try {
-           Thread.sleep(1000);
-           System.out.println("Running thread simultaneously");
+           Thread.sleep(1);
+           System.out.println("Running thread"+ Thread.currentThread().getName() +" simultaneously");
        } catch (InterruptedException e) {
            throw new RuntimeException(e);
        }

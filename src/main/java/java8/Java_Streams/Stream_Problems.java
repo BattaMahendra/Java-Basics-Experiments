@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
 
@@ -179,6 +180,36 @@ public class Stream_Problems {
         }
         System.out.println(p+" is a palindrome");
 
+       Boolean isPalindrome = IntStream.range(0, n/2).allMatch( i -> p.charAt(i) == p.charAt(n-i));
+
+
+        /**
+         *  Merge Two Lists
+         * Using Streams and Without Streams
+         * */
+
+        List<Integer> list1 = Arrays.asList(0,1,1,1,1);
+        List<Integer> list2 = Arrays.asList(7,8,9);
+
+        //using streams
+
+        List<Integer> mergedList = Stream.concat(list1.stream(), list2.stream()).collect(toList());
+
+        // without using streams
+        List<Integer> mergedList2 = new ArrayList<>();
+        mergedList2.addAll(list1);
+        mergedList2.addAll(list2);
+
+
+        //with Collections.addAll()
+        Collections.addAll(list1, list2.toArray(new Integer[0]));
+
+        //with list
+        list.addAll(list2);
+
+
+
+
 
 
 
@@ -303,6 +334,8 @@ public class Stream_Problems {
         //method 2: using string
         boolean result = Arrays.toString(f).equals(Arrays.toString(s)) ? true : false;
         System.out.println(result);
+
+
     }
 
     private static boolean hashingApproachForAnagram(String first, String second) {

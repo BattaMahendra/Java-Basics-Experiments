@@ -23,8 +23,8 @@ public class Why {
         // for example now if we want to check whether employee home district is Anantapur or not
         //traditional nested checks
 
-        Address address = new Address();
-        employee.setAddress(address);
+//        Address address = new Address();
+//        employee.setAddress(address);
 
         System.out.println(traditionalNullChecks(employee));
 
@@ -43,7 +43,7 @@ public class Why {
      * then how does it help us ?
      *
      *
-     *  ❔ The Problem: The "Billion Dollar Mistake"
+     *  ❔ The Problem: The "Billion-Dollar Mistake"
      * In traditional Java, if a method returns null, the compiler doesn't warn you.
      * You have to remember to check the documentation or the implementation. If you forget, your application crashes with a NullPointerException (NPE) at runtime.
      *

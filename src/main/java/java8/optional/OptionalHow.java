@@ -42,7 +42,7 @@ public class OptionalHow {
                 .filter( employee1 -> employee1.getEmp_gender().equals("Male"))
                 .filter(emp -> emp.getEmp_age()>21)
                 .map(employee1 -> employee1.getEmp_salary())
-                .map(s -> {System.out.println(salary); return salary;})
+                .map(s -> {System.out.println(s); return s;})
                 .orElse(0.0);
         System.out.println("Filtered Salary: " + filteredSalary);
 
@@ -90,7 +90,7 @@ public class OptionalHow {
 
         //if the original value is null then wrapping with of() throws NPE
         name = null;
-        //Optional.of(name);
+        //Optional.of(name);  // ❌ throws NPE
 
         //In such ambiguous cases when you don't know original has null or not
         // it is safer to use Optional.ofNullable() which means it might contain null or non-null
@@ -98,7 +98,7 @@ public class OptionalHow {
         System.out.println(mayBeName);
 
         //very bad practice - how can optional itself be null - optional should be used as wrapper class
-        // Optional<String> opt = null; // ❌ pointless and wrong
+         Optional<String> opt = null; // ❌ pointless and wrong
 
         /*.get() method returns value if present , if not then throws no such element exception
         So don't ever use get() until you are sure. It is bad practise*/

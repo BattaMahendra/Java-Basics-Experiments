@@ -23,8 +23,8 @@ public class CustomMap<K,V> {
         bucketArray = new Node[defaultSize];
     }
 
-    public void resize(){
-        Node[] oldNodeArray = bucketArray;
+    public synchronized void resize(){
+        Node<K,V>[] oldNodeArray = bucketArray;
 
         bucketArray = new Node[oldNodeArray.length * 2];
 

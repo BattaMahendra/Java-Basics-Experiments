@@ -1,4 +1,4 @@
-
+h
 
 GC commands are not used in spring boot code but they are actually used in docker files, kubernetes files, system md files. GC is not encouraged during run
 time of app but during jvm start up only. We can start the spring boot jar app with GC commands

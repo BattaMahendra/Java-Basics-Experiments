@@ -29,6 +29,21 @@ public class FlatMap {
 		
 		usingAFlatMap();
 		castingObjectsInStream();
+
+		List<List<String>> list = List.of(
+				List.of("a", "b"),
+				List.of("c", "d")
+		);
+
+		// problem with map()
+		list.stream()
+				.map(l -> l.stream())
+				.forEach(System.out::println);
+
+		// solution with flatMap()
+		list.stream()
+				.flatMap(l -> l.stream())
+				.forEach(System.out::println);
 		
 	}
 

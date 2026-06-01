@@ -1,5 +1,6 @@
 package collections.list;
 
+import java.util.Collections;
 import java.util.Stack;
 
 public class StackInJava {
@@ -34,6 +35,8 @@ public class StackInJava {
         //search(Object o) method return index of object ( 1 - based index)
 
         System.out.println( stack.search("Mahi"));
+
+        Collections.sort(stack);
 
         /**
          * every operation in stack is synchronized ( so thread safe)

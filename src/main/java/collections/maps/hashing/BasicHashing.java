@@ -129,6 +129,10 @@ public class BasicHashing {
             int freq=0;
             if(charMap.containsKey(c)) freq = charMap.get(c);
             charMap.put(c , ++freq);
+
+            // you can use below lines also instead of above logic
+           // charMap.compute(c, (k,v) ->  v == null ? 1: v+1 );
+          //  charMap.merge(c , 1, (oldVal, newVal) -> oldVal + newVal);
         }
 
         System.out.println(charMap);

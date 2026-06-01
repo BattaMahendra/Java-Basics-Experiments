@@ -12,17 +12,19 @@ public class TestClass {
 
     // a generic static method - just as any other generic method
 
-    public static <X> void perform(X x ){
+    public static <X> X perform(X x ){
         System.out.println(x);
         // some logic
+        return x;
     }
+
 
 
 
     public static void main(String[] args) {
 
-        perform(5);
-        perform("Hello");
+        Integer i = perform(5);  // no type casting needed - major advantage of using Generic<X>
+        //i = perform("Hello");  // immediate compilation error.
         perform(new Object());
 
         Generic<String> object = new Generic<>();
@@ -38,6 +40,14 @@ public class TestClass {
         printUsingGeneric(stringList);
         /*Why do we need wild cards ?
         * Observe below*/
+
+        /*
+        *
+        * T vs ?
+        *
+        * use T when you want to return some type from method
+        * use ? when you perform only read operations
+        * */
 
         List<Number> numbers = List.of(1,2,3,4,5,6,7,8,9);
         //let's suppose we have a method which accepts list of Numbers and prints them

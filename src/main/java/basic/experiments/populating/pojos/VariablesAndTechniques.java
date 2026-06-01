@@ -98,7 +98,7 @@ public class VariablesAndTechniques {
 	public static List<Employee> populateLargeEmployee(){
 		List<Employee> listOfEmp=new ArrayList<>();
 
-		IntStream.range(0, 10000000)
+		IntStream.range(0, 10000)
 		.forEach(num-> {
 			listOfEmp.add(
 					Employee.builder()
@@ -107,7 +107,8 @@ public class VariablesAndTechniques {
 					.lastName(mixAlphas[random.nextInt(mixAlphas.length-1)])
 					.role(roles[random.nextInt(roles.length)])
 					.company(companies[random.nextInt(companies.length)])
-					.age(random.nextInt(65))
+					.age(getRandomNumber(21, 65))
+					.salary(getRandomNumber(30000, 150000))
 					.build() );
 
 

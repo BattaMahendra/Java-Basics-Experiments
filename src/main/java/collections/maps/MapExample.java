@@ -2,6 +2,8 @@ package collections.maps;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MapExample {
 
@@ -248,6 +250,36 @@ public class MapExample {
 
         integerStringMap.remove(6);  // returns the value of removed key-value pair
 
+        Map<String, Integer> map = new HashMap<>(100);
+        // new HashMap<>(100) → capacity becomes 128 --> Actual capacity becomes next power of 2.  --> 16, 32 , 64, 128, 256, 512
+        Map<String, Integer> map2 = new HashMap<>(128, 0.75f);
+
+        Map<String, Integer> map3 = new HashMap<>(map);
+
+        Map<String, Integer> map4 = new HashMap<>() {{
+            put("A", 1);
+            put("B", 2);
+        }};
+
+        Map<String, Integer> map5 = Map.of(    // java 9+ --> immutable map
+                "A", 1,
+                "B", 2,
+                "C", 3
+        );
+        //map5.put("D", 4); // throws exception
+
+        Map<String, Integer> map6 = Map.ofEntries(
+                Map.entry("A", 1),
+                Map.entry("B", 2)
+        );
+
+        Map<String, Integer> map7 =
+                                    Stream.of("A", "B", "C")
+                                                .collect(Collectors.toMap(
+                                                        k -> k,
+                                                        k -> k.length()
+                                                ));
+
         System.out.println("================== Using basic sorted for keys ==================");
         integerStringMap.entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(System.out::println);
         System.out.println("================== Using basic reverse sorted for keys ==================");
@@ -301,6 +333,8 @@ public class MapExample {
        *
        *⚠️ map.computeIfPresent("A", (k, v) -> null);  ==> Key gets deleted if the function returns null
        * */
+
+
 
 
 
